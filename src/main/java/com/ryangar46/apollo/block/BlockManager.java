@@ -14,12 +14,12 @@ public class BlockManager {
     public static final Block LUNAR_SOIL = new Block(FabricBlockSettings.of(Material.SOIL).strength(1.0f));
 
     public static void register() {
-        Apollo.LOGGER.info("Registering items");
-        registerBlock(LUNAR_SOIL, Apollo.MOD_ID, "lunar_soil", ItemGroup.BUILDING_BLOCKS);
+        Apollo.LOGGER.info("Registering blocks");
+        registerBlock(LUNAR_SOIL, "lunar_soil", ItemGroup.BUILDING_BLOCKS);
     }
 
-    public static void registerBlock(Block block, String namespace, String id, ItemGroup itemGroup) {
-        Registry.register(Registry.BLOCK, new Identifier(namespace, id), block);
-        Registry.register(Registry.ITEM, new Identifier(namespace, id), new BlockItem(block, new FabricItemSettings().group(itemGroup)));
+    private static void registerBlock(Block block, String id, ItemGroup itemGroup) {
+        Registry.register(Registry.BLOCK, new Identifier(Apollo.MOD_ID, id), block);
+        Registry.register(Registry.ITEM, new Identifier(Apollo.MOD_ID, id), new BlockItem(block, new FabricItemSettings().group(itemGroup)));
     }
 }
