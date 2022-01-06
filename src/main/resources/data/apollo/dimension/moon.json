@@ -112,7 +112,7 @@
               "then_run": {
                 "type": "minecraft:block",
                 "result_state": {
-                  "Name": "apollo:lunar_stone"
+                  "Name": "apollo:lunar_soil"
                 }
               }
             }
