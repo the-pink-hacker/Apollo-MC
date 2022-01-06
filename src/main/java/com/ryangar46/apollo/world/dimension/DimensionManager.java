@@ -4,9 +4,6 @@ import com.ryangar46.apollo.Apollo;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
-import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionOptions;
-import net.minecraft.world.dimension.DimensionType;
 
 public class DimensionManager {
     public static void register() {
