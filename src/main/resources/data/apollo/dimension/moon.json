@@ -12,7 +12,7 @@
       "ore_veins_enabled": false,
       "legacy_random_source": true,
       "default_block": {
-        "Name": "minecraft:end_stone"
+        "Name": "apollo:lunar_soil"
       },
       "default_fluid": {
         "Name": "minecraft:air"
@@ -76,7 +76,7 @@
       "surface_rule": {
         "type": "minecraft:block",
         "result_state": {
-          "Name": "minecraft:end_stone"
+          "Name": "apollo:lunar_soil"
         }
       },
       "structures": {

@@ -1,7 +1,8 @@
 package com.ryangar46.apollo;
 
-import com.ryangar46.apollo.world.biome.BiomeRegisterer;
-import com.ryangar46.apollo.world.dimension.DimensionRegisterer;
+import com.ryangar46.apollo.block.BlockManager;
+import com.ryangar46.apollo.world.biome.BiomeManager;
+import com.ryangar46.apollo.world.dimension.DimensionManager;
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,7 +13,8 @@ public class Apollo implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		BiomeRegisterer.register();
-		DimensionRegisterer.register();
+		BlockManager.register();
+		BiomeManager.register();
+		DimensionManager.register();
 	}
 }

@@ -8,11 +8,11 @@
     "RyanGar46"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/RyanGar46/Apollo-MC",
+    "sources": "https://github.com/RyanGar46/Apollo-MC"
   },
-  "license": "",
-  "icon": "assets/apollo/textures/icon.png",
+  "license": "Apache-2.0 License",
+  "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
