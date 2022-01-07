@@ -1,9 +1,14 @@
 package com.ryangar46.apollo;
 
 import com.ryangar46.apollo.block.BlockManager;
+import com.ryangar46.apollo.item.ItemManager;
 import com.ryangar46.apollo.world.biome.BiomeManager;
 import com.ryangar46.apollo.world.dimension.DimensionManager;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -13,7 +18,9 @@ public class Apollo implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ItemManager.register();
 		BlockManager.register();
+
 		BiomeManager.register();
 		DimensionManager.register();
 	}
