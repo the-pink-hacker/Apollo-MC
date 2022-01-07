@@ -6,5 +6,7 @@
   "item.apollo.space_suit_boots": "Space Suit Boots",
   "item.apollo.space_suit_chestplate": "Space Suit Chestplate",
   "item.apollo.space_suit_helmet": "Space Suit Helmet",
-  "item.apollo.space_suit_leggings": "Space Suit Leggings"
+  "item.apollo.space_suit_leggings": "Space Suit Leggings",
+  "itemGroup.apollo.apollo": "Apollo",
+  "itemGroup.apollo.moon": "Moon"
 }

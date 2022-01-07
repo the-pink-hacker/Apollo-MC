@@ -11,10 +11,10 @@ import net.minecraft.util.registry.Registry;
 
 public class ItemManager {
     public static final ArmorMaterial SPACE_SUIT_ARMOR_MATERIAL = new SpaceSuitArmor();
-    public static final Item SPACE_SUIT_HELMET = new ArmorItem(SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.HEAD, new Item.Settings().group(ItemGroup.COMBAT));
-    public static final Item SPACE_SUIT_CHESTPLATE = new ArmorItem(SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.CHEST, new Item.Settings().group(ItemGroup.COMBAT));
-    public static final Item SPACE_SUIT_LEGGINGS = new ArmorItem(SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroup.COMBAT));
-    public static final Item SPACE_SUIT_BOOTS = new ArmorItem(SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT));
+    public static final Item SPACE_SUIT_HELMET = new ArmorItem(SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.HEAD, new Item.Settings().group(ItemGroupManager.APOLLO));
+    public static final Item SPACE_SUIT_CHESTPLATE = new ArmorItem(SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.CHEST, new Item.Settings().group(ItemGroupManager.APOLLO));
+    public static final Item SPACE_SUIT_LEGGINGS = new ArmorItem(SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroupManager.APOLLO));
+    public static final Item SPACE_SUIT_BOOTS = new ArmorItem(SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.FEET, new Item.Settings().group(ItemGroupManager.APOLLO));
 
     public static void register() {
         Apollo.LOGGER.info("Registering items");
