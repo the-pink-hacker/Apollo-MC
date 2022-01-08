@@ -1,7 +1,6 @@
 {
 	"parent": "apollo:block/launchpad",
 	"textures": {
-		"particle": "apollo:block/launchpad_top",
 		"top": "apollo:block/launchpad_top",
 		"bottom": "apollo:block/launchpad_bottom",
 		"side": "apollo:block/launchpad_side"
@@ -23,12 +22,12 @@
 			"to": [16, 16, 1],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
 			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#side", "cullface": "north"},
-				"east": {"uv": [15, 0, 16, 16], "texture": "#side", "cullface": "east"},
+				"north": {"uv": [0, 0, 16, 16], "texture": "#side"},
+				"east": {"uv": [15, 0, 16, 16], "texture": "#side"},
 				"south": {"uv": [0, 0, 16, 16], "texture": "#side"},
-				"west": {"uv": [0, 0, 1, 16], "texture": "#side", "cullface": "west"},
-				"up": {"uv": [0, 0, 16, 1], "rotation": 180, "texture": "#side", "cullface": "up"},
-				"down": {"uv": [0, 15, 16, 16], "texture": "#bottom", "cullface": "down"}
+				"west": {"uv": [0, 0, 1, 16], "texture": "#side"},
+				"up": {"uv": [0, 0, 16, 1], "rotation": 180, "texture": "#side"},
+				"down": {"uv": [0, 15, 16, 16], "texture": "#bottom"}
 			}
 		},
 		{

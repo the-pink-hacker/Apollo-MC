@@ -1,72 +1,48 @@
 {
-  "variants": {
-    "north=false,east=false,south=false,west=false": {
-      "model": "apollo:block/launchpad"
+  "multipart": [
+    {
+      "apply": {
+        "model": "apollo:block/launchpad"
+      }
     },
-    "north=true,east=false,south=false,west=false": {
-      "model": "apollo:block/launchpad_1sided"
+    {
+      "when": {
+        "north": "true"
+      },
+      "apply": {
+        "model": "apollo:block/launchpad_side",
+        "uvlock": true
+      }
     },
-    "north=false,east=true,south=false,west=false": {
-      "model": "apollo:block/launchpad_1sided",
-      "y": 90,
-      "uvlock": true
+    {
+      "when": {
+        "east": "true"
+      },
+      "apply": {
+        "model": "apollo:block/launchpad_side",
+        "y": 90,
+        "uvlock": true
+      }
     },
-    "north=false,east=false,south=true,west=false": {
-      "model": "apollo:block/launchpad_1sided",
-      "y": 180,
-      "uvlock": true
+    {
+      "when": {
+        "south": "true"
+      },
+      "apply": {
+        "model": "apollo:block/launchpad_side",
+        "y": 180,
+        "uvlock": true
+      }
     },
-    "north=false,east=false,south=false,west=true": {
-      "model": "apollo:block/launchpad_1sided",
-      "y": 270,
-      "uvlock": true
-    },
-    "north=true,east=false,south=false,west=true": {
-      "model": "apollo:block/launchpad_2sided"
-    },
-    "north=true,east=true,south=false,west=false": {
-      "model": "apollo:block/launchpad_2sided",
-      "y": 90,
-      "uvlock": true
-    },
-    "north=false,east=true,south=true,west=false": {
-      "model": "apollo:block/launchpad_2sided",
-      "y": 180,
-      "uvlock": true
-    },
-    "north=false,east=false,south=true,west=true": {
-      "model": "apollo:block/launchpad_2sided",
-      "y": 270,
-      "uvlock": true
-    },
-    "north=false,east=true,south=false,west=true": {
-      "model": "apollo:block/launchpad_straight"
-    },
-    "north=true,east=false,south=true,west=false": {
-      "model": "apollo:block/launchpad_straight",
-      "y": 90,
-      "uvlock": true
-    },
-    "north=true,east=true,south=false,west=true": {
-      "model": "apollo:block/launchpad_3sided"
-    },
-    "north=true,east=true,south=true,west=false": {
-      "model": "apollo:block/launchpad_3sided",
-      "y": 90,
-      "uvlock": true
-    },
-    "north=false,east=true,south=true,west=true": {
-      "model": "apollo:block/launchpad_3sided",
-      "y": 180,
-      "uvlock": true
-    },
-    "north=true,east=false,south=true,west=true": {
-      "model": "apollo:block/launchpad_3sided",
-      "y": 270,
-      "uvlock": true
-    },
-    "north=true,east=true,south=true,west=true": {
-      "model": "apollo:block/launchpad_4sided"
+    {
+      "when": {
+        "west": "true"
+      },
+      "apply": {
+        "model": "apollo:block/launchpad_side",
+        "y": 270,
+        "uvlock": true
+      }
     }
-  }
+  ]
 }
