@@ -3,6 +3,7 @@ package com.ryangar46.apollo;
 import com.ryangar46.apollo.block.BlockManager;
 import com.ryangar46.apollo.item.ItemGroupManager;
 import com.ryangar46.apollo.item.ItemManager;
+import com.ryangar46.apollo.tag.TagManager;
 import com.ryangar46.apollo.world.biome.BiomeManager;
 import com.ryangar46.apollo.world.dimension.DimensionManager;
 import net.fabricmc.api.ModInitializer;
@@ -19,6 +20,7 @@ public class Apollo implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		TagManager.register();
 		ItemGroupManager.register();
 		ItemManager.register();
 		BlockManager.register();
