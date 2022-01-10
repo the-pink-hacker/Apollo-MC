@@ -1,6 +1,7 @@
 package com.ryangar46.apollo;
 
 import com.ryangar46.apollo.block.BlockManager;
+import com.ryangar46.apollo.fluid.FluidManager;
 import com.ryangar46.apollo.item.ItemGroupManager;
 import com.ryangar46.apollo.item.ItemManager;
 import com.ryangar46.apollo.tag.TagManager;
@@ -24,6 +25,7 @@ public class Apollo implements ModInitializer {
 		ItemGroupManager.register();
 		ItemManager.register();
 		BlockManager.register();
+		FluidManager.register();
 
 		BiomeManager.register();
 		DimensionManager.register();
