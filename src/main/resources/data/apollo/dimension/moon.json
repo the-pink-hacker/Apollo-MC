@@ -3,7 +3,184 @@
   "generator": {
     "type": "minecraft:noise",
     "seed": -1783961517,
-    "settings": "apollo:moon",
+    "settings": {
+      "sea_level": 64,
+      "disable_mob_generation": true,
+      "noise_caves_enabled": false,
+      "noodle_caves_enabled": false,
+      "aquifers_enabled": false,
+      "ore_veins_enabled": false,
+      "legacy_random_source": true,
+      "default_block": {
+        "Name": "apollo:lunar_stone"
+      },
+      "default_fluid": {
+        "Name": "minecraft:air"
+      },
+      "noise": {
+        "min_y": 0,
+        "height": 256,
+        "size_horizontal": 1,
+        "size_vertical": 2,
+        "island_noise_override": false,
+        "sampling": {
+          "xz_scale": 1,
+          "y_scale": 1,
+          "xz_factor": 80,
+          "y_factor": 160
+        },
+        "bottom_slide": {
+          "target": 0.1171875,
+          "size": 3,
+          "offset": 0
+        },
+        "top_slide": {
+          "target": -0.078125,
+          "size": 2,
+          "offset": 8
+        },
+        "terrain_shaper": {
+          "offset": {
+            "coordinate": "continents",
+            "points": [
+              {
+                "location": 1,
+                "derivative": 0,
+                "value": {
+                  "coordinate": "continents",
+                  "points": [
+                    {
+                      "location": 0.1,
+                      "derivative": 0.5,
+                      "value": 0.08
+                    }
+                  ]
+                }
+              },
+              {
+                "location": 0.1,
+                "derivative": -0.1,
+                "value": 0.01
+              },
+              {
+                "location": -0.1,
+                "derivative": 0.1,
+                "value": 0.05
+              }
+            ]
+          },
+          "factor": {
+            "coordinate": "continents",
+            "points": [
+              {
+                "location": -0.5,
+                "derivative": -0.1,
+                "value": 4
+              },
+              {
+                "location": -0.1,
+                "derivative": 1,
+                "value": 5
+              },
+              {
+                "location": 0.1,
+                "derivative": 1,
+                "value": 6
+              },
+              {
+                "location": 0.5,
+                "derivative": 2,
+                "value": 7
+              }
+            ]
+          },
+          "jaggedness": 0.01
+        }
+      },
+      "surface_rule": {
+        "type": "minecraft:sequence",
+        "sequence": [
+          {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:vertical_gradient",
+              "random_name": "apollo:bedrock_floor",
+              "true_at_and_below": {
+                "absolute": 0
+              },
+              "false_at_and_above": {
+                "absolute": 5
+              }
+            },
+            "then_run": {
+              "type": "minecraft:block",
+              "result_state": {
+                "Name": "minecraft:bedrock"
+              }
+            }
+          },
+          {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:biome",
+              "biome_is": [
+                "apollo:lunar_maria"
+              ]
+            },
+            "then_run": {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:noise_threshold",
+                "noise": "apollo:maria",
+                "min_threshold": 0.1,
+                "max_threshold": 1
+              },
+              "then_run": {
+                "type": "minecraft:condition",
+                "if_true": {
+                  "type": "minecraft:stone_depth",
+                  "offset": 5,
+                  "surface_type": "floor",
+                  "add_surface_depth": false,
+                  "add_surface_secondary_depth": false
+                },
+                "then_run": {
+                  "type": "minecraft:block",
+                  "result_state": {
+                    "Name": "apollo:lunar_stone"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:above_preliminary_surface"
+            },
+            "then_run": {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:stone_depth",
+                "offset": 0,
+                "surface_type": "floor",
+                "add_surface_depth": false,
+                "add_surface_secondary_depth": false
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "apollo:lunar_soil"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "structures": {
+        "structures": {}
+      }
+    },
     "biome_source": {
       "type": "minecraft:multi_noise",
       "biomes": [
