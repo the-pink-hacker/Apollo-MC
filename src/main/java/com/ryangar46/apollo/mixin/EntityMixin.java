@@ -1,13 +1,11 @@
 package com.ryangar46.apollo.mixin;
 
-import com.google.common.collect.Iterables;
 import com.ryangar46.apollo.Apollo;
 import com.ryangar46.apollo.tag.TagManager;
 import com.ryangar46.apollo.world.dimension.DimensionManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.GameMode;
@@ -22,7 +20,7 @@ public abstract class EntityMixin {
     @Shadow
     public World world;
 
-    public int VacuumeTicks;
+    public int vacuumTicks = 0;
 
     @Shadow
     public void kill() {}
@@ -44,9 +42,10 @@ public abstract class EntityMixin {
 
     @Inject(method = "tick()V", at = @At("HEAD"))
     private void checkPressure(CallbackInfo info) {
-        if (world.getRegistryKey() == DimensionManager.MOON) {
+        if (!world.isClient && world.getRegistryKey() == DimensionManager.MOON) {
             if (!isVacuumImmune()) {
                 if ((Entity)(Object)this instanceof LivingEntity) {
+                    LivingEntity entity = (LivingEntity)(Object)this;
                     Iterable<ItemStack> items = getArmorItems();
                     boolean airtight = true;
                     for (ItemStack item : items) {
@@ -58,15 +57,15 @@ public abstract class EntityMixin {
 
                     if (!airtight) {
                         if ((Entity)(Object)this instanceof ServerPlayerEntity) {
-                            ServerPlayerEntity player = (ServerPlayerEntity)(Object)this;
+                            ServerPlayerEntity player = (ServerPlayerEntity)entity;
                             if (this.world.getRegistryKey() == DimensionManager.MOON) {
                                 GameMode gameMode = player.interactionManager.getGameMode();
                                 if (gameMode == GameMode.SURVIVAL || gameMode == GameMode.ADVENTURE) {
-                                    kill();
+                                    vacuumDamage(entity);
                                 }
                             }
                         } else {
-                            kill();
+                            vacuumDamage(entity);
                         }
                     }
                 }
@@ -90,5 +89,12 @@ public abstract class EntityMixin {
         } else {
             return false;
         }
+    }
+
+    private void vacuumDamage(LivingEntity entity) {
+        if (vacuumTicks % 20 == 0) {
+            entity.setHealth(entity.getHealth() - 1.0f);
+        }
+        vacuumTicks++;
     }
 }
