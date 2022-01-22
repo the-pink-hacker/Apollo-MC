@@ -65,7 +65,21 @@
               {
                 "location": -0.1,
                 "derivative": 0.1,
-                "value": 0.05
+                "value": {
+                  "coordinate": "ridges",
+                  "points": [
+                    {
+                      "location": -6,
+                      "derivative": 0,
+                      "value": -1
+                    },
+                    {
+                      "location": 0,
+                      "derivative": -0.01,
+                      "value": 0.05
+                    }
+                  ]
+                }
               }
             ]
           },
@@ -191,8 +205,8 @@
             "humidity": 0,
             "continentalness": 0.1,
             "erosion": 0.2,
-            "weirdness": 0,
-            "depth": 1,
+            "weirdness": 0.3,
+            "depth": 0.2,
             "offset": 0
           }
         },
@@ -202,9 +216,9 @@
             "temperature": 0,
             "humidity": 0,
             "continentalness": 0.2,
-            "erosion": 0,
+            "erosion": 0.1,
             "weirdness": 0.05,
-            "depth": -1,
+            "depth": 0,
             "offset": 0
           }
         },
@@ -216,7 +230,7 @@
             "continentalness": 1,
             "erosion": 0.1,
             "weirdness": 0.5,
-            "depth": -0.5,
+            "depth": 0,
             "offset": 0
           }
         }
