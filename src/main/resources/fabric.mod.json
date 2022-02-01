@@ -17,6 +17,9 @@
   "entrypoints": {
     "main": [
       "com.ryangar46.apollo.Apollo"
+    ],
+    "client": [
+      "com.ryangar46.apollo.ApolloClient"
     ]
   },
   "mixins": [
