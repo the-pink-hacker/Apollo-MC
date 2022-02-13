@@ -8,6 +8,7 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.item.Item;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.Properties;
+import net.minecraft.world.WorldView;
 
 public abstract class FuelFluid extends AbstractFluid {
     @Override
@@ -27,8 +28,17 @@ public abstract class FuelFluid extends AbstractFluid {
 
     @Override
     protected BlockState toBlockState(FluidState fluidState) {
-        // getBlockStateLevel converts the LEVEL_1_8 of the fluid state to the LEVEL_15 the fluid block uses
         return BlockManager.FUEL.getDefaultState().with(Properties.LEVEL_15, getBlockStateLevel(fluidState));
+    }
+
+    @Override
+    public float getBlastResistance() {
+        return 100.0f;
+    }
+
+    @Override
+    public boolean isInfinite() {
+        return false;
     }
 
     public static class Flowing extends FuelFluid {
