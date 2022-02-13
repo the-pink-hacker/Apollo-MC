@@ -4,7 +4,8 @@
   "package": "com.ryangar46.apollo.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "EntityMixin"
+    "EntityMixin",
+    "LivingEntityMixin"
   ],
   "client": [],
   "server": [],
