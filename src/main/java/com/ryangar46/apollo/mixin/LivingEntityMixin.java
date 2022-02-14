@@ -11,12 +11,12 @@ public abstract class LivingEntityMixin {
     // Changes falling speed
     @ModifyVariable(method = "travel(Lnet/minecraft/util/math/Vec3d;)V", at = @At("STORE"), ordinal = 0)
     private double gravityFall(double g) {
-        return g * GravityManager.getGravityMutiplier(((LivingEntity)(Object)this).world);
+        return g * GravityManager.getGravityMultiplier(((LivingEntity)(Object)this).world);
     }
 
     // Changes damage calculation
     @ModifyVariable(method = "handleFallDamage(FFLnet/minecraft/entity/damage/DamageSource;)Z", at = @At("HEAD"), ordinal = 0)
     private float gravityDamage(float fallDistance) {
-        return fallDistance * (float)GravityManager.getGravityMutiplier(((LivingEntity)(Object)this).world);
+        return fallDistance * (float)GravityManager.getGravityMultiplier(((LivingEntity)(Object)this).world);
     }
 }

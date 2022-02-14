@@ -4,7 +4,7 @@ import com.ryangar46.apollo.world.dimension.DimensionManager;
 import net.minecraft.world.World;
 
 public class GravityManager {
-    public static double getGravityMutiplier(World world) {
+    public static double getGravityMultiplier(World world) {
         if (world.getRegistryKey() == DimensionManager.MOON) {
             return 0.165d;
         } else {
