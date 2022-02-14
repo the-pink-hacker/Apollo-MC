@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(BoatEntity.class)
-public class BoatEntityMixin {
+public abstract class BoatEntityMixin {
     // Changes falling speed
     @ModifyVariable(
             method = "updateVelocity()V",
