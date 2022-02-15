@@ -11,6 +11,7 @@
     "FallingBlockEntityMixin",
     "ItemEntityMixin",
     "LivingEntityMixin",
+    "ParticleMixin",
     "PersistentProjectileEntityMixin",
     "ThrownEntityMixin",
     "TntEntityMixin"
