@@ -1,5 +1,6 @@
-package com.ryangar46.apollo;
+package com.ryangar46.apollo.client;
 
+import com.ryangar46.apollo.client.world.DimensionEffectsManager;
 import com.ryangar46.apollo.entity.EntityManager;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -10,5 +11,6 @@ public class ApolloClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         EntityManager.registerClient();
+        DimensionEffectsManager.register();
     }
 }
