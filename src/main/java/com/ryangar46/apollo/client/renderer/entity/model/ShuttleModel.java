@@ -1,7 +1,7 @@
 package com.ryangar46.apollo.client.renderer.entity.model;
 
 import com.google.common.collect.ImmutableList;
-import com.ryangar46.apollo.entity.ShuttleEntity;
+import com.ryangar46.apollo.entity.vehicle.ShuttleEntity;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModel;
