@@ -1,6 +1,5 @@
 package com.ryangar46.apollo.item;
 
-import com.ryangar46.apollo.Apollo;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Items;

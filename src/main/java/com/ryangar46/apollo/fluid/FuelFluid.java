@@ -8,7 +8,6 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.item.Item;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.Properties;
-import net.minecraft.world.WorldView;
 
 public abstract class FuelFluid extends AbstractFluid {
     @Override

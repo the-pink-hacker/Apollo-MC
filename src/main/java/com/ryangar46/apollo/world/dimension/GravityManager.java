@@ -2,7 +2,6 @@ package com.ryangar46.apollo.world.dimension;
 
 import com.ryangar46.apollo.item.GravityArmor;
 import com.ryangar46.apollo.tag.TagManager;
-import com.ryangar46.apollo.world.dimension.DimensionManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
