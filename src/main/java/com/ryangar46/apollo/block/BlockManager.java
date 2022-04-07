@@ -21,10 +21,6 @@ public class BlockManager {
     public static final Block LUNAR_SOIL = new Block(FabricBlockSettings.of(Material.SOIL).strength(1.0f));
     public static final Block LUNAR_STONE = new Block(FabricBlockSettings.of(Material.STONE).strength(1.5f).requiresTool());
     public static final Block OIL = new FluidBlock(FluidManager.STILL_OIL, FabricBlockSettings.of(Material.LAVA).noCollision().dropsNothing()){};
-    public static final Block SHUTTLE_COCKPIT = new ShuttleCockpit(FabricBlockSettings.of(Material.METAL).strength(5, 6).requiresTool());
-    public static final Block SHUTTLE_ENGINE = new ShuttleEngineBlock(FabricBlockSettings.of(Material.METAL).strength(5, 6).requiresTool());
-    public static final Block SHUTTLE_FUEL_STORAGE = new Block(FabricBlockSettings.of(Material.METAL).strength(5, 6).requiresTool());
-    public static final Block SHUTTLE_NOSE = new ShuttleNoseBlock(FabricBlockSettings.of(Material.METAL).strength(5, 6).requiresTool());
 
     public static void register() {
         Apollo.LOGGER.info("Registering blocks");
@@ -34,10 +30,6 @@ public class BlockManager {
         registerBlock(LUNAR_SOIL, "lunar_soil", ItemGroupManager.MOON);
         registerBlock(LUNAR_STONE, "lunar_stone", ItemGroupManager.MOON);
         registerBlock(OIL, "oil");
-        registerBlock(SHUTTLE_COCKPIT, "shuttle_cockpit", ItemGroupManager.APOLLO);
-        registerBlock(SHUTTLE_ENGINE, "shuttle_engine", ItemGroupManager.APOLLO);
-        registerBlock(SHUTTLE_FUEL_STORAGE, "shuttle_fuel_storage", ItemGroupManager.APOLLO);
-        registerBlock(SHUTTLE_NOSE, "shuttle_nose", ItemGroupManager.APOLLO);
     }
 
     private static void registerBlock(Block block, String id, ItemGroup itemGroup) {
