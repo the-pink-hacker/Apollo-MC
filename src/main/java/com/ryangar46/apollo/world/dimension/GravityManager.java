@@ -28,9 +28,9 @@ public class GravityManager {
 
     public static GravityArmor.Type getArmorGravityMultiplier(ItemStack item) {
         if (!item.isEmpty()) {
-            if (TagManager.NEGATIVE_GRAVITY_EQUIPABLES.contains(item.getItem())) {
+            if (item.isIn(TagManager.NEGATIVE_GRAVITY_EQUIPABLES)) {
                 return GravityArmor.Type.NEGATIVE;
-            } else if (TagManager.POSITIVE_GRAVITY_EQUIPABLES.contains(item.getItem())) {
+            } else if (item.isIn(TagManager.POSITIVE_GRAVITY_EQUIPABLES)) {
                 return GravityArmor.Type.POSITIVE;
             }
             return GravityArmor.Type.NORMAL;

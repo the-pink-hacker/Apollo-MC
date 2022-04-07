@@ -54,21 +54,17 @@ public abstract class EntityMixin {
     }
 
     private boolean isVacuumImmune() {
-        return TagManager.VACUUM_IMMUNE_CREATURES.contains(((Entity)(Object)this).getType());
+        return ((Entity)(Object)this).getType().isIn(TagManager.VACUUM_IMMUNE_CREATURES);
     }
 
     private boolean isAirtightArmor(ItemStack item) {
-        if (TagManager.AIRTIGHT_BOOTS.contains(item.getItem())) {
+        if (item.isIn(TagManager.AIRTIGHT_BOOTS)) {
             return true;
-        } else if (TagManager.AIRTIGHT_LEGGINGS.contains(item.getItem())) {
+        } else if (item.isIn(TagManager.AIRTIGHT_LEGGINGS)) {
             return true;
-        } else if (TagManager.AIRTIGHT_CHESTPLATES.contains(item.getItem())) {
+        } else if (item.isIn(TagManager.AIRTIGHT_CHESTPLATES)) {
             return true;
-        } else if (TagManager.AIRTIGHT_HELMETS.contains(item.getItem())) {
-            return true;
-        } else {
-            return false;
-        }
+        } else return item.isIn(TagManager.AIRTIGHT_HELMETS);
     }
 
     private void vacuumDamage(LivingEntity entity) {

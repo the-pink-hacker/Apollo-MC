@@ -8,13 +8,11 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
-import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import software.bernie.example.registry.EntityRegistry;
 
 public class EntityManager {
     public static final EntityType<ShuttleEntity> SHUTTLE = Registry.register(
