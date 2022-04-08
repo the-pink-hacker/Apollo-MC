@@ -1,4 +1,4 @@
-package com.ryangar46.apollo.mixin;
+package com.ryangar46.apollo.mixin.entity;
 
 import com.ryangar46.apollo.world.dimension.GravityManager;
 import net.minecraft.entity.FallingBlockEntity;
@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 @Mixin(FallingBlockEntity.class)
 public abstract class FallingBlockEntityMixin {
     // Changes falling speed
+    @SuppressWarnings("unused")
     @ModifyArg(
             method = "tick()V",
             at = @At(

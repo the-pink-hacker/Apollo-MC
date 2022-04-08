@@ -1,4 +1,4 @@
-package com.ryangar46.apollo.mixin;
+package com.ryangar46.apollo.mixin.entity.projectile;
 
 import com.ryangar46.apollo.world.dimension.GravityManager;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 @Mixin(PersistentProjectileEntity.class)
 public abstract class PersistentProjectileEntityMixin {
     // Changes falling speed
+    @SuppressWarnings("unused")
     @ModifyArg(
             method = "tick()V",
             at = @At(

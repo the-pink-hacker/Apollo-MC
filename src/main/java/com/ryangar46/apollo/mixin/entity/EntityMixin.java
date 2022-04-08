@@ -1,4 +1,4 @@
-package com.ryangar46.apollo.mixin;
+package com.ryangar46.apollo.mixin.entity;
 
 import com.ryangar46.apollo.tag.TagManager;
 import com.ryangar46.apollo.world.dimension.DimensionManager;
@@ -17,6 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class EntityMixin {
     public int vacuumTicks = 0;
 
+    @SuppressWarnings("unused")
     @Inject(
             method = "tick()V",
             at = @At("HEAD")

@@ -1,4 +1,4 @@
-package com.ryangar46.apollo.mixin;
+package com.ryangar46.apollo.mixin.entity;
 
 import com.ryangar46.apollo.world.dimension.GravityManager;
 import net.minecraft.entity.ExperienceOrbEntity;
@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 @Mixin(ExperienceOrbEntity.class)
 public abstract class ExperienceOrbEntityMixin {
     // Changes falling speed
+    @SuppressWarnings("unused")
     @ModifyArg(
             method = "tick()V",
             at = @At(

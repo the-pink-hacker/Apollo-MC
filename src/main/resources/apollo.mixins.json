@@ -4,19 +4,20 @@
   "package": "com.ryangar46.apollo.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "AbstractMinecartEntityMixin",
-    "BoatEntityMixin",
-    "EntityMixin",
-    "ExperienceOrbEntityMixin",
-    "FallingBlockEntityMixin",
-    "ItemEntityMixin",
-    "LivingEntityMixin",
-    "ParticleMixin",
-    "PersistentProjectileEntityMixin",
-    "ThrownEntityMixin",
-    "TntEntityMixin"
+    "entity.projectile.thrown.ThrownEntityMixin",
+    "entity.projectile.PersistentProjectileEntityMixin",
+    "entity.vehicle.AbstractMinecartEntityMixin",
+    "entity.vehicle.BoatEntityMixin",
+    "entity.EntityMixin",
+    "entity.ExperienceOrbEntityMixin",
+    "entity.FallingBlockEntityMixin",
+    "entity.ItemEntityMixin",
+    "entity.LivingEntityMixin",
+    "entity.TntEntityMixin"
   ],
-  "client": [],
+  "client": [
+    "client.particle.ParticleMixin"
+  ],
   "server": [],
   "injectors": {
     "defaultRequire": 1

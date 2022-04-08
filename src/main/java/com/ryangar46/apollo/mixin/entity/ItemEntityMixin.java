@@ -1,4 +1,4 @@
-package com.ryangar46.apollo.mixin;
+package com.ryangar46.apollo.mixin.entity;
 
 import com.ryangar46.apollo.world.dimension.GravityManager;
 import net.minecraft.entity.ItemEntity;
@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 @Mixin(ItemEntity.class)
 public abstract class ItemEntityMixin {
     // Changes falling speed
+    @SuppressWarnings("unused")
     @ModifyArg(
             method = "tick()V",
             at = @At(
