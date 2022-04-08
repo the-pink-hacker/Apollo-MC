@@ -11,8 +11,8 @@
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/apollo",
     "sources": "https://github.com/RyanGar46/Apollo-MC"
   },
-  "license": "Apache-2.0 License",
-  "icon": "icon.png",
+  "license": "Apache-2.0 License except for assets",
+  "icon": "assets/apollo/textures/misc/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -31,5 +31,7 @@
     "minecraft": "1.18.x",
     "java": ">=17"
   },
-  "suggests": {}
+  "suggests": {
+    "geckolib3": "*"
+  }
 }
