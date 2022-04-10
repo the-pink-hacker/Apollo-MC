@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "reinforced_iron_ingot",
+  "ingredients": [
+    {
+      "item": "apollo:reinforced_iron_block"
+    }
+  ],
+  "result": {
+    "item": "apollo:reinforced_iron_ingot",
+    "count": 9
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "apollo:block/reinforced_iron_block"
+    }
+  }
+}

@@ -5,5 +5,7 @@
     "apollo:lunar_cobblestone",
     "apollo:lunar_iron_ore",
     "apollo:lunar_stone",
+    "apollo:meteorite",
+    "apollo:reinforced_iron_block"
   ]
 }

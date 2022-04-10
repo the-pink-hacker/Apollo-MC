@@ -1,4 +1,7 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    "apollo:meteorite",
+    "apollo:reinforced_iron_block"
+  ]
 }
