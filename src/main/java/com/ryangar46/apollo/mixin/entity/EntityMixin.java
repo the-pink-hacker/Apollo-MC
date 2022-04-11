@@ -1,6 +1,8 @@
 package com.ryangar46.apollo.mixin.entity;
 
+import com.ryangar46.apollo.Apollo;
 import com.ryangar46.apollo.tag.TagManager;
+import com.ryangar46.apollo.world.GameRuleManager;
 import com.ryangar46.apollo.world.dimension.DimensionManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -24,9 +26,8 @@ public abstract class EntityMixin {
     )
     private void checkPressure(CallbackInfo info) {
         if (!((Entity)(Object)this).world.isClient && ((Entity)(Object)this).world.getRegistryKey() == DimensionManager.MOON) {
-            if (!isVacuumImmune()) {
-                if (((Entity)(Object)this) instanceof LivingEntity) {
-                    LivingEntity entity = (LivingEntity)(Object)this;
+            if (((Entity)(Object)this).world.getGameRules().getBoolean(GameRuleManager.SUFFOCATE_IN_VACUUM) && !isVacuumImmune()) {
+                if (((Entity)(Object)this) instanceof LivingEntity entity) {
                     Iterable<ItemStack> items = ((Entity)(Object)this).getArmorItems();
                     boolean airtight = true;
                     for (ItemStack item : items) {
@@ -37,8 +38,7 @@ public abstract class EntityMixin {
                     }
 
                     if (!airtight) {
-                        if (((Entity)(Object)this) instanceof ServerPlayerEntity) {
-                            ServerPlayerEntity player = (ServerPlayerEntity)entity;
+                        if (((Entity)(Object)this) instanceof ServerPlayerEntity player) {
                             if (((Entity)(Object)this).world.getRegistryKey() == DimensionManager.MOON) {
                                 GameMode gameMode = player.interactionManager.getGameMode();
                                 if (gameMode == GameMode.SURVIVAL || gameMode == GameMode.ADVENTURE) {
