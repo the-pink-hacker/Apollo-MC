@@ -1,8 +1,7 @@
 {
 	"parent": "minecraft:block/cube",
 	"textures": {
-		"particle": "apollo:block/meteorite",
-		"all": "apollo:block/meteorite"
+		"particle": "#all"
 	},
 	"elements": [
 		{

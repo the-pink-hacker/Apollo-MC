@@ -1,7 +1,13 @@
 {
   "variants": {
-    "": {
-      "model": "apollo:block/meteorite"
+    "heat=0": {
+      "model": "apollo:block/meteorite_cool"
+    },
+    "heat=1": {
+      "model": "apollo:block/meteorite_warm"
+    },
+    "heat=2": {
+      "model": "apollo:block/meteorite_hot"
     }
   }
 }

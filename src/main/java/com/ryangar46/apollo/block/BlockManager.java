@@ -22,7 +22,7 @@ public class BlockManager {
     public static final Block LUNAR_IRON_ORE = new Block(FabricBlockSettings.of(Material.STONE).strength(3.5f, 2.5f).requiresTool());
     public static final Block LUNAR_SOIL = new Block(FabricBlockSettings.of(Material.SOIL).strength(1.0f));
     public static final Block LUNAR_STONE = new Block(FabricBlockSettings.of(Material.STONE).strength(1.5f).requiresTool());
-    public static final Block METEORITE = new MeteoriteBlock(FabricBlockSettings.of(Material.STONE).strength(30.0f, 1200.0f).requiresTool());
+    public static final Block METEORITE = new MeteoriteBlock(FabricBlockSettings.of(Material.STONE).strength(30.0f, 1200.0f).ticksRandomly().requiresTool());
     public static final Block OIL = new FluidBlock(FluidManager.STILL_OIL, FabricBlockSettings.of(Material.LAVA).noCollision().dropsNothing());
     public static final Block REINFORCED_IRON_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.NETHERITE_BLOCK));
 
