@@ -16,7 +16,8 @@
     "entity.TntEntityMixin"
   ],
   "client": [
-    "client.particle.ParticleMixin"
+    "client.particle.ParticleMixin",
+    "client.render.WorldRendererMixin"
   ],
   "server": [],
   "injectors": {
