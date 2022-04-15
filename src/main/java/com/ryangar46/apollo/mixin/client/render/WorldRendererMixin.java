@@ -1,10 +1,8 @@
 package com.ryangar46.apollo.mixin.client.render;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.ryangar46.apollo.Apollo;
 import com.ryangar46.apollo.client.render.SkyManager;
 import com.ryangar46.apollo.tag.TagManager;
-import com.ryangar46.apollo.world.dimension.DimensionManager;
 import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.util.Identifier;

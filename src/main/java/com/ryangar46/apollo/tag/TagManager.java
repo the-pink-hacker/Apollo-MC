@@ -6,7 +6,6 @@ import net.minecraft.item.Item;
 import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
 
 public class TagManager {
@@ -14,6 +13,7 @@ public class TagManager {
     public static final TagKey<Item> AIRTIGHT_CHESTPLATES = registerItem("airtight_chestplates");
     public static final TagKey<Item> AIRTIGHT_HELMETS = registerItem("airtight_helmets");
     public static final TagKey<Item> AIRTIGHT_LEGGINGS = registerItem("airtight_leggings");
+    public static final TagKey<DimensionType> ATMOSPHERE_NOT_VISIBLE_WORLDS = registerDimensionType("atmosphere_not_visible_worlds");
     public static final TagKey<DimensionType> EARTH_VISIBLE_WORLDS = registerDimensionType("earth_visible_worlds");
     public static final TagKey<Item> NEGATIVE_GRAVITY_EQUIPABLES = registerItem("negative_gravity_equipables");
     public static final TagKey<Item> POSITIVE_GRAVITY_EQUIPABLES = registerItem("positive_gravity_equipables");

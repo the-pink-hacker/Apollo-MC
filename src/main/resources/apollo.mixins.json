@@ -17,7 +17,8 @@
   ],
   "client": [
     "client.particle.ParticleMixin",
-    "client.render.WorldRendererMixin"
+    "client.render.WorldRendererMixin",
+    "client.world.ClientWorldMixin"
   ],
   "server": [],
   "injectors": {
