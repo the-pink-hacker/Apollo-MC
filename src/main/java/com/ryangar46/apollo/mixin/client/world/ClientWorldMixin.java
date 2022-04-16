@@ -8,12 +8,23 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(ClientWorld.class)
 public abstract class ClientWorldMixin {
+    private static final float NIGHT_ANGLE = 0.5f;
+
     @ModifyVariable(
             method = "Lnet/minecraft/client/world/ClientWorld;method_23787(F)F",
             at = @At("STORE"),
             ordinal = 1
     )
     private float starBrightness(float f) {
-        return ((ClientWorld)(Object)this).method_40134().isIn(TagManager.ATMOSPHERE_NOT_VISIBLE_WORLDS) ? 0.5f : f;
+        return ((ClientWorld)(Object)this).method_40134().isIn(TagManager.ATMOSPHERE_NOT_VISIBLE_WORLDS) ? NIGHT_ANGLE : f;
+    }
+
+    @ModifyVariable(
+            method = "Lnet/minecraft/client/world/ClientWorld;getSkyColor(Lnet/minecraft/util/math/Vec3d;F)Lnet/minecraft/util/math/Vec3d;",
+            at = @At("STORE"),
+            ordinal = 1
+    )
+    private float darkSky(float f) {
+        return ((ClientWorld)(Object)this).method_40134().isIn(TagManager.ATMOSPHERE_NOT_VISIBLE_WORLDS) ? NIGHT_ANGLE : f;
     }
 }
