@@ -1,13 +1,21 @@
 package com.ryangar46.apollo.entity.vehicle;
 
 import com.ryangar46.apollo.inventory.ImplementedInventory;
+import com.ryangar46.apollo.world.dimension.DimensionManager;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.World;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -58,5 +66,35 @@ public class ShuttleEntity extends MobEntity implements ImplementedInventory, IA
     @Override
     public AnimationFactory getFactory() {
         return FACTORY;
+    }
+
+    @Override
+    protected ActionResult interactMob(PlayerEntity player, Hand hand) {
+        if (!world.isClient && !player.isSneaking()) {
+            MinecraftServer server = world.getServer();
+
+            if (server != null && player instanceof ServerPlayerEntity serverPlayer) {
+                if (player.world.getRegistryKey() == DimensionManager.MOON) {
+                    return teleportPlayer(serverPlayer, World.OVERWORLD, server);
+                } else if (player.world.getRegistryKey() == World.OVERWORLD) {
+                    return teleportPlayer(serverPlayer, DimensionManager.MOON, server);
+                }
+            }
+        }
+
+        return ActionResult.FAIL;
+    }
+
+    private ActionResult teleportPlayer(ServerPlayerEntity player, RegistryKey<World> world, MinecraftServer server) {
+        ServerWorld serverWorld = server.getWorld(world);
+
+        if (serverWorld != null) {
+            BlockPos playerPos = player.getBlockPos();
+            BlockPos destPos = new BlockPos(playerPos.getX(), 128.0f, playerPos.getY());
+            player.teleport(serverWorld, destPos.getX(), destPos.getY(), destPos.getZ(), player.bodyYaw, player.prevPitch);
+            return ActionResult.SUCCESS;
+        }
+
+        return ActionResult.FAIL;
     }
 }
