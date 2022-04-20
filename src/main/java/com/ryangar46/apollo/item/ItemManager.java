@@ -3,6 +3,7 @@ package com.ryangar46.apollo.item;
 import com.ryangar46.apollo.Apollo;
 import com.ryangar46.apollo.fluid.FluidManager;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
@@ -35,6 +36,9 @@ public class ItemManager {
         registerItem("space_suit_chestplate", SPACE_SUIT_CHESTPLATE);
         registerItem("space_suit_leggings", SPACE_SUIT_LEGGINGS);
         registerItem("space_suit_boots", SPACE_SUIT_BOOTS);
+
+        // Add fuels
+        FuelRegistry.INSTANCE.add(FUEL_BUCKET, 2000);
     }
 
     private static void registerItem(String id, Item item) {
