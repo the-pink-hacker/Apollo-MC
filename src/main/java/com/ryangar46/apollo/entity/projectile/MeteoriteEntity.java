@@ -1,18 +1,13 @@
 package com.ryangar46.apollo.entity.projectile;
 
-import com.ryangar46.apollo.Apollo;
+import com.ryangar46.apollo.block.BlockManager;
+import com.ryangar46.apollo.block.MeteoriteBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.data.DataTracker;
-import net.minecraft.entity.data.TrackedData;
-import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.projectile.ExplosiveProjectileEntity;
-import net.minecraft.entity.projectile.WitherSkullEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.tag.BlockTags;
-import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
@@ -50,10 +45,15 @@ public class MeteoriteEntity extends ExplosiveProjectileEntity implements IAnima
         super.onCollision(hitResult);
         if (!this.world.isClient) {
             Explosion.DestructionType destructionType = this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING) ? Explosion.DestructionType.DESTROY : Explosion.DestructionType.NONE;
-            this.world.createExplosion(this, this.getX(), this.getY(), this.getZ(), 4.0f, false, destructionType);
+            this.world.createExplosion(this, this.getX(), this.getY(), this.getZ(), Math.max(4.0f, (float)Math.random() * 8.0f), false, destructionType);
+
+            BlockPos meteoritePos = new BlockPos(hitResult.getPos());
+            if (this.world.canSetBlock(meteoritePos)) {
+                this.world.setBlockState(meteoritePos, ((MeteoriteBlock)BlockManager.METEORITE).getHotState());
+            }
+
             this.discard();
         }
-
     }
 
     @Override
