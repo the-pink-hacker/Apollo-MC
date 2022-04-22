@@ -2,6 +2,7 @@ package com.ryangar46.apollo.entity.projectile;
 
 import com.ryangar46.apollo.block.BlockManager;
 import com.ryangar46.apollo.block.MeteoriteBlock;
+import com.ryangar46.apollo.world.GameRuleManager;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.damage.DamageSource;
@@ -44,7 +45,7 @@ public class MeteoriteEntity extends ExplosiveProjectileEntity implements IAnima
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
         if (!this.world.isClient) {
-            Explosion.DestructionType destructionType = this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING) ? Explosion.DestructionType.DESTROY : Explosion.DestructionType.NONE;
+            Explosion.DestructionType destructionType = this.world.getGameRules().getBoolean(GameRuleManager.DO_METEORITE_EXPLOSIONS) ? Explosion.DestructionType.DESTROY : Explosion.DestructionType.NONE;
             this.world.createExplosion(this, this.getX(), this.getY(), this.getZ(), Math.max(4.0f, (float)Math.random() * 8.0f), false, destructionType);
 
             BlockPos meteoritePos = new BlockPos(hitResult.getPos());
