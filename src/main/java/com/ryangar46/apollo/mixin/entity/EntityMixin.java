@@ -1,6 +1,5 @@
 package com.ryangar46.apollo.mixin.entity;
 
-import com.ryangar46.apollo.Apollo;
 import com.ryangar46.apollo.tag.TagManager;
 import com.ryangar46.apollo.world.GameRuleManager;
 import com.ryangar46.apollo.world.dimension.DimensionManager;

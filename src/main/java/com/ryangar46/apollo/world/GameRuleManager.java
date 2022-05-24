@@ -4,7 +4,7 @@ import com.ryangar46.apollo.Apollo;
 import net.fabricmc.fabric.api.gamerule.v1.CustomGameRuleCategory;
 import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory;
 import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.GameRules;
@@ -17,6 +17,6 @@ public class GameRuleManager {
     public static void register() {}
 
     public static CustomGameRuleCategory registerCategory(String id) {
-        return new CustomGameRuleCategory(new Identifier(Apollo.MOD_ID, id), new TranslatableText("gamerule.category." + id).formatted(Formatting.YELLOW, Formatting.BOLD));
+        return new CustomGameRuleCategory(new Identifier(Apollo.MOD_ID, id), Text.translatable("gamerule.category." + id).formatted(Formatting.YELLOW, Formatting.BOLD));
     }
 }

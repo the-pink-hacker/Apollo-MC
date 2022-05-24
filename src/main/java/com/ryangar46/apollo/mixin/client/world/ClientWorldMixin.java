@@ -16,7 +16,7 @@ public abstract class ClientWorldMixin {
             ordinal = 1
     )
     private float starBrightness(float f) {
-        return ((ClientWorld)(Object)this).method_40134().isIn(TagManager.ATMOSPHERE_NOT_VISIBLE_WORLDS) ? NIGHT_ANGLE : f;
+        return ((ClientWorld)(Object)this).getDimensionEntry().isIn(TagManager.ATMOSPHERE_NOT_VISIBLE_WORLDS) ? NIGHT_ANGLE : f;
     }
 
     @ModifyVariable(
@@ -25,6 +25,6 @@ public abstract class ClientWorldMixin {
             ordinal = 1
     )
     private float darkSky(float f) {
-        return ((ClientWorld)(Object)this).method_40134().isIn(TagManager.ATMOSPHERE_NOT_VISIBLE_WORLDS) ? NIGHT_ANGLE : f;
+        return ((ClientWorld)(Object)this).getDimensionEntry().isIn(TagManager.ATMOSPHERE_NOT_VISIBLE_WORLDS) ? NIGHT_ANGLE : f;
     }
 }
