@@ -27,6 +27,7 @@ public class BlockManager {
     public static final Block OIL = new FluidBlock(FluidManager.STILL_OIL, FabricBlockSettings.of(Material.LAVA).noCollision().dropsNothing());
     public static final Block OIL_REFINERY = new OilRefineryBlock(FabricBlockSettings.of(Material.METAL).strength(5.0f, 6.0f).requiresTool());
     public static final Block REINFORCED_IRON_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.NETHERITE_BLOCK));
+    public static final Block SHUTTLE_WORKBENCH = new ShuttleWorkbenchBlock(FabricBlockSettings.of(Material.METAL).strength(5.0f, 6.0f).requiresTool());
 
     public static void register() {
         Apollo.LOGGER.info("Registering blocks");
@@ -41,6 +42,7 @@ public class BlockManager {
         registerBlock(OIL, "oil");
         registerBlock(OIL_REFINERY, "oil_refinery", ItemGroupManager.APOLLO);
         registerBlock(REINFORCED_IRON_BLOCK, "reinforced_iron_block", new FabricItemSettings().fireproof().group(ItemGroupManager.APOLLO));
+        registerBlock(SHUTTLE_WORKBENCH, "shuttle_workbench", ItemGroupManager.APOLLO);
     }
 
     private static void registerBlock(Block block, String id, ItemGroup itemGroup) {

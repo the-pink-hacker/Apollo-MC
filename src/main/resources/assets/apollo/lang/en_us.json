@@ -8,6 +8,8 @@
   "block.apollo.meteorite": "Meteorite",
   "block.apollo.oil_refinery": "Oil Refinery",
   "block.apollo.reinforced_iron_block": "Reinforced Iron Block",
+  "block.apollo.shuttle_workbench": "Shuttle Workbench",
+  "container.apollo.shuttle_workbench": "Shuttle Workbench",
   "gamerule.category.apollo": "Apollo",
   "gamerule.doMeteoriteExplosions": "Do Meteorite Explosions",
   "gamerule.doMeteoriteExplosions.description": "Whether meteorites create an explosion on impact",
