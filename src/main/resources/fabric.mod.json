@@ -21,6 +21,9 @@
     ],
     "client": [
       "com.ryangar46.apollo.client.ApolloClient"
+    ],
+    "terrablender": [
+      "com.ryangar46.apollo.Apollo"
     ]
   },
   "mixins": [

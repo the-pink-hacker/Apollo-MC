@@ -14,6 +14,10 @@ repositories {
 	maven {
 		url "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/"
 	}
+
+	maven {
+		url "https://maven.minecraftforge.net/"
+	}
 }
 
 dependencies {
@@ -26,7 +30,10 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// Geckolib
-	modImplementation("software.bernie.geckolib:geckolib-fabric-${project.geckolib_version}")
+	modImplementation "software.bernie.geckolib:geckolib-fabric-${project.geckolib_version}"
+
+	// TerraBlender
+	modImplementation "com.github.glitchfiend:TerraBlender-fabric:${project.terrablender_version}"
 }
 
 processResources {
