@@ -9,6 +9,7 @@
   "block.apollo.oil_refinery": "Oil Refinery",
   "block.apollo.reinforced_iron_block": "Reinforced Iron Block",
   "block.apollo.shuttle_workbench": "Shuttle Workbench",
+  "block.apollo.storage_tank": "Storage Tank",
   "container.apollo.shuttle_workbench": "Shuttle Workbench",
   "gamerule.category.apollo": "Apollo",
   "gamerule.doMeteoriteExplosions": "Do Meteorite Explosions",

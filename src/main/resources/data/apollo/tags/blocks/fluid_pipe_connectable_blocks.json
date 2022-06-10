@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "apollo:fluid_pipe",
-    "apollo:oil_refinery"
+    "apollo:oil_refinery",
+    "apollo:storage_tank"
   ]
 }
