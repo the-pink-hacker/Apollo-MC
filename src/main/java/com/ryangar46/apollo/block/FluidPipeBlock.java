@@ -1,6 +1,5 @@
 package com.ryangar46.apollo.block;
 
-import com.ryangar46.apollo.Apollo;
 import com.ryangar46.apollo.tag.TagManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
