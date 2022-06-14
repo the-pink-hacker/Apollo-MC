@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "apollo:lunar_dust",
     "apollo:lunar_soil"
   ]
 }
