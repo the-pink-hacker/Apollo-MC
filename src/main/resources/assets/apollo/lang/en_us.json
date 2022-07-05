@@ -1,8 +1,8 @@
 {
   "block.apollo.fluid_pipe": "Fluid Pipe",
   "block.apollo.launchpad": "Launchpad",
-  "block.apollo.lunar_dust": "Lunar Dust",
   "block.apollo.lunar_cobblestone": "Lunar Cobblestone",
+  "block.apollo.lunar_dust": "Lunar Dust",
   "block.apollo.lunar_iron_ore": "Lunar Iron Ore",
   "block.apollo.lunar_soil": "Lunar Soil",
   "block.apollo.lunar_stone": "Lunar Stone",
@@ -29,7 +29,8 @@
   "item.apollo.space_suit_leggings": "Space Suit Leggings",
   "itemGroup.apollo.apollo": "Apollo",
   "itemGroup.apollo.moon": "Moon",
-  "links.apollo.twitter": "Twitter",
+  "links.apollo.curseforge": "CurseForge",
   "links.apollo.modrinth": "Modrinth",
-  "links.apollo.curseforge": "CurseForge"
+  "links.apollo.twitter": "Twitter",
+  "stat.apollo.interact_with_shuttle_workbench": "Interactions with Shuttle Workbench"
 }

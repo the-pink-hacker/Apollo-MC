@@ -5,6 +5,7 @@ import com.ryangar46.apollo.entity.EntityManager;
 import com.ryangar46.apollo.fluid.FluidManager;
 import com.ryangar46.apollo.item.ItemManager;
 import com.ryangar46.apollo.recipe.RecipeManager;
+import com.ryangar46.apollo.stat.StatManager;
 import com.ryangar46.apollo.world.GameRuleManager;
 import com.ryangar46.apollo.world.biome.ApolloOverworldRegion;
 import com.ryangar46.apollo.world.biome.BiomeManager;
@@ -32,6 +33,7 @@ public class Apollo implements ModInitializer, TerraBlenderApi {
 		EntityManager.register();
 		BiomeManager.register();
 		RecipeManager.register();
+		StatManager.register();
 	}
 
 	@Override

@@ -1,7 +1,9 @@
 package com.ryangar46.apollo.recipe;
 
 import com.ryangar46.apollo.Apollo;
-import net.minecraft.recipe.*;
+import net.minecraft.recipe.Recipe;
+import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.recipe.RecipeType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -10,11 +12,9 @@ public class RecipeManager {
     public static final RecipeSerializer<ShuttleWorkbenchShapedRecipe> SHUTTLE_WORKBENCH_SHAPED_SERIALIZER = registerSerializer("shuttle_workbench_shaped", new ShuttleWorkbenchShapedRecipe.Serializer());
     public static final RecipeSerializer<ShuttleWorkbenchShapelessRecipe> SHUTTLE_WORKBENCH_SHAPELESS_SERIALIZER = registerSerializer("shuttle_workbench_shapeless", new ShuttleWorkbenchShapelessRecipe.Serializer());
 
-    public static void register() {
-        // Java is weird and won't init the variables unless this runs
-        // Otherwise it would try to init after the registry is frozen
-        Apollo.LOGGER.info("Registering recipe types");
-    }
+    // Java is weird and won't init the variables unless this runs
+    // Otherwise it would try to init after the registry is frozen
+    public static void register() {}
 
     private static <T extends Recipe<?>> RecipeType<T> registerType(String id) {
         return Registry.register(Registry.RECIPE_TYPE, new Identifier(Apollo.MOD_ID, id), new RecipeType<T>(){
