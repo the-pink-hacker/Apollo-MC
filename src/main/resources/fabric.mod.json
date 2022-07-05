@@ -12,7 +12,7 @@
     "sources": "https://github.com/RyanGar46/Apollo-MC",
     "issues": "https://github.com/RyanGar46/Apollo-MC/issues"
   },
-  "license": "Apache-2.0 License except for assets",
+  "license": "LGPL-3 except for assets",
   "icon": "assets/apollo/textures/misc/icon.png",
   "environment": "*",
   "entrypoints": {
