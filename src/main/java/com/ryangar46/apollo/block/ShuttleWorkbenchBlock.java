@@ -26,6 +26,7 @@ public class ShuttleWorkbenchBlock extends Block {
             return ActionResult.SUCCESS;
         } else {
             player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
+            // Todo: Add shuttle workbench stats
             //player.incrementStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
             return ActionResult.CONSUME;
         }
