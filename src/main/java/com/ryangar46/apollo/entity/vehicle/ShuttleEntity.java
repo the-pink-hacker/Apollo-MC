@@ -2,6 +2,7 @@ package com.ryangar46.apollo.entity.vehicle;
 
 import com.ryangar46.apollo.inventory.ImplementedInventory;
 import com.ryangar46.apollo.world.dimension.DimensionManager;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -17,6 +18,7 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.controller.AnimationController;
@@ -70,19 +72,26 @@ public class ShuttleEntity extends MobEntity implements ImplementedInventory, IA
 
     @Override
     protected ActionResult interactMob(PlayerEntity player, Hand hand) {
-        if (!world.isClient && !player.isSneaking()) {
-            MinecraftServer server = world.getServer();
-
-            if (server != null && player instanceof ServerPlayerEntity serverPlayer) {
-                if (player.world.getRegistryKey() == DimensionManager.MOON) {
-                    return teleportPlayer(serverPlayer, World.OVERWORLD, server);
-                } else if (player.world.getRegistryKey() == World.OVERWORLD) {
-                    return teleportPlayer(serverPlayer, DimensionManager.MOON, server);
-                }
-            }
+        if (player.shouldCancelInteraction()) {
+            return ActionResult.PASS;
         }
 
-        return ActionResult.FAIL;
+        if (!world.isClient) {
+            return player.startRiding(this) ? ActionResult.CONSUME : ActionResult.PASS;
+        }
+
+        return ActionResult.SUCCESS;
+    }
+
+    @Override
+    public double getMountedHeightOffset() {
+        return 0.75d;
+    }
+
+    @Nullable
+    @Override
+    public Entity getPrimaryPassenger() {
+        return getFirstPassenger();
     }
 
     private ActionResult teleportPlayer(ServerPlayerEntity player, RegistryKey<World> world, MinecraftServer server) {
