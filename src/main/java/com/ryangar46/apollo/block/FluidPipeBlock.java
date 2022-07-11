@@ -1,24 +1,32 @@
 package com.ryangar46.apollo.block;
 
+import com.ryangar46.apollo.block.entity.FluidPipeBlockEntity;
+import com.ryangar46.apollo.entity.EntityManager;
 import com.ryangar46.apollo.tag.TagManager;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
-import net.minecraft.block.Waterloggable;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import org.jetbrains.annotations.Nullable;
 
-public class FluidPipeBlock extends Block implements PipeConnectable, Waterloggable {
+import java.util.ArrayList;
+import java.util.Collection;
+
+public class FluidPipeBlock extends BlockWithEntity implements PipeConnectable, Waterloggable {
     public static final BooleanProperty NORTH_STATE = Properties.NORTH;
     public static final BooleanProperty EAST_STATE = Properties.EAST;
     public static final BooleanProperty SOUTH_STATE = Properties.SOUTH;
@@ -26,6 +34,7 @@ public class FluidPipeBlock extends Block implements PipeConnectable, Waterlogga
     public static final BooleanProperty UP_STATE = Properties.UP;
     public static final BooleanProperty DOWN_STATE = Properties.DOWN;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
+    public static final IntProperty LEVEL = Properties.LEVEL_8;
     private static final VoxelShape CENTER_SHAPE = Block.createCuboidShape(6.0f, 6.0f, 6.0f, 10.0f, 10.0f, 10.0f);
     private static final VoxelShape NORTH_SHAPE = Block.createCuboidShape(6.0f, 6.0f, 0.0f, 10.0f, 10.0f, 6.0f);
     private static final VoxelShape EAST_SHAPE = Block.createCuboidShape(10.0f, 6.0f, 6.0f, 16.0f, 10.0f, 10.0f);
@@ -43,7 +52,9 @@ public class FluidPipeBlock extends Block implements PipeConnectable, Waterlogga
                 .with(WEST_STATE, false)
                 .with(UP_STATE, false)
                 .with(DOWN_STATE, false)
-                .with(WATERLOGGED, false));
+                .with(WATERLOGGED, false)
+                .with(LEVEL, 0)
+        );
     }
 
     @Override
@@ -94,7 +105,7 @@ public class FluidPipeBlock extends Block implements PipeConnectable, Waterlogga
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
-        stateManager.add(NORTH_STATE, EAST_STATE, SOUTH_STATE, WEST_STATE, UP_STATE, DOWN_STATE, WATERLOGGED);
+        stateManager.add(NORTH_STATE, EAST_STATE, SOUTH_STATE, WEST_STATE, UP_STATE, DOWN_STATE, WATERLOGGED, LEVEL);
     }
 
     @Override
@@ -105,5 +116,43 @@ public class FluidPipeBlock extends Block implements PipeConnectable, Waterlogga
     @Override
     public FluidState getFluidState(BlockState state) {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new FluidPipeBlockEntity(pos, state);
+    }
+
+    @Override
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return checkType(type, EntityManager.FLUID_PIPE_BLOCK_ENTITY, FluidPipeBlockEntity::tick);
+    }
+
+    public static int getFluidLevel(BlockState state) {
+        return state.get(LEVEL);
+    }
+
+    public static BlockState setFluidLevel(BlockState state, int level) {
+        return state.with(LEVEL, level);
+    }
+
+    public static Collection<Direction> getConnections(WorldAccess world, BlockPos pos, BlockState state) {
+        Collection<Direction> directions = new ArrayList<>();
+
+        if (state.get(NORTH_STATE)) if (world.getBlockState(pos.north()).getBlock() instanceof FluidPipeBlock) directions.add(Direction.NORTH);
+        if (state.get(EAST_STATE)) if (world.getBlockState(pos.east()).getBlock() instanceof FluidPipeBlock) directions.add(Direction.EAST);
+        if (state.get(SOUTH_STATE)) if (world.getBlockState(pos.south()).getBlock() instanceof FluidPipeBlock) directions.add(Direction.SOUTH);
+        if (state.get(WEST_STATE)) if (world.getBlockState(pos.west()).getBlock() instanceof FluidPipeBlock) directions.add(Direction.WEST);
+        if (state.get(UP_STATE)) if (world.getBlockState(pos.up()).getBlock() instanceof FluidPipeBlock) directions.add(Direction.UP);
+        if (state.get(DOWN_STATE)) if (world.getBlockState(pos.down()).getBlock() instanceof FluidPipeBlock) directions.add(Direction.DOWN);
+
+        return directions;
     }
 }
