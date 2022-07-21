@@ -8,8 +8,10 @@ import com.ryangar46.apollo.stat.StatManager;
 import com.ryangar46.apollo.world.GameRuleManager;
 import com.ryangar46.apollo.world.biome.ApolloOverworldRegion;
 import com.ryangar46.apollo.world.biome.BiomeManager;
+import com.ryangar46.apollo.world.spawner.GenericSpawnerManager;
 import com.ryangar46.apollo.world.surfacerule.ApolloSurfaceRules;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,6 +34,8 @@ public class Apollo implements ModInitializer, TerraBlenderApi {
 		BiomeManager.register();
 		RecipeManager.register();
 		StatManager.register();
+
+		ServerLifecycleEvents.SERVER_STARTED.register(server -> GenericSpawnerManager.register());
 	}
 
 	@Override

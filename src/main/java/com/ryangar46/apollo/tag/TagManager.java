@@ -19,6 +19,7 @@ public class TagManager {
     public static final TagKey<Block> FLUID_PIPE_CONNECTABLE_BLOCKS = registerBlock("fluid_pipe_connectable_blocks");
     public static final TagKey<Block> LAUNCHPADS = registerBlock("launchpads");
     public static final TagKey<Item> NEGATIVE_GRAVITY_EQUIPABLES = registerItem("negative_gravity_equipables");
+    public static final TagKey<DimensionType> METEORITE_SPAWNING_WORLDS = registerDimensionType("meteorite_spawning_worlds");
     public static final TagKey<Item> POSITIVE_GRAVITY_EQUIPABLES = registerItem("positive_gravity_equipables");
     public static final TagKey<EntityType<?>> VACUUM_IMMUNE_CREATURES = registerEntityType("vacuum_immune_creatures");
 
