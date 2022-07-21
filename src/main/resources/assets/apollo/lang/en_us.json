@@ -12,6 +12,8 @@
   "block.apollo.shuttle_workbench": "Shuttle Workbench",
   "block.apollo.storage_tank": "Storage Tank",
   "container.apollo.shuttle_workbench": "Shuttle Workbench",
+  "entity.apollo.meteorite": "Meteorite",
+  "entity.apollo.shuttle": "Shuttle",
   "gamerule.category.apollo": "Apollo",
   "gamerule.doMeteoriteImpacts": "Do Meteorite Explosions",
   "gamerule.doMeteoriteImpacts.description": "Controls meteorites impact explosion",
