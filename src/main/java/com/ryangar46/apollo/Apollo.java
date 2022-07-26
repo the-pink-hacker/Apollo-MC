@@ -9,6 +9,7 @@ import com.ryangar46.apollo.world.GameRuleManager;
 import com.ryangar46.apollo.world.biome.ApolloOverworldRegion;
 import com.ryangar46.apollo.world.biome.BiomeManager;
 import com.ryangar46.apollo.world.dimension.DimensionManager;
+import com.ryangar46.apollo.world.gen.noise.ApolloBuiltinNoiseParameters;
 import com.ryangar46.apollo.world.spawner.GenericSpawnerManager;
 import com.ryangar46.apollo.world.surfacerule.ApolloSurfaceRules;
 import net.fabricmc.api.ModInitializer;
@@ -36,6 +37,7 @@ public class Apollo implements ModInitializer, TerraBlenderApi {
 		RecipeManager.register();
 		StatManager.register();
 		DimensionManager.register();
+		ApolloBuiltinNoiseParameters.registry();
 
 		ServerLifecycleEvents.SERVER_STARTED.register(server -> GenericSpawnerManager.register());
 	}
