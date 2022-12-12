@@ -46,6 +46,6 @@ public class Apollo implements ModInitializer, TerraBlenderApi {
 	public void onTerraBlenderInitialized() {
 		Regions.register(new ApolloOverworldRegion(new Identifier(MOD_ID, "overworld"), 2));
 
-		SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ApolloSurfaceRules.makeRules());
+		//SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ApolloSurfaceRules.makeRules());
 	}
 }
