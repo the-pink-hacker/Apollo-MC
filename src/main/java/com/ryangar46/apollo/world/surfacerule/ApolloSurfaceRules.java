@@ -9,7 +9,7 @@ import net.minecraft.world.gen.surfacebuilder.MaterialRules;
 public class ApolloSurfaceRules {
     public static MaterialRules.MaterialRule makeRules() {
         return MaterialRules.sequence(
-                MaterialRules.condition(
+                /*MaterialRules.condition(
                         MaterialRules.verticalGradient("bedrock_floor", YOffset.getBottom(), YOffset.aboveBottom(5)),
                         getBlockRule(Blocks.BEDROCK)
                 ),
@@ -33,7 +33,7 @@ public class ApolloSurfaceRules {
                                 ),
                                 getBlockRule(Blocks.STONE)
                         )
-                )
+                )*/
         );
     }
 

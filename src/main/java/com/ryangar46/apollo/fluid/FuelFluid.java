@@ -8,6 +8,7 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.item.Item;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.Properties;
+import net.minecraft.world.World;
 
 public abstract class FuelFluid extends AbstractFluid {
     @Override
@@ -36,7 +37,7 @@ public abstract class FuelFluid extends AbstractFluid {
     }
 
     @Override
-    public boolean isInfinite() {
+    public boolean isInfinite(World world) {
         return false;
     }
 

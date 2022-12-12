@@ -6,23 +6,24 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class ItemManager {
-    public static final Item FUEL_BUCKET = new BucketItem(FluidManager.STILL_FUEL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1).group(ItemGroupManager.APOLLO));
-    public static final Item METEORITE_SCRAP = new Item(new FabricItemSettings().fireproof().group(ItemGroupManager.APOLLO));
-    public static final Item OIL_BUCKET = new BucketItem(FluidManager.STILL_OIL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1).group(ItemGroupManager.APOLLO));
+    public static final Item FUEL_BUCKET = new BucketItem(FluidManager.STILL_FUEL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1));
+    public static final Item METEORITE_SCRAP = new Item(new FabricItemSettings().fireproof());
+    public static final Item OIL_BUCKET = new BucketItem(FluidManager.STILL_OIL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1));
     public static final ArmorMaterial NEGATIVE_GRAVITY_ARMOR_MATERIAL = new GravityArmor(GravityArmor.Type.NEGATIVE);
-    public static final Item NEGATIVE_GRAVITY_BOOTS = new ArmorItem(NEGATIVE_GRAVITY_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings().group(ItemGroupManager.APOLLO));
+    public static final Item NEGATIVE_GRAVITY_BOOTS = new ArmorItem(NEGATIVE_GRAVITY_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings());
     public static final ArmorMaterial POSITIVE_GRAVITY_ARMOR_MATERIAL = new GravityArmor(GravityArmor.Type.POSITIVE);
-    public static final Item POSITIVE_GRAVITY_BOOTS = new ArmorItem(POSITIVE_GRAVITY_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings().group(ItemGroupManager.APOLLO));
+    public static final Item POSITIVE_GRAVITY_BOOTS = new ArmorItem(POSITIVE_GRAVITY_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings());
     public static final ArmorMaterial SPACE_SUIT_ARMOR_MATERIAL = new SpaceSuitArmor();
-    public static final Item REINFORCED_IRON_INGOT = new Item(new FabricItemSettings().fireproof().group(ItemGroupManager.APOLLO));
-    public static final Item SPACE_SUIT_HELMET = new ArmorItem(SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.HEAD, new FabricItemSettings().group(ItemGroupManager.APOLLO));
-    public static final Item SPACE_SUIT_CHESTPLATE = new ArmorItem(SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.CHEST, new FabricItemSettings().group(ItemGroupManager.APOLLO));
-    public static final Item SPACE_SUIT_LEGGINGS = new ArmorItem(SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.LEGS, new FabricItemSettings().group(ItemGroupManager.APOLLO));
-    public static final Item SPACE_SUIT_BOOTS = new ArmorItem(SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings().group(ItemGroupManager.APOLLO));
+    public static final Item REINFORCED_IRON_INGOT = new Item(new FabricItemSettings().fireproof());
+    public static final Item SPACE_SUIT_HELMET = new ArmorItem(SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.HEAD, new FabricItemSettings());
+    public static final Item SPACE_SUIT_CHESTPLATE = new ArmorItem(SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.CHEST, new FabricItemSettings());
+    public static final Item SPACE_SUIT_LEGGINGS = new ArmorItem(SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.LEGS, new FabricItemSettings());
+    public static final Item SPACE_SUIT_BOOTS = new ArmorItem(SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings());
 
     public static void register() {
         Apollo.LOGGER.info("Registering items");
@@ -38,10 +39,10 @@ public class ItemManager {
         registerItem("space_suit_boots", SPACE_SUIT_BOOTS);
 
         // Add fuels
-        FuelRegistry.INSTANCE.add(FUEL_BUCKET, 20000);
+        FuelRegistry.INSTANCE.add(FUEL_BUCKET, 20_000);
     }
 
     private static void registerItem(String id, Item item) {
-        Registry.register(Registry.ITEM, new Identifier(Apollo.MOD_ID, id), item);
+        Registry.register(Registries.ITEM, new Identifier(Apollo.MOD_ID, id), item);
     }
 }

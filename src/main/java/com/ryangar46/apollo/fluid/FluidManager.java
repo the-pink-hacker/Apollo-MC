@@ -6,18 +6,18 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
-import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.fluid.FlowableFluid;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class FluidManager {
-    public static final FlowableFluid STILL_FUEL = Registry.register(Registry.FLUID, new Identifier(Apollo.MOD_ID, "fuel"), new FuelFluid.Still());
-    public static final FlowableFluid FLOWING_FUEL = Registry.register(Registry.FLUID, new Identifier(Apollo.MOD_ID, "flowing_fuel"), new FuelFluid.Flowing());
-    public static final FlowableFluid STILL_OIL = Registry.register(Registry.FLUID, new Identifier(Apollo.MOD_ID, "oil"), new OilFluid.Still());
-    public static final FlowableFluid FLOWING_OIL = Registry.register(Registry.FLUID, new Identifier(Apollo.MOD_ID, "flowing_oil"), new OilFluid.Flowing());
+    public static final FlowableFluid STILL_FUEL = Registry.register(Registries.FLUID, new Identifier(Apollo.MOD_ID, "fuel"), new FuelFluid.Still());
+    public static final FlowableFluid FLOWING_FUEL = Registry.register(Registries.FLUID, new Identifier(Apollo.MOD_ID, "flowing_fuel"), new FuelFluid.Flowing());
+    public static final FlowableFluid STILL_OIL = Registry.register(Registries.FLUID, new Identifier(Apollo.MOD_ID, "oil"), new OilFluid.Still());
+    public static final FlowableFluid FLOWING_OIL = Registry.register(Registries.FLUID, new Identifier(Apollo.MOD_ID, "flowing_oil"), new OilFluid.Flowing());
 
     @Environment(EnvType.CLIENT)
     public static void registerClient() {
@@ -39,9 +39,9 @@ public class FluidManager {
             BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(), still, flowable);
         }
 
-        ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> {
+        /*ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> {
             registry.register(new Identifier(Apollo.MOD_ID, still_id));
             registry.register(new Identifier(Apollo.MOD_ID, flowable_id));
-        });
+        });*/
     }
 }

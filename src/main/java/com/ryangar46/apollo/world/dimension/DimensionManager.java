@@ -2,14 +2,14 @@ package com.ryangar46.apollo.world.dimension;
 
 import com.ryangar46.apollo.Apollo;
 import net.minecraft.block.Block;
-import net.minecraft.tag.BlockTags;
-import net.minecraft.tag.TagKey;
+import net.minecraft.registry.BuiltinRegistries;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.util.registry.BuiltinRegistries;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionOptions;
 import net.minecraft.world.dimension.DimensionType;
@@ -17,11 +17,11 @@ import net.minecraft.world.dimension.DimensionType;
 import java.util.OptionalLong;
 
 public class DimensionManager {
-    private static final RegistryKey<DimensionOptions> MOON_OPTIONS = RegistryKey.of(Registry.DIMENSION_KEY, new Identifier(Apollo.MOD_ID, "moon"));
-    public static RegistryKey<World> MOON = RegistryKey.of(Registry.WORLD_KEY, MOON_OPTIONS.getValue());
-    private static final RegistryKey<DimensionType> MOON_TYPE = RegistryKey.of(Registry.DIMENSION_TYPE_KEY, new Identifier(Apollo.MOD_ID, "moon"));
+    private static final RegistryKey<DimensionOptions> MOON_OPTIONS = RegistryKey.of(RegistryKeys.DIMENSION, new Identifier(Apollo.MOD_ID, "moon"));
+    public static RegistryKey<World> MOON = RegistryKey.of(RegistryKeys.WORLD, MOON_OPTIONS.getValue());
+    private static final RegistryKey<DimensionType> MOON_TYPE = RegistryKey.of(RegistryKeys.DIMENSION_TYPE, new Identifier(Apollo.MOD_ID, "moon"));
 
-    public static void register() {
+    /*public static void register() {
         BuiltinRegistries.add(BuiltinRegistries.DIMENSION_TYPE, MOON_TYPE, createType(
                 OptionalLong.empty(),
                 true,
@@ -52,5 +52,5 @@ public class DimensionManager {
 
     private static DimensionType.MonsterSettings createMonsterSetting(boolean piglinSafe, boolean hasRaids, IntProvider monsterSpawnLightTest, int monsterSpawnBlockLightLimit) {
         return new DimensionType.MonsterSettings(piglinSafe, hasRaids, monsterSpawnLightTest, monsterSpawnBlockLightLimit);
-    }
+    }*/
 }

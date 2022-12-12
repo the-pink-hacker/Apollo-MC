@@ -6,6 +6,7 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.ShapedRecipe;
+import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
@@ -14,7 +15,7 @@ import java.util.Map;
 
 public class ShuttleWorkbenchShapedRecipe extends ShapedRecipe implements ShuttleWorkbenchRecipe {
     public ShuttleWorkbenchShapedRecipe(Identifier id, String group, int width, int height, DefaultedList<Ingredient> input, ItemStack output) {
-        super(id, group, width, height, input, output);
+        super(id, group, CraftingRecipeCategory.MISC, width, height, input, output);
     }
 
     @Override

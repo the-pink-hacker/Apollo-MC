@@ -17,7 +17,7 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import software.bernie.geckolib3.GeckoLib;
+import software.bernie.geckolib.GeckoLib;
 import terrablender.api.Regions;
 import terrablender.api.SurfaceRuleManager;
 import terrablender.api.TerraBlenderApi;
@@ -33,11 +33,11 @@ public class Apollo implements ModInitializer, TerraBlenderApi {
 		ItemManager.register();
 		BlockManager.register();
 		EntityManager.register();
-		BiomeManager.register();
+		//BiomeManager.register();
 		RecipeManager.register();
 		StatManager.register();
-		DimensionManager.register();
-		ApolloBuiltinNoiseParameters.registry();
+		//DimensionManager.register();
+		//ApolloBuiltinNoiseParameters.registry();
 
 		ServerLifecycleEvents.SERVER_STARTED.register(server -> GenericSpawnerManager.register());
 	}
