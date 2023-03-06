@@ -2,12 +2,13 @@ package com.ryangar46.apollo.world.dimension;
 
 import com.ryangar46.apollo.item.GravityArmor;
 import com.ryangar46.apollo.tag.TagManager;
+import com.ryangar46.apollo.world.ApolloWorlds;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class GravityManager {
     public static double getGravityMultiplier(World world) {
-        if (world.getRegistryKey() == DimensionManager.MOON) {
+        if (world.getRegistryKey() == ApolloWorlds.MOON_WORLD_KEY) {
             return 0.165d;
         }
         return 1.0d;

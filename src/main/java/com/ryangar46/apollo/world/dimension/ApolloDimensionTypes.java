@@ -2,27 +2,23 @@ package com.ryangar46.apollo.world.dimension;
 
 import com.ryangar46.apollo.Apollo;
 import net.minecraft.block.Block;
-import net.minecraft.registry.BuiltinRegistries;
-import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionOptions;
 import net.minecraft.world.dimension.DimensionType;
 
 import java.util.OptionalLong;
 
-public class DimensionManager {
-    private static final RegistryKey<DimensionOptions> MOON_OPTIONS = RegistryKey.of(RegistryKeys.DIMENSION, new Identifier(Apollo.MOD_ID, "moon"));
-    public static RegistryKey<World> MOON = RegistryKey.of(RegistryKeys.WORLD, MOON_OPTIONS.getValue());
-    private static final RegistryKey<DimensionType> MOON_TYPE = RegistryKey.of(RegistryKeys.DIMENSION_TYPE, new Identifier(Apollo.MOD_ID, "moon"));
+public class ApolloDimensionTypes {
+    public static final RegistryKey<DimensionType> MOON = RegistryKey.of(RegistryKeys.DIMENSION_TYPE, new Identifier(Apollo.MOD_ID, "moon"));
 
-    /*public static void register() {
-        BuiltinRegistries.add(BuiltinRegistries.DIMENSION_TYPE, MOON_TYPE, createType(
+    public static void bootstrapType(Registerable<DimensionType> registerable) {
+        registerable.register(MOON, createType(
                 OptionalLong.empty(),
                 true,
                 false,
@@ -46,11 +42,13 @@ public class DimensionManager {
         ));
     }
 
+    // Only to have argument names show up
     private static DimensionType createType(OptionalLong fixedTime, boolean hasSkylight, boolean hasCeiling, boolean ultrawarm, boolean natural, double coordinateScale, boolean bedWorks, boolean piglinSafe, int minY, int height, int logicalHeight, TagKey<Block> infiniburn, Identifier effects, float ambientLight, DimensionType.MonsterSettings monsterSettings) {
         return new DimensionType(fixedTime, hasSkylight, hasCeiling, ultrawarm, natural, coordinateScale, bedWorks, piglinSafe, minY, height, logicalHeight, infiniburn, effects, ambientLight, monsterSettings);
     }
 
+    // Only to have argument names show up
     private static DimensionType.MonsterSettings createMonsterSetting(boolean piglinSafe, boolean hasRaids, IntProvider monsterSpawnLightTest, int monsterSpawnBlockLightLimit) {
         return new DimensionType.MonsterSettings(piglinSafe, hasRaids, monsterSpawnLightTest, monsterSpawnBlockLightLimit);
-    }*/
+    }
 }
