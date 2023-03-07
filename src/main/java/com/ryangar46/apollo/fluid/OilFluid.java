@@ -13,12 +13,12 @@ import net.minecraft.world.World;
 public abstract class OilFluid extends AbstractFluid {
     @Override
     public Fluid getStill() {
-        return FluidManager.STILL_OIL;
+        return ApolloFluids.STILL_OIL;
     }
 
     @Override
     public Fluid getFlowing() {
-        return FluidManager.FLOWING_OIL;
+        return ApolloFluids.FLOWING_OIL;
     }
 
     @Override

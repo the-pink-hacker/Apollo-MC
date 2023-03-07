@@ -13,12 +13,12 @@ import net.minecraft.world.World;
 public abstract class FuelFluid extends AbstractFluid {
     @Override
     public Fluid getStill() {
-        return FluidManager.STILL_FUEL;
+        return ApolloFluids.STILL_FUEL;
     }
 
     @Override
     public Fluid getFlowing() {
-        return FluidManager.FLOWING_FUEL;
+        return ApolloFluids.FLOWING_FUEL;
     }
 
     @Override

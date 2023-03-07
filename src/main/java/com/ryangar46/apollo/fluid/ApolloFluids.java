@@ -12,11 +12,11 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public class FluidManager {
-    public static final FlowableFluid STILL_FUEL = Registry.register(Registries.FLUID, new Identifier(Apollo.MOD_ID, "fuel"), new FuelFluid.Still());
-    public static final FlowableFluid FLOWING_FUEL = Registry.register(Registries.FLUID, new Identifier(Apollo.MOD_ID, "flowing_fuel"), new FuelFluid.Flowing());
-    public static final FlowableFluid STILL_OIL = Registry.register(Registries.FLUID, new Identifier(Apollo.MOD_ID, "oil"), new OilFluid.Still());
-    public static final FlowableFluid FLOWING_OIL = Registry.register(Registries.FLUID, new Identifier(Apollo.MOD_ID, "flowing_oil"), new OilFluid.Flowing());
+public class ApolloFluids {
+    public static final FlowableFluid STILL_FUEL = register("fuel", new FuelFluid.Still());
+    public static final FlowableFluid FLOWING_FUEL = register("flowing_fuel", new FuelFluid.Flowing());
+    public static final FlowableFluid STILL_OIL = register("oil", new OilFluid.Still());
+    public static final FlowableFluid FLOWING_OIL = register("flowing_oil", new OilFluid.Flowing());
 
     @Environment(EnvType.CLIENT)
     public static void registerClient() {
@@ -32,15 +32,10 @@ public class FluidManager {
                 new Identifier(Apollo.MOD_ID, flowable_id)
         ));
 
-        if (solid) {
-            BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getSolid(), still, flowable);
-        } else {
-            BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(), still, flowable);
-        }
+        BlockRenderLayerMap.INSTANCE.putFluids(solid ? RenderLayer.getSolid() : RenderLayer.getTranslucent(), still, flowable);
+    }
 
-        /*ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> {
-            registry.register(new Identifier(Apollo.MOD_ID, still_id));
-            registry.register(new Identifier(Apollo.MOD_ID, flowable_id));
-        });*/
+    private static FlowableFluid register(String id, FlowableFluid fluid) {
+        return Registry.register(Registries.FLUID, new Identifier(Apollo.MOD_ID, id), fluid);
     }
 }
