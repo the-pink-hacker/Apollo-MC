@@ -28,7 +28,7 @@ public class ApolloItemGroups {
                 entries.add(ApolloItems.SPACE_SUIT_CHESTPLATE);
                 entries.add(ApolloItems.SPACE_SUIT_LEGGINGS);
                 entries.add(ApolloItems.SPACE_SUIT_BOOTS);
-                entries.add(ApolloBlocks.LAUNCH_PAD);
+                entries.add(ApolloBlocks.LAUNCHPAD);
                 entries.add(ApolloBlocks.SHUTTLE_WORKBENCH);
             }))
             .build();
