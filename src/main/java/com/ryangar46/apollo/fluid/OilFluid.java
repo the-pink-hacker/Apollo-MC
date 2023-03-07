@@ -1,7 +1,7 @@
 package com.ryangar46.apollo.fluid;
 
 import com.ryangar46.apollo.block.ApolloBlocks;
-import com.ryangar46.apollo.item.ItemManager;
+import com.ryangar46.apollo.item.ApolloItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
@@ -23,7 +23,7 @@ public abstract class OilFluid extends AbstractFluid {
 
     @Override
     public Item getBucketItem() {
-        return ItemManager.OIL_BUCKET;
+        return ApolloItems.OIL_BUCKET;
     }
 
     @Override

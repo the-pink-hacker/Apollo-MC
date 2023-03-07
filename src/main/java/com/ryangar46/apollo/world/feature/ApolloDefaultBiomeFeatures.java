@@ -1,7 +1,6 @@
 package com.ryangar46.apollo.world.feature;
 
 import net.minecraft.world.biome.GenerationSettings;
-import net.minecraft.world.gen.GenerationStep;
 
 public class ApolloDefaultBiomeFeatures {
     public static void addOilLakes(GenerationSettings.Builder builder) {

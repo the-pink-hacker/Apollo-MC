@@ -1,12 +1,5 @@
 package com.ryangar46.apollo.world.biome;
 
-import com.ryangar46.apollo.Apollo;
-import net.minecraft.registry.BuiltinRegistries;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.biome.Biome;
-
 public class BiomeManager {
     /*public static final RegistryKey<Biome> LUNAR_HIGHLANDS = registerBiome("lunar_highlands");
     public static final RegistryKey<Biome> LUNAR_MARIA = registerBiome("lunar_maria");
