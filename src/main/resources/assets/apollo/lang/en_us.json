@@ -19,6 +19,8 @@
   "gamerule.doMeteoriteImpacts.description": "Controls meteorites impact explosion",
   "gamerule.doMeteoriteLandings": "Do Meteorite Landings",
   "gamerule.doMeteoriteLandings.description": "Controls meteorites landing on certain planets",
+  "gamerule.shuttleEscapeHeight": "Shuttle Escape Height",
+  "gamerule.shuttleEscapeHeight.description": "At what y level does a shuttle leave the current world",
   "gamerule.suffocateInVacuum": "Suffocate in vacuum",
   "gamerule.suffocateInVacuum.description": "Whether mobs and players suffocate in a vacuum",
   "item.apollo.fuel_bucket": "Fuel Bucket",

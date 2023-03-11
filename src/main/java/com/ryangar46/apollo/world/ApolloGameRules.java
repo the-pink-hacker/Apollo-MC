@@ -9,10 +9,11 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.GameRules;
 
-public class GameRuleManager {
+public class ApolloGameRules {
     public static final CustomGameRuleCategory APOLLO = registerCategory("apollo");
     public static final GameRules.Key<GameRules.BooleanRule> DO_METEORITE_IMPACTS = GameRuleRegistry.register("doMeteoriteImpacts", APOLLO, GameRuleFactory.createBooleanRule(true));
     public static final GameRules.Key<GameRules.BooleanRule> DO_METEORITE_LANDINGS = GameRuleRegistry.register("doMeteoriteLandings", APOLLO, GameRuleFactory.createBooleanRule(true));
+    public static final GameRules.Key<GameRules.IntRule> SHUTTLE_ESCAPE_HEIGHT = GameRuleRegistry.register("shuttleEscapeHeight", APOLLO, GameRuleFactory.createIntRule(128));
     public static final GameRules.Key<GameRules.BooleanRule> SUFFOCATE_IN_VACUUM = GameRuleRegistry.register("suffocateInVacuum", APOLLO, GameRuleFactory.createBooleanRule(true));
 
     // Java is weird and won't init the variables unless this runs

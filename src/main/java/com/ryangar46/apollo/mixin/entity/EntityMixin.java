@@ -2,7 +2,7 @@ package com.ryangar46.apollo.mixin.entity;
 
 import com.ryangar46.apollo.tag.TagManager;
 import com.ryangar46.apollo.world.ApolloWorlds;
-import com.ryangar46.apollo.world.GameRuleManager;
+import com.ryangar46.apollo.world.ApolloGameRules;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -25,7 +25,7 @@ public abstract class EntityMixin {
     )
     private void checkPressure(CallbackInfo info) {
         if (!((Entity)(Object)this).world.isClient && ((Entity)(Object)this).world.getRegistryKey() == ApolloWorlds.MOON) {
-            if (((Entity)(Object)this).world.getGameRules().getBoolean(GameRuleManager.SUFFOCATE_IN_VACUUM) && !isVacuumImmune()) {
+            if (((Entity)(Object)this).world.getGameRules().getBoolean(ApolloGameRules.SUFFOCATE_IN_VACUUM) && !isVacuumImmune()) {
                 if (((Entity)(Object)this) instanceof LivingEntity entity) {
                     Iterable<ItemStack> items = ((Entity)(Object)this).getArmorItems();
                     boolean airtight = true;
