@@ -8,7 +8,7 @@ import net.minecraft.world.World;
 
 public class GravityManager {
     public static double getGravityMultiplier(World world) {
-        if (world.getRegistryKey() == ApolloWorlds.MOON_WORLD_KEY) {
+        if (world.getRegistryKey() == ApolloWorlds.MOON) {
             return 0.165d;
         }
         return 1.0d;
