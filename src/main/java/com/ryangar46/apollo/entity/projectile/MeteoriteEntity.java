@@ -2,6 +2,7 @@ package com.ryangar46.apollo.entity.projectile;
 
 import com.ryangar46.apollo.block.ApolloBlocks;
 import com.ryangar46.apollo.block.MeteoriteBlock;
+import com.ryangar46.apollo.world.ApolloGameRules;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.damage.DamageSource;
@@ -42,9 +43,8 @@ public class MeteoriteEntity extends ExplosiveProjectileEntity implements GeoEnt
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
         if (!this.world.isClient) {
-            // TODO: Fix game rule
-            //Explosion.DestructionType destructionType = this.world.getGameRules().getBoolean(GameRuleManager.DO_METEORITE_IMPACTS) ? Explosion.DestructionType.DESTROY : Explosion.DestructionType.KEEP;
-            this.world.createExplosion(this, this.getX(), this.getY(), this.getZ(), Math.max(4.0f, (float)Math.random() * 8.0f), true, World.ExplosionSourceType.TNT);
+            World.ExplosionSourceType explosionSourceType = this.world.getGameRules().getBoolean(ApolloGameRules.DO_METEORITE_IMPACTS) ? World.ExplosionSourceType.TNT : World.ExplosionSourceType.NONE;
+            this.world.createExplosion(this, this.getX(), this.getY(), this.getZ(), Math.max(4.0f, (float)Math.random() * 8.0f), true, explosionSourceType);
 
             BlockPos meteoritePos = new BlockPos(hitResult.getPos());
             if (this.world.canSetBlock(meteoritePos)) {
