@@ -3,6 +3,7 @@ package com.ryangar46.apollo.entity.vehicle;
 import com.ryangar46.apollo.inventory.ImplementedInventory;
 import com.ryangar46.apollo.world.ApolloGameRules;
 import com.ryangar46.apollo.world.ApolloWorlds;
+import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.MobEntity;
@@ -12,13 +13,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
@@ -32,7 +32,7 @@ import java.util.List;
 public class ShuttleEntity extends MobEntity implements ImplementedInventory, GeoEntity {
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(5, ItemStack.EMPTY);
     private final AnimatableInstanceCache CACHE = GeckoLibUtil.createInstanceCache(this);
-    private static final double FLY_SPEED = 0.2d;
+    private static final double FLY_SPEED = 0.4d;
 
     public ShuttleEntity(EntityType<? extends ShuttleEntity> type, World world) {
         super(type, world);
@@ -97,40 +97,52 @@ public class ShuttleEntity extends MobEntity implements ImplementedInventory, Ge
     @Override
     public void travel(Vec3d movementInput) {
         if (this.getPrimaryPassenger() instanceof PlayerEntity player) {
-            player.sendMessage(Text.literal(this.getBlockY() + ""));
             // Player is holding down W
             if (player.forwardSpeed > 0.0f) {
                 // TODO: Add acceleration to shuttle
                 this.setVelocity(0.0d, FLY_SPEED, 0.0d);
 
-                if (this.getBlockY() > this.world.getGameRules().getInt(ApolloGameRules.SHUTTLE_ESCAPE_HEIGHT)) {
+                // TODO: Could get teleported above the escape height
+                int escapeHeight = this.world.getGameRules().getInt(ApolloGameRules.SHUTTLE_ESCAPE_HEIGHT);
+
+                if (this.getBlockY() > escapeHeight) {
+                    // This should always be run by the server
                     MinecraftServer server = this.getServer();
-                    if (server != null) {
-                        // If at the moon, go to the overworld
-                        // If no at the moon, go to the moon
-                        RegistryKey<World> destination = this.world.getRegistryKey() == ApolloWorlds.MOON ? World.OVERWORLD : ApolloWorlds.MOON;
-                        this.travelToPlanet(this.getServer().getWorld(destination));
-                    }
+                    assert server != null;
+
+                    // If at the moon, go to the overworld
+                    // If no at the moon, go to the moon
+                    RegistryKey<World> destination = this.world.getRegistryKey() == ApolloWorlds.MOON ? World.OVERWORLD : ApolloWorlds.MOON;
+                    this.travelToPlanet(server.getWorld(destination), escapeHeight);
                 }
             }
         }
         super.travel(movementInput);
     }
 
-    public boolean travelToPlanet(ServerWorld destination) {
+    public boolean travelToPlanet(ServerWorld destination, double height) {
         if (destination == this.getWorld()) return false;
 
-        // Teleport passengers
-        List<Entity> passengers = this.getPassengerList();
-        for (Entity passenger : passengers) {
-            if (passenger instanceof ServerPlayerEntity player) {
-                player.teleport(destination, player.getX(), player.getY(), player.getZ(), player.getYaw(), player.getPitch());
-                continue;
-            }
-            // TODO: Teleport non-player passengers
-        }
+        Vec3d destinationPosition = this.getPos();
+        destinationPosition = new Vec3d(destinationPosition.x, height, destinationPosition.z);
+        TeleportTarget target = new TeleportTarget(destinationPosition, Vec3d.ZERO, this.getYaw(), this.getPitch());
 
-        // TODO: Teleport shuttle
+        // Save passenger list before they're dismounted from the teleport
+        List<Entity> passengers = this.getPassengerList();
+
+         ShuttleEntity teleportedShuttle = FabricDimensions.teleport(this, destination, target);
+
+         if (teleportedShuttle == null) return false;
+
+        // Teleport passengers
+        for (Entity passenger : passengers) {
+            Entity teleportedPassenger = FabricDimensions.teleport(passenger, destination, target);
+
+            if (teleportedPassenger == null) continue;
+
+            // Remount passenger
+            teleportedPassenger.startRiding(teleportedShuttle, true);
+        }
 
         return true;
     }

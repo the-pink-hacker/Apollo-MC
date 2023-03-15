@@ -1,8 +1,8 @@
 package com.ryangar46.apollo.mixin.entity;
 
 import com.ryangar46.apollo.tag.TagManager;
-import com.ryangar46.apollo.world.ApolloWorlds;
 import com.ryangar46.apollo.world.ApolloGameRules;
+import com.ryangar46.apollo.world.ApolloWorlds;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
