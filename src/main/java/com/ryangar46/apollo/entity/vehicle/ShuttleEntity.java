@@ -32,7 +32,8 @@ import java.util.List;
 public class ShuttleEntity extends MobEntity implements ImplementedInventory, GeoEntity {
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(5, ItemStack.EMPTY);
     private final AnimatableInstanceCache CACHE = GeckoLibUtil.createInstanceCache(this);
-    private static final double FLY_SPEED = 0.4d;
+    private static final double THRUST = 0.1d;
+    private static final double MAX_SPEED = 10.0d;
 
     public ShuttleEntity(EntityType<? extends ShuttleEntity> type, World world) {
         super(type, world);
@@ -99,21 +100,21 @@ public class ShuttleEntity extends MobEntity implements ImplementedInventory, Ge
         if (this.getPrimaryPassenger() instanceof PlayerEntity player) {
             // Player is holding down W
             if (player.forwardSpeed > 0.0f) {
-                // TODO: Add acceleration to shuttle
-                this.setVelocity(0.0d, FLY_SPEED, 0.0d);
+                // Add thrust
+                Vec3d currentVelocity = this.getVelocity();
+                this.setVelocity(currentVelocity.x, Math.min(currentVelocity.y + THRUST, MAX_SPEED), currentVelocity.z);
+                this.velocityDirty = true;
 
                 // TODO: Could get teleported above the escape height
                 int escapeHeight = this.world.getGameRules().getInt(ApolloGameRules.SHUTTLE_ESCAPE_HEIGHT);
 
                 if (this.getBlockY() > escapeHeight) {
-                    // This should always be run by the server
-                    MinecraftServer server = this.getServer();
-                    assert server != null;
-
-                    // If at the moon, go to the overworld
-                    // If no at the moon, go to the moon
-                    RegistryKey<World> destination = this.world.getRegistryKey() == ApolloWorlds.MOON ? World.OVERWORLD : ApolloWorlds.MOON;
-                    this.travelToPlanet(server.getWorld(destination), escapeHeight);
+                    if (this.world instanceof ServerWorld serverWorld) {
+                        // If at the moon, go to the overworld
+                        // If no at the moon, go to the moon
+                        RegistryKey<World> destination = this.world.getRegistryKey() == ApolloWorlds.MOON ? World.OVERWORLD : ApolloWorlds.MOON;
+                        this.travelToPlanet(serverWorld.getServer().getWorld(destination), escapeHeight);
+                    }
                 }
             }
         }
