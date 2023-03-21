@@ -1,7 +1,7 @@
 package com.ryangar46.apollo.block;
 
 import com.ryangar46.apollo.screen.ShuttleWorkbenchScreenHandler;
-import com.ryangar46.apollo.stat.StatManager;
+import com.ryangar46.apollo.stat.ApolloStats;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CraftingTableBlock;
 import net.minecraft.entity.player.PlayerEntity;
@@ -27,7 +27,7 @@ public class ShuttleWorkbenchBlock extends CraftingTableBlock {
         if (world.isClient) return ActionResult.SUCCESS;
 
         player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
-        player.incrementStat(StatManager.INTERACT_WITH_SHUTTLE_WORKBENCH);
+        player.incrementStat(ApolloStats.INTERACT_WITH_SHUTTLE_WORKBENCH);
 
         return ActionResult.CONSUME;
     }

@@ -1,7 +1,8 @@
 {
-  "block.apollo.airlock": "Air Lock",
-  "block.apollo.airlock_door": "Air Lock Door",
+  "block.apollo.airlock": "Airlock",
+  "block.apollo.airlock_door": "Airlock Door",
   "block.apollo.fluid_pipe": "Fluid Pipe",
+  "block.apollo.fuel": "Fuel",
   "block.apollo.launchpad": "Launchpad",
   "block.apollo.lunar_cobblestone": "Lunar Cobblestone",
   "block.apollo.lunar_dust": "Lunar Dust",
@@ -9,6 +10,7 @@
   "block.apollo.lunar_soil": "Lunar Soil",
   "block.apollo.lunar_stone": "Lunar Stone",
   "block.apollo.meteorite": "Meteorite",
+  "block.apollo.oil": "Oil",
   "block.apollo.oil_refinery": "Oil Refinery",
   "block.apollo.reinforced_iron_block": "Reinforced Iron Block",
   "block.apollo.shuttle_workbench": "Shuttle Workbench",
@@ -37,8 +39,5 @@
   "item.apollo.space_suit_leggings": "Space Suit Leggings",
   "itemGroup.apollo.apollo": "Apollo",
   "itemGroup.apollo.moon": "Moon",
-  "links.apollo.curseforge": "CurseForge",
-  "links.apollo.modrinth": "Modrinth",
-  "links.apollo.twitter": "Twitter",
   "stat.apollo.interact_with_shuttle_workbench": "Interactions with Shuttle Workbench"
 }

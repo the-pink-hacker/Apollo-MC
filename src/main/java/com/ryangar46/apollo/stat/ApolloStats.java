@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier;
 
 import static net.minecraft.stat.Stats.CUSTOM;
 
-public class StatManager {
+public class ApolloStats {
     public static final Identifier INTERACT_WITH_SHUTTLE_WORKBENCH = registerStat("interact_with_shuttle_workbench", StatFormatter.DEFAULT);
 
     // Java is weird and won't init the variables unless this runs
