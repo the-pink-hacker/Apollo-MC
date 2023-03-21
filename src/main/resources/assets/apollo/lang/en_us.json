@@ -1,4 +1,6 @@
 {
+  "block.apollo.airlock": "Air Lock",
+  "block.apollo.airlock_door": "Air Lock Door",
   "block.apollo.fluid_pipe": "Fluid Pipe",
   "block.apollo.launchpad": "Launchpad",
   "block.apollo.lunar_cobblestone": "Lunar Cobblestone",
