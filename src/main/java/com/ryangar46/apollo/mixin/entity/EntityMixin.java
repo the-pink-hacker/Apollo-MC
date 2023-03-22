@@ -1,6 +1,7 @@
 package com.ryangar46.apollo.mixin.entity;
 
-import com.ryangar46.apollo.tag.TagManager;
+import com.ryangar46.apollo.registry.tag.ApolloEntityTypeTags;
+import com.ryangar46.apollo.registry.tag.ApolloItemTags;
 import com.ryangar46.apollo.world.ApolloGameRules;
 import com.ryangar46.apollo.world.ApolloWorlds;
 import net.minecraft.entity.Entity;
@@ -54,17 +55,17 @@ public abstract class EntityMixin {
     }
 
     private boolean isVacuumImmune() {
-        return ((Entity)(Object)this).getType().isIn(TagManager.VACUUM_IMMUNE_CREATURES);
+        return ((Entity)(Object)this).getType().isIn(ApolloEntityTypeTags.VACUUM_IMMUNE_CREATURES);
     }
 
     private boolean isAirtightArmor(ItemStack item) {
-        if (item.isIn(TagManager.AIRTIGHT_BOOTS)) {
+        if (item.isIn(ApolloItemTags.AIRTIGHT_BOOTS)) {
             return true;
-        } else if (item.isIn(TagManager.AIRTIGHT_LEGGINGS)) {
+        } else if (item.isIn(ApolloItemTags.AIRTIGHT_LEGGINGS)) {
             return true;
-        } else if (item.isIn(TagManager.AIRTIGHT_CHESTPLATES)) {
+        } else if (item.isIn(ApolloItemTags.AIRTIGHT_CHESTPLATES)) {
             return true;
-        } else return item.isIn(TagManager.AIRTIGHT_HELMETS);
+        } else return item.isIn(ApolloItemTags.AIRTIGHT_HELMETS);
     }
 
     private void vacuumDamage(LivingEntity entity) {

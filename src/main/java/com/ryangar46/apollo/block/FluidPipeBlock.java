@@ -3,7 +3,7 @@ package com.ryangar46.apollo.block;
 import com.ryangar46.apollo.block.entity.FluidPipeBlockEntity;
 import com.ryangar46.apollo.entity.ApolloEntityTypes;
 import com.ryangar46.apollo.fluid.PipeStorableFluid;
-import com.ryangar46.apollo.tag.TagManager;
+import com.ryangar46.apollo.registry.tag.ApolloBlockTags;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -101,10 +101,10 @@ public class FluidPipeBlock extends BlockWithEntity implements PipeConnectable, 
         Block otherBlock = otherState.getBlock();
 
         if (otherBlock instanceof PipeConnectable pipeConnectable) {
-            return pipeConnectable.canPipeConnect(direction.getOpposite(), otherState) && otherBlock.getRegistryEntry().isIn(TagManager.FLUID_PIPE_CONNECTABLE_BLOCKS);
+            return pipeConnectable.canPipeConnect(direction.getOpposite(), otherState) && otherBlock.getRegistryEntry().isIn(ApolloBlockTags.FLUID_PIPE_CONNECTABLE_BLOCKS);
         }
 
-        return otherBlock.getRegistryEntry().isIn(TagManager.FLUID_PIPE_CONNECTABLE_BLOCKS);
+        return otherBlock.getRegistryEntry().isIn(ApolloBlockTags.FLUID_PIPE_CONNECTABLE_BLOCKS);
     }
 
     @Override

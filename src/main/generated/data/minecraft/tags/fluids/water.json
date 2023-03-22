@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "apollo:fuel",
     "apollo:flowing_fuel",
-    "apollo:oil",
-    "apollo:flowing_oil"
+    "apollo:fuel",
+    "apollo:flowing_oil",
+    "apollo:oil"
   ]
 }

@@ -2,7 +2,7 @@ package com.ryangar46.apollo.world.spawner;
 
 import com.ryangar46.apollo.entity.ApolloEntityTypes;
 import com.ryangar46.apollo.entity.projectile.MeteoriteEntity;
-import com.ryangar46.apollo.tag.TagManager;
+import com.ryangar46.apollo.registry.tag.ApolloDimensionTypeTags;
 import com.ryangar46.apollo.world.ApolloGameRules;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -16,7 +16,7 @@ public class MeteoriteSpawner implements GenericSpawner {
     @Override
     public int spawn(ServerWorld world, boolean spawnMonsters, boolean spawnAnimals) {
         if (world.getGameRules().getBoolean(ApolloGameRules.DO_METEORITE_LANDINGS))  {
-            if (world.getDimensionEntry().isIn(TagManager.METEORITE_SPAWNING_WORLDS)) {
+            if (world.getDimensionEntry().isIn(ApolloDimensionTypeTags.METEORITE_SPAWNING_WORLDS)) {
                 cooldown--;
 
                 if (this.cooldown > 0) {
