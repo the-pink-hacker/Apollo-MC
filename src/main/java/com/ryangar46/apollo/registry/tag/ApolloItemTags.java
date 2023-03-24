@@ -7,11 +7,7 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
 public class ApolloItemTags {
-    // TODO: Consolidate airtight tags
-    public static final TagKey<Item> AIRTIGHT_BOOTS = register("airtight_boots");
-    public static final TagKey<Item> AIRTIGHT_CHESTPLATES = register("airtight_chestplates");
-    public static final TagKey<Item> AIRTIGHT_HELMETS = register("airtight_helmets");
-    public static final TagKey<Item> AIRTIGHT_LEGGINGS = register("airtight_leggings");
+    public static final TagKey<Item> AIRTIGHT_ARMOR = register("airtight_armor");
     public static final TagKey<Item> LAUNCHPADS = register("launchpads");
     public static final TagKey<Item> MOON_ARMOR = register("moon_armor");
     public static final TagKey<Item> NEGATIVE_GRAVITY_EQUIPABLES = register("negative_gravity_equipables");

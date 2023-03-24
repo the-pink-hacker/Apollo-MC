@@ -59,13 +59,7 @@ public abstract class EntityMixin {
     }
 
     private boolean isAirtightArmor(ItemStack item) {
-        if (item.isIn(ApolloItemTags.AIRTIGHT_BOOTS)) {
-            return true;
-        } else if (item.isIn(ApolloItemTags.AIRTIGHT_LEGGINGS)) {
-            return true;
-        } else if (item.isIn(ApolloItemTags.AIRTIGHT_CHESTPLATES)) {
-            return true;
-        } else return item.isIn(ApolloItemTags.AIRTIGHT_HELMETS);
+        return item.isIn(ApolloItemTags.AIRTIGHT_ARMOR);
     }
 
     private void vacuumDamage(LivingEntity entity) {
