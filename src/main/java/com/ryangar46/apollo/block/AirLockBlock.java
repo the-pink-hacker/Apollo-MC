@@ -1,5 +1,6 @@
 package com.ryangar46.apollo.block;
 
+import com.ryangar46.apollo.item.ApolloItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -25,18 +26,12 @@ public class AirLockBlock extends Block {
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        switch (state.get(AXIS)) {
-            case Z:
-                return Z_SHAPE;
-            case X:
-            default:
-                return X_SHAPE;
-        }
+        return state.get(AXIS) == Direction.Axis.Z ? Z_SHAPE : X_SHAPE;
     }
 
     @Override
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
-        return ItemStack.EMPTY;
+        return new ItemStack(ApolloItems.AIRLOCK_FRAME);
     }
 
     @Override
