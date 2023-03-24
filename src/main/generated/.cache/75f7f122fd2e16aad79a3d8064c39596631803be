@@ -1,6 +1,6 @@
-// 1.19.3	2023-03-23T21:52:42.971281205	Apollo/Tags for minecraft:block
-10b541c47d2da664aa94d1d3a3da48cae88f24ae data/minecraft/tags/blocks/mineable/pickaxe.json
-be460a4b2329cac63f8478a9907c835e9648dd91 data/minecraft/tags/blocks/needs_iron_tool.json
+// 1.19.3	2023-03-23T22:14:26.118858527	Apollo/Tags for minecraft:block
+ca404cb22e8932f3488348efb44464eec1d59f43 data/minecraft/tags/blocks/mineable/pickaxe.json
+a6fefb7720394e6e495ca9ae7511fa18164d107a data/minecraft/tags/blocks/needs_iron_tool.json
 f26221ab557eef93ae104868d2ce18b950c4b8d7 data/apollo/tags/blocks/fluid_pipe_connectable_blocks.json
 67242bff449218546bc061089d1d26272cd6bea2 data/minecraft/tags/blocks/needs_diamond_tool.json
 b195e10d3bb3fbcbb85692e8005f10ae00ee75ea data/apollo/tags/blocks/lunar_ore_replaceables.json
