@@ -19,6 +19,7 @@ public class DataGenerators implements DataGeneratorEntrypoint {
         pack.addProvider(FluidTagProvider::new);
         pack.addProvider(ItemTagProvider::new);
         pack.addProvider(LanguageProvider::new);
+        pack.addProvider(ModelProvider::new);
         pack.addProvider(WorldgenProvider::new);
     }
 
