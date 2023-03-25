@@ -1,4 +1,4 @@
-package com.ryangar46.apollo.data.tag;
+package com.ryangar46.apollo.data.server.tag;
 
 import com.ryangar46.apollo.registry.tag.ApolloDimensionTypeTags;
 import com.ryangar46.apollo.world.dimension.ApolloDimensionTypes;

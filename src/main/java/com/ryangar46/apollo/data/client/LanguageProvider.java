@@ -1,4 +1,4 @@
-package com.ryangar46.apollo.data;
+package com.ryangar46.apollo.data.client;
 
 import com.ryangar46.apollo.Apollo;
 import com.ryangar46.apollo.block.ApolloBlocks;
@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.GameRules;
 
 public class LanguageProvider extends FabricLanguageProvider {
-    protected LanguageProvider(FabricDataOutput dataOutput) {
+    public LanguageProvider(FabricDataOutput dataOutput) {
         super(dataOutput, "en_us");
     }
 

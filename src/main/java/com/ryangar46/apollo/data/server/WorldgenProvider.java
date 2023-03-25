@@ -1,4 +1,4 @@
-package com.ryangar46.apollo.data;
+package com.ryangar46.apollo.data.server;
 
 import com.ryangar46.apollo.Apollo;
 import com.ryangar46.apollo.world.dimension.ApolloDimensionTypes;
@@ -13,7 +13,7 @@ import net.minecraft.registry.RegistryWrapper;
 import java.util.concurrent.CompletableFuture;
 
 public class WorldgenProvider extends FabricDynamicRegistryProvider {
-    protected WorldgenProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+    public WorldgenProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, registriesFuture);
     }
 
