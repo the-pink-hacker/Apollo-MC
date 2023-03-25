@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "group": "reinforced_iron_block",
-  "pattern": [
-    "###",
-    "###",
-    "###"
-  ],
   "key": {
     "#": {
       "item": "apollo:reinforced_iron_ingot"
     }
   },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
   "result": {
-    "item": "apollo:reinforced_iron_block",
-    "count": 1
+    "item": "apollo:reinforced_iron_block"
   }
 }
