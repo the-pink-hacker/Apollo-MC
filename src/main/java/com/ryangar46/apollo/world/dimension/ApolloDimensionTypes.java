@@ -17,7 +17,7 @@ import java.util.OptionalLong;
 public class ApolloDimensionTypes {
     public static final RegistryKey<DimensionType> MOON = RegistryKey.of(RegistryKeys.DIMENSION_TYPE, new Identifier(Apollo.MOD_ID, "moon"));
 
-    public static void bootstrapType(Registerable<DimensionType> registerable) {
+    public static void bootstrap(Registerable<DimensionType> registerable) {
         registerable.register(MOON, createType(
                 OptionalLong.empty(),
                 true,

@@ -1,16 +1,16 @@
 {
   "type": "minecraft:ore",
   "config": {
+    "discard_chance_on_air_exposure": 0.0,
     "size": 17,
-    "discard_chance_on_air_exposure": 0,
     "targets": [
       {
+        "state": {
+          "Name": "apollo:lunar_iron_ore"
+        },
         "target": {
           "predicate_type": "minecraft:tag_match",
           "tag": "apollo:lunar_ore_replaceables"
-        },
-        "state": {
-          "Name": "apollo:lunar_iron_ore"
         }
       }
     ]

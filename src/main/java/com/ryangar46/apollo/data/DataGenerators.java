@@ -10,7 +10,10 @@ import com.ryangar46.apollo.data.server.tag.DimensionTypeTagProvider;
 import com.ryangar46.apollo.data.server.tag.EntityTypeTagProvider;
 import com.ryangar46.apollo.data.server.tag.FluidTagProvider;
 import com.ryangar46.apollo.data.server.tag.ItemTagProvider;
+import com.ryangar46.apollo.world.biome.ApolloBuiltinBiomes;
 import com.ryangar46.apollo.world.dimension.ApolloDimensionTypes;
+import com.ryangar46.apollo.world.feature.ApolloOreConfiguredFeatures;
+import com.ryangar46.apollo.world.feature.ApolloOrePlacedFeatures;
 import com.ryangar46.apollo.world.gen.noise.ApolloBuiltinNoiseParameters;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -35,7 +38,10 @@ public class DataGenerators implements DataGeneratorEntrypoint {
 
     @Override
     public void buildRegistry(RegistryBuilder registryBuilder) {
-        registryBuilder.addRegistry(RegistryKeys.DIMENSION_TYPE, ApolloDimensionTypes::bootstrapType);
+        registryBuilder.addRegistry(RegistryKeys.BIOME, ApolloBuiltinBiomes::bootstrap);
+        registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, ApolloOreConfiguredFeatures::bootstrap);
+        registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, ApolloOrePlacedFeatures::bootstrap);
+        registryBuilder.addRegistry(RegistryKeys.DIMENSION_TYPE, ApolloDimensionTypes::bootstrap);
         registryBuilder.addRegistry(RegistryKeys.NOISE_PARAMETERS, ApolloBuiltinNoiseParameters::bootstrap);
     }
 }
