@@ -17,6 +17,7 @@ public class ApolloItems {
     public static final Item FUEL_BUCKET = registerItem("fuel_bucket", new BucketItem(ApolloFluids.STILL_FUEL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
     public static final Item METEORITE_SCRAP = registerItem("meteorite_scrap", new Item(new FabricItemSettings().fireproof()));
     public static final Item OIL_BUCKET = registerItem("oil_bucket", new BucketItem(ApolloFluids.STILL_OIL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
+    public static final Item OXYGEN_PLANT_SEEDS = registerItem("oxygen_plant_seeds", new AliasedBlockItem(ApolloBlocks.OXYGEN_PLANT, new FabricItemSettings()));
     public static final Item NEGATIVE_GRAVITY_BOOTS = registerItem("negative_gravity_boots", new ArmorItem(ApolloArmorMaterials.NEGATIVE_GRAVITY_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings()));
     public static final Item POSITIVE_GRAVITY_BOOTS = registerItem("positive_gravity_boots", new ArmorItem(ApolloArmorMaterials.POSITIVE_GRAVITY_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings()));
     public static final Item REINFORCED_IRON_INGOT = registerItem("reinforced_iron_ingot", new Item(new FabricItemSettings().fireproof()));
@@ -37,6 +38,7 @@ public class ApolloItems {
     public static final Item LUNAR_STONE = registerItem(ApolloBlocks.LUNAR_STONE);
     public static final Item METEORITE = registerItem(new BlockItem(ApolloBlocks.METEORITE, new FabricItemSettings().fireproof()));
     public static final Item OIL_REFINERY = registerItem(ApolloBlocks.OIL_REFINERY);
+    public static final Item OXYGEN_PLANT = registerItem(ApolloBlocks.OXYGEN_PLANT);
     public static final Item REINFORCED_IRON_BLOCK = registerItem(new BlockItem(ApolloBlocks.REINFORCED_IRON_BLOCK, new FabricItemSettings().fireproof()));
     public static final Item SHUTTLE_WORKBENCH = registerItem(ApolloBlocks.SHUTTLE_WORKBENCH);
     public static final Item STORAGE_TANK = registerItem(ApolloBlocks.STORAGE_TANK);

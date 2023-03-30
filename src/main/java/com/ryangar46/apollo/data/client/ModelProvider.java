@@ -35,6 +35,7 @@ public class ModelProvider extends FabricModelProvider {
         registerBasicBlockItem(itemModelGenerator, ApolloItems.LUNAR_STONE);
         registerBasicBlockItem(itemModelGenerator, ApolloItems.METEORITE, "meteorite_cool");
         registerBasicBlockItem(itemModelGenerator, ApolloItems.OIL_REFINERY);
+        registerBasicBlockItem(itemModelGenerator, ApolloItems.OXYGEN_PLANT, "oxygen_plant_stage3");
         registerBasicBlockItem(itemModelGenerator, ApolloItems.REINFORCED_IRON_BLOCK);
         registerBasicBlockItem(itemModelGenerator, ApolloItems.SHUTTLE_WORKBENCH);
         registerBasicBlockItem(itemModelGenerator, ApolloItems.STORAGE_TANK);
@@ -43,6 +44,7 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ApolloItems.FUEL_BUCKET, Models.GENERATED);
         itemModelGenerator.register(ApolloItems.METEORITE_SCRAP, Models.GENERATED);
         itemModelGenerator.register(ApolloItems.OIL_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ApolloItems.OXYGEN_PLANT_SEEDS, Models.GENERATED);
         itemModelGenerator.register(ApolloItems.NEGATIVE_GRAVITY_BOOTS, Models.GENERATED);
         itemModelGenerator.register(ApolloItems.POSITIVE_GRAVITY_BOOTS, Models.GENERATED);
         itemModelGenerator.register(ApolloItems.REINFORCED_IRON_INGOT, Models.GENERATED);

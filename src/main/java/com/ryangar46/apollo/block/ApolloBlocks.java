@@ -1,11 +1,13 @@
 package com.ryangar46.apollo.block;
 
 import com.ryangar46.apollo.Apollo;
+import com.ryangar46.apollo.block.crop.OxygenPlantBlock;
 import com.ryangar46.apollo.fluid.ApolloFluids;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 public class ApolloBlocks {
@@ -23,6 +25,7 @@ public class ApolloBlocks {
     public static final Block METEORITE = registerBlock("meteorite", new MeteoriteBlock(FabricBlockSettings.of(Material.STONE).strength(30.0f, 1_200.0f).ticksRandomly().requiresTool()));
     public static final Block OIL = registerBlock("oil", new FluidBlock(ApolloFluids.STILL_OIL, FabricBlockSettings.of(Material.LAVA).noCollision().dropsNothing()));
     public static final Block OIL_REFINERY = registerBlock("oil_refinery", new OilRefineryBlock(FabricBlockSettings.of(Material.METAL).strength(5.0f, 6.0f).requiresTool()));
+    public static final Block OXYGEN_PLANT = registerBlock("oxygen_plant", new OxygenPlantBlock(FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.CROP)));
     public static final Block REINFORCED_IRON_BLOCK = registerBlock("reinforced_iron_block", new Block(FabricBlockSettings.copyOf(Blocks.NETHERITE_BLOCK)));
     public static final Block SHUTTLE_WORKBENCH = registerBlock("shuttle_workbench", new ShuttleWorkbenchBlock(FabricBlockSettings.of(Material.METAL).strength(5.0f, 6.0f).requiresTool()));
     public static final Block STORAGE_TANK = registerBlock("storage_tank", new StorageTankBlock(FabricBlockSettings.of(Material.METAL).strength(5.0f, 6.0f).requiresTool()));

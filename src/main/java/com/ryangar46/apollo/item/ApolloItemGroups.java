@@ -30,6 +30,8 @@ public class ApolloItemGroups {
                 entries.add(ApolloItems.AIRLOCK_FRAME);
                 entries.add(ApolloItems.LAUNCHPAD);
                 entries.add(ApolloItems.SHUTTLE_WORKBENCH);
+                entries.add(ApolloItems.OXYGEN_PLANT);
+                entries.add(ApolloItems.OXYGEN_PLANT_SEEDS);
             }))
             .build();
 
