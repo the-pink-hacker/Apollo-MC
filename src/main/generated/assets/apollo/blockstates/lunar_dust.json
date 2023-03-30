@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "apollo:block/lunar_dust"
+      },
+      {
+        "model": "apollo:block/lunar_dust",
+        "y": 90
+      },
+      {
+        "model": "apollo:block/lunar_dust",
+        "y": 180
+      },
+      {
+        "model": "apollo:block/lunar_dust",
+        "y": 270
+      }
+    ]
+  }
+}

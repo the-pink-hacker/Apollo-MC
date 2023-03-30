@@ -1,7 +1,7 @@
 {
   "textures": {
-    "particle": "apollo:block/airlock_door",
-    "airlock": "apollo:block/airlock_door"
+    "particle": "apollo:block/airlock",
+    "airlock": "apollo:block/airlock"
   },
   "elements": [
     {
