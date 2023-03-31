@@ -10,11 +10,9 @@ import com.ryangar46.apollo.world.biome.ApolloBiomeKeys;
 import com.ryangar46.apollo.world.spawner.GenericSpawnerManager;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
-import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib.GeckoLib;
-import terrablender.api.Regions;
 import terrablender.api.TerraBlenderApi;
 
 public class Apollo implements ModInitializer, TerraBlenderApi {

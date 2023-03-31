@@ -9,7 +9,6 @@ import net.minecraft.block.Block;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
-import net.minecraft.data.client.TexturedModel;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 

@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 public class ApolloItemGroups {
     public static final ItemGroup APOLLO = createBuilder("apollo")
             .icon(() -> new ItemStack(ApolloItems.SPACE_SUIT_HELMET))
-            .entries(((enabledFeatures, entries, operatorEnabled) -> {
+            .entries(((context, entries) -> {
                 entries.add(ApolloItems.FUEL_BUCKET);
                 entries.add(ApolloItems.OIL_BUCKET);
                 entries.add(ApolloItems.FLUID_PIPE);
@@ -37,7 +37,7 @@ public class ApolloItemGroups {
 
     public static final ItemGroup MOON = createBuilder("moon")
             .icon(() -> new ItemStack(ApolloItems.LUNAR_SOIL))
-            .entries(((enabledFeatures, entries, operatorEnabled) -> {
+            .entries(((context, entries) -> {
                 entries.add(ApolloItems.LUNAR_DUST);
                 entries.add(ApolloItems.LUNAR_SOIL);
                 entries.add(ApolloItems.LUNAR_STONE);

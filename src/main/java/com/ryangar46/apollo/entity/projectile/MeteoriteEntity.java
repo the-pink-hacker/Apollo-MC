@@ -46,7 +46,7 @@ public class MeteoriteEntity extends ExplosiveProjectileEntity implements GeoEnt
             World.ExplosionSourceType explosionSourceType = this.world.getGameRules().getBoolean(ApolloGameRules.DO_METEORITE_IMPACTS) ? World.ExplosionSourceType.TNT : World.ExplosionSourceType.NONE;
             this.world.createExplosion(this, this.getX(), this.getY(), this.getZ(), Math.max(4.0f, (float)Math.random() * 8.0f), true, explosionSourceType);
 
-            BlockPos meteoritePos = new BlockPos(hitResult.getPos());
+            BlockPos meteoritePos = BlockPos.ofFloored(hitResult.getPos());
             if (this.world.canSetBlock(meteoritePos)) {
                 this.world.setBlockState(meteoritePos, ((MeteoriteBlock) ApolloBlocks.METEORITE).getHotState());
             }
