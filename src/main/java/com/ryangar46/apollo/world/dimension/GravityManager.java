@@ -1,41 +1,32 @@
 package com.ryangar46.apollo.world.dimension;
 
-import com.ryangar46.apollo.item.GravityArmor;
-import com.ryangar46.apollo.registry.tag.ApolloItemTags;
+import com.ryangar46.apollo.item.ApolloArmorMaterials;
 import com.ryangar46.apollo.world.ApolloWorlds;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class GravityManager {
+    public static final double DEFAULT = 1.0d;
+    public static final double LOW = 0.165d;
+
     public static double getGravityMultiplier(World world) {
         if (world.getRegistryKey() == ApolloWorlds.MOON) {
-            return 0.165d;
+            return LOW;
         }
-        return 1.0d;
+        return DEFAULT;
     }
+
     public static double getGravityMultiplier(World world, Iterable<ItemStack> armor) {
-        GravityArmor.Type type = GravityArmor.Type.NORMAL;
         for (ItemStack item : armor) {
-            GravityArmor.Type t = getArmorGravityMultiplier(item);
-            if (t != null) {
-                type = t;
+            if (item.getItem() instanceof ArmorItem armorItem) {
+                ArmorMaterial material = armorItem.getMaterial();
+                if (material == ApolloArmorMaterials.GRAVITY_NEGATIVE) return LOW;
+                if (material == ApolloArmorMaterials.GRAVITY_POSITIVE) return DEFAULT;
             }
         }
 
-        if (type == GravityArmor.Type.NEGATIVE) return 0.165d;
-        else if (type == GravityArmor.Type.POSITIVE) return 1.0d;
         return getGravityMultiplier(world);
-    }
-
-    public static GravityArmor.Type getArmorGravityMultiplier(ItemStack item) {
-        if (!item.isEmpty()) {
-            if (item.isIn(ApolloItemTags.NEGATIVE_GRAVITY_EQUIPABLES)) {
-                return GravityArmor.Type.NEGATIVE;
-            } else if (item.isIn(ApolloItemTags.POSITIVE_GRAVITY_EQUIPABLES)) {
-                return GravityArmor.Type.POSITIVE;
-            }
-            return GravityArmor.Type.NORMAL;
-        }
-        return null;
     }
 }

@@ -17,13 +17,13 @@ public class ApolloItems {
     public static final Item METEORITE_SCRAP = registerItem("meteorite_scrap", new Item(new FabricItemSettings().fireproof()));
     public static final Item OIL_BUCKET = registerItem("oil_bucket", new BucketItem(ApolloFluids.STILL_OIL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
     public static final Item OXYGEN_PLANT_SEEDS = registerItem("oxygen_plant_seeds", new AliasedBlockItem(ApolloBlocks.OXYGEN_PLANT, new FabricItemSettings()));
-    public static final Item NEGATIVE_GRAVITY_BOOTS = registerItem("negative_gravity_boots", new ArmorItem(ApolloArmorMaterials.NEGATIVE_GRAVITY_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new FabricItemSettings()));
-    public static final Item POSITIVE_GRAVITY_BOOTS = registerItem("positive_gravity_boots", new ArmorItem(ApolloArmorMaterials.POSITIVE_GRAVITY_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new FabricItemSettings()));
+    public static final Item NEGATIVE_GRAVITY_BOOTS = registerItem("negative_gravity_boots", new ArmorItem(ApolloArmorMaterials.GRAVITY_NEGATIVE, ArmorItem.Type.BOOTS, new FabricItemSettings()));
+    public static final Item POSITIVE_GRAVITY_BOOTS = registerItem("positive_gravity_boots", new ArmorItem(ApolloArmorMaterials.GRAVITY_POSITIVE, ArmorItem.Type.BOOTS, new FabricItemSettings()));
     public static final Item REINFORCED_IRON_INGOT = registerItem("reinforced_iron_ingot", new Item(new FabricItemSettings().fireproof()));
-    public static final Item SPACE_SUIT_HELMET = registerItem("space_suit_helmet", new ArmorItem(ApolloArmorMaterials.SPACE_SUIT_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new FabricItemSettings()));
-    public static final Item SPACE_SUIT_CHESTPLATE = registerItem("space_suit_chestplate", new ArmorItem(ApolloArmorMaterials.SPACE_SUIT_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
-    public static final Item SPACE_SUIT_LEGGINGS = registerItem("space_suit_leggings", new ArmorItem(ApolloArmorMaterials.SPACE_SUIT_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
-    public static final Item SPACE_SUIT_BOOTS = registerItem("space_suit_boots", new ArmorItem(ApolloArmorMaterials.SPACE_SUIT_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new FabricItemSettings()));
+    public static final Item SPACE_SUIT_HELMET = registerItem("space_suit_helmet", new ArmorItem(ApolloArmorMaterials.SPACE_SUIT, ArmorItem.Type.HELMET, new FabricItemSettings()));
+    public static final Item SPACE_SUIT_CHESTPLATE = registerItem("space_suit_chestplate", new ArmorItem(ApolloArmorMaterials.SPACE_SUIT, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
+    public static final Item SPACE_SUIT_LEGGINGS = registerItem("space_suit_leggings", new ArmorItem(ApolloArmorMaterials.SPACE_SUIT, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
+    public static final Item SPACE_SUIT_BOOTS = registerItem("space_suit_boots", new ArmorItem(ApolloArmorMaterials.SPACE_SUIT, ArmorItem.Type.BOOTS, new FabricItemSettings()));
 
     /* === Blocks === */
     public static final Item AIRLOCK_CONTROLLER = registerItem(ApolloBlocks.AIRLOCK_CONTROLLER);
