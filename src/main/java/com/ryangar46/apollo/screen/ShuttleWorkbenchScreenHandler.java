@@ -14,6 +14,7 @@ import net.minecraft.screen.CraftingScreenHandler;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 
 import java.util.Optional;
@@ -28,10 +29,10 @@ public class ShuttleWorkbenchScreenHandler extends CraftingScreenHandler {
     }
 
     protected static void updateResult(ScreenHandler handler, World world, PlayerEntity player, CraftingInventory craftingInventory, CraftingResultInventory resultInventory) {
-        if (!world.isClient) {
+        if (world instanceof ServerWorld serverWorld) {
             ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)player;
             ItemStack itemStack = ItemStack.EMPTY;
-            Optional<ShuttleWorkbenchRecipe> optional = world.getServer().getRecipeManager().getFirstMatch(RecipeManager.SHUTTLE_WORKBENCH_RECIPE_TYPE, craftingInventory, world);
+            Optional<ShuttleWorkbenchRecipe> optional = serverWorld.getServer().getRecipeManager().getFirstMatch(RecipeManager.SHUTTLE_WORKBENCH_RECIPE_TYPE, craftingInventory, world);
             if (optional.isPresent()) {
                 ShuttleWorkbenchRecipe craftingRecipe = optional.get();
                 if (resultInventory.shouldCraftRecipe(world, serverPlayerEntity, craftingRecipe)) {
@@ -54,5 +55,4 @@ public class ShuttleWorkbenchScreenHandler extends CraftingScreenHandler {
     public boolean canUse(PlayerEntity player) {
         return canUse(this.context, player, ApolloBlocks.SHUTTLE_WORKBENCH);
     }
-
 }
