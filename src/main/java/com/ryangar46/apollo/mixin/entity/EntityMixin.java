@@ -10,6 +10,9 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.GameMode;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
+import net.minecraft.world.WorldView;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -42,11 +45,11 @@ public abstract class EntityMixin {
                             if (((Entity)(Object)this).world.getRegistryKey() == ApolloWorlds.MOON) {
                                 GameMode gameMode = player.interactionManager.getGameMode();
                                 if (gameMode == GameMode.SURVIVAL || gameMode == GameMode.ADVENTURE) {
-                                    vacuumDamage(entity);
+                                    vacuumDamage(((Entity)(Object)this).world, entity);
                                 }
                             }
                         } else {
-                            vacuumDamage(entity);
+                            vacuumDamage(((Entity)(Object)this).world, entity);
                         }
                     }
                 }
@@ -62,9 +65,9 @@ public abstract class EntityMixin {
         return item.isIn(ApolloItemTags.AIRTIGHT_ARMOR);
     }
 
-    private void vacuumDamage(LivingEntity entity) {
+    private void vacuumDamage(World world, LivingEntity entity) {
         if (vacuumTicks % 20 == 0) {
-            entity.damage(DamageSource.IN_WALL, 1.0f);
+            entity.damage(world.getDamageSources().inWall(), 1.0f);
         }
         vacuumTicks++;
     }
