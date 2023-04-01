@@ -5,7 +5,7 @@
   "name": "Apollo",
   "description": "A space mod for Minecraft.",
   "authors": [
-    "Ryan Garrett (RyanGar46)"
+    "Ryan Garrett (ThePinkHacker)"
   ],
   "contact": {
     "homepage": "https://modrinth.com/mod/apollo",
@@ -17,16 +17,16 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.ryangar46.apollo.Apollo"
+      "com.thepinkhacker.apollo.Apollo"
     ],
     "client": [
-      "com.ryangar46.apollo.client.ApolloClient"
+      "com.thepinkhacker.apollo.client.ApolloClient"
     ],
     "terrablender": [
-      "com.ryangar46.apollo.Apollo"
+      "com.thepinkhacker.apollo.Apollo"
     ],
     "fabric-datagen": [
-      "com.ryangar46.apollo.data.DataGenerators"
+      "com.thepinkhacker.apollo.data.DataGenerators"
     ]
   },
   "mixins": [
