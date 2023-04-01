@@ -1,6 +1,4 @@
-// 1.19.3	2023-03-30T05:16:14.396274197	Apollo/Tags for minecraft:item
+// 1.19.4	2023-03-31T22:55:28.19419093	Apollo/Tags for minecraft:item
 c1975945a8c2f7752c1236a7a2d34951f21a0a10 data/apollo/tags/items/moon_armor.json
-e6a25d271a00f1a484f1d8e70c2a95e9599536b4 data/apollo/tags/items/negative_gravity_equipables.json
 c1975945a8c2f7752c1236a7a2d34951f21a0a10 data/apollo/tags/items/airtight_armor.json
 4fdb0d8ee88a53f21bf5468e5ef1499e31783cb4 data/apollo/tags/items/launchpads.json
-1306c66dbd554c5d04c77a5104c51ed9a07c8af2 data/apollo/tags/items/positive_gravity_equipables.json
