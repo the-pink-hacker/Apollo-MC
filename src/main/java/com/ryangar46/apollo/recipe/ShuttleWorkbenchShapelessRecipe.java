@@ -62,7 +62,8 @@ public class ShuttleWorkbenchShapelessRecipe extends ShapelessRecipe implements 
                 ingredient.write(buf);
             }
 
-            buf.writeItemStack(recipe.getOutput());
+            // TODO: Call "getOutput" instead of getting "output"
+            buf.writeItemStack(recipe.output);
         }
     }
 }
