@@ -90,6 +90,12 @@ public class LanguageProvider extends FabricLanguageProvider {
 
         /* === Statistics === */
         addStatistic(builder, ApolloStats.INTERACT_WITH_SHUTTLE_WORKBENCH, "Interactions with Shuttle Workbench");
+
+        /* === Mod Menu Links === */
+        addLink(builder, "website", "Website");
+        addLink(builder, "blog", "Blog (Tumblr)");
+        addLink(builder, "modrinth", "Modrinth");
+        addLink(builder, "curseforge", "CurseForge");
     }
 
     private static void addContainer(TranslationBuilder builder, String container, String value) {
@@ -111,5 +117,12 @@ public class LanguageProvider extends FabricLanguageProvider {
 
     private static void addStatistic(TranslationBuilder builder, Identifier statistic, String value) {
         builder.add("stat." + statistic.getNamespace() + "." + statistic.getPath(), value);
+    }
+
+    /**
+     * What each website link is displayed as in Mod Menu
+     */
+    private static void addLink(TranslationBuilder builder, String link, String value) {
+        builder.add("link." + Apollo.MOD_ID + "." + link, value);
     }
 }
