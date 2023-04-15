@@ -1,5 +1,6 @@
 package com.thepinkhacker.apollo.block;
 
+import com.thepinkhacker.apollo.block.fluid.PipeConnectable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalFacingBlock;

@@ -2,6 +2,8 @@ package com.thepinkhacker.apollo.block;
 
 import com.thepinkhacker.apollo.Apollo;
 import com.thepinkhacker.apollo.block.crop.OxygenPlantBlock;
+import com.thepinkhacker.apollo.block.fluid.FluidPipeBlock;
+import com.thepinkhacker.apollo.block.fluid.StorageTankBlock;
 import com.thepinkhacker.apollo.fluid.ApolloFluids;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
