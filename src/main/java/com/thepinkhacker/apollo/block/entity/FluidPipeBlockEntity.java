@@ -1,7 +1,6 @@
 package com.thepinkhacker.apollo.block.entity;
 
 import com.thepinkhacker.apollo.block.FluidPipeBlock;
-import com.thepinkhacker.apollo.entity.ApolloEntityTypes;
 import com.thepinkhacker.apollo.fluid.PipeStorableFluid;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -11,7 +10,7 @@ import net.minecraft.world.World;
 
 public class FluidPipeBlockEntity extends BlockEntity {
     public FluidPipeBlockEntity(BlockPos pos, BlockState state) {
-        super(ApolloEntityTypes.FLUID_PIPE_BLOCK_ENTITY, pos, state);
+        super(ApolloBlockEntityTypes.FLUID_PIPE_BLOCK_ENTITY, pos, state);
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, FluidPipeBlockEntity blockEntity) {
