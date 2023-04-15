@@ -37,7 +37,7 @@ public class FluidPipeBlockEntity extends BlockEntity implements FluidCarrier<Fl
     }
 
     @Override
-    public FluidCarrierStorage<FluidPipeBlockEntity> getFluidCarrierStorage() {
+    public FluidCarrierStorage<FluidPipeBlockEntity> getMainCarrierStorage() {
         return FLUID_CARRIER_STORAGE;
     }
 

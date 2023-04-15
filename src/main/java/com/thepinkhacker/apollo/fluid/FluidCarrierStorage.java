@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
 import net.minecraft.block.entity.BlockEntity;
 
 public class FluidCarrierStorage<T extends BlockEntity> extends SingleVariantStorage<FluidVariant> {
+    public static final long CAPACITY = FluidConstants.BUCKET;
     private final T parent;
 
     public FluidCarrierStorage(T parent) {
@@ -19,7 +20,7 @@ public class FluidCarrierStorage<T extends BlockEntity> extends SingleVariantSto
 
     @Override
     protected long getCapacity(FluidVariant variant) {
-        return FluidConstants.BUCKET;
+        return CAPACITY;
     }
 
     @Override
