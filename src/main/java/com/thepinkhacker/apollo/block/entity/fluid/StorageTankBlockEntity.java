@@ -43,7 +43,7 @@ public class StorageTankBlockEntity extends BlockEntity implements FluidCarrier 
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, StorageTankBlockEntity blockEntity) {
-        if (world instanceof ServerWorld serverWorld) blockEntity.tickCarrier(serverWorld, pos, state);
+        if (world instanceof ServerWorld serverWorld) blockEntity.tickCarrier(serverWorld, pos);
     }
 
     @Override
