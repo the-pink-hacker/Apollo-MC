@@ -17,7 +17,7 @@ import terrablender.api.TerraBlenderApi;
 
 public class Apollo implements ModInitializer, TerraBlenderApi {
 	public static final String MOD_ID = "apollo";
-	public static final Logger LOGGER = LogManager.getLogger("apollo");
+	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
 	@Override
 	public void onInitialize() {

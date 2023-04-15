@@ -10,6 +10,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -18,20 +19,17 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ApolloEntityTypes {
-    public static final EntityType<MeteoriteEntity> METEORITE = Registry.register(
-            Registries.ENTITY_TYPE,
-            new Identifier(Apollo.MOD_ID, "meteorite"),
+    public static final EntityType<MeteoriteEntity> METEORITE = of(
+            "meteorite",
             FabricEntityTypeBuilder.create(SpawnGroup.MISC, MeteoriteEntity::new)
                     .dimensions(EntityDimensions.fixed(0.25F, 0.25F))
-                    .trackRangeBlocks(4).trackedUpdateRate(10)
-                    .build()
+                    .trackRangeBlocks(4)
+                    .trackedUpdateRate(10)
     );
-    public static final EntityType<ShuttleEntity> SHUTTLE = Registry.register(
-            Registries.ENTITY_TYPE,
-            new Identifier(Apollo.MOD_ID, "shuttle"),
+    public static final EntityType<ShuttleEntity> SHUTTLE = of(
+            "shuttle",
             FabricEntityTypeBuilder.create(SpawnGroup.MISC, ShuttleEntity::new)
                     .dimensions(EntityDimensions.fixed(1.25f, 3.5f))
-                    .build()
     );
 
     public static void register() {
@@ -42,5 +40,13 @@ public class ApolloEntityTypes {
     public static void registerClient() {
         EntityRendererRegistry.register(METEORITE, MeteoriteEntityRenderer::new);
         EntityRendererRegistry.register(SHUTTLE, ShuttleEntityRenderer::new);
+    }
+
+    private static <T extends Entity> EntityType<T> of(String id, FabricEntityTypeBuilder<T> builder) {
+        return Registry.register(
+                Registries.ENTITY_TYPE,
+                new Identifier(Apollo.MOD_ID, id),
+                builder.build()
+        );
     }
 }
