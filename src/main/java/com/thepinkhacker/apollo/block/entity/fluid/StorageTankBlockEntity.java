@@ -1,6 +1,8 @@
 package com.thepinkhacker.apollo.block.entity.fluid;
 
 import com.thepinkhacker.apollo.block.entity.ApolloBlockEntityTypes;
+import com.thepinkhacker.apollo.fluid.FluidCarrier;
+import com.thepinkhacker.apollo.fluid.FluidCarrierStorage;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
@@ -12,9 +14,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
-public class StorageTankBlockEntity extends BlockEntity implements FluidCarrier {
-    private static final long CAPACITY = 8 * FluidConstants.BUCKET;
-    public final SingleVariantStorage<FluidVariant> fluidStorage = new SingleVariantStorage<>() {
+public class StorageTankBlockEntity extends BlockEntity implements FluidCarrier<StorageTankBlockEntity> {
+    public final FluidCarrierStorage<StorageTankBlockEntity> FLUID_CARRIER_STORAGE = new FluidCarrierStorage<>(this);
+    private static final long TANK_CAPACITY = 8 * FluidConstants.BUCKET;
+    private static final String TANK_STORAGE_VARIANT_NBT_TAG = "tank_fluid_variant";
+    private static final String TANK_STORAGE_AMOUNT_NBT_TAG = "tank_fluid_amount";
+    public final SingleVariantStorage<FluidVariant> TANK_STORAGE = new SingleVariantStorage<>() {
         @Override
         protected FluidVariant getBlankVariant() {
             return FluidVariant.blank();
@@ -22,19 +27,12 @@ public class StorageTankBlockEntity extends BlockEntity implements FluidCarrier 
 
         @Override
         protected long getCapacity(FluidVariant variant) {
-            return CAPACITY;
+            return TANK_CAPACITY;
         }
 
         @Override
         protected void onFinalCommit() {
             markDirty();
-            if (!(world instanceof ServerWorld)) return;
-
-            // TODO: Figure out what this does
-//            var buffer = PacketByteBufs.create();
-//            PlayerLookup.tracking(StorageTankBlockEntity.this).forEach(player -> {
-//                ServerPlayNetworking.send(player, new Identifier(Apollo.MOD_ID, "storage_tank"), buffer);
-//            });
         }
     };
 
@@ -50,17 +48,21 @@ public class StorageTankBlockEntity extends BlockEntity implements FluidCarrier 
     public void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         writeFluidCarrier(nbt);
+        nbt.put(TANK_STORAGE_VARIANT_NBT_TAG, TANK_STORAGE.variant.toNbt());
+        nbt.putLong(TANK_STORAGE_AMOUNT_NBT_TAG, TANK_STORAGE.amount);
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         readFluidCarrier(nbt);
+        TANK_STORAGE.variant = FluidVariant.fromNbt(nbt.getCompound(TANK_STORAGE_VARIANT_NBT_TAG));
+        TANK_STORAGE.amount = nbt.getLong(TANK_STORAGE_AMOUNT_NBT_TAG);
     }
 
     @Override
-    public SingleVariantStorage<FluidVariant> getFluidCarrierStorage() {
-        return fluidStorage;
+    public FluidCarrierStorage<StorageTankBlockEntity> getFluidCarrierStorage() {
+        return FLUID_CARRIER_STORAGE;
     }
 
     @Override
