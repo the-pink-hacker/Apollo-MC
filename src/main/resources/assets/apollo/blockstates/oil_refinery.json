@@ -1,40 +1,40 @@
 {
   "variants": {
-    "facing=north,on=false": {
+    "facing=north,lit=false": {
       "model": "apollo:block/oil_refinery",
       "uvlock": true
     },
-    "facing=east,on=false": {
+    "facing=east,lit=false": {
       "model": "apollo:block/oil_refinery",
       "y": 90,
       "uvlock": true
     },
-    "facing=south,on=false": {
+    "facing=south,lit=false": {
       "model": "apollo:block/oil_refinery",
       "y": 180,
       "uvlock": true
     },
-    "facing=west,on=false": {
+    "facing=west,lit=false": {
       "model": "apollo:block/oil_refinery",
       "y": 270,
       "uvlock": true
     },
-    "facing=north,on=true": {
-      "model": "apollo:block/oil_refinery_on",
+    "facing=north,lit=true": {
+      "model": "apollo:block/oil_refinery_lit",
       "uvlock": true
     },
-    "facing=east,on=true": {
-      "model": "apollo:block/oil_refinery_on",
+    "facing=east,lit=true": {
+      "model": "apollo:block/oil_refinery_lit",
       "y": 90,
       "uvlock": true
     },
-    "facing=south,on=true": {
-      "model": "apollo:block/oil_refinery_on",
+    "facing=south,lit=true": {
+      "model": "apollo:block/oil_refinery_lit",
       "y": 180,
       "uvlock": true
     },
-    "facing=west,on=true": {
-      "model": "apollo:block/oil_refinery_on",
+    "facing=west,lit=true": {
+      "model": "apollo:block/oil_refinery_lit",
       "y": 270,
       "uvlock": true
     }

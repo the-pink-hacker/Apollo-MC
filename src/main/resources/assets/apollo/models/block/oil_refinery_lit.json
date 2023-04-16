@@ -2,7 +2,7 @@
   "parent": "minecraft:block/orientable",
   "textures": {
     "top": "apollo:block/oil_refinery_top",
-    "front": "apollo:block/oil_refinery_front_on",
+    "front": "apollo:block/oil_refinery_front_lit",
     "side": "apollo:block/oil_refinery_side"
   }
 }
