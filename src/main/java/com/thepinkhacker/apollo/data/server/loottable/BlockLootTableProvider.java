@@ -34,6 +34,8 @@ public class BlockLootTableProvider extends SimpleFabricLootTableProvider implem
     @Override
     public void accept(BiConsumer<Identifier, LootTable.Builder> biConsumer) {
         /* === Basic Blocks === */
+        addBasicBlock(biConsumer, ApolloItems.FLUID_PIPE);
+        addBasicBlock(biConsumer, ApolloItems.FLUID_VALVE_PIPE);
         addBasicBlock(biConsumer, ApolloItems.LAUNCHPAD);
         addBasicBlock(biConsumer, ApolloItems.LUNAR_COBBLESTONE);
         addBasicBlock(biConsumer, ApolloItems.LUNAR_DUST);

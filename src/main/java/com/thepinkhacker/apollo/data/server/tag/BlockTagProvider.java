@@ -29,6 +29,8 @@ public class BlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         /* === Minecraft === */
         this.getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(ApolloBlocks.FLUID_PIPE)
+                .add(ApolloBlocks.FLUID_VALVE_PIPE)
                 .add(ApolloBlocks.AIRLOCK_CONTROLLER)
                 .add(ApolloBlocks.AIRLOCK_FRAME)
                 .add(ApolloBlocks.LAUNCHPAD)
@@ -46,6 +48,8 @@ public class BlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ApolloBlocks.METEORITE)
                 .add(ApolloBlocks.REINFORCED_IRON_BLOCK);
         this.getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+                .add(ApolloBlocks.FLUID_PIPE)
+                .add(ApolloBlocks.FLUID_VALVE_PIPE)
                 .add(ApolloBlocks.AIRLOCK_CONTROLLER)
                 .add(ApolloBlocks.AIRLOCK_FRAME)
                 .add(ApolloBlocks.LAUNCHPAD)
