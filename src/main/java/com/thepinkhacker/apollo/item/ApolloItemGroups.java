@@ -14,6 +14,7 @@ public class ApolloItemGroups {
                 entries.add(ApolloItems.FUEL_BUCKET);
                 entries.add(ApolloItems.OIL_BUCKET);
                 entries.add(ApolloItems.FLUID_PIPE);
+                entries.add(ApolloItems.FLUID_VALVE_PIPE);
                 entries.add(ApolloItems.OIL_REFINERY);
                 entries.add(ApolloItems.STORAGE_TANK);
                 entries.add(ApolloItems.METEORITE);

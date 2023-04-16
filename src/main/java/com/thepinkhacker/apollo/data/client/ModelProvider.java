@@ -33,6 +33,7 @@ public class ModelProvider extends FabricModelProvider {
         registerSimpleBlockItem(generator, ApolloBlocks.AIRLOCK_CONTROLLER);
         registerSimpleBlockItem(generator, ApolloBlocks.AIRLOCK_FRAME);
         registerSimpleBlockItem(generator, ApolloBlocks.FLUID_PIPE, "fluid_pipe_inv");
+        registerSimpleBlockItem(generator, ApolloBlocks.FLUID_VALVE_PIPE, "fluid_valve_pipe");
         registerSimpleBlockItem(generator, ApolloBlocks.LAUNCHPAD, "launchpad_inv");
         registerSimpleBlockItem(generator, ApolloBlocks.LUNAR_COBBLESTONE);
         registerSimpleBlockItem(generator, ApolloBlocks.LUNAR_DUST);

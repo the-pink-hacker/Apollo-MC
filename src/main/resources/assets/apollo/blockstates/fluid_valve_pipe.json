@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "apollo:block/fluid_valve_pipe",
+      "y": 90
+    },
+    "axis=y": {
+      "model": "apollo:block/fluid_valve_pipe",
+      "x": 90,
+      "y": 90
+    },
+    "axis=z": {
+      "model": "apollo:block/fluid_valve_pipe"
+    }
+  }
+}
