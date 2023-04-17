@@ -47,7 +47,7 @@ public class ApolloBlockEntityTypes {
         );
     }
 
-    private static <T extends BlockEntity & FluidCarrier<?>> void registerFluidCarrier(BlockEntityType<T> blockEntityType) {
+    private static <T extends BlockEntity & FluidCarrier<T>> void registerFluidCarrier(BlockEntityType<T> blockEntityType) {
         FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> {
             return blockEntity.checkFluidCarrierDirection(direction) ? blockEntity.getFluidCarrierStorage(direction) : null;
         }, blockEntityType);

@@ -12,7 +12,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
-@SuppressWarnings("UnstableApiUsage")
 public class FluidPipeBlockEntity extends BlockEntity implements FluidCarrier<FluidPipeBlockEntity> {
     public final FluidCarrierStorage<FluidPipeBlockEntity> FLUID_CARRIER_STORAGE = new FluidCarrierStorage<>(this);
 
@@ -26,13 +25,11 @@ public class FluidPipeBlockEntity extends BlockEntity implements FluidCarrier<Fl
 
     @Override
     public void writeNbt(NbtCompound nbt) {
-        super.writeNbt(nbt);
         writeFluidCarrier(nbt);
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
-        super.readNbt(nbt);
         readFluidCarrier(nbt);
     }
 
