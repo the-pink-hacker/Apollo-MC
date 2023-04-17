@@ -5,6 +5,8 @@ import com.thepinkhacker.apollo.block.fluid.FluidValvePipeBlock;
 import com.thepinkhacker.apollo.fluid.FluidCarrier;
 import com.thepinkhacker.apollo.fluid.FluidCarrierStorage;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
+import net.fabricmc.fabric.api.transfer.v1.storage.StorageUtil;
+import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -29,7 +31,41 @@ public class FluidValvePipeBlockEntity extends BlockEntity implements FluidCarri
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, FluidValvePipeBlockEntity blockEntity) {
-        if (world instanceof ServerWorld serverWorld) blockEntity.tickCarrier(serverWorld, pos);
+        if (world instanceof ServerWorld serverWorld) {
+            blockEntity.tickCarrier(serverWorld, pos);
+            blockEntity.tickValve(state);
+        }
+    }
+
+    private void tickValve(BlockState state) {
+        if (!FluidValvePipeBlock.isOpen(state)) return;
+        long amountDifference = FLUID_CARRIER_STORAGE_POSITIVE.amount - FLUID_CARRIER_STORAGE_NEGATIVE.amount;
+        if (amountDifference == 0) return;
+
+        boolean positiveIsHighest = amountDifference > 0;
+        FluidValvePipeStorage highestStorage;
+        FluidValvePipeStorage lowestStorage;
+
+        if (positiveIsHighest) {
+            highestStorage = FLUID_CARRIER_STORAGE_POSITIVE;
+            lowestStorage = FLUID_CARRIER_STORAGE_NEGATIVE;
+        } else {
+            highestStorage = FLUID_CARRIER_STORAGE_NEGATIVE;
+            lowestStorage = FLUID_CARRIER_STORAGE_POSITIVE;
+            // Keep difference positive for fluid transfer
+            amountDifference = -amountDifference;
+        }
+
+        try (Transaction transaction = Transaction.openOuter()) {
+            StorageUtil.move(
+                    highestStorage,
+                    lowestStorage,
+                    variant -> true,
+                    amountDifference / 2,
+                    transaction
+            );
+            transaction.commit();
+        }
     }
 
     @Nullable

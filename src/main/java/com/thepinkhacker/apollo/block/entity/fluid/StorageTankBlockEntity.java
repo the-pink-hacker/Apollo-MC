@@ -1,9 +1,9 @@
 package com.thepinkhacker.apollo.block.entity.fluid;
 
 import com.thepinkhacker.apollo.block.entity.ApolloBlockEntityTypes;
+import com.thepinkhacker.apollo.fluid.ApolloFluidConstants;
 import com.thepinkhacker.apollo.fluid.FluidCarrier;
 import com.thepinkhacker.apollo.fluid.FluidCarrierStorage;
-import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.StorageUtil;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
@@ -20,14 +20,11 @@ import org.jetbrains.annotations.Nullable;
 public class StorageTankBlockEntity extends BlockEntity implements FluidCarrier<StorageTankBlockEntity> {
     public final FluidCarrierStorage<StorageTankBlockEntity> FLUID_CARRIER_STORAGE_INPUT = new FluidCarrierStorage<>(this);
     public final FluidCarrierStorage<StorageTankBlockEntity> FLUID_CARRIER_STORAGE_OUTPUT = new FluidCarrierStorage<>(this);
-    private static final long TANK_CAPACITY = 8 * FluidConstants.BUCKET;
-    private static final long TANK_TICK_TRANSFER = FluidConstants.BOTTLE / 20;
+    private static final long TANK_CAPACITY = 8 * ApolloFluidConstants.BLOCK_CAPACITY;
     private static final String TANK_STORAGE_VARIANT_NBT_TAG = "tank_fluid_variant";
     private static final String TANK_STORAGE_AMOUNT_NBT_TAG = "tank_fluid_amount";
-
     private static final String INPUT_STORAGE_VARIANT_NBT_TAG = VARIANT_NBT_TAG + "_input";
     private static final String INPUT_STORAGE_AMOUNT_NBT_TAG = AMOUNT_NBT_TAG + "_input";
-
     private static final String OUTPUT_STORAGE_VARIANT_NBT_TAG = VARIANT_NBT_TAG + "_output";
     private static final String OUTPUT_STORAGE_AMOUNT_NBT_TAG = AMOUNT_NBT_TAG + "_output";
     public final SingleVariantStorage<FluidVariant> TANK_STORAGE = new SingleVariantStorage<>() {
@@ -69,7 +66,7 @@ public class StorageTankBlockEntity extends BlockEntity implements FluidCarrier<
                     TANK_STORAGE,
                     FLUID_CARRIER_STORAGE_OUTPUT,
                     (variant) -> true,
-                    TANK_TICK_TRANSFER,
+                    ApolloFluidConstants.TRANSFER,
                     transaction
             );
             transaction.commit();
@@ -82,7 +79,7 @@ public class StorageTankBlockEntity extends BlockEntity implements FluidCarrier<
                     FLUID_CARRIER_STORAGE_INPUT,
                     TANK_STORAGE,
                     (variant) -> true,
-                    TANK_TICK_TRANSFER,
+                    ApolloFluidConstants.TRANSFER,
                     transaction
             );
             transaction.commit();
