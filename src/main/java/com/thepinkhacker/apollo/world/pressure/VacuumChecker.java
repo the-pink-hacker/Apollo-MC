@@ -28,7 +28,7 @@ public abstract class VacuumChecker {
         boolean airtight = true;
 
         for (ItemStack item : items) {
-            if (isArmorAirtight(item)) {
+            if (!isArmorAirtight(item)) {
                 airtight = false;
                 break;
             }
