@@ -2,6 +2,7 @@ package com.thepinkhacker.apollo.resource;
 
 import com.google.gson.Gson;
 import com.thepinkhacker.apollo.Apollo;
+import com.thepinkhacker.apollo.world.dimension.SpaceBody;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.minecraft.resource.ResourceFinder;

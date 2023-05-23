@@ -1,6 +1,5 @@
 package com.thepinkhacker.apollo.world.dimension;
 
-import com.thepinkhacker.apollo.resource.SpaceBody;
 import net.minecraft.block.Block;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
