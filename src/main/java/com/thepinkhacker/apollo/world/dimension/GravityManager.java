@@ -1,6 +1,9 @@
 package com.thepinkhacker.apollo.world.dimension;
 
+import com.thepinkhacker.apollo.Apollo;
 import com.thepinkhacker.apollo.item.ApolloArmorMaterials;
+import com.thepinkhacker.apollo.resource.SpaceBody;
+import com.thepinkhacker.apollo.resource.SpaceBodyManager;
 import com.thepinkhacker.apollo.world.ApolloWorlds;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
@@ -12,10 +15,10 @@ public class GravityManager {
     public static final double LOW = 0.165d;
 
     public static double getGravityMultiplier(World world) {
-        if (world.getRegistryKey() == ApolloWorlds.MOON) {
-            return LOW;
-        }
-        return DEFAULT;
+        return SpaceBodyManager
+                .getInstance()
+                .getSpaceBodyOrDefault(world)
+                .gravity();
     }
 
     public static double getGravityMultiplier(World world, Iterable<ItemStack> armor) {
