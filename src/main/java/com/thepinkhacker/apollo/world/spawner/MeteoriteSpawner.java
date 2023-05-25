@@ -2,21 +2,25 @@ package com.thepinkhacker.apollo.world.spawner;
 
 import com.thepinkhacker.apollo.entity.ApolloEntityTypes;
 import com.thepinkhacker.apollo.entity.projectile.MeteoriteEntity;
-import com.thepinkhacker.apollo.registry.tag.ApolloDimensionTypeTags;
+import com.thepinkhacker.apollo.resource.SpaceBodyManager;
 import com.thepinkhacker.apollo.world.ApolloGameRules;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.SpawnHelper;
+import net.minecraft.world.World;
 
 public class MeteoriteSpawner implements GenericSpawner {
+    // Minutes * ticks/min
+    private static final int COOLDOWN_MIN = 20 * 1200;
+    private static final int COOLDOWN_MAX = 30 * 1200;
+    private static final float SPEED = 30.0f;
     private int cooldown;
 
     @Override
     public int spawn(ServerWorld world, boolean spawnMonsters, boolean spawnAnimals) {
-        if (!world.getGameRules().getBoolean(ApolloGameRules.DO_METEORITE_LANDINGS)) return 0;
-        if (!world.getDimensionEntry().isIn(ApolloDimensionTypeTags.METEORITE_SPAWNING_WORLDS)) return 0;
+        if (!canSpawn(world)) return 0;
 
         cooldown--;
 
@@ -24,7 +28,7 @@ public class MeteoriteSpawner implements GenericSpawner {
 
         Random random = world.random;
 
-        this.cooldown = random.nextBetween(24_000, 36_000);
+        this.cooldown = random.nextBetween(COOLDOWN_MIN, COOLDOWN_MAX);
 
         ServerPlayerEntity player = world.getRandomAlivePlayer();
 
@@ -39,9 +43,15 @@ public class MeteoriteSpawner implements GenericSpawner {
 
         if (entity == null) return 0;
 
+        // TODO: Randomize yaw and pitch
         entity.refreshPositionAndAngles(offsetPos, 0.0f, 0.0f);
-        entity.setVelocity(0.0f, -1.0f, 0.0f, 30.0f, 30.0f);
+        entity.setVelocity(0.0f, -1.0f, 0.0f, SPEED, 30.0f);
         world.spawnEntityAndPassengers(entity);
         return 1;
+    }
+
+    private boolean canSpawn(World world) {
+        return world.getGameRules().getBoolean(ApolloGameRules.DO_METEORITE_LANDINGS) &&
+                SpaceBodyManager.getInstance().getSpaceBodyOrDefault(world).spawnsMeteorites();
     }
 }

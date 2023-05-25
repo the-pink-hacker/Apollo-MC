@@ -7,12 +7,20 @@ public class SpaceBody {
     private final double gravity;
     private final boolean isAtmosphereVisible;
     private final boolean hasOxygen;
+    private final boolean spawnsMeteorites;
     private final String[] satellites;
 
-    public SpaceBody(double gravity, boolean isAtmosphereVisible, boolean hasOxygen, String[] satellites) {
+    public SpaceBody(
+            double gravity,
+            boolean isAtmosphereVisible,
+            boolean hasOxygen,
+            boolean spawnsMeteorites,
+            String[] satellites
+    ) {
         this.gravity = gravity;
         this.isAtmosphereVisible = isAtmosphereVisible;
         this.hasOxygen = hasOxygen;
+        this.spawnsMeteorites = spawnsMeteorites;
         this.satellites = satellites;
     }
 
@@ -20,7 +28,8 @@ public class SpaceBody {
     public String toString() {
         return "gravity: " + gravity +
                 "\nisAtmosphereVisible: " + isAtmosphereVisible +
-                "\nhasOxygen: " + hasOxygen;
+                "\nhasOxygen: " + hasOxygen +
+                "\nspawnsMeteorites: " + spawnsMeteorites;
     }
 
     public double getGravity() {
@@ -33,6 +42,10 @@ public class SpaceBody {
 
     public boolean hasOxygen() {
         return hasOxygen;
+    }
+
+    public boolean spawnsMeteorites() {
+        return spawnsMeteorites;
     }
 
     public String[] getSatellites() {
