@@ -16,7 +16,7 @@ public class DefaultedSpaceBody extends SpaceBody {
                 true,
                 true,
                 false,
-                new String[] {}
+                new Satellite[] {}
         );
     }
 
