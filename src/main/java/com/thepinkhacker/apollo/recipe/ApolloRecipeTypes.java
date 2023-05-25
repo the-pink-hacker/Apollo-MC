@@ -6,9 +6,8 @@ import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
 
-public class RecipeManager {
+public class ApolloRecipeTypes {
     public static final RecipeType<ShuttleWorkbenchRecipe> SHUTTLE_WORKBENCH_RECIPE_TYPE = registerType("shuttle_workbench");
     public static final RecipeSerializer<ShuttleWorkbenchShapedRecipe> SHUTTLE_WORKBENCH_SHAPED_SERIALIZER = registerSerializer("shuttle_workbench_shaped", new ShuttleWorkbenchShapedRecipe.Serializer());
     public static final RecipeSerializer<ShuttleWorkbenchShapelessRecipe> SHUTTLE_WORKBENCH_SHAPELESS_SERIALIZER = registerSerializer("shuttle_workbench_shapeless", new ShuttleWorkbenchShapelessRecipe.Serializer());

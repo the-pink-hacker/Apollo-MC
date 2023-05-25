@@ -6,6 +6,6 @@ import net.minecraft.recipe.RecipeType;
 public interface ShuttleWorkbenchRecipe extends CraftingRecipe {
     @Override
     default RecipeType<?> getType() {
-        return RecipeManager.SHUTTLE_WORKBENCH_RECIPE_TYPE;
+        return ApolloRecipeTypes.SHUTTLE_WORKBENCH_RECIPE_TYPE;
     }
 }
