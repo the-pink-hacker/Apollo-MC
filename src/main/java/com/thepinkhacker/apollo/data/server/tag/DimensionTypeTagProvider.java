@@ -17,11 +17,7 @@ public class DimensionTypeTagProvider extends FabricTagProvider<DimensionType> {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        this.getOrCreateTagBuilder(ApolloDimensionTypeTags.EARTH_VISIBLE_WORLDS)
-                .add(ApolloDimensionTypes.MOON);
         this.getOrCreateTagBuilder(ApolloDimensionTypeTags.METEORITE_SPAWNING_WORLDS)
-                .add(ApolloDimensionTypes.MOON);
-        this.getOrCreateTagBuilder(ApolloDimensionTypeTags.ATMOSPHERE_NOT_VISIBLE_WORLDS)
                 .add(ApolloDimensionTypes.MOON);
     }
 }

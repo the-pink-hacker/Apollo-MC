@@ -21,7 +21,6 @@ public abstract class ParticleMixin {
     public float gravityStrength;
 
     // Changes falling speed
-    @SuppressWarnings("unused")
     @Inject(
             method = "tick()V",
             at = @At(
@@ -30,7 +29,6 @@ public abstract class ParticleMixin {
             )
     )
     private void gravityFall(CallbackInfo ci) {
-        this.velocityY += 0.04D * (double)this.gravityStrength;
-        this.velocityY -= 0.04D * (double)this.gravityStrength * GravityManager.getGravityMultiplier(world);
+        this.velocityY += 0.04D * (double)this.gravityStrength - (0.04D * (double)this.gravityStrength * GravityManager.getGravityMultiplier(world));
     }
 }

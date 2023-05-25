@@ -1,22 +1,25 @@
 package com.thepinkhacker.apollo.mixin.client.world;
 
-import com.thepinkhacker.apollo.registry.tag.ApolloDimensionTypeTags;
+import com.thepinkhacker.apollo.resource.SpaceBodyManager;
 import net.minecraft.client.world.ClientWorld;
+import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
+// TODO: Separate Apollo skyboxes from overworld
 @Mixin(ClientWorld.class)
 public abstract class ClientWorldMixin {
-    private static final float NIGHT_ANGLE = 0.5f;
-
     @ModifyVariable(
             method = "method_23787(F)F",
             at = @At("STORE"),
             ordinal = 1
     )
-    private float starBrightness(float f) {
-        return ((ClientWorld)(Object)this).getDimensionEntry().isIn(ApolloDimensionTypeTags.ATMOSPHERE_NOT_VISIBLE_WORLDS) ? NIGHT_ANGLE : f;
+    private float starBrightnessSkyAngle(float skyAngle) {
+        return SpaceBodyManager
+                .getInstance()
+                .getSpaceBodyOrDefault((World)(Object)this)
+                .skyAngle(skyAngle);
     }
 
     @ModifyVariable(
@@ -24,7 +27,10 @@ public abstract class ClientWorldMixin {
             at = @At("STORE"),
             ordinal = 1
     )
-    private float darkSky(float f) {
-        return ((ClientWorld)(Object)this).getDimensionEntry().isIn(ApolloDimensionTypeTags.ATMOSPHERE_NOT_VISIBLE_WORLDS) ? NIGHT_ANGLE : f;
+    private float darkSkyAngle(float skyAngle) {
+        return SpaceBodyManager
+                .getInstance()
+                .getSpaceBodyOrDefault((World)(Object)this)
+                .skyAngle(skyAngle);
     }
 }

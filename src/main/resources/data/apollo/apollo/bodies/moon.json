@@ -1,5 +1,9 @@
 {
-  "gravity": 0.165,
+  "gravity": 2.0,
   "is_atmosphere_visible": false,
-  "has_oxygen": false
+  "has_oxygen": false,
+  "satellites": [
+    "minecraft:textures/environment/sun.png",
+    "apollo:textures/environment/earth.png"
+  ]
 }
