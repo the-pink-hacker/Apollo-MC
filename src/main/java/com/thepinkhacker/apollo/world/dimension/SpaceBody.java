@@ -1,7 +1,7 @@
 package com.thepinkhacker.apollo.world.dimension;
 
-import com.google.common.reflect.TypeToken;
 import com.google.gson.*;
+import com.thepinkhacker.apollo.resource.GsonHelper;
 import net.minecraft.util.Identifier;
 
 import java.lang.reflect.Type;
@@ -75,10 +75,6 @@ public class SpaceBody {
         gsonBuilder.registerTypeAdapter(Identifier.class, new Identifier.Serializer());
     }
 
-    private static Type getType(Class<?> classOf) {
-        return TypeToken.of(classOf).getType();
-    }
-
     private static class Deserializer implements JsonDeserializer<SpaceBody> {
         @Override
         public SpaceBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
@@ -90,7 +86,7 @@ public class SpaceBody {
             List<JsonElement> satellites = object.getAsJsonArray("satellites").asList();
             Satellite[] parsedSatellites = new Satellite[satellites.size()];
             for (int i = 0; i < satellites.size(); i++) {
-                parsedSatellites[i] = context.deserialize(satellites.get(i), getType(Satellite.class));
+                parsedSatellites[i] = context.deserialize(satellites.get(i), GsonHelper.getType(Satellite.class));
             }
             return new SpaceBody(
                     gravity,
@@ -102,17 +98,18 @@ public class SpaceBody {
         }
     }
 
-    public record Satellite(Identifier texture) {
-        public static Satellite fromShortTexture(Identifier texture) {
-            return new Satellite(texture.withPrefixedPath("textures/"));
+    public record Satellite(Identifier texture, boolean fixedOrbit) {
+        public static Satellite fromShortTexture(Identifier texture, boolean fixedOrbit) {
+            return new Satellite(texture.withPrefixedPath("textures/"), fixedOrbit);
         }
 
         private static class Deserializer implements JsonDeserializer<Satellite> {
             @Override
             public Satellite deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
                 JsonObject object = jsonElement.getAsJsonObject();
-                Identifier texture = context.deserialize(object.get("texture"), getType(Identifier.class));
-                return Satellite.fromShortTexture(texture);
+                Identifier texture = context.deserialize(object.get("texture"), GsonHelper.getType(Identifier.class));
+                boolean fixedOrbit = object.get("fixedOrbit").getAsBoolean();
+                return Satellite.fromShortTexture(texture, fixedOrbit);
             }
         }
     }
