@@ -1,0 +1,10 @@
+{
+  "music.moon": {
+    "sounds": [
+      {
+        "name": "apollo:music/moon/journey_to_venus",
+        "stream": true
+      }
+    ]
+  }
+}

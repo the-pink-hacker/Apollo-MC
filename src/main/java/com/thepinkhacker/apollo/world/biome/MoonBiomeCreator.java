@@ -1,6 +1,8 @@
 package com.thepinkhacker.apollo.world.biome;
 
+import com.thepinkhacker.apollo.sound.ApolloSoundEvents;
 import com.thepinkhacker.apollo.world.feature.ApolloOrePlacedFeatures;
+import net.minecraft.client.sound.MusicType;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.sound.MusicSound;
@@ -29,7 +31,7 @@ public class MoonBiomeCreator {
                 0.0f,
                 new SpawnSettings.Builder(),
                 lookupBackedBuilder,
-                null
+                MusicType.createIngameMusic(ApolloSoundEvents.MUSIC_MOON)
         );
     }
 
