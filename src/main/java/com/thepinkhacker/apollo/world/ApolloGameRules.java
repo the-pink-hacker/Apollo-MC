@@ -21,6 +21,6 @@ public class ApolloGameRules {
     public static void register() {}
 
     public static CustomGameRuleCategory registerCategory(String id) {
-        return new CustomGameRuleCategory(new Identifier(Apollo.MOD_ID, id), Text.translatable("gamerule.category." + id).formatted(Formatting.YELLOW, Formatting.BOLD));
+        return new CustomGameRuleCategory(Apollo.getIdentifier(id), Text.translatable("gamerule.category." + id).formatted(Formatting.YELLOW, Formatting.BOLD));
     }
 }

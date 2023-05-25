@@ -12,6 +12,6 @@ public class ApolloBlockTags {
     public static final TagKey<Block> LUNAR_ORE_REPLACEABLES = register("lunar_ore_replaceables");
     
     private static TagKey<Block> register(String id) {
-        return TagKey.of(RegistryKeys.BLOCK, new Identifier(Apollo.MOD_ID, id));
+        return TagKey.of(RegistryKeys.BLOCK, Apollo.getIdentifier(id));
     }
 }

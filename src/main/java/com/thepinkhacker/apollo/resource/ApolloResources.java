@@ -42,7 +42,7 @@ public abstract class ApolloResources {
         return new SimpleSynchronousResourceReloadListener() {
             @Override
             public Identifier getFabricId() {
-                return new Identifier(Apollo.MOD_ID, path);
+                return Apollo.getIdentifier(path);
             }
 
             @Override

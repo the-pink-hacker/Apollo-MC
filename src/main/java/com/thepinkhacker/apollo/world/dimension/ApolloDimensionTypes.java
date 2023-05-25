@@ -15,7 +15,8 @@ import net.minecraft.world.dimension.DimensionType;
 import java.util.OptionalLong;
 
 public class ApolloDimensionTypes {
-    public static final RegistryKey<DimensionType> MOON = RegistryKey.of(RegistryKeys.DIMENSION_TYPE, new Identifier(Apollo.MOD_ID, "moon"));
+    public static final Identifier MOON_ID  = Apollo.getIdentifier("moon");
+    public static final RegistryKey<DimensionType> MOON = of(MOON_ID);
 
     public static void bootstrap(Registerable<DimensionType> registerable) {
         registerable.register(MOON, createType(
@@ -31,7 +32,7 @@ public class ApolloDimensionTypes {
                 256,
                 256,
                 BlockTags.INFINIBURN_OVERWORLD,
-                new Identifier(Apollo.MOD_ID, "moon"),
+               MOON_ID,
                 0.0f,
                 createMonsterSetting(
                         false,
@@ -40,6 +41,10 @@ public class ApolloDimensionTypes {
                         0
                 )
         ));
+    }
+
+    private static RegistryKey<DimensionType> of(Identifier id) {
+        return RegistryKey.of(RegistryKeys.DIMENSION_TYPE, id);
     }
 
     // Only to have argument names show up

@@ -8,16 +8,16 @@ import software.bernie.geckolib.model.GeoModel;
 public class MeteoriteEntityModel extends GeoModel<MeteoriteEntity> {
     @Override
     public Identifier getModelResource(MeteoriteEntity object) {
-        return new Identifier(Apollo.MOD_ID, "geo/entity/meteorite.geo.json");
+        return Apollo.getIdentifier("geo/entity/meteorite.geo.json");
     }
 
     @Override
     public Identifier getTextureResource(MeteoriteEntity object) {
-        return new Identifier(Apollo.MOD_ID, "textures/entity/meteorite.png");
+        return Apollo.getIdentifier("textures/entity/meteorite.png");
     }
 
     @Override
     public Identifier getAnimationResource(MeteoriteEntity animatable) {
-        return new Identifier(Apollo.MOD_ID, "animations/entity/meteorite.animation.json");
+        return Apollo.getIdentifier("animations/entity/meteorite.animation.json");
     }
 }

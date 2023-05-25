@@ -63,7 +63,7 @@ public class ApolloItems {
     }
 
     private static Item registerItem(String id, Item item) {
-        return registerItem(new Identifier(Apollo.MOD_ID, id), item);
+        return registerItem(Apollo.getIdentifier(id), item);
     }
 
     private static Item registerItem(Identifier id, Item item) {

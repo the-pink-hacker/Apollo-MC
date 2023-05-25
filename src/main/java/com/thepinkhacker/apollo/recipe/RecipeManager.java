@@ -18,7 +18,7 @@ public class RecipeManager {
     public static void register() {}
 
     private static <T extends Recipe<?>> RecipeType<T> registerType(String id) {
-        return Registry.register(Registries.RECIPE_TYPE, new Identifier(Apollo.MOD_ID, id), new RecipeType<T>(){
+        return Registry.register(Registries.RECIPE_TYPE, Apollo.getIdentifier(id), new RecipeType<T>(){
             @Override
             public String toString() {
                 return id;
@@ -27,6 +27,6 @@ public class RecipeManager {
     }
 
     private static <S extends RecipeSerializer<T>, T extends Recipe<?>> S registerSerializer(String id, S serializer) {
-        return Registry.register(Registries.RECIPE_SERIALIZER, new Identifier(Apollo.MOD_ID, id), serializer);
+        return Registry.register(Registries.RECIPE_SERIALIZER, Apollo.getIdentifier(id), serializer);
     }
 }

@@ -11,6 +11,6 @@ public class ApolloEntityTypeTags {
     public static final TagKey<EntityType<?>> VACUUM_IMMUNE_CREATURES = register("vacuum_immune_creatures");
 
     private static TagKey<EntityType<?>> register(String id) {
-        return TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier(Apollo.MOD_ID, id));
+        return TagKey.of(RegistryKeys.ENTITY_TYPE, Apollo.getIdentifier(id));
     }
 }

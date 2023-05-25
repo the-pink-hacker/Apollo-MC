@@ -35,6 +35,6 @@ public class ApolloBlocks {
     public static final Block STORAGE_TANK = registerBlock("storage_tank", new StorageTankBlock(FabricBlockSettings.of(Material.METAL).strength(5.0f, 6.0f).requiresTool()));
 
     private static Block registerBlock(String id, Block block) {
-        return Registry.register(Registries.BLOCK, new Identifier(Apollo.MOD_ID, id), block);
+        return Registry.register(Registries.BLOCK, Apollo.getIdentifier(id), block);
     }
 }

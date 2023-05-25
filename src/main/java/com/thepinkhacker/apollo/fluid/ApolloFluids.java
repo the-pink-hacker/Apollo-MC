@@ -28,14 +28,14 @@ public class ApolloFluids {
     @Environment(EnvType.CLIENT)
     private static void registerFluid(FlowableFluid still, FlowableFluid flowable, String still_id, String flowable_id, boolean solid) {
         FluidRenderHandlerRegistry.INSTANCE.register(still, flowable, new SimpleFluidRenderHandler(
-                new Identifier(Apollo.MOD_ID, still_id),
-                new Identifier(Apollo.MOD_ID, flowable_id)
+                Apollo.getIdentifier(still_id),
+                Apollo.getIdentifier(flowable_id)
         ));
 
         BlockRenderLayerMap.INSTANCE.putFluids(solid ? RenderLayer.getSolid() : RenderLayer.getTranslucent(), still, flowable);
     }
 
     private static FlowableFluid register(String id, FlowableFluid fluid) {
-        return Registry.register(Registries.FLUID, new Identifier(Apollo.MOD_ID, id), fluid);
+        return Registry.register(Registries.FLUID, Apollo.getIdentifier(id), fluid);
     }
 }
