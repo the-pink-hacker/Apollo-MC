@@ -5,14 +5,27 @@
   "name": "Apollo",
   "description": "A space mod for Minecraft.",
   "authors": [
-    "Ryan Garrett (ThePinkHacker)"
+    {
+      "name": "Ryan Garrett",
+      "contact": {
+        "email": "ryangar46@gmail.com",
+        "homepage": "https://thepinkhacker.com"
+      }
+    }
+  ],
+  "contributors": [
+    "Keaggyfans (Music)"
   ],
   "contact": {
+    "email": "apollomcmod@gmail.com",
     "homepage": "https://modrinth.com/mod/apollo",
-    "sources": "https://github.com/RyanGar46/Apollo-MC",
+    "sources": "https://github.com/RyanGar46/Apollo-MC.git",
     "issues": "https://github.com/RyanGar46/Apollo-MC/issues"
   },
-  "license": "LGPL-3 except for assets",
+  "license": [
+    "LGPL-3.0-only",
+    "Assets: All Rights Reserved"
+  ],
   "icon": "assets/apollo/textures/misc/icon.png",
   "environment": "*",
   "entrypoints": {
@@ -44,7 +57,7 @@
   "custom": {
     "modmenu": {
       "links": {
-        "link.apollo.website": "https://www.thepinkhacker.com/projects/apollo",
+        "link.apollo.website": "https://thepinkhacker.com/projects/apollo",
         "link.apollo.blog": "https://apollomcmod.tumblr.com",
         "link.apollo.modrinth": "https://modrinth.com/mod/apollo",
         "link.apollo.curseforge": "https://www.curseforge.com/minecraft/mc-mods/apollo"
