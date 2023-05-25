@@ -17,9 +17,8 @@ import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib.GeckoLib;
-import terrablender.api.TerraBlenderApi;
 
-public class Apollo implements ModInitializer, TerraBlenderApi {
+public class Apollo implements ModInitializer {
 	public static final String MOD_ID = "apollo";
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
