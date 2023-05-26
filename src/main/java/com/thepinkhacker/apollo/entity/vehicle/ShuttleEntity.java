@@ -19,17 +19,11 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
-import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.constant.DefaultAnimations;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
 
-public class ShuttleEntity extends MobEntity implements ImplementedInventory, GeoEntity {
+public class ShuttleEntity extends MobEntity implements ImplementedInventory {
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(5, ItemStack.EMPTY);
-    private final AnimatableInstanceCache CACHE = GeckoLibUtil.createInstanceCache(this);
     private static final double THRUST = 0.1d;
     private static final double MAX_SPEED = 10.0d;
 
@@ -57,16 +51,6 @@ public class ShuttleEntity extends MobEntity implements ImplementedInventory, Ge
     @Override
     public boolean canPlayerUse(PlayerEntity player) {
         return true;
-    }
-
-    @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(DefaultAnimations.genericIdleController(this));
-    }
-
-    @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return this.CACHE;
     }
 
     @Override

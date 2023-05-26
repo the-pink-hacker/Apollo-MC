@@ -14,15 +14,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
-import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.constant.DefaultAnimations;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class MeteoriteEntity extends ExplosiveProjectileEntity implements GeoEntity {
-    private final AnimatableInstanceCache CACHE = GeckoLibUtil.createInstanceCache(this);
-
+public class MeteoriteEntity extends ExplosiveProjectileEntity {
     public MeteoriteEntity(EntityType<? extends MeteoriteEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -63,15 +56,5 @@ public class MeteoriteEntity extends ExplosiveProjectileEntity implements GeoEnt
     @Override
     protected boolean isBurning() {
         return false;
-    }
-
-    @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(DefaultAnimations.genericIdleController(this));
-    }
-
-    @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return this.CACHE;
     }
 }
