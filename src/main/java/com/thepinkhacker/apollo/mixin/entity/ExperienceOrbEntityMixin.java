@@ -19,6 +19,6 @@ public abstract class ExperienceOrbEntityMixin {
             index = 1
     )
     private double gravityFall(double y) {
-        return y * GravityManager.getGravityMultiplier(((ExperienceOrbEntity)(Object)this).world);
+        return y * GravityManager.getGravityMultiplier(((ExperienceOrbEntity)(Object)this).getWorld());
     }
 }

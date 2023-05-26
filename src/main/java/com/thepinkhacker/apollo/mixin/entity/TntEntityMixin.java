@@ -19,6 +19,6 @@ public abstract class TntEntityMixin {
             index = 1
     )
     private double gravityFall(double y) {
-        return y * GravityManager.getGravityMultiplier(((TntEntity)(Object)this).world);
+        return y * GravityManager.getGravityMultiplier(((TntEntity)(Object)this).getWorld());
     }
 }

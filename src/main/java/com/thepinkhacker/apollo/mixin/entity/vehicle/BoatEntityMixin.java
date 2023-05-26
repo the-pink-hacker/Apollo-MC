@@ -16,6 +16,6 @@ public abstract class BoatEntityMixin {
             ordinal = 0
     )
     private double gravityFall(double y) {
-        return y * GravityManager.getGravityMultiplier(((BoatEntity)(Object)this).world);
+        return y * GravityManager.getGravityMultiplier(((BoatEntity)(Object)this).getWorld());
     }
 }

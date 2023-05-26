@@ -16,16 +16,16 @@ public abstract class ServerPlayerEntityMixin extends LivingEntityMixin {
             at = @At("TAIL")
     )
     private void vacuumTick(CallbackInfo info) {
-        if (!VacuumChecker.checkForVacuum(((ServerPlayerEntity)(Object)this).world, (ServerPlayerEntity)(Object)this)) return;
+        if (!VacuumChecker.checkForVacuum(((ServerPlayerEntity)(Object)this).getWorld(), (ServerPlayerEntity)(Object)this)) return;
         if (VacuumChecker.isArmorCollectionAirtight(((ServerPlayerEntity)(Object)this).getArmorItems())) return;
 
-        apolloVacuumDamage(((ServerPlayerEntity)(Object)this).world);
+        apolloVacuumDamage(((ServerPlayerEntity)(Object)this).getWorld());
     }
 
     @Override
     protected void apolloVacuumDamage(World world) {
         if (((ServerPlayerEntity)(Object)this).interactionManager.getGameMode().isSurvivalLike()) {
-            super.apolloVacuumDamage(((ServerPlayerEntity)(Object)this).world);
+            super.apolloVacuumDamage(((ServerPlayerEntity)(Object)this).getWorld());
         }
     }
 }

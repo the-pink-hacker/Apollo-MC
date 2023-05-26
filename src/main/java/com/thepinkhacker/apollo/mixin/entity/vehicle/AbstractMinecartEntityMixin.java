@@ -19,6 +19,6 @@ public abstract class AbstractMinecartEntityMixin {
             index = 1
     )
     private double gravityFall(double d) {
-        return d * GravityManager.getGravityMultiplier(((AbstractMinecartEntity)(Object)this).world);
+        return d * GravityManager.getGravityMultiplier(((AbstractMinecartEntity)(Object)this).getWorld());
     }
 }

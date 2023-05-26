@@ -75,7 +75,7 @@ public class ShuttleEntity extends MobEntity implements ImplementedInventory, Ge
             return ActionResult.PASS;
         }
 
-        if (!world.isClient) {
+        if (!getWorld().isClient) {
             return player.startRiding(this) ? ActionResult.CONSUME : ActionResult.PASS;
         }
 
@@ -98,13 +98,13 @@ public class ShuttleEntity extends MobEntity implements ImplementedInventory, Ge
                 this.velocityDirty = true;
 
                 // TODO: Could get teleported above the escape height
-                int escapeHeight = this.world.getGameRules().getInt(ApolloGameRules.SHUTTLE_ESCAPE_HEIGHT);
+                int escapeHeight = this.getWorld().getGameRules().getInt(ApolloGameRules.SHUTTLE_ESCAPE_HEIGHT);
 
                 if (this.getBlockY() > escapeHeight) {
-                    if (this.world instanceof ServerWorld serverWorld) {
+                    if (this.getWorld() instanceof ServerWorld serverWorld) {
                         // If at the moon, go to the overworld
                         // If no at the moon, go to the moon
-                        RegistryKey<World> destination = this.world.getRegistryKey() == ApolloWorlds.MOON ? World.OVERWORLD : ApolloWorlds.MOON;
+                        RegistryKey<World> destination = this.getWorld().getRegistryKey() == ApolloWorlds.MOON ? World.OVERWORLD : ApolloWorlds.MOON;
                         this.travelToPlanet(serverWorld.getServer().getWorld(destination), escapeHeight);
                     }
                 }
