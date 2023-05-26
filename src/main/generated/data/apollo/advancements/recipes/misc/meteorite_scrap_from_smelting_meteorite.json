@@ -30,5 +30,6 @@
     "recipes": [
       "minecraft:meteorite_scrap_from_smelting_meteorite"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

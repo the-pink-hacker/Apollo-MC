@@ -16,18 +16,28 @@ public class BlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        /* === Apollo === */
+        configureApollo(arg);
+        configureMinecraft(arg);
+    }
+
+    private void configureApollo(RegistryWrapper.WrapperLookup lookup) {
         this.getOrCreateTagBuilder(ApolloBlockTags.FLUID_PIPE_CONNECTABLE_BLOCKS)
                 .add(ApolloBlocks.FLUID_PIPE)
                 .add(ApolloBlocks.FLUID_VALVE_PIPE)
                 .add(ApolloBlocks.OIL_REFINERY)
                 .add(ApolloBlocks.STORAGE_TANK);
+
         this.getOrCreateTagBuilder(ApolloBlockTags.LAUNCHPADS)
                 .add(ApolloBlocks.LAUNCHPAD);
+
         this.getOrCreateTagBuilder(ApolloBlockTags.LUNAR_ORE_REPLACEABLES)
                 .add(ApolloBlocks.LUNAR_STONE);
 
-        /* === Minecraft === */
+        this.getOrCreateTagBuilder(ApolloBlockTags.INFINIBURN_MOON)
+                .forceAddTag(BlockTags.INFINIBURN_OVERWORLD);
+    }
+
+    private void configureMinecraft(RegistryWrapper.WrapperLookup lookup) {
         this.getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ApolloBlocks.FLUID_PIPE)
                 .add(ApolloBlocks.FLUID_VALVE_PIPE)
@@ -41,12 +51,15 @@ public class BlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ApolloBlocks.OIL_REFINERY)
                 .add(ApolloBlocks.REINFORCED_IRON_BLOCK)
                 .add(ApolloBlocks.SHUTTLE_WORKBENCH);
+
         this.getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
                 .add(ApolloBlocks.LUNAR_DUST)
                 .add(ApolloBlocks.LUNAR_SOIL);
+
         this.getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ApolloBlocks.METEORITE)
                 .add(ApolloBlocks.REINFORCED_IRON_BLOCK);
+
         this.getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(ApolloBlocks.FLUID_PIPE)
                 .add(ApolloBlocks.FLUID_VALVE_PIPE)

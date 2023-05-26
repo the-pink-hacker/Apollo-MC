@@ -1,11 +1,11 @@
 package com.thepinkhacker.apollo.world.dimension;
 
 import com.thepinkhacker.apollo.Apollo;
+import com.thepinkhacker.apollo.registry.tag.ApolloBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.IntProvider;
@@ -31,8 +31,8 @@ public class ApolloDimensionTypes {
                 0,
                 256,
                 256,
-                BlockTags.INFINIBURN_OVERWORLD,
-               MOON_ID,
+                ApolloBlockTags.INFINIBURN_MOON,
+                MOON_ID,
                 0.0f,
                 createMonsterSetting(
                         false,
