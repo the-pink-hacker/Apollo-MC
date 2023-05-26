@@ -4,7 +4,6 @@ import com.thepinkhacker.apollo.Apollo;
 import net.minecraft.entity.EntityType;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
 
 public class ApolloEntityTypeTags {
     public static final TagKey<EntityType<?>> SHUTTLES = register("shuttles");

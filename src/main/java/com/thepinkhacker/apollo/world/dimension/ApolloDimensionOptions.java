@@ -1,6 +1,5 @@
 package com.thepinkhacker.apollo.world.dimension;
 
-import com.thepinkhacker.apollo.Apollo;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;

@@ -13,7 +13,6 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
 
 public class ApolloBlockEntityTypes {
     public static final BlockEntityType<FluidPipeBlockEntity> FLUID_PIPE = of(

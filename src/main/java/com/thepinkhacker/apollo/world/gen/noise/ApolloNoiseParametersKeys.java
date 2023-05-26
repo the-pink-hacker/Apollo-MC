@@ -3,7 +3,6 @@ package com.thepinkhacker.apollo.world.gen.noise;
 import com.thepinkhacker.apollo.Apollo;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.noise.DoublePerlinNoiseSampler;
 
 public class ApolloNoiseParametersKeys {

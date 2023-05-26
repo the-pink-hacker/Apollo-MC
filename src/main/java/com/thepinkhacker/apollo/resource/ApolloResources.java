@@ -1,6 +1,5 @@
 package com.thepinkhacker.apollo.resource;
 
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thepinkhacker.apollo.Apollo;
 import com.thepinkhacker.apollo.world.dimension.SpaceBody;

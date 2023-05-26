@@ -4,7 +4,6 @@ import com.thepinkhacker.apollo.Apollo;
 import net.minecraft.block.Block;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
 
 public class ApolloBlockTags {
     public static final TagKey<Block> FLUID_PIPE_CONNECTABLE_BLOCKS = register("fluid_pipe_connectable_blocks");
