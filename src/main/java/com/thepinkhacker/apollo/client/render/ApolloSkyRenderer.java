@@ -19,8 +19,7 @@ public class ApolloSkyRenderer {
         RenderSystem.enableBlend();
         RenderSystem.depthMask(false);
         resetSky(
-                renderer.darkSkyBuffer,
-                renderer.darkSkyBuffer,
+                renderer,
                 matrices,
                 projectionMatrix,
                 camera
@@ -45,15 +44,14 @@ public class ApolloSkyRenderer {
     }
 
     private static void resetSky(
-            VertexBuffer darkSkyBuffer,
-            VertexBuffer lightSkyBuffer,
+            WorldRenderer renderer,
             MatrixStack matrices,
             Matrix4f projectionMatrix,
             Camera camera
     ) {
         resetFog(camera);
         setSkyColor(
-                darkSkyBuffer,
+                renderer.darkSkyBuffer,
                 matrices,
                 projectionMatrix,
                 1.0f,
@@ -61,7 +59,7 @@ public class ApolloSkyRenderer {
                 1.0f
         );
         setSkyColor(
-                lightSkyBuffer,
+                renderer.lightSkyBuffer,
                 matrices,
                 projectionMatrix,
                 1.0f,
@@ -70,7 +68,14 @@ public class ApolloSkyRenderer {
         );
     }
 
-    private static void setSkyColor(VertexBuffer skyBuffer, MatrixStack matrices, Matrix4f projectionMatrix, float red, float green, float blue) {
+    private static void setSkyColor(
+            VertexBuffer skyBuffer,
+            MatrixStack matrices,
+            Matrix4f projectionMatrix,
+            float red,
+            float green,
+            float blue
+    ) {
         RenderSystem.setShaderColor(red, green, blue, 1.0f);
         skyBuffer.bind();
         skyBuffer.draw(
