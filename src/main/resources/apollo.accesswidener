@@ -15,4 +15,7 @@ accessible field net/minecraft/screen/CraftingScreenHandler result Lnet/minecraf
 accessible field net/minecraft/screen/CraftingScreenHandler context Lnet/minecraft/screen/ScreenHandlerContext;
 accessible field net/minecraft/screen/CraftingScreenHandler player Lnet/minecraft/entity/player/PlayerEntity;
 
+accessible field net/minecraft/client/render/WorldRenderer darkSkyBuffer Lnet/minecraft/client/gl/VertexBuffer;
+accessible field net/minecraft/client/render/WorldRenderer lightSkyBuffer Lnet/minecraft/client/gl/VertexBuffer;
+
 extendable class net/minecraft/world/dimension/DimensionType
