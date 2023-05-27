@@ -90,9 +90,9 @@ public class SpaceBody {
         }
     }
 
-    public record Satellite(Identifier texture, boolean fixedOrbit) {
-        public static Satellite fromShortTexture(Identifier texture, boolean fixedOrbit) {
-            return new Satellite(texture.withPrefixedPath("textures/"), fixedOrbit);
+    public record Satellite(Identifier texture, boolean fixedOrbit, float scale) {
+        public static Satellite fromShortTexture(Identifier texture, boolean fixedOrbit, float scale) {
+            return new Satellite(texture.withPrefixedPath("textures/"), fixedOrbit, scale);
         }
 
         private static class Deserializer implements JsonDeserializer<Satellite> {
@@ -101,7 +101,8 @@ public class SpaceBody {
                 JsonObject object = jsonElement.getAsJsonObject();
                 Identifier texture = context.deserialize(object.get("texture"), GsonHelper.getType(Identifier.class));
                 boolean fixedOrbit = object.get("fixedOrbit").getAsBoolean();
-                return Satellite.fromShortTexture(texture, fixedOrbit);
+                float scale = object.get("scale").getAsFloat();
+                return Satellite.fromShortTexture(texture, fixedOrbit, scale);
             }
         }
     }
