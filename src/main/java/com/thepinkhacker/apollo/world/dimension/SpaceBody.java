@@ -105,12 +105,11 @@ public class SpaceBody {
                 Identifier texture = context.deserialize(object.get("texture"), GsonHelper.getType(Identifier.class));
                 boolean fixedOrbit = helper.getOptionalBoolean("fixed").orElse(false);
                 float scale = helper.getOptionalFloat("scale").orElse(1.0f);
-                JsonObject phases = object.get("phases").getAsJsonObject();
-                Vector2i parsedPhases = new Vector2i(
-                        phases.get("x").getAsInt(),
-                        phases.get("y").getAsInt()
-                );
-                return Satellite.fromShortTexture(texture, fixedOrbit, scale, parsedPhases);
+                Vector2i phases = helper.getOptionalObject("phases").map(phasesObject -> new Vector2i(
+                        phasesObject.get("x").getAsInt(),
+                        phasesObject.get("y").getAsInt()
+                )).orElse(new Vector2i(1, 1));
+                return Satellite.fromShortTexture(texture, fixedOrbit, scale, phases);
             }
         }
     }

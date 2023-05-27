@@ -35,6 +35,15 @@ public class GsonHelper {
         return getOptional(key).map(JsonElement::getAsDouble);
     }
 
+
+    public Optional<JsonObject> getOptionalObject(String key) {
+        return getOptional(key).map(JsonElement::getAsJsonObject);
+    }
+
+    public Optional<GsonHelper> getOptionalHelper(String key) {
+        return getOptionalObject(key).map(GsonHelper::new);
+    }
+
     public JsonObject getObject() {
         return object;
     }

@@ -6,12 +6,7 @@
   "satellites": [
     {
       "texture": "minecraft:environment/sun.png",
-      "fixedOrbit": false,
-      "scale": 30.0,
-      "phases": {
-        "x": 1,
-        "y": 1
-      }
+      "scale": 30.0
     },
     {
       "texture": "apollo:environment/earth.png",
