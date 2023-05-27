@@ -65,10 +65,12 @@ public class ApolloSkyRenderer {
         Matrix4f matrix = matrices.peek().getPositionMatrix();
         float scale = satellite.scale();
         bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_TEXTURE);
+        int rows = satellite.phases().y;
+        int columns = satellite.phases().x;
         bufferBuilder.vertex(matrix, -scale, SATELLITE_Y_OFFSET, -scale).texture(0.0f, 0.0f).next();
-        bufferBuilder.vertex(matrix, scale, SATELLITE_Y_OFFSET, -scale).texture(1.0f, 0.0f).next();
-        bufferBuilder.vertex(matrix, scale, SATELLITE_Y_OFFSET, scale).texture(1.0f, 1.0f).next();
-        bufferBuilder.vertex(matrix, -scale, SATELLITE_Y_OFFSET, scale).texture(0.0f, 1.0f).next();
+        bufferBuilder.vertex(matrix, scale, SATELLITE_Y_OFFSET, -scale).texture(1.0f / columns, 0.0f).next();
+        bufferBuilder.vertex(matrix, scale, SATELLITE_Y_OFFSET, scale).texture(1.0f / columns, 1.0f / rows).next();
+        bufferBuilder.vertex(matrix, -scale, SATELLITE_Y_OFFSET, scale).texture(0.0f, 1.0f / rows).next();
         BufferRenderer.drawWithGlobalProgram(bufferBuilder.end());
     }
 
