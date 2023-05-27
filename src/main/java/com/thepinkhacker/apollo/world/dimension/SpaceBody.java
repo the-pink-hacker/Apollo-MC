@@ -61,14 +61,6 @@ public class SpaceBody {
         return true;
     }
 
-    public float skyAngle(float angle) {
-        return isAtmosphereVisible ? angle : NIGHT_ANGLE;
-    }
-
-    public Identifier getSecondaryOrbitingBody(Identifier texture) {
-        return isAtmosphereVisible ? texture : satellites[1].texture;
-    }
-
     public static void registerGsonType(GsonBuilder gsonBuilder) {
         gsonBuilder.registerTypeAdapter(SpaceBody.class, new Deserializer());
         gsonBuilder.registerTypeAdapter(Satellite.class, new Satellite.Deserializer());

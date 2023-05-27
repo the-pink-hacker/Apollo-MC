@@ -27,14 +27,4 @@ public class DefaultedSpaceBody extends SpaceBody {
     public static DefaultedSpaceBody getDefault() {
         return DEFAULT;
     }
-
-    @Override
-    public float skyAngle(float angle) {
-        return angle;
-    }
-
-    @Override
-    public Identifier getSecondaryOrbitingBody(Identifier texture) {
-        return texture;
-    }
 }
