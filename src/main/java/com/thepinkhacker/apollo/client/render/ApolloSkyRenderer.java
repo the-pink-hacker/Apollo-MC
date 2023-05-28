@@ -46,7 +46,7 @@ public class ApolloSkyRenderer {
         SpaceBody spaceBody = SpaceBodyManager.getInstance().getSpaceBodyOrDefault(renderer.world);
         float skyAngleDegrees = renderer.world.getSkyAngle(tickDelta) * 360.0f;
 
-        for (SpaceBody.Satellite satellite : spaceBody.getSatellites()) {
+        for (SpaceBody.Satellite satellite : spaceBody.getAllSatellites()) {
             renderSatellite(satellite, matrices, skyAngleDegrees);
         }
 
