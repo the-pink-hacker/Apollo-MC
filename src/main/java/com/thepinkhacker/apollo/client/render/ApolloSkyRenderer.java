@@ -39,6 +39,13 @@ public class ApolloSkyRenderer {
                 renderer.world.getSkyColor(camera.getPos(), tickDelta)
         );
 
+        // Stars
+        // TODO: Stars randomly stop rendering
+        setShaderColorWhite();
+        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
+        setSkyColor(renderer.starsBuffer, matrices, projectionMatrix);
+
+
         // Render satellites
         RenderSystem.blendFuncSeparate(
                 GlStateManager.SrcFactor.SRC_ALPHA,
@@ -48,7 +55,6 @@ public class ApolloSkyRenderer {
         );
         matrices.push();
         setShaderColorWhite();
-        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
 
         for (SpaceBody.Satellite satellite : spaceBody.getAllSatellites()) {
             renderSatellite(satellite, renderer, matrices);
@@ -149,7 +155,7 @@ public class ApolloSkyRenderer {
         BackgroundRenderer.applyFog(
                 camera,
                 BackgroundRenderer.FogType.FOG_TERRAIN,
-                0.0f,
+                Float.POSITIVE_INFINITY,
                 false,
                 0
         );
@@ -185,6 +191,14 @@ public class ApolloSkyRenderer {
             Vec3d color
     ) {
         setShaderColorOpaque(color);
+        setSkyColor(skyBuffer, matrices, projectionMatrix);
+    }
+
+    private static void setSkyColor(
+            VertexBuffer skyBuffer,
+            MatrixStack matrices,
+            Matrix4f projectionMatrix
+    ) {
         skyBuffer.bind();
         skyBuffer.draw(
                 matrices.peek().getPositionMatrix(),
