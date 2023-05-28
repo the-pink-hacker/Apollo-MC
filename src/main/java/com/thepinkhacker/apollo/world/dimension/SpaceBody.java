@@ -114,19 +114,23 @@ public class SpaceBody {
                 JsonObject object = jsonElement.getAsJsonObject();
                 GsonHelper helper = new GsonHelper(object);
                 Identifier texture = context.deserialize(object.get("texture"), GsonHelper.getType(Identifier.class));
-                boolean fixedOrbit = helper.getOptionalBoolean("fixedOrbit").orElse(false);
                 float scale = helper.getOptionalFloat("scale").orElse(1.0f);
                 Vector2i phases = helper.getDefaultVector2I("phases", 1, 1);
 
                 Orbit orbit = helper.getOptionalHelper("orbit").map(orbitHelper -> new Orbit(
                         orbitHelper.getOptionalBoolean("fixed").orElse(false),
+                        orbitHelper.getOptionalFloat("speed").orElse(1.0f),
                         orbitHelper.getDefaultVector3F("offset", 0.0f, 0.0f, 0.0f)
-                )).orElse(new Orbit(false, new Vector3f(0.0f, 0.0f, 0.0f)));
+                )).orElse(new Orbit(false, 1.0f, new Vector3f(0.0f, 0.0f, 0.0f)));
 
                 return Satellite.fromShortTexture(texture, scale, phases, orbit);
             }
         }
     }
 
-    public record Orbit(boolean fixed, Vector3f offset) {}
+    // TODO: Complete speed
+    // Speed affects:
+    // [x] Satellite position
+    // [ ] Time of day
+    public record Orbit(boolean fixed, float speed, Vector3f offset) {}
 }

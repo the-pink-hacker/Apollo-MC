@@ -9,10 +9,6 @@ import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.RotationAxis;
 import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-
-import java.util.ArrayList;
 
 public class ApolloSkyRenderer {
     private static final float SATELLITE_Y_OFFSET = 100.0f;
@@ -73,9 +69,10 @@ public class ApolloSkyRenderer {
         Matrix4f matrix = matrices.peek().getPositionMatrix();
 
         boolean fixedOrbit = satellite.orbit().fixed();
+        float speed = satellite.orbit().speed();
         // Offset is negative to make it more intuitive
         // Positive x offset goes in the positive x direction in the world
-        float offsetX = (fixedOrbit ? 0.0f : skyAngleDegrees) - satellite.orbit().offset().x;
+        float offsetX = (fixedOrbit ? 0.0f : skyAngleDegrees * speed) - satellite.orbit().offset().x;
         float offsetY = -satellite.orbit().offset().y + DEFAULT_SATELLITE_ROTATION_DEGREES;
         float offsetZ = -satellite.orbit().offset().z;
 
