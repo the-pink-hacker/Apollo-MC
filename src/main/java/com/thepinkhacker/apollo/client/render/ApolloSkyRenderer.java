@@ -49,7 +49,7 @@ public class ApolloSkyRenderer {
         ArrayList<SpaceBody.Satellite> nonFixedOrbit = new ArrayList<>();
 
         for (SpaceBody.Satellite satellite : spaceBody.getSatellites()) {
-            if (satellite.fixedOrbit()) {
+            if (satellite.orbit().fixed()) {
                 fixedOrbit.add(satellite);
             } else {
                 nonFixedOrbit.add(satellite);
@@ -59,13 +59,13 @@ public class ApolloSkyRenderer {
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90.0F));
 
         for (SpaceBody.Satellite satellite : fixedOrbit) {
-            renderSatellite(satellite, matrices, skyAngleDegrees);
+            renderSatellite(satellite, matrices);
         }
 
         matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(skyAngleDegrees));
 
         for (SpaceBody.Satellite satellite : nonFixedOrbit) {
-            renderSatellite(satellite, matrices, skyAngleDegrees);
+            renderSatellite(satellite, matrices);
         }
 
         RenderSystem.depthMask(true);
@@ -77,8 +77,7 @@ public class ApolloSkyRenderer {
 
     private static void renderSatellite(
             SpaceBody.Satellite satellite,
-            MatrixStack matrices,
-            float skyAngleDegrees
+            MatrixStack matrices
     ) {
         BufferBuilder bufferBuilder = Tessellator.getInstance().getBuffer();
         RenderSystem.setShaderTexture(0, satellite.texture());
