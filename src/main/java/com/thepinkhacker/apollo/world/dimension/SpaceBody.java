@@ -3,12 +3,11 @@ package com.thepinkhacker.apollo.world.dimension;
 import com.google.gson.*;
 import com.thepinkhacker.apollo.resource.GsonHelper;
 import net.minecraft.util.Identifier;
-import org.joml.Vector2f;
 import org.joml.Vector2i;
+import org.joml.Vector3f;
 
 import java.lang.reflect.Type;
 import java.util.List;
-import java.util.Optional;
 
 public class SpaceBody {
     private static final float NIGHT_ANGLE = 0.5f;
@@ -121,13 +120,13 @@ public class SpaceBody {
 
                 Orbit orbit = helper.getOptionalHelper("orbit").map(orbitHelper -> new Orbit(
                         orbitHelper.getOptionalBoolean("fixed").orElse(false),
-                        orbitHelper.getDefaultVector2F("offset", 0.0f, 0.0f)
-                )).orElse(new Orbit(false, new Vector2f(0.0f, 0.0f)));
+                        orbitHelper.getDefaultVector3F("offset", 0.0f, 0.0f, 0.0f)
+                )).orElse(new Orbit(false, new Vector3f(0.0f, 0.0f, 0.0f)));
 
                 return Satellite.fromShortTexture(texture, scale, phases, orbit);
             }
         }
     }
 
-    public record Orbit(boolean fixed, Vector2f offset) {}
+    public record Orbit(boolean fixed, Vector3f offset) {}
 }

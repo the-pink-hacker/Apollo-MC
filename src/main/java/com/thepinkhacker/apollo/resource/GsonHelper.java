@@ -5,6 +5,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.joml.Vector2f;
 import org.joml.Vector2i;
+import org.joml.Vector3f;
+import org.joml.Vector3i;
 
 import java.lang.reflect.Type;
 import java.util.Optional;
@@ -60,6 +62,22 @@ public class GsonHelper {
                 vectorHelper.getOptionalFloat("x").orElse(x),
                 vectorHelper.getOptionalFloat("y").orElse(y)
         )).orElse(new Vector2f(x, y));
+    }
+
+    public Vector3i getDefaultVector3I(String key, int x, int y, int z) {
+        return getOptionalHelper(key).map(vectorHelper -> new Vector3i(
+                vectorHelper.getOptionalInt("x").orElse(x),
+                vectorHelper.getOptionalInt("y").orElse(y),
+                vectorHelper.getOptionalInt("z").orElse(z)
+        )).orElse(new Vector3i(x, y, z));
+    }
+
+    public Vector3f getDefaultVector3F(String key, float x, float y, float z) {
+        return getOptionalHelper(key).map(vectorHelper -> new Vector3f(
+                vectorHelper.getOptionalFloat("x").orElse(x),
+                vectorHelper.getOptionalFloat("y").orElse(y),
+                vectorHelper.getOptionalFloat("z").orElse(z)
+        )).orElse(new Vector3f(x, y, z));
     }
 
     public JsonObject getObject() {
