@@ -95,17 +95,24 @@ public class SpaceBody {
         public SpaceBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
             JsonObject object = jsonElement.getAsJsonObject();
             GsonHelper helper = new GsonHelper(object);
+
             double gravity = helper.getOptionalDouble("gravity").orElse(GravityManager.DEFAULT);
             boolean isAtmosphereVisible = object.get("is_atmosphere_visible").getAsBoolean();
             boolean hasOxygen = object.get("has_oxygen").getAsBoolean();
             boolean spawnsMeteorites = object.get("spawns_meteorites").getAsBoolean();
+
             Type satelliteType = GsonHelper.getType(Satellite.class);
+
+            // Satellites
             Satellite lightProvider = context.deserialize(object.get("light_provider"), satelliteType);
+
             List<JsonElement> satellites = object.getAsJsonArray("satellites").asList();
             Satellite[] parsedSatellites = new Satellite[satellites.size()];
+
             for (int i = 0; i < satellites.size(); i++) {
                 parsedSatellites[i] = context.deserialize(satellites.get(i), satelliteType);
             }
+
             return new SpaceBody(
                     gravity,
                     isAtmosphereVisible,

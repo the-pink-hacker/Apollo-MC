@@ -8,6 +8,7 @@ import net.minecraft.client.gl.VertexBuffer;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.RotationAxis;
+import net.minecraft.util.math.Vec3d;
 import org.joml.Matrix4f;
 
 public class ApolloSkyRenderer {
@@ -25,11 +26,14 @@ public class ApolloSkyRenderer {
         RenderSystem.enableBlend();
         RenderSystem.depthMask(false);
 
+        SpaceBody spaceBody = SpaceBodyManager.getInstance().getSpaceBodyOrDefault(renderer.world);
+
         resetSky(
                 renderer,
                 matrices,
                 projectionMatrix,
-                camera
+                camera,
+                renderer.world.getSkyColor(camera.getPos(), tickDelta)
         );
 
         // Render satellites
@@ -43,7 +47,6 @@ public class ApolloSkyRenderer {
         setShaderColorWhite();
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
 
-        SpaceBody spaceBody = SpaceBodyManager.getInstance().getSpaceBodyOrDefault(renderer.world);
         float skyAngleDegrees = renderer.world.getSkyAngle(tickDelta) * 360.0f;
 
         for (SpaceBody.Satellite satellite : spaceBody.getAllSatellites()) {
@@ -85,6 +88,7 @@ public class ApolloSkyRenderer {
 
         bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_TEXTURE);
 
+        // TODO: Have phases change each day
         float scale = satellite.scale();
         int rows = satellite.phases().y;
         int columns = satellite.phases().x;
@@ -104,13 +108,20 @@ public class ApolloSkyRenderer {
         );
     }
 
+    private static void setShaderColorOpaque(float red, float green, float blue) {
+        RenderSystem.setShaderColor(red, green, blue, 1.0f);
+    }
+
+    private static void setShaderColorOpaque(Vec3d color) {
+        setShaderColorOpaque((float)color.x, (float)color.y, (float)color.z);
+    }
+
     private static void setShaderColorWhite() {
-        RenderSystem.setShaderColor(
-                1.0f,
-                1.0f,
-                1.0f,
-                1.0f
-        );
+        setShaderColorOpaque(1.0f, 1.0f, 1.0f);
+    }
+
+    private static void setShaderColorBlack() {
+        setShaderColorOpaque(0.0f, 0.0f, 0.0f);
     }
 
     /**
@@ -132,24 +143,21 @@ public class ApolloSkyRenderer {
             WorldRenderer renderer,
             MatrixStack matrices,
             Matrix4f projectionMatrix,
-            Camera camera
+            Camera camera,
+            Vec3d color
     ) {
         resetFog(camera);
         setSkyColor(
                 renderer.darkSkyBuffer,
                 matrices,
                 projectionMatrix,
-                1.0f,
-                1.0f,
-                1.0f
+                color
         );
         setSkyColor(
                 renderer.lightSkyBuffer,
                 matrices,
                 projectionMatrix,
-                1.0f,
-                1.0f,
-                1.0f
+                color
         );
     }
 
@@ -157,11 +165,9 @@ public class ApolloSkyRenderer {
             VertexBuffer skyBuffer,
             MatrixStack matrices,
             Matrix4f projectionMatrix,
-            float red,
-            float green,
-            float blue
+            Vec3d color
     ) {
-        RenderSystem.setShaderColor(red, green, blue, 1.0f);
+        setShaderColorOpaque(color);
         skyBuffer.bind();
         skyBuffer.draw(
                 matrices.peek().getPositionMatrix(),

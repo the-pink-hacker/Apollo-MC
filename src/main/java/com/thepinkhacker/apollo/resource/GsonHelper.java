@@ -11,12 +11,7 @@ import org.joml.Vector3i;
 import java.lang.reflect.Type;
 import java.util.Optional;
 
-public class GsonHelper {
-    private final JsonObject object;
-
-    public GsonHelper(JsonObject object) {
-        this.object = object;
-    }
+public record GsonHelper(JsonObject object) {
 
     public static Type getType(Class<?> classOf) {
         return TypeToken.of(classOf).getType();
@@ -28,6 +23,10 @@ public class GsonHelper {
 
     public Optional<Boolean> getOptionalBoolean(String key) {
         return getOptional(key).map(JsonElement::getAsBoolean);
+    }
+
+    public Optional<Byte> getOptionalByte(String key) {
+        return getOptional(key).map(JsonElement::getAsByte);
     }
 
     public Optional<Integer> getOptionalInt(String key) {
@@ -78,9 +77,5 @@ public class GsonHelper {
                 vectorHelper.getOptionalFloat("y").orElse(y),
                 vectorHelper.getOptionalFloat("z").orElse(z)
         )).orElse(new Vector3f(x, y, z));
-    }
-
-    public JsonObject getObject() {
-        return object;
     }
 }

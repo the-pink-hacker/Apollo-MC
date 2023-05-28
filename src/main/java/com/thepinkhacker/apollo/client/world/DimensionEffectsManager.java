@@ -10,7 +10,7 @@ import net.minecraft.util.math.Vec3d;
 
 @Environment(EnvType.CLIENT)
 public class DimensionEffectsManager {
-    public static final Identifier APOLLO = Apollo.getIdentifier("apollo");
+    public static final Identifier APOLLO = Apollo.getIdentifier(Apollo.MOD_ID);
 
     public static void registerClient() {
         Apollo.LOGGER.info("Registering dimension effects");
@@ -32,7 +32,7 @@ public class DimensionEffectsManager {
 
         @Override
         public Vec3d adjustFogColor(Vec3d color, float sunHeight) {
-            return color.multiply(sunHeight * 0.94f + 0.06f, sunHeight * 0.94f + 0.06f, sunHeight * 0.91f + 0.09f);
+            return color;
         }
 
         @Override
