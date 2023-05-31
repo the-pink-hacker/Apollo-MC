@@ -66,6 +66,9 @@ public class SpaceBody {
      * @return All satellites (including light provider)
      */
     public Satellite[] getAllSatellites() {
+        if (satellites == null) return new Satellite[0];
+        if (lightProvider == null) return satellites;
+
         Satellite[] all = new Satellite[satellites.length + 1];
         all[0] = lightProvider;
 
@@ -90,7 +93,7 @@ public class SpaceBody {
         gsonBuilder.registerTypeAdapter(Identifier.class, new Identifier.Serializer());
     }
 
-    private static class Deserializer implements JsonDeserializer<SpaceBody> {
+    private static class Deserializer implements JsonDeserializer<SpaceBody>, JsonSerializer<SpaceBody> {
         @Override
         public SpaceBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
             JsonObject object = jsonElement.getAsJsonObject();
@@ -121,6 +124,13 @@ public class SpaceBody {
                     lightProvider,
                     parsedSatellites
             );
+        }
+
+        @Override
+        public JsonElement serialize(SpaceBody spaceBody, Type type, JsonSerializationContext jsonSerializationContext) {
+            JsonObject object = new JsonObject();
+            object.addProperty("gravity", spaceBody.gravity);
+            return object;
         }
     }
 

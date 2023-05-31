@@ -41,4 +41,8 @@ public class SpaceBodyManager {
     public static SpaceBodyManager getInstance() {
         return INSTANCE;
     }
+
+    public HashMap<Identifier, SpaceBody> getSpaceBodies() {
+        return spaceBodies;
+    }
 }
