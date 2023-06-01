@@ -14,7 +14,8 @@
     "entity.vehicle.AbstractMinecartEntityMixin",
     "entity.vehicle.BoatEntityMixin",
     "server.network.ServerPlayerEntityMixin",
-    "server.world.ServerChunkManagerMixin"
+    "server.world.ServerChunkManagerMixin",
+    "world.WorldMixin"
   ],
   "client": [
     "client.particle.ParticleMixin",
