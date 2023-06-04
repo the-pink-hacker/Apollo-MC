@@ -1,7 +1,5 @@
 package com.thepinkhacker.apollo.world.dimension;
 
-import java.util.Optional;
-
 /**
  * A defaulted space body will only use some properties such as gravity. This is used to improve mod compatibility.
  */

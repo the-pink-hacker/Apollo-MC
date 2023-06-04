@@ -3,7 +3,6 @@ package com.thepinkhacker.apollo.world.dimension;
 import com.google.gson.*;
 import com.thepinkhacker.apollo.resource.GsonHelper;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.JsonHelper;
 import org.joml.Vector2i;
 import org.joml.Vector3f;
 

@@ -1,6 +1,7 @@
 package com.thepinkhacker.apollo.item;
 
 import com.thepinkhacker.apollo.Apollo;
+import com.thepinkhacker.apollo.resource.featuretoggle.ApolloFeatureFlags;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -32,12 +33,16 @@ public abstract class ApolloItemGroups {
                         entries.add(ApolloItems.SPACE_SUIT_CHESTPLATE);
                         entries.add(ApolloItems.SPACE_SUIT_LEGGINGS);
                         entries.add(ApolloItems.SPACE_SUIT_BOOTS);
-                        entries.add(ApolloItems.AIRLOCK_CONTROLLER);
-                        entries.add(ApolloItems.AIRLOCK_FRAME);
+
+                        if (context.enabledFeatures().contains(ApolloFeatureFlags.PRESSURIZATION)) {
+                            entries.add(ApolloItems.AIRLOCK_CONTROLLER);
+                            entries.add(ApolloItems.AIRLOCK_FRAME);
+                            entries.add(ApolloItems.OXYGEN_PLANT);
+                            entries.add(ApolloItems.OXYGEN_PLANT_SEEDS);
+                        }
+
                         entries.add(ApolloItems.LAUNCHPAD);
                         entries.add(ApolloItems.SHUTTLE_WORKBENCH);
-                        entries.add(ApolloItems.OXYGEN_PLANT);
-                        entries.add(ApolloItems.OXYGEN_PLANT_SEEDS);
                     }))
                     .build()
     );
