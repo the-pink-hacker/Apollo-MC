@@ -7,6 +7,7 @@ import com.thepinkhacker.apollo.item.ApolloItems;
 import com.thepinkhacker.apollo.recipe.ApolloRecipeTypes;
 import com.thepinkhacker.apollo.resource.ApolloResources;
 import com.thepinkhacker.apollo.server.ApolloServerEvents;
+import com.thepinkhacker.apollo.server.command.ApolloCommands;
 import com.thepinkhacker.apollo.sound.ApolloSoundEvents;
 import com.thepinkhacker.apollo.stat.ApolloStats;
 import com.thepinkhacker.apollo.world.ApolloGameRules;
@@ -33,6 +34,7 @@ public class Apollo implements ModInitializer {
 		ApolloResources.register();
 		ApolloSoundEvents.register();
 		ApolloServerEvents.register();
+		ApolloCommands.register();
 	}
 
 	public static Identifier getIdentifier(String path) {

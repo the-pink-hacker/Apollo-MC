@@ -11,6 +11,11 @@ public abstract class DayCycleManager {
     private static final long SECONDS_PER_DAY = 60 * MINUTES_PER_SECOND;
     private static final long TICKS_PER_DAY = TICKS_PER_SECOND * SECONDS_PER_DAY;
     private static final long TICKS_PER_QUARTER_DAY = TICKS_PER_DAY / 4;
+    public static final long DAY_TICKS = 1_000L;
+    public static final long NOON_TICKS = TICKS_PER_QUARTER_DAY;
+    public static final long NIGHT_TICKS = 13_000L;
+    public static final long MIDNIGHT_TICKS = TICKS_PER_QUARTER_DAY * 3L;
+
     public static WorldTime getLightProviderTime(long ticks, SpaceBody spaceBody) {
         return WorldTime.ofOrbitTicks(ticks, spaceBody.getLightProvider().getOrbit());
     }
@@ -23,10 +28,6 @@ public abstract class DayCycleManager {
                 .orElse(WorldTime.ofOverworldTicks(ticks));
     }
 
-    public static WorldTime getLightProviderTime(World world) {
-        return getLightProviderTime(world.getLunarTime(), world);
-    }
-
     public static double getSkyAngleDegrees(WorldTime time) {
         double d = MathHelper.fractionalPart((double)time.asTicks() / TICKS_PER_DAY - 0.25d);
         double e = 0.5d - Math.cos(d * Math.PI) / 2.0d;
@@ -34,14 +35,10 @@ public abstract class DayCycleManager {
     }
 
     public static double getSkyAngleDegreesLightProvider(World world) {
-        return getSkyAngleDegrees(getLightProviderTime(world));
+        return getSkyAngleDegrees(getLightProviderTime(world.getLunarTime(), world));
     }
 
     public static class WorldTime {
-        public static final WorldTime DAY = WorldTime.ofOverworldTicks(1_000);
-        public static final WorldTime NOON = WorldTime.ofOverworldTicks(TICKS_PER_QUARTER_DAY);
-        public static final WorldTime NIGHT = WorldTime.ofOverworldTicks(13_000);
-        public static final WorldTime MIDNIGHT = WorldTime.ofOverworldTicks(TICKS_PER_QUARTER_DAY * 3);
         private final long overworldTicks;
 
         private WorldTime(long timeTicks) {
