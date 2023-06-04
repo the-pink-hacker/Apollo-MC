@@ -1,6 +1,7 @@
 package com.thepinkhacker.apollo.resource;
 
 import com.google.common.reflect.TypeToken;
+import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.joml.Vector2f;
@@ -29,8 +30,16 @@ public record GsonHelper(JsonObject object) {
         return getOptional(key).map(JsonElement::getAsByte);
     }
 
+    public Optional<Short> getOptionalShort(String key) {
+        return getOptional(key).map(JsonElement::getAsShort);
+    }
+
     public Optional<Integer> getOptionalInt(String key) {
         return getOptional(key).map(JsonElement::getAsInt);
+    }
+
+    public Optional<Long> getOptionalLong(String key) {
+        return getOptional(key).map(JsonElement::getAsLong);
     }
 
     public Optional<Float> getOptionalFloat(String key) {
@@ -77,5 +86,14 @@ public record GsonHelper(JsonObject object) {
                 vectorHelper.getOptionalFloat("y").orElse(y),
                 vectorHelper.getOptionalFloat("z").orElse(z)
         )).orElse(new Vector3f(x, y, z));
+    }
+
+    public <T> Optional<T> getOptionalDeserialization(JsonDeserializationContext context, Class<T> tClass, String key) {
+        return getOptional(key).map(jsonElement -> context.deserialize(jsonElement, getType(tClass)));
+    }
+
+    @FunctionalInterface
+    public interface JsonObjectFunction {
+        void run(JsonObject object);
     }
 }

@@ -15,18 +15,24 @@ import java.util.HashMap;
 
 public class SyncSpaceBodiesPacket implements FabricPacket {
     private final HashMap<Identifier, SpaceBody> spaceBodies;
+    private final boolean reload;
 
-    public SyncSpaceBodiesPacket(HashMap<Identifier, SpaceBody> spaceBodies) {
+    public SyncSpaceBodiesPacket(HashMap<Identifier, SpaceBody> spaceBodies, boolean reload) {
         this.spaceBodies = spaceBodies;
+        this.reload = reload;
     }
 
     @Override
     public void write(PacketByteBuf buffer) {
         NbtCompound nbt = new NbtCompound();
+
         GsonBuilder gsonBuilder = new GsonBuilder();
         SpaceBody.registerGsonType(gsonBuilder);
         String data = gsonBuilder.create().toJson(spaceBodies);
         nbt.putString("data", data);
+
+        nbt.putBoolean("reload", reload);
+
         buffer.writeNbt(nbt);
     }
 
@@ -37,11 +43,18 @@ public class SyncSpaceBodiesPacket implements FabricPacket {
             SpaceBody.registerGsonType(gsonBuilder);
             return gsonBuilder.create().fromJson(data, new TypeToken<HashMap<Identifier, SpaceBody>>(){});
         }).orElse(new HashMap<>());
-        return new SyncSpaceBodiesPacket(spaceBodies);
+
+        Boolean reload = helper.getOptionalBoolean("reload").orElse(false);
+
+        return new SyncSpaceBodiesPacket(spaceBodies, reload);
     }
 
     public HashMap<Identifier, SpaceBody> getSpaceBodies() {
         return spaceBodies;
+    }
+
+    public boolean shouldReload() {
+        return reload;
     }
 
     @Override

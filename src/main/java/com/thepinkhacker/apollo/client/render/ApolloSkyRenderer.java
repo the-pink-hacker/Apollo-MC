@@ -5,61 +5,159 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.thepinkhacker.apollo.resource.SpaceBodyManager;
 import com.thepinkhacker.apollo.world.dimension.DayCycleManager;
 import com.thepinkhacker.apollo.world.dimension.SpaceBody;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.gl.VertexBuffer;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.client.world.ClientWorld;
 import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.LunarWorldView;
 import org.joml.Matrix4f;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Environment(EnvType.CLIENT)
 public class ApolloSkyRenderer {
     private static final float SATELLITE_Y_OFFSET = 100.0f;
     private static final float DEFAULT_SATELLITE_ROTATION_DEGREES = -90.0f;
     private static final int TICKS_PER_DAY = 20 * 60 * 20;
+    private VertexBuffer starsBuffer = null;
+    private final WorldRenderer renderer;
+    private ClientWorld world;
+    public static final List<ApolloSkyRenderer> INSTANCES = new ArrayList<>();
 
-    public static void render(
-            WorldRenderer renderer,
+    public ApolloSkyRenderer(WorldRenderer renderer) {
+        this.renderer = renderer;
+        this.world = renderer.world;
+        this.setupStars();
+        INSTANCES.add(this);
+    }
+
+    /**
+     * Is called when ever the current world changes or datapacks are reloaded
+     */
+    public void updateSky() {
+        this.world = renderer.world;
+        this.setupStars();
+    }
+
+    private void setupStars() {
+        Tessellator tessellator = Tessellator.getInstance();
+        BufferBuilder bufferBuilder = tessellator.getBuffer();
+        RenderSystem.setShader(GameRenderer::getPositionProgram);
+        if (this.starsBuffer != null) {
+            this.starsBuffer.close();
+        }
+
+        this.starsBuffer = new VertexBuffer(VertexBuffer.Usage.STATIC);
+        BufferBuilder.BuiltBuffer builtBuffer = SpaceBodyManager
+                .getInstance()
+                .getSpaceBody(this.world)
+                .map(spaceBody -> setupStars(
+                        bufferBuilder,
+                        spaceBody.getStarSettings()
+                ))
+                .orElse(renderer.renderStars(bufferBuilder));
+        this.starsBuffer.bind();
+        this.starsBuffer.upload(builtBuffer);
+        VertexBuffer.unbind();
+    }
+
+    private BufferBuilder.BuiltBuffer setupStars(BufferBuilder buffer, SpaceBody.StarSettings settings) {
+        Random random = Random.create(settings.seed());
+        buffer.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION);
+
+        for(int i = 0; i < settings.amount(); ++i) {
+            double d = random.nextFloat() * 2.0f - 1.0f;
+            double e = random.nextFloat() * 2.0f - 1.0f;
+            double f = random.nextFloat() * 2.0f - 1.0f;
+            double g = 0.15f + random.nextFloat() * 0.1f;
+            double h = d * d + e * e + f * f;
+            if (h < 1.0d && h > 0.01d) {
+                h = 1.0d / Math.sqrt(h);
+                d *= h;
+                e *= h;
+                f *= h;
+                double j = d * 100.0;
+                double k = e * 100.0;
+                double l = f * 100.0;
+                double m = Math.atan2(d, f);
+                double n = Math.sin(m);
+                double o = Math.cos(m);
+                double p = Math.atan2(Math.sqrt(d * d + f * f), e);
+                double q = Math.sin(p);
+                double r = Math.cos(p);
+                double s = random.nextDouble() * Math.PI * 2.0;
+                double t = Math.sin(s);
+                double u = Math.cos(s);
+
+                for(int v = 0; v < 4; ++v) {
+                    double w = 0.0;
+                    double x = (double)((v & 2) - 1) * g;
+                    double y = (double)((v + 1 & 2) - 1) * g;
+                    double aa = x * u - y * t;
+                    double ab = y * u + x * t;
+                    double ad = aa * q + w * r;
+                    double ae = w * q - aa * r;
+                    double af = ae * n - ab * o;
+                    double ah = ab * n + ae * o;
+                    buffer.vertex(j + af, k + ad, l + ah).next();
+                }
+            }
+        }
+
+        return buffer.end();
+    }
+
+    public void render(
             MatrixStack matrices,
             Matrix4f projectionMatrix,
             float tickDelta,
             Camera camera
     ) {
+        if (renderer.world != world) updateSky();
+        if (world == null) return;
+
         // Setup
         RenderSystem.enableBlend();
         RenderSystem.depthMask(false);
 
-        SpaceBody spaceBody = SpaceBodyManager.getInstance().getSpaceBodyOrDefault(renderer.world);
+        SpaceBody spaceBody = SpaceBodyManager.getInstance().getSpaceBodyOrDefault(this.world);
 
         resetSky(
-                renderer,
                 matrices,
                 projectionMatrix,
                 camera,
-                renderer.world.getSkyColor(camera.getPos(), tickDelta)
+                this.world.getSkyColor(camera.getPos(), tickDelta)
         );
 
-        // Stars
-        // TODO: Stars randomly stop rendering
-        setShaderColorWhite();
-        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
-        setSkyColor(renderer.starsBuffer, matrices, projectionMatrix);
-
-
-        // Render satellites
         RenderSystem.blendFuncSeparate(
                 GlStateManager.SrcFactor.SRC_ALPHA,
                 GlStateManager.DstFactor.ONE,
                 GlStateManager.SrcFactor.ONE,
                 GlStateManager.DstFactor.ZERO
         );
-        matrices.push();
-        setShaderColorWhite();
 
-        DayCycleManager.WorldTime worldTime = DayCycleManager.getLightProviderTime(renderer.world);
+        // Stars
+        // TODO: Implement day cycle for stars
+        if (spaceBody.getStarSettings().display()) {
+            setShaderColorWhite();
+            setSkyColor(starsBuffer, matrices, projectionMatrix);
+        }
+
+        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
+
+        // Render satellites
+        matrices.push();
+
+        DayCycleManager.WorldTime worldTime = DayCycleManager.getLightProviderTime(this.world);
 
         for (SpaceBody.Satellite satellite : spaceBody.getAllSatellites()) {
-            renderSatellite(satellite, renderer, matrices, worldTime);
+            renderSatellite(satellite, matrices, worldTime);
         }
 
         // Reset
@@ -71,9 +169,8 @@ public class ApolloSkyRenderer {
     }
 
     // TODO: Have the order of the satellites affect which one is in front of which
-    private static void renderSatellite(
+    private void renderSatellite(
             SpaceBody.Satellite satellite,
-            WorldRenderer renderer,
             MatrixStack matrices,
             DayCycleManager.WorldTime worldTime
     ) {
@@ -106,7 +203,7 @@ public class ApolloSkyRenderer {
         float scale = satellite.getScale();
         int phaseRows = satellite.getPhases().y;
         int phaseColumns = satellite.getPhases().x;
-        int phaseIndex = getPhase(renderer.world, phaseRows * phaseColumns);
+        int phaseIndex = getPhase(this.world, phaseRows * phaseColumns);
         int row = phaseIndex / phaseColumns;
         int column = phaseIndex % phaseColumns;
         float rowLow = (float)row / phaseRows;
@@ -164,8 +261,7 @@ public class ApolloSkyRenderer {
         RenderSystem.setShaderFogColor(0.0f, 0.0f, 0.0f);
     }
 
-    private static void resetSky(
-            WorldRenderer renderer,
+    private void resetSky(
             MatrixStack matrices,
             Matrix4f projectionMatrix,
             Camera camera,

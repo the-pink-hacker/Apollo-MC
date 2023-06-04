@@ -3,6 +3,13 @@
   "is_atmosphere_visible": false,
   "has_oxygen": false,
   "spawns_meteorites": true,
+  "star_settings": {
+    "display": true,
+    "time": {
+      "start": 0.0,
+      "end": 1.0
+    }
+  },
   "light_provider": {
     "texture": "minecraft:environment/sun.png",
     "scale": 30.0,

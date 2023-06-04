@@ -18,6 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 @Mixin(WorldRenderer.class)
 public abstract class WorldRendererMixin {
     @Shadow @Final private MinecraftClient client;
+    private final ApolloSkyRenderer apolloSkyRenderer = new ApolloSkyRenderer((WorldRenderer)(Object)this);
 
     @Inject(
             method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lorg/joml/Matrix4f;FLnet/minecraft/client/render/Camera;ZLjava/lang/Runnable;)V",
@@ -32,7 +33,7 @@ public abstract class WorldRendererMixin {
         if (this.client.world == null) return;
 
         if (this.client.world.getDimensionEffects() instanceof DimensionEffectsManager.ApolloDimensionEffects) {
-            ApolloSkyRenderer.render(((WorldRenderer)(Object)this),matrices, projectionMatrix, tickDelta, camera);
+            apolloSkyRenderer.render(matrices, projectionMatrix, tickDelta, camera);
             info.cancel();
         }
     }
