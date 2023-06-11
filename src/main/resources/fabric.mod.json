@@ -43,7 +43,11 @@
     ]
   },
   "mixins": [
-    "apollo.mixins.json"
+    "apollo.mixins.json",
+    {
+      "config": "apollo.client.mixins.json",
+      "environment": "client"
+    }
   ],
   "accessWidener": "apollo.accesswidener",
   "depends": {
