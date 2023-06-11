@@ -32,7 +32,7 @@ public abstract class WorldRendererMixin {
     private void renderApolloSky(MatrixStack matrices, Matrix4f projectionMatrix, float tickDelta, Camera camera, boolean bl, Runnable runnable, CallbackInfo info) {
         if (this.client.world == null) return;
 
-        if (this.client.world.getDimensionEffects() instanceof DimensionEffectsManager.ApolloDimensionEffects) {
+        if (this.client.world.getDimensionEffects() instanceof DimensionEffectsManager.ApolloCustomDimensionEffects) {
             apolloSkyRenderer.render(matrices, projectionMatrix, tickDelta, camera);
             info.cancel();
         }
