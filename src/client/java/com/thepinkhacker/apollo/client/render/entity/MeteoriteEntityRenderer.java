@@ -4,8 +4,6 @@ import com.thepinkhacker.apollo.Apollo;
 import com.thepinkhacker.apollo.client.render.entity.model.ApolloEntityModelLayers;
 import com.thepinkhacker.apollo.client.render.entity.model.MeteoriteEntityModel;
 import com.thepinkhacker.apollo.entity.projectile.MeteoriteEntity;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;

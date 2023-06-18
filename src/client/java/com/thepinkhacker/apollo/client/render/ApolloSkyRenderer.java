@@ -5,8 +5,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.thepinkhacker.apollo.resource.SpaceBodyManager;
 import com.thepinkhacker.apollo.world.dimension.DayCycleManager;
 import com.thepinkhacker.apollo.world.dimension.SpaceBody;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.gl.VertexBuffer;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
