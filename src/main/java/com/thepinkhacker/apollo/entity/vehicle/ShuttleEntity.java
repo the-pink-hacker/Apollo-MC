@@ -6,6 +6,7 @@ import com.thepinkhacker.apollo.world.ApolloWorlds;
 import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
@@ -19,6 +20,7 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -69,6 +71,15 @@ public class ShuttleEntity extends MobEntity implements ImplementedInventory {
     @Override
     public double getMountedHeightOffset() {
         return 0.75d;
+    }
+
+    @Nullable
+    @Override
+    public LivingEntity getControllingPassenger() {
+        if (this.getFirstPassenger() instanceof LivingEntity livingEntity) {
+            return livingEntity;
+        }
+        return null;
     }
 
     @Override
