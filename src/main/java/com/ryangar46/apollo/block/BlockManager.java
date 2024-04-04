@@ -1,6 +1,7 @@
 package com.ryangar46.apollo.block;
 
 import com.ryangar46.apollo.Apollo;
+import com.ryangar46.apollo.item.ItemGroupManager;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
@@ -18,10 +19,10 @@ public class BlockManager {
 
     public static void register() {
         Apollo.LOGGER.info("Registering blocks");
-        registerBlock(LUNAR_COBBLESTONE, "lunar_cobblestone", ItemGroup.BUILDING_BLOCKS);
-        registerBlock(LUNAR_IRON_ORE, "lunar_iron_ore", ItemGroup.BUILDING_BLOCKS);
-        registerBlock(LUNAR_SOIL, "lunar_soil", ItemGroup.BUILDING_BLOCKS);
-        registerBlock(LUNAR_STONE, "lunar_stone", ItemGroup.BUILDING_BLOCKS);
+        registerBlock(LUNAR_COBBLESTONE, "lunar_cobblestone", ItemGroupManager.MOON);
+        registerBlock(LUNAR_IRON_ORE, "lunar_iron_ore", ItemGroupManager.MOON);
+        registerBlock(LUNAR_SOIL, "lunar_soil", ItemGroupManager.MOON);
+        registerBlock(LUNAR_STONE, "lunar_stone", ItemGroupManager.MOON);
     }
 
     private static void registerBlock(Block block, String id, ItemGroup itemGroup) {
