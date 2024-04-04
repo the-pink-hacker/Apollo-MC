@@ -7,7 +7,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
-// TODO: Separate Apollo skyboxes from overworld
 @Mixin(ClientWorld.class)
 public abstract class ClientWorldMixin {
     @ModifyVariable(
