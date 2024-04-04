@@ -16,6 +16,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class BlockManager {
+    public static final Block FLUID_PIPE = new FluidPipeBlock(FabricBlockSettings.of(Material.METAL).strength(5.0f, 6.0f));
     public static final Block FUEL = new FluidBlock(FluidManager.STILL_FUEL, FabricBlockSettings.of(Material.WATER).noCollision().dropsNothing());
     public static final Block LAUNCH_PAD = new LaunchpadBlock(FabricBlockSettings.of(Material.METAL).strength(50.0f, 12000.0f).requiresTool());
     public static final Block LUNAR_COBBLESTONE = new Block(FabricBlockSettings.of(Material.STONE).strength(1.75f, 1.5f).requiresTool());
@@ -24,11 +25,12 @@ public class BlockManager {
     public static final Block LUNAR_STONE = new Block(FabricBlockSettings.of(Material.STONE).strength(1.5f).requiresTool());
     public static final Block METEORITE = new MeteoriteBlock(FabricBlockSettings.of(Material.STONE).strength(30.0f, 1200.0f).ticksRandomly().requiresTool());
     public static final Block OIL = new FluidBlock(FluidManager.STILL_OIL, FabricBlockSettings.of(Material.LAVA).noCollision().dropsNothing());
-    public static final Block OIL_REFINERY = new OilRefineryBlock(FabricBlockSettings.of(Material.METAL).strength(5, 6).requiresTool());
+    public static final Block OIL_REFINERY = new OilRefineryBlock(FabricBlockSettings.of(Material.METAL).strength(5.0f, 6.0f).requiresTool());
     public static final Block REINFORCED_IRON_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.NETHERITE_BLOCK));
 
     public static void register() {
         Apollo.LOGGER.info("Registering blocks");
+        registerBlock(FLUID_PIPE, "fluid_pipe", ItemGroupManager.APOLLO);
         registerBlock(FUEL, "fuel");
         registerBlock(LAUNCH_PAD, "launchpad", ItemGroupManager.APOLLO);
         registerBlock(LUNAR_COBBLESTONE, "lunar_cobblestone", ItemGroupManager.MOON);
