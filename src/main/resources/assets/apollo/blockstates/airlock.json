@@ -1,7 +1,11 @@
 {
   "variants": {
-    "": {
+    "axis=x": {
       "model": "apollo:block/airlock"
+    },
+    "axis=z": {
+      "model": "apollo:block/airlock",
+      "y": 90
     }
   }
 }

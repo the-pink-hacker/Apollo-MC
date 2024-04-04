@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 
 public class ApolloBlocks {
     public static final Block AIRLOCK_FRAME = registerBlock("airlock_frame", new AirlockFrameBlock(FabricBlockSettings.of(Material.METAL).strength(50.0f, 12_000.0f).requiresTool()));
-    public static final Block AIRLOCK = registerBlock("airlock", new AirLockBlock(FabricBlockSettings.of(Material.METAL).strength(50.0f, 12_000f).requiresTool()));
+    public static final Block AIRLOCK = registerBlock("airlock", new AirLockBlock(FabricBlockSettings.of(Material.METAL).strength(50.0f, 12_000f).strength(-1.0f)));
     public static final Block FLUID_PIPE = registerBlock("fluid_pipe", new FluidPipeBlock(FabricBlockSettings.of(Material.METAL).strength(5.0f, 6.0f)));
     public static final Block FUEL = registerBlock("fuel", new FluidBlock(ApolloFluids.STILL_FUEL, FabricBlockSettings.of(Material.WATER).noCollision().dropsNothing()));
     public static final Block LAUNCHPAD = registerBlock("launchpad", new LaunchpadBlock(FabricBlockSettings.of(Material.METAL).strength(50.0f, 12_000.0f).requiresTool()));

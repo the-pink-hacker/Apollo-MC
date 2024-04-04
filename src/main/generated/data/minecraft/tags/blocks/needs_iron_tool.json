@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "apollo:airlock",
+    "apollo:airlock_frame",
     "apollo:launchpad",
     "apollo:lunar_cobblestone",
     "apollo:lunar_iron_ore",
