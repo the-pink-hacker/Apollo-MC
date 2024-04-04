@@ -13,22 +13,17 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ApolloItems {
-    /* === Armor Materials === */
-    public static final ArmorMaterial NEGATIVE_GRAVITY_ARMOR_MATERIAL = new GravityArmor(GravityArmor.Type.NEGATIVE);
-    public static final ArmorMaterial POSITIVE_GRAVITY_ARMOR_MATERIAL = new GravityArmor(GravityArmor.Type.POSITIVE);
-    public static final ArmorMaterial SPACE_SUIT_ARMOR_MATERIAL = new SpaceSuitArmor();
-
     /* === Items === */
     public static final Item FUEL_BUCKET = registerItem("fuel_bucket", new BucketItem(ApolloFluids.STILL_FUEL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
     public static final Item METEORITE_SCRAP = registerItem("meteorite_scrap", new Item(new FabricItemSettings().fireproof()));
     public static final Item OIL_BUCKET = registerItem("oil_bucket", new BucketItem(ApolloFluids.STILL_OIL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
-    public static final Item NEGATIVE_GRAVITY_BOOTS = registerItem("negative_gravity_boots", new ArmorItem(NEGATIVE_GRAVITY_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings()));
-    public static final Item POSITIVE_GRAVITY_BOOTS = registerItem("positive_gravity_boots", new ArmorItem(POSITIVE_GRAVITY_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings()));
+    public static final Item NEGATIVE_GRAVITY_BOOTS = registerItem("negative_gravity_boots", new ArmorItem(ApolloArmorMaterials.NEGATIVE_GRAVITY_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings()));
+    public static final Item POSITIVE_GRAVITY_BOOTS = registerItem("positive_gravity_boots", new ArmorItem(ApolloArmorMaterials.POSITIVE_GRAVITY_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings()));
     public static final Item REINFORCED_IRON_INGOT = registerItem("reinforced_iron_ingot", new Item(new FabricItemSettings().fireproof()));
-    public static final Item SPACE_SUIT_HELMET = registerItem("space_suit_helmet", new ArmorItem(SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.HEAD, new FabricItemSettings()));
-    public static final Item SPACE_SUIT_CHESTPLATE = registerItem("space_suit_chestplate", new ArmorItem(SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.CHEST, new FabricItemSettings()));
-    public static final Item SPACE_SUIT_LEGGINGS = registerItem("space_suit_leggings", new ArmorItem(SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.LEGS, new FabricItemSettings()));
-    public static final Item SPACE_SUIT_BOOTS = registerItem("space_suit_boots", new ArmorItem(SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings()));
+    public static final Item SPACE_SUIT_HELMET = registerItem("space_suit_helmet", new ArmorItem(ApolloArmorMaterials.SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.HEAD, new FabricItemSettings()));
+    public static final Item SPACE_SUIT_CHESTPLATE = registerItem("space_suit_chestplate", new ArmorItem(ApolloArmorMaterials.SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.CHEST, new FabricItemSettings()));
+    public static final Item SPACE_SUIT_LEGGINGS = registerItem("space_suit_leggings", new ArmorItem(ApolloArmorMaterials.SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.LEGS, new FabricItemSettings()));
+    public static final Item SPACE_SUIT_BOOTS = registerItem("space_suit_boots", new ArmorItem(ApolloArmorMaterials.SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings()));
 
     /* === Blocks === */
     public static final Item FLUID_PIPE = registerItem(ApolloBlocks.FLUID_PIPE);
