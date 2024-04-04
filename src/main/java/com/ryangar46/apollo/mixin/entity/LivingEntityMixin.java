@@ -1,4 +1,4 @@
-package com.ryangar46.apollo.mixin;
+package com.ryangar46.apollo.mixin.entity;
 
 import com.ryangar46.apollo.world.dimension.GravityManager;
 import net.minecraft.entity.LivingEntity;
@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
     // Changes falling speed
+    @SuppressWarnings("unused")
     @ModifyVariable(
             method = "travel(Lnet/minecraft/util/math/Vec3d;)V",
             at = @At("STORE"),

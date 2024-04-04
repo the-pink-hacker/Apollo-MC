@@ -1,14 +1,15 @@
-package com.ryangar46.apollo.mixin;
+package com.ryangar46.apollo.mixin.entity;
 
 import com.ryangar46.apollo.world.dimension.GravityManager;
-import net.minecraft.entity.vehicle.AbstractMinecartEntity;
+import net.minecraft.entity.TntEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
-@Mixin(AbstractMinecartEntity.class)
-public abstract class AbstractMinecartEntityMixin {
+@Mixin(TntEntity.class)
+public abstract class TntEntityMixin {
     // Changes falling speed
+    @SuppressWarnings("unused")
     @ModifyArg(
             method = "tick()V",
             at = @At(
@@ -17,7 +18,7 @@ public abstract class AbstractMinecartEntityMixin {
             ),
             index = 1
     )
-    private double gravityFall(double d) {
-        return d * GravityManager.getGravityMultiplier(((AbstractMinecartEntity)(Object)this).world);
+    private double gravityFall(double y) {
+        return y * GravityManager.getGravityMultiplier(((TntEntity)(Object)this).world);
     }
 }

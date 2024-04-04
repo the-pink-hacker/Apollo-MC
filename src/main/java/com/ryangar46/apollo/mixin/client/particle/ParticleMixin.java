@@ -1,4 +1,4 @@
-package com.ryangar46.apollo.mixin;
+package com.ryangar46.apollo.mixin.client.particle;
 
 import com.ryangar46.apollo.world.dimension.GravityManager;
 import net.minecraft.client.particle.Particle;
@@ -21,6 +21,7 @@ public abstract class ParticleMixin {
     public float gravityStrength;
 
     // Changes falling speed
+    @SuppressWarnings("unused")
     @Inject(
             method = "tick()V",
             at = @At(

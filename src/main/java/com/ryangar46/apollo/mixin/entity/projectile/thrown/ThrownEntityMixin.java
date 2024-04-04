@@ -1,4 +1,4 @@
-package com.ryangar46.apollo.mixin;
+package com.ryangar46.apollo.mixin.entity.projectile.thrown;
 
 import com.ryangar46.apollo.world.dimension.GravityManager;
 import net.minecraft.entity.projectile.thrown.ThrownEntity;
@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ThrownEntity.class)
 public abstract class ThrownEntityMixin {
+    @SuppressWarnings("unused")
     @Inject(
             method = "getGravity()F",
             at = @At("RETURN"),
