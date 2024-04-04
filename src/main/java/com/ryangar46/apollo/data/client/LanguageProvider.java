@@ -34,6 +34,7 @@ public class LanguageProvider extends FabricLanguageProvider {
         builder.add(ApolloBlocks.METEORITE, "Meteorite");
         builder.add(ApolloBlocks.OIL, "Oil");
         builder.add(ApolloBlocks.OIL_REFINERY, "Oil Refinery");
+        builder.add(ApolloBlocks.OXYGEN_PLANT, "Oxygen Plant");
         builder.add(ApolloBlocks.REINFORCED_IRON_BLOCK, "Reinforced Iron Block");
         builder.add(ApolloBlocks.SHUTTLE_WORKBENCH, "Shuttle Workbench");
         builder.add(ApolloBlocks.STORAGE_TANK, "Storage Tank");
@@ -75,6 +76,7 @@ public class LanguageProvider extends FabricLanguageProvider {
         builder.add(ApolloItems.METEORITE_SCRAP, "Meteorite Scrap");
         builder.add(ApolloItems.NEGATIVE_GRAVITY_BOOTS, "Negative Gravity Boots");
         builder.add(ApolloItems.OIL_BUCKET, "Oil Bucket");
+        builder.add(ApolloItems.OXYGEN_PLANT_SEEDS, "Oxygen Plant Seeds");
         builder.add(ApolloItems.POSITIVE_GRAVITY_BOOTS, "Positive Gravity Boots");
         builder.add(ApolloItems.REINFORCED_IRON_INGOT, "Reinforced Iron Ingot");
         builder.add(ApolloItems.SPACE_SUIT_BOOTS, "Space Suit Boots");
