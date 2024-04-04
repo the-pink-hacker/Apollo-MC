@@ -1,4 +1,4 @@
-package com.ryangar46.apollo.data;
+package com.ryangar46.apollo.data.client;
 
 import com.ryangar46.apollo.Apollo;
 import com.ryangar46.apollo.item.ApolloItems;

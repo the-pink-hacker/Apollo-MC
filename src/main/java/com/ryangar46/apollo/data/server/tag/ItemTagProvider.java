@@ -1,4 +1,4 @@
-package com.ryangar46.apollo.data.tag;
+package com.ryangar46.apollo.data.server.tag;
 
 import com.ryangar46.apollo.item.ApolloItems;
 import com.ryangar46.apollo.registry.tag.ApolloItemTags;

@@ -1,4 +1,4 @@
-package com.ryangar46.apollo.data.tag;
+package com.ryangar46.apollo.data.server.tag;
 
 import com.ryangar46.apollo.fluid.ApolloFluids;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
