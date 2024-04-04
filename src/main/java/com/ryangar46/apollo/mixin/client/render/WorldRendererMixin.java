@@ -28,7 +28,7 @@ public abstract class WorldRendererMixin {
             )
     )
     private void setMoon(int i, Identifier identifier) {
-        if (world.method_40134().isIn(TagManager.EARTH_VISIBLE_WORLDS)) {
+        if (world.getDimensionEntry().isIn(TagManager.EARTH_VISIBLE_WORLDS)) {
             RenderSystem.setShaderTexture(i, SkyManager.EARTH);
         } else {
             RenderSystem.setShaderTexture(i, identifier);
@@ -44,6 +44,6 @@ public abstract class WorldRendererMixin {
             index = 0
     )
     private float getFogColor(float skyAngle) {
-        return world.method_40134().isIn(TagManager.ATMOSPHERE_NOT_VISIBLE_WORLDS) ? NIGHT_ANGLE : skyAngle;
+        return world.getDimensionEntry().isIn(TagManager.ATMOSPHERE_NOT_VISIBLE_WORLDS) ? NIGHT_ANGLE : skyAngle;
     }
 }
