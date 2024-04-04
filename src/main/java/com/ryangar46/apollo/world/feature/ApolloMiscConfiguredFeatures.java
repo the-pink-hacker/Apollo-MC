@@ -4,13 +4,13 @@ import com.ryangar46.apollo.block.BlockManager;
 import com.ryangar46.apollo.fluid.FluidManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.util.registry.RegistryEntry;
-import net.minecraft.util.registry.RegistryEntryList;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 
 public class ApolloMiscConfiguredFeatures {
-    public static final RegistryEntry<ConfiguredFeature<LakeFeature.Config, ?>> LAKE_OIL = ConfiguredFeatures.register(
+    /*public static final RegistryEntry<ConfiguredFeature<LakeFeature.Config, ?>> LAKE_OIL = ConfiguredFeatures.register(
             "lake_oil",
             Feature.LAKE,
             new LakeFeature.Config(
@@ -41,5 +41,5 @@ public class ApolloMiscConfiguredFeatures {
                             Blocks.PACKED_ICE
                     )
             )
-    );
+    );*/
 }

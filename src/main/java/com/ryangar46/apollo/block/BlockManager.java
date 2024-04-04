@@ -9,8 +9,9 @@ import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class BlockManager {
     public static final Block FLUID_PIPE = new FluidPipeBlock(FabricBlockSettings.of(Material.METAL).strength(5.0f, 6.0f));
@@ -30,30 +31,27 @@ public class BlockManager {
 
     public static void register() {
         Apollo.LOGGER.info("Registering blocks");
-        registerBlock(FLUID_PIPE, "fluid_pipe", ItemGroupManager.APOLLO);
+        registerBlock(FLUID_PIPE, "fluid_pipe");
         registerBlock(FUEL, "fuel");
-        registerBlock(LAUNCH_PAD, "launchpad", ItemGroupManager.APOLLO);
-        registerBlock(LUNAR_DUST, "lunar_dust", ItemGroupManager.MOON);
-        registerBlock(LUNAR_COBBLESTONE, "lunar_cobblestone", ItemGroupManager.MOON);
-        registerBlock(LUNAR_IRON_ORE, "lunar_iron_ore", ItemGroupManager.MOON);
-        registerBlock(LUNAR_SOIL, "lunar_soil", ItemGroupManager.MOON);
-        registerBlock(LUNAR_STONE, "lunar_stone", ItemGroupManager.MOON);
-        registerBlock(METEORITE, "meteorite", new FabricItemSettings().fireproof().group(ItemGroupManager.APOLLO));
+        registerBlock(LAUNCH_PAD, "launchpad");
+        registerBlock(LUNAR_DUST, "lunar_dust");
+        registerBlock(LUNAR_COBBLESTONE, "lunar_cobblestone");
+        registerBlock(LUNAR_IRON_ORE, "lunar_iron_ore");
+        registerBlock(LUNAR_SOIL, "lunar_soil");
+        registerBlock(LUNAR_STONE, "lunar_stone");
+        registerBlock(METEORITE, "meteorite", new FabricItemSettings().fireproof());
         registerBlock(OIL, "oil");
-        registerBlock(OIL_REFINERY, "oil_refinery", ItemGroupManager.APOLLO);
-        registerBlock(REINFORCED_IRON_BLOCK, "reinforced_iron_block", new FabricItemSettings().fireproof().group(ItemGroupManager.APOLLO));
-        registerBlock(SHUTTLE_WORKBENCH, "shuttle_workbench", ItemGroupManager.APOLLO);
-        registerBlock(STORAGE_TANK, "storage_tank", ItemGroupManager.APOLLO);
+        registerBlock(OIL_REFINERY, "oil_refinery");
+        registerBlock(REINFORCED_IRON_BLOCK, "reinforced_iron_block", new FabricItemSettings().fireproof());
+        registerBlock(SHUTTLE_WORKBENCH, "shuttle_workbench");
+        registerBlock(STORAGE_TANK, "storage_tank");
     }
 
-    private static void registerBlock(Block block, String id, ItemGroup itemGroup) {
-        registerBlock(block, id, new FabricItemSettings().group(itemGroup));
-    }
     private static void registerBlock(Block block, String id, Item.Settings settings) {
         registerBlock(block, id);
-        Registry.register(Registry.ITEM, new Identifier(Apollo.MOD_ID, id), new BlockItem(block, settings));
+        Registry.register(Registries.ITEM, new Identifier(Apollo.MOD_ID, id), new BlockItem(block, settings));
     }
     private static void registerBlock(Block block, String id) {
-        Registry.register(Registry.BLOCK, new Identifier(Apollo.MOD_ID, id), block);
+        Registry.register(Registries.BLOCK, new Identifier(Apollo.MOD_ID, id), block);
     }
 }

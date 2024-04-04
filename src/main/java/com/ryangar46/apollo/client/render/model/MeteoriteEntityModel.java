@@ -3,9 +3,9 @@ package com.ryangar46.apollo.client.render.model;
 import com.ryangar46.apollo.Apollo;
 import com.ryangar46.apollo.entity.projectile.MeteoriteEntity;
 import net.minecraft.util.Identifier;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class MeteoriteEntityModel extends AnimatedGeoModel<MeteoriteEntity> {
+public class MeteoriteEntityModel extends GeoModel<MeteoriteEntity> {
     @Override
     public Identifier getModelResource(MeteoriteEntity object) {
         return new Identifier(Apollo.MOD_ID, "geo/entity/meteorite.geo.json");

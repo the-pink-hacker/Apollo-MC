@@ -17,12 +17,13 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class EntityManager {
     public static final EntityType<MeteoriteEntity> METEORITE = Registry.register(
-            Registry.ENTITY_TYPE,
+            Registries.ENTITY_TYPE,
             new Identifier(Apollo.MOD_ID, "meteorite"),
             FabricEntityTypeBuilder.create(SpawnGroup.MISC, MeteoriteEntity::new)
                     .dimensions(EntityDimensions.fixed(0.25F, 0.25F))
@@ -30,14 +31,14 @@ public class EntityManager {
                     .build()
     );
     public static final EntityType<ShuttleEntity> SHUTTLE = Registry.register(
-            Registry.ENTITY_TYPE,
+            Registries.ENTITY_TYPE,
             new Identifier(Apollo.MOD_ID, "shuttle"),
             FabricEntityTypeBuilder.create(SpawnGroup.MISC, ShuttleEntity::new)
                     .dimensions(EntityDimensions.fixed(1.25f, 3.5f))
                     .build()
     );
     public static final BlockEntityType<FluidPipeBlockEntity> FLUID_PIPE_BLOCK_ENTITY = Registry.register(
-            Registry.BLOCK_ENTITY_TYPE,
+            Registries.BLOCK_ENTITY_TYPE,
             new Identifier(Apollo.MOD_ID, "shuttle"),
             FabricBlockEntityTypeBuilder.create(FluidPipeBlockEntity::new, BlockManager.FLUID_PIPE)
                     .build()

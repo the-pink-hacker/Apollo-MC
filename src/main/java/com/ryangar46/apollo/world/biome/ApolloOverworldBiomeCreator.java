@@ -51,12 +51,12 @@ public class ApolloOverworldBiomeCreator {
     }
 
     private static void addBasicFeatures(GenerationSettings.Builder generationSettings) {
-        DefaultBiomeFeatures.addLandCarvers(generationSettings);
+        /*DefaultBiomeFeatures.addLandCarvers(generationSettings);
         DefaultBiomeFeatures.addAmethystGeodes(generationSettings);
         DefaultBiomeFeatures.addDungeons(generationSettings);
         DefaultBiomeFeatures.addMineables(generationSettings);
         DefaultBiomeFeatures.addSprings(generationSettings);
-        DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
+        DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);*/
     }
 
     public static Biome oilFields() {
@@ -64,7 +64,7 @@ public class ApolloOverworldBiomeCreator {
         DefaultBiomeFeatures.addDesertMobs(spawnBuilder);
 
         GenerationSettings.Builder biomeBuilder = new GenerationSettings.Builder();
-        DefaultBiomeFeatures.addFossils(biomeBuilder);
+        /*DefaultBiomeFeatures.addFossils(biomeBuilder);
         addBasicFeatures(biomeBuilder);
         DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
         DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
@@ -73,7 +73,7 @@ public class ApolloOverworldBiomeCreator {
         DefaultBiomeFeatures.addDesertDeadBushes(biomeBuilder);
         DefaultBiomeFeatures.addDefaultMushrooms(biomeBuilder);
         DefaultBiomeFeatures.addDesertVegetation(biomeBuilder);
-        DefaultBiomeFeatures.addDesertFeatures(biomeBuilder);
+        DefaultBiomeFeatures.addDesertFeatures(biomeBuilder);*/
         ApolloDefaultBiomeFeatures.addOilLakes(biomeBuilder);
         ApolloDefaultBiomeFeatures.addOilSprings(biomeBuilder);
         return createBiome(Biome.Precipitation.NONE, 2.0f, 0.0f, spawnBuilder, biomeBuilder, DEFAULT_MUSIC);

@@ -4,9 +4,9 @@ import com.ryangar46.apollo.Apollo;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
-import net.minecraft.tag.TagKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.dimension.DimensionType;
 
 public class TagManager {
@@ -24,18 +24,18 @@ public class TagManager {
     public static final TagKey<EntityType<?>> VACUUM_IMMUNE_CREATURES = registerEntityType("vacuum_immune_creatures");
 
     private static TagKey<Item> registerItem(String id) {
-        return TagKey.of(Registry.ITEM_KEY, new Identifier(Apollo.MOD_ID, id));
+        return TagKey.of(RegistryKeys.ITEM, new Identifier(Apollo.MOD_ID, id));
     }
 
     private static TagKey<Block> registerBlock(String id) {
-        return TagKey.of(Registry.BLOCK_KEY, new Identifier(Apollo.MOD_ID, id));
+        return TagKey.of(RegistryKeys.BLOCK, new Identifier(Apollo.MOD_ID, id));
     }
 
     private static TagKey<EntityType<?>> registerEntityType(String id) {
-        return TagKey.of(Registry.ENTITY_TYPE_KEY, new Identifier(Apollo.MOD_ID, id));
+        return TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier(Apollo.MOD_ID, id));
     }
 
     private static TagKey<DimensionType> registerDimensionType(String id) {
-        return TagKey.of(Registry.DIMENSION_TYPE_KEY, new Identifier(Apollo.MOD_ID, id));
+        return TagKey.of(RegistryKeys.DIMENSION_TYPE, new Identifier(Apollo.MOD_ID, id));
     }
 }

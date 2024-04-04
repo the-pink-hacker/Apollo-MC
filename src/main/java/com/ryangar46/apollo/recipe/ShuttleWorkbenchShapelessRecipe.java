@@ -8,13 +8,14 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.ShapedRecipe;
 import net.minecraft.recipe.ShapelessRecipe;
+import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
 
 public class ShuttleWorkbenchShapelessRecipe extends ShapelessRecipe implements ShuttleWorkbenchRecipe {
     public ShuttleWorkbenchShapelessRecipe(Identifier id, String group, ItemStack output, DefaultedList<Ingredient> input) {
-        super(id, group, output, input);
+        super(id, group, CraftingRecipeCategory.MISC, output, input);
     }
 
     @Override

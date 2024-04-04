@@ -4,8 +4,9 @@ import com.ryangar46.apollo.Apollo;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class RecipeManager {
     public static final RecipeType<ShuttleWorkbenchRecipe> SHUTTLE_WORKBENCH_RECIPE_TYPE = registerType("shuttle_workbench");
@@ -17,7 +18,7 @@ public class RecipeManager {
     public static void register() {}
 
     private static <T extends Recipe<?>> RecipeType<T> registerType(String id) {
-        return Registry.register(Registry.RECIPE_TYPE, new Identifier(Apollo.MOD_ID, id), new RecipeType<T>(){
+        return Registry.register(Registries.RECIPE_TYPE, new Identifier(Apollo.MOD_ID, id), new RecipeType<T>(){
             @Override
             public String toString() {
                 return id;
@@ -26,6 +27,6 @@ public class RecipeManager {
     }
 
     private static <S extends RecipeSerializer<T>, T extends Recipe<?>> S registerSerializer(String id, S serializer) {
-        return Registry.register(Registry.RECIPE_SERIALIZER, new Identifier(Apollo.MOD_ID, id), serializer);
+        return Registry.register(Registries.RECIPE_SERIALIZER, new Identifier(Apollo.MOD_ID, id), serializer);
     }
 }

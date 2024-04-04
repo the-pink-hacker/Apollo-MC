@@ -1,8 +1,8 @@
 package com.ryangar46.apollo.world.feature;
 
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
@@ -12,7 +12,7 @@ import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
 import net.minecraft.world.gen.placementmodifier.*;
 
 public class ApolloMiscPlacedFeatures {
-    public static final RegistryEntry<PlacedFeature> LAKE_OIL_UNDERGROUND = PlacedFeatures.register(
+    /*public static final RegistryEntry<PlacedFeature> LAKE_OIL_UNDERGROUND = PlacedFeatures.register(
             "lake_oil_underground",
             ApolloMiscConfiguredFeatures.LAKE_OIL,
             RarityFilterPlacementModifier.of(3),
@@ -55,5 +55,5 @@ public class ApolloMiscPlacedFeatures {
                     YOffset.fixed(192)
             ),
             BiomePlacementModifier.of()
-    );
+    );*/
 }

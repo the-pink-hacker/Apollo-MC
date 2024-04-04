@@ -8,6 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -15,19 +16,17 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.constant.DefaultAnimations;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class ShuttleEntity extends MobEntity implements ImplementedInventory, IAnimatable {
+public class ShuttleEntity extends MobEntity implements ImplementedInventory, GeoEntity {
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(5, ItemStack.EMPTY);
-    private final AnimationFactory FACTORY = new AnimationFactory(this);
+    private final AnimatableInstanceCache CACHE = GeckoLibUtil.createInstanceCache(this);
 
     public ShuttleEntity(EntityType<? extends ShuttleEntity> type, World world) {
         super(type, world);
@@ -55,18 +54,14 @@ public class ShuttleEntity extends MobEntity implements ImplementedInventory, IA
         return true;
     }
 
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        return PlayState.CONTINUE;
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(DefaultAnimations.genericIdleController(this));
     }
 
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.CACHE;
     }
 
     @Override
