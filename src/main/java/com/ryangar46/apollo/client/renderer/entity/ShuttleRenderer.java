@@ -1,10 +1,9 @@
 package com.ryangar46.apollo.client.renderer.entity;
 
-import com.google.common.collect.ImmutableList;
 import com.ryangar46.apollo.Apollo;
 import com.ryangar46.apollo.client.renderer.entity.model.ShuttleModel;
 import com.ryangar46.apollo.entity.EntityManager;
-import com.ryangar46.apollo.entity.ShuttleEntity;
+import com.ryangar46.apollo.entity.vehicle.ShuttleEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;

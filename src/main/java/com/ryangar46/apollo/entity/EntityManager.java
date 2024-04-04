@@ -3,6 +3,9 @@ package com.ryangar46.apollo.entity;
 import com.ryangar46.apollo.Apollo;
 import com.ryangar46.apollo.client.renderer.entity.model.ShuttleModel;
 import com.ryangar46.apollo.client.renderer.entity.ShuttleRenderer;
+import com.ryangar46.apollo.entity.vehicle.ShuttleEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
@@ -26,11 +29,9 @@ public class EntityManager {
         FabricDefaultAttributeRegistry.register(SHUTTLE, ShuttleEntity.createMobAttributes());
     }
 
+    @Environment(EnvType.CLIENT)
     public static void registerClient() {
-        EntityRendererRegistry.register(SHUTTLE, (context) -> {
-            return new ShuttleRenderer(context);
-        });
-
+        EntityRendererRegistry.register(SHUTTLE, ShuttleRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(SHUTTLE_LAYER, ShuttleModel::getTexturedModelData);
     }
 }
