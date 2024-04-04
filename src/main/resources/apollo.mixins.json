@@ -12,16 +12,14 @@
     "entity.projectile.PersistentProjectileEntityMixin",
     "entity.projectile.thrown.ThrownEntityMixin",
     "entity.vehicle.AbstractMinecartEntityMixin",
-    "entity.vehicle.BoatEntityMixin"
+    "entity.vehicle.BoatEntityMixin",
+    "server.network.ServerPlayerEntityMixin",
+    "server.world.ServerChunkManagerMixin"
   ],
   "client": [
     "client.particle.ParticleMixin",
     "client.render.WorldRendererMixin",
     "client.world.ClientWorldMixin"
-  ],
-  "server": [
-    "server.network.ServerPlayerEntityMixin",
-    "server.world.ServerChunkManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
