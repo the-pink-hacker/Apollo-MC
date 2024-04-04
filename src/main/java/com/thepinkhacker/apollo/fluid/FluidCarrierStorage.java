@@ -1,6 +1,7 @@
 package com.thepinkhacker.apollo.fluid;
 
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
+import net.fabricmc.fabric.api.transfer.v1.storage.base.ResourceAmount;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
 import net.minecraft.block.entity.BlockEntity;
 
@@ -25,5 +26,10 @@ public class FluidCarrierStorage<T extends BlockEntity> extends SingleVariantSto
     @Override
     protected void onFinalCommit() {
         parent.markDirty();
+    }
+
+    @Override
+    public ResourceAmount<FluidVariant> createSnapshot() {
+        return super.createSnapshot();
     }
 }

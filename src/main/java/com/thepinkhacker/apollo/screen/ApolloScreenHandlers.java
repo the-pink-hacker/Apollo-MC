@@ -1,6 +1,7 @@
 package com.thepinkhacker.apollo.screen;
 
 import com.thepinkhacker.apollo.Apollo;
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.resource.featuretoggle.FeatureFlags;
@@ -15,6 +16,14 @@ public class ApolloScreenHandlers {
                 Registries.SCREEN_HANDLER,
                 Apollo.getIdentifier(id),
                 new ScreenHandlerType<>(factory, FeatureFlags.VANILLA_FEATURES)
+        );
+    }
+
+    private static <T extends ScreenHandler> ScreenHandlerType<T> of(String id, ExtendedScreenHandlerType.ExtendedFactory<T> factory) {
+        return Registry.register(
+                Registries.SCREEN_HANDLER,
+                Apollo.getIdentifier(id),
+                new ExtendedScreenHandlerType<>(factory)
         );
     }
 }
