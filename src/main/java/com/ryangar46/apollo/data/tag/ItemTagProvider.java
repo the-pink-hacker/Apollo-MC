@@ -15,13 +15,10 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        this.getOrCreateTagBuilder(ApolloItemTags.AIRTIGHT_BOOTS)
-                .add(ApolloItems.SPACE_SUIT_BOOTS);
-        this.getOrCreateTagBuilder(ApolloItemTags.AIRTIGHT_CHESTPLATES)
-                .add(ApolloItems.SPACE_SUIT_CHESTPLATE);
-        this.getOrCreateTagBuilder(ApolloItemTags.AIRTIGHT_HELMETS)
-                .add(ApolloItems.SPACE_SUIT_HELMET);
-        this.getOrCreateTagBuilder(ApolloItemTags.AIRTIGHT_LEGGINGS)
+        this.getOrCreateTagBuilder(ApolloItemTags.AIRTIGHT_ARMOR)
+                .add(ApolloItems.SPACE_SUIT_BOOTS)
+                .add(ApolloItems.SPACE_SUIT_CHESTPLATE)
+                .add(ApolloItems.SPACE_SUIT_HELMET)
                 .add(ApolloItems.SPACE_SUIT_LEGGINGS);
         this.getOrCreateTagBuilder(ApolloItemTags.LAUNCHPADS)
                 .add(ApolloItems.LAUNCHPAD);
