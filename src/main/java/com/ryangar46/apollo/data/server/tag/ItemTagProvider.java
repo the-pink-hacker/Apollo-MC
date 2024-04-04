@@ -27,9 +27,5 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ApolloItems.SPACE_SUIT_CHESTPLATE)
                 .add(ApolloItems.SPACE_SUIT_HELMET)
                 .add(ApolloItems.SPACE_SUIT_LEGGINGS);
-        this.getOrCreateTagBuilder(ApolloItemTags.NEGATIVE_GRAVITY_EQUIPABLES)
-                .add(ApolloItems.NEGATIVE_GRAVITY_BOOTS);
-        this.getOrCreateTagBuilder(ApolloItemTags.POSITIVE_GRAVITY_EQUIPABLES)
-                .add(ApolloItems.POSITIVE_GRAVITY_BOOTS);
     }
 }

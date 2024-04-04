@@ -10,8 +10,6 @@ public class ApolloItemTags {
     public static final TagKey<Item> AIRTIGHT_ARMOR = register("airtight_armor");
     public static final TagKey<Item> LAUNCHPADS = register("launchpads");
     public static final TagKey<Item> MOON_ARMOR = register("moon_armor");
-    public static final TagKey<Item> NEGATIVE_GRAVITY_EQUIPABLES = register("negative_gravity_equipables");
-    public static final TagKey<Item> POSITIVE_GRAVITY_EQUIPABLES = register("positive_gravity_equipables");
 
     private static TagKey<Item> register(String id) {
         return TagKey.of(RegistryKeys.ITEM, new Identifier(Apollo.MOD_ID, id));
