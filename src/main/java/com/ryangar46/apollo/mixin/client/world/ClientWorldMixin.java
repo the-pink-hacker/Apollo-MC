@@ -11,7 +11,7 @@ public abstract class ClientWorldMixin {
     private static final float NIGHT_ANGLE = 0.5f;
 
     @ModifyVariable(
-            method = "Lnet/minecraft/client/world/ClientWorld;method_23787(F)F",
+            method = "method_23787(F)F",
             at = @At("STORE"),
             ordinal = 1
     )
@@ -20,7 +20,7 @@ public abstract class ClientWorldMixin {
     }
 
     @ModifyVariable(
-            method = "Lnet/minecraft/client/world/ClientWorld;getSkyColor(Lnet/minecraft/util/math/Vec3d;F)Lnet/minecraft/util/math/Vec3d;",
+            method = "getSkyColor(Lnet/minecraft/util/math/Vec3d;F)Lnet/minecraft/util/math/Vec3d;",
             at = @At("STORE"),
             ordinal = 1
     )

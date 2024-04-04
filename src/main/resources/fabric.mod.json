@@ -24,6 +24,9 @@
     ],
     "terrablender": [
       "com.ryangar46.apollo.Apollo"
+    ],
+    "fabric-datagen": [
+      "com.ryangar46.apollo.data.DataGenerators"
     ]
   },
   "mixins": [
