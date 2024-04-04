@@ -1,25 +1,22 @@
 package com.thepinkhacker.apollo.client.gui.screen.ingame;
 
-import com.thepinkhacker.apollo.block.entity.fluid.FluidPipeBlockEntity;
-import com.thepinkhacker.apollo.fluid.FluidCarrierStorage;
+import com.thepinkhacker.apollo.Apollo;
 import com.thepinkhacker.apollo.screen.FluidPipeScreenHandler;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
-import net.fabricmc.fabric.api.transfer.v1.storage.StorageView;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.ResourceAmount;
-import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.nbt.NbtCompound;
+import net.minecraft.fluid.Fluid;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-import java.util.Objects;
 import java.util.Optional;
 
 public class FluidPipeScreen extends HandledScreen<FluidPipeScreenHandler> {
-    private static final Identifier TEXTURE = new Identifier("textures/gui/container/dispenser.png");
+    private static final Identifier BACKGROUND = Apollo.getIdentifier("textures/gui/container/fluid_pipe.png");
 
     public FluidPipeScreen(FluidPipeScreenHandler handler, PlayerInventory playerInventory, Text title) {
         super(handler, playerInventory, title);
@@ -28,10 +25,7 @@ public class FluidPipeScreen extends HandledScreen<FluidPipeScreenHandler> {
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         super.render(context, mouseX, mouseY, delta);
-        int x = width / 2;
-        int y = height / 2;
-        Optional<ResourceAmount<FluidVariant>> storage = getStorage(handler);
-        context.drawText(textRenderer, storage.map(ResourceAmount::amount).map(Objects::toString).orElse("Nothing"), x, y, 0x000000, false);
+        drawMouseoverTooltip(context, mouseX, mouseY);
     }
 
     private static Optional<ResourceAmount<FluidVariant>> getStorage(ScreenHandler handler) {
@@ -44,9 +38,17 @@ public class FluidPipeScreen extends HandledScreen<FluidPipeScreenHandler> {
 
     @Override
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
-        int x = (width - backgroundWidth) / 2;
-        int y = (height - backgroundHeight) / 2;
-        context.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
+        context.drawTexture(BACKGROUND, this.x, this.y, 0, 0, backgroundWidth, backgroundHeight);
+
+        // Fluid
+        Optional<ResourceAmount<FluidVariant>> storage = getStorage(handler);
+        long fluidAmount = storage.map(ResourceAmount::amount).orElse(0L);
+        Fluid fluid = storage.map(ResourceAmount::resource).orElse(FluidVariant.blank()).getFluid();
+
+        int maxProgress = 53;
+        int progress = (int) ((52 * (double) fluidAmount / FluidConstants.BUCKET)) + 1;
+
+        context.drawTexture(BACKGROUND, this.x + 79, this.y + maxProgress - progress + 16, 176, maxProgress - progress, 17, progress);
     }
 
     @Override

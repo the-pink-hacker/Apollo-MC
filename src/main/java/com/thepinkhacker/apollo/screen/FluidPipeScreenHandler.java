@@ -7,8 +7,10 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.registry.Registries;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.util.Identifier;
 
 public class FluidPipeScreenHandler extends ScreenHandler {
     private ResourceAmount<FluidVariant> fluidStorage;
@@ -22,11 +24,15 @@ public class FluidPipeScreenHandler extends ScreenHandler {
 
         if (nbt == null) return;
 
-        this.fluidStorage = new ResourceAmount<>(FluidVariant.fromNbt(nbt), nbt.getLong("amount"));
+        this.fluidStorage = new ResourceAmount<>(
+                FluidVariant.of(Registries.FLUID.get(new Identifier(nbt.getCompound("variant").getString("fluid")))),
+                nbt.getLong("amount")
+        );
     }
 
     //This constructor gets called from the BlockEntity on the server without calling the other constructor first, the server knows the inventory of the container
     //and can therefore directly provide it as an argument. This inventory will then be synced to the client.
+    // TODO: Sync fluid contents while the UI is open
     public FluidPipeScreenHandler(int syncId, PlayerInventory playerInventory, ResourceAmount<FluidVariant> fluidStorage) {
         super(ApolloScreenHandlers.FLUID_PIPE, syncId);
 
