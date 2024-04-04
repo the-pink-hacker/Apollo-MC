@@ -1,6 +1,6 @@
 package com.ryangar46.apollo.mixin;
 
-import com.ryangar46.apollo.entity.GravityManager;
+import com.ryangar46.apollo.world.dimension.GravityManager;
 import net.minecraft.entity.vehicle.BoatEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -14,7 +14,7 @@ public abstract class BoatEntityMixin {
             at = @At("STORE"),
             ordinal = 0
     )
-    private double gravityFall(double d) {
-        return d * GravityManager.getGravityMultiplier(((BoatEntity)(Object)this).world);
+    private double gravityFall(double y) {
+        return y * GravityManager.getGravityMultiplier(((BoatEntity)(Object)this).world);
     }
 }

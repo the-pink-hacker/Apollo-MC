@@ -1,4 +1,4 @@
-package com.ryangar46.apollo.entity;
+package com.ryangar46.apollo.world.dimension;
 
 import com.ryangar46.apollo.world.dimension.DimensionManager;
 import net.minecraft.world.World;

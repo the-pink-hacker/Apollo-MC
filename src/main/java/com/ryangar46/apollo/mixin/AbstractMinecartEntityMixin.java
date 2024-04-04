@@ -1,27 +1,23 @@
 package com.ryangar46.apollo.mixin;
 
-import com.ryangar46.apollo.entity.GravityManager;
+import com.ryangar46.apollo.world.dimension.GravityManager;
 import net.minecraft.entity.vehicle.AbstractMinecartEntity;
-import net.minecraft.util.math.Vec3d;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 
 @Mixin(AbstractMinecartEntity.class)
 public abstract class AbstractMinecartEntityMixin {
     // Changes falling speed
-    @Inject(
+    @ModifyArg(
             method = "tick()V",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/entity/vehicle/AbstractMinecartEntity;setVelocity(Lnet/minecraft/util/math/Vec3d;)V",
-                    shift = At.Shift.AFTER
-            )
+                    target = "Lnet/minecraft/util/math/Vec3d;add(DDD)Lnet/minecraft/util/math/Vec3d;"
+            ),
+            index = 1
     )
-    private void gravityFall(CallbackInfo ci) {
-        double d = ((AbstractMinecartEntity)(Object)this).isTouchingWater() ? 0.005d : 0.04d;
-        Vec3d velocity = ((AbstractMinecartEntity)(Object)this).getVelocity();
-        ((AbstractMinecartEntity)(Object)this).setVelocity(velocity.add(0.0d, d - (d * GravityManager.getGravityMultiplier(((AbstractMinecartEntity)(Object)this).world)), 0.0d));
+    private double gravityFall(double d) {
+        return d * GravityManager.getGravityMultiplier(((AbstractMinecartEntity)(Object)this).world);
     }
 }

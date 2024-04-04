@@ -1,27 +1,23 @@
 package com.ryangar46.apollo.mixin;
 
-import com.ryangar46.apollo.entity.GravityManager;
+import com.ryangar46.apollo.world.dimension.GravityManager;
 import net.minecraft.entity.ExperienceOrbEntity;
-import net.minecraft.util.math.Vec3d;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 
 @Mixin(ExperienceOrbEntity.class)
-public class ExperienceOrbEntityMixin {
+public abstract class ExperienceOrbEntityMixin {
     // Changes falling speed
-    @Inject(
+    @ModifyArg(
             method = "tick()V",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/entity/ExperienceOrbEntity;setVelocity(Lnet/minecraft/util/math/Vec3d;)V",
-                    shift = At.Shift.AFTER,
-                    ordinal = 0
-            )
+                    target = "Lnet/minecraft/util/math/Vec3d;add(DDD)Lnet/minecraft/util/math/Vec3d;"
+            ),
+            index = 1
     )
-    private void gravityFall(CallbackInfo ci) {
-        Vec3d velocity = ((ExperienceOrbEntity)(Object)this).getVelocity();
-        ((ExperienceOrbEntity)(Object)this).setVelocity(velocity.add(0.0d, 0.03d - (0.03d * GravityManager.getGravityMultiplier(((ExperienceOrbEntity)(Object)this).world)), 0.0d));
+    private double gravityFall(double y) {
+        return y * GravityManager.getGravityMultiplier(((ExperienceOrbEntity)(Object)this).world);
     }
 }
