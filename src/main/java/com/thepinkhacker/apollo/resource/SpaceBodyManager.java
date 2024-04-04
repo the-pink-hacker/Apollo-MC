@@ -1,5 +1,7 @@
 package com.thepinkhacker.apollo.resource;
 
+import com.thepinkhacker.apollo.world.dimension.DefaultedSpaceBody;
+import com.thepinkhacker.apollo.world.dimension.SpaceBody;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
@@ -20,11 +22,11 @@ public class SpaceBodyManager {
     }
 
     public SpaceBody getSpaceBodyOrDefault(World world) {
-        return getSpaceBody(world).orElse(DEFAULT);
+        return DefaultedSpaceBody.elseDefault(getSpaceBody(world));
     }
 
     public SpaceBody getSpaceBodyOrDefault(Identifier id) {
-        return getSpaceBody(id).orElse(DEFAULT);
+        return DefaultedSpaceBody.elseDefault(getSpaceBody(id));
     }
 
     public Optional<SpaceBody> getSpaceBody(World world) {
