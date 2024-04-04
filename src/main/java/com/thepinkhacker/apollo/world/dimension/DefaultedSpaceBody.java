@@ -15,6 +15,7 @@ public class DefaultedSpaceBody extends SpaceBody {
                 GravityManager.DEFAULT,
                 true,
                 true,
+                false,
                 new String[] {}
         );
     }

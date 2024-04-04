@@ -1,7 +1,8 @@
 {
-  "gravity": 2.0,
-  "is_atmosphere_visible": false,
-  "has_oxygen": false,
+  "gravity": 0.165,
+  "isAtmosphereVisible": false,
+  "hasOxygen": false,
+  "spawnsMeteorites": true,
   "satellites": [
     "minecraft:textures/environment/sun.png",
     "apollo:textures/environment/earth.png"
