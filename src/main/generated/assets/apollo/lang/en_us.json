@@ -1,6 +1,5 @@
 {
-  "block.apollo.airlock": "Airlock",
-  "block.apollo.airlock_door": "Airlock Door",
+  "block.apollo.airlock": "Airlock Frame",
   "block.apollo.fluid_pipe": "Fluid Pipe",
   "block.apollo.fuel": "Fuel",
   "block.apollo.launchpad": "Launchpad",

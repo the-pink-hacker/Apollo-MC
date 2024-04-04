@@ -10,7 +10,6 @@ import com.ryangar46.apollo.world.ApolloGameRules;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.gamerule.v1.CustomGameRuleCategory;
-import net.minecraft.text.TranslatableTextContent;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.GameRules;
 
@@ -22,8 +21,7 @@ public class LanguageProvider extends FabricLanguageProvider {
     @Override
     public void generateTranslations(TranslationBuilder builder) {
         /* === Blocks === */
-        builder.add(ApolloBlocks.AIRLOCK, "Airlock");
-        builder.add(ApolloBlocks.AIRLOCK_DOOR, "Airlock Door");
+        builder.add(ApolloBlocks.AIRLOCK_FRAME, "Airlock Frame");
         builder.add(ApolloBlocks.FUEL, "Fuel");
         builder.add(ApolloBlocks.FLUID_PIPE, "Fluid Pipe");
         builder.add(ApolloBlocks.LAUNCHPAD, "Launchpad");

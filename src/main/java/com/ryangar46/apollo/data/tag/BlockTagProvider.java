@@ -28,7 +28,7 @@ public class BlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         /* === Minecraft === */
         this.getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
-                .add(ApolloBlocks.AIRLOCK)
+                .add(ApolloBlocks.AIRLOCK_FRAME)
                 .add(ApolloBlocks.LAUNCHPAD)
                 .add(ApolloBlocks.LUNAR_COBBLESTONE)
                 .add(ApolloBlocks.LUNAR_IRON_ORE)
@@ -44,7 +44,7 @@ public class BlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ApolloBlocks.METEORITE)
                 .add(ApolloBlocks.REINFORCED_IRON_BLOCK);
         this.getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
-                .add(ApolloBlocks.AIRLOCK)
+                .add(ApolloBlocks.AIRLOCK_FRAME)
                 .add(ApolloBlocks.LAUNCHPAD)
                 .add(ApolloBlocks.LUNAR_COBBLESTONE)
                 .add(ApolloBlocks.LUNAR_IRON_ORE)

@@ -26,7 +26,7 @@ public class ApolloItemGroups {
                 entries.add(ApolloItems.SPACE_SUIT_CHESTPLATE);
                 entries.add(ApolloItems.SPACE_SUIT_LEGGINGS);
                 entries.add(ApolloItems.SPACE_SUIT_BOOTS);
-                entries.add(ApolloItems.AIRLOCK);
+                entries.add(ApolloItems.AIRLOCK_FRAME);
                 entries.add(ApolloItems.LAUNCHPAD);
                 entries.add(ApolloItems.SHUTTLE_WORKBENCH);
             }))

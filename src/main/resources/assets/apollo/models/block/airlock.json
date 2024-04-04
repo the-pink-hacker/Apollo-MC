@@ -1,6 +1,16 @@
 {
-  "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "apollo:block/airlock_door"
-  }
+    "particle": "apollo:block/airlock",
+    "airlock": "apollo:block/airlock"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 3],
+      "to": [16, 16, 13],
+      "faces": {
+        "north": {"uv": [0, 0, 16, 16], "texture": "#airlock"},
+        "south": {"uv": [0, 0, 16, 16], "texture": "#airlock"}
+      }
+    }
+  ]
 }
