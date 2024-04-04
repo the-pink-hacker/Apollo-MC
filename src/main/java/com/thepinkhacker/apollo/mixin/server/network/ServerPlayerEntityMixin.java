@@ -1,6 +1,5 @@
 package com.thepinkhacker.apollo.mixin.server.network;
 
-import com.thepinkhacker.apollo.Apollo;
 import com.thepinkhacker.apollo.mixin.entity.LivingEntityMixin;
 import com.thepinkhacker.apollo.world.pressure.VacuumChecker;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -25,7 +24,6 @@ public abstract class ServerPlayerEntityMixin extends LivingEntityMixin {
 
     @Override
     protected void apolloVacuumDamage(World world) {
-        Apollo.LOGGER.info("Hi");
         if (((ServerPlayerEntity)(Object)this).interactionManager.getGameMode().isSurvivalLike()) {
             super.apolloVacuumDamage(((ServerPlayerEntity)(Object)this).world);
         }
