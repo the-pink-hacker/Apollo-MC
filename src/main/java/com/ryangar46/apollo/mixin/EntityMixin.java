@@ -6,6 +6,7 @@ import com.ryangar46.apollo.world.dimension.DimensionManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.GameMode;
@@ -93,7 +94,7 @@ public abstract class EntityMixin {
 
     private void vacuumDamage(LivingEntity entity) {
         if (vacuumTicks % 20 == 0) {
-            entity.setHealth(entity.getHealth() - 1.0f);
+            entity.damage(DamageSource.IN_WALL, 1.0f);
         }
         vacuumTicks++;
     }
