@@ -3,11 +3,11 @@ package com.thepinkhacker.apollo.client.render;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.thepinkhacker.apollo.resource.SpaceBodyManager;
+import com.thepinkhacker.apollo.world.dimension.DayCycleManager;
 import com.thepinkhacker.apollo.world.dimension.SpaceBody;
 import net.minecraft.client.gl.VertexBuffer;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LunarWorldView;
@@ -56,8 +56,10 @@ public class ApolloSkyRenderer {
         matrices.push();
         setShaderColorWhite();
 
+        DayCycleManager.WorldTime worldTime = DayCycleManager.getLightProviderTime(renderer.world);
+
         for (SpaceBody.Satellite satellite : spaceBody.getAllSatellites()) {
-            renderSatellite(satellite, renderer, matrices);
+            renderSatellite(satellite, renderer, matrices, worldTime);
         }
 
         // Reset
@@ -72,18 +74,25 @@ public class ApolloSkyRenderer {
     private static void renderSatellite(
             SpaceBody.Satellite satellite,
             WorldRenderer renderer,
-            MatrixStack matrices
+            MatrixStack matrices,
+            DayCycleManager.WorldTime worldTime
     ) {
         BufferBuilder bufferBuilder = Tessellator.getInstance().getBuffer();
         RenderSystem.setShaderTexture(0, satellite.getPrefixedTexture());
         Matrix4f matrix = matrices.peek().getPositionMatrix();
 
-        boolean fixedOrbit = satellite.getOrbit().fixed();
+        SpaceBody.Orbit orbit = satellite.getOrbit();
+        DayCycleManager.WorldTime satelliteTime = DayCycleManager.WorldTime.ofOrbitTicks(
+                worldTime.asTicks(),
+                orbit
+        );
+
         // Offset is negative to make it more intuitive
         // Positive x offset goes in the positive x direction in the world
-        float offsetX = (float)((fixedOrbit ? 0.0f : getSkyAngleDegrees(renderer.world, (float)satellite.getOrbit().speed())) - satellite.getOrbit().offset().x);
-        float offsetY = -satellite.getOrbit().offset().y + DEFAULT_SATELLITE_ROTATION_DEGREES;
-        float offsetZ = -satellite.getOrbit().offset().z;
+        // 0, 0, 0 is like the overworld's sun's noon position
+        float offsetX = (orbit.fixed() ? 0.0f : (float)DayCycleManager.getSkyAngleDegrees(satelliteTime)) - orbit.offset().x;
+        float offsetY = -orbit.offset().y + DEFAULT_SATELLITE_ROTATION_DEGREES;
+        float offsetZ = -orbit.offset().z;
 
         // X: The direction the sun and more normally rotate in
         matrices.multiply(
@@ -122,12 +131,6 @@ public class ApolloSkyRenderer {
 
     private static int getPhase(LunarWorldView world, int numberOfPhases) {
         return (int)(world.getLunarTime() / TICKS_PER_DAY % numberOfPhases + numberOfPhases) % numberOfPhases;
-    }
-
-    public static double getSkyAngleDegrees(LunarWorldView world, double speed) {
-        double d = MathHelper.fractionalPart((double)world.getLunarTime() * speed / TICKS_PER_DAY - 0.25d);
-        double e = 0.5d - Math.cos(d * Math.PI) / 2.0d;
-        return (d * 2.0d + e) / 3.0d * 360.0d;
     }
 
     private static void setShaderColorOpaque(float red, float green, float blue) {
