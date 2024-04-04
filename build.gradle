@@ -77,6 +77,7 @@ publishing {
 }
 
 loom {
+	splitEnvironmentSourceSets()
 	accessWidenerPath = file("src/main/resources/apollo.accesswidener")
 	runs {
 		//
