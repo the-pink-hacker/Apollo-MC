@@ -15,6 +15,7 @@ public class ApolloItems {
     /* === Items === */
     public static final Item FUEL_BUCKET = registerItem("fuel_bucket", new BucketItem(ApolloFluids.STILL_FUEL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
     public static final Item METEORITE_SCRAP = registerItem("meteorite_scrap", new Item(new FabricItemSettings().fireproof()));
+    public static final Item OIL_BOTTLE = registerItem("oil_bottle", new OilBottleItem(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE).maxCount(1)));
     public static final Item OIL_BUCKET = registerItem("oil_bucket", new BucketItem(ApolloFluids.STILL_OIL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
     public static final Item OXYGEN_PLANT_SEEDS = registerItem("oxygen_plant_seeds", new AliasedBlockItem(ApolloBlocks.OXYGEN_PLANT, new FabricItemSettings()));
     public static final Item NEGATIVE_GRAVITY_BOOTS = registerItem("negative_gravity_boots", new ArmorItem(ApolloArmorMaterials.GRAVITY_NEGATIVE, ArmorItem.Type.BOOTS, new FabricItemSettings()));

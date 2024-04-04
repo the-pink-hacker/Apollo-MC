@@ -54,6 +54,7 @@ public class ModelProvider extends FabricModelProvider {
     public void generateItemModels(ItemModelGenerator generator) {
         registerGeneratedItem(generator, ApolloItems.FUEL_BUCKET);
         registerGeneratedItem(generator, ApolloItems.METEORITE_SCRAP);
+        registerGeneratedItem(generator, ApolloItems.OIL_BOTTLE);
         registerGeneratedItem(generator, ApolloItems.OIL_BUCKET);
         registerGeneratedItem(generator, ApolloItems.OXYGEN_PLANT_SEEDS);
         registerGeneratedItem(generator, ApolloItems.NEGATIVE_GRAVITY_BOOTS);
@@ -72,10 +73,6 @@ public class ModelProvider extends FabricModelProvider {
 
     private static void registerSimpleBlockItem(BlockStateModelGenerator generator, Block block, String blockModel) {
         generator.registerParentedItemModel(block, Apollo.getIdentifier("block/" + blockModel));
-    }
-
-    private static void registerCubeAll(BlockStateModelGenerator generator, Block block) {
-        generator.registerSimpleCubeAll(block);
     }
 
     private static void registerGeneratedItem(ItemModelGenerator generator, Item item) {

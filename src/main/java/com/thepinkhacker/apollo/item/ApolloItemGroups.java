@@ -18,6 +18,7 @@ public abstract class ApolloItemGroups {
                     .entries(((context, entries) -> {
                         entries.add(ApolloItems.FUEL_BUCKET);
                         entries.add(ApolloItems.OIL_BUCKET);
+                        entries.add(ApolloItems.OIL_BOTTLE);
                         entries.add(ApolloItems.FLUID_PIPE);
                         entries.add(ApolloItems.FLUID_VALVE_PIPE);
                         entries.add(ApolloItems.OIL_REFINERY);
@@ -33,7 +34,6 @@ public abstract class ApolloItemGroups {
                         entries.add(ApolloItems.SPACE_SUIT_CHESTPLATE);
                         entries.add(ApolloItems.SPACE_SUIT_LEGGINGS);
                         entries.add(ApolloItems.SPACE_SUIT_BOOTS);
-
                         entries.add(ApolloItems.LAUNCHPAD);
                         entries.add(ApolloItems.SHUTTLE_WORKBENCH);
                     }))
