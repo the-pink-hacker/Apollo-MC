@@ -2,7 +2,7 @@ package com.ryangar46.apollo.mixin.client.render;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.ryangar46.apollo.client.render.SkyManager;
-import com.ryangar46.apollo.tag.TagManager;
+import com.ryangar46.apollo.registry.tag.ApolloDimensionTypeTags;
 import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.util.Identifier;
@@ -28,7 +28,7 @@ public abstract class WorldRendererMixin {
             )
     )
     private void setMoon(int i, Identifier identifier) {
-        if (world.getDimensionEntry().isIn(TagManager.EARTH_VISIBLE_WORLDS)) {
+        if (world.getDimensionEntry().isIn(ApolloDimensionTypeTags.EARTH_VISIBLE_WORLDS)) {
             RenderSystem.setShaderTexture(i, SkyManager.EARTH);
         } else {
             RenderSystem.setShaderTexture(i, identifier);
@@ -44,6 +44,6 @@ public abstract class WorldRendererMixin {
             index = 0
     )
     private float getFogColor(float skyAngle) {
-        return world.getDimensionEntry().isIn(TagManager.ATMOSPHERE_NOT_VISIBLE_WORLDS) ? NIGHT_ANGLE : skyAngle;
+        return world.getDimensionEntry().isIn(ApolloDimensionTypeTags.ATMOSPHERE_NOT_VISIBLE_WORLDS) ? NIGHT_ANGLE : skyAngle;
     }
 }

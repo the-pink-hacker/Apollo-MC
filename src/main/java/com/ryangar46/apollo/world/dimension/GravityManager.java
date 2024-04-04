@@ -1,7 +1,7 @@
 package com.ryangar46.apollo.world.dimension;
 
 import com.ryangar46.apollo.item.GravityArmor;
-import com.ryangar46.apollo.tag.TagManager;
+import com.ryangar46.apollo.registry.tag.ApolloItemTags;
 import com.ryangar46.apollo.world.ApolloWorlds;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -29,9 +29,9 @@ public class GravityManager {
 
     public static GravityArmor.Type getArmorGravityMultiplier(ItemStack item) {
         if (!item.isEmpty()) {
-            if (item.isIn(TagManager.NEGATIVE_GRAVITY_EQUIPABLES)) {
+            if (item.isIn(ApolloItemTags.NEGATIVE_GRAVITY_EQUIPABLES)) {
                 return GravityArmor.Type.NEGATIVE;
-            } else if (item.isIn(TagManager.POSITIVE_GRAVITY_EQUIPABLES)) {
+            } else if (item.isIn(ApolloItemTags.POSITIVE_GRAVITY_EQUIPABLES)) {
                 return GravityArmor.Type.POSITIVE;
             }
             return GravityArmor.Type.NORMAL;

@@ -1,6 +1,6 @@
 package com.ryangar46.apollo.block;
 
-import com.ryangar46.apollo.tag.TagManager;
+import com.ryangar46.apollo.registry.tag.ApolloBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -66,6 +66,6 @@ public class LaunchpadBlock extends Block {
         BlockPos otherPos = pos.offset(direction);
         Block block = world.getBlockState(otherPos).getBlock();
 
-        return !direction.getAxis().isVertical() && block.getRegistryEntry().isIn(TagManager.LAUNCHPADS);
+        return !direction.getAxis().isVertical() && block.getRegistryEntry().isIn(ApolloBlockTags.LAUNCHPADS);
     }
 }

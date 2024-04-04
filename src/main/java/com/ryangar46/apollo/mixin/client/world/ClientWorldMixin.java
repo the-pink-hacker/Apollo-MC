@@ -1,6 +1,6 @@
 package com.ryangar46.apollo.mixin.client.world;
 
-import com.ryangar46.apollo.tag.TagManager;
+import com.ryangar46.apollo.registry.tag.ApolloDimensionTypeTags;
 import net.minecraft.client.world.ClientWorld;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -16,7 +16,7 @@ public abstract class ClientWorldMixin {
             ordinal = 1
     )
     private float starBrightness(float f) {
-        return ((ClientWorld)(Object)this).getDimensionEntry().isIn(TagManager.ATMOSPHERE_NOT_VISIBLE_WORLDS) ? NIGHT_ANGLE : f;
+        return ((ClientWorld)(Object)this).getDimensionEntry().isIn(ApolloDimensionTypeTags.ATMOSPHERE_NOT_VISIBLE_WORLDS) ? NIGHT_ANGLE : f;
     }
 
     @ModifyVariable(
@@ -25,6 +25,6 @@ public abstract class ClientWorldMixin {
             ordinal = 1
     )
     private float darkSky(float f) {
-        return ((ClientWorld)(Object)this).getDimensionEntry().isIn(TagManager.ATMOSPHERE_NOT_VISIBLE_WORLDS) ? NIGHT_ANGLE : f;
+        return ((ClientWorld)(Object)this).getDimensionEntry().isIn(ApolloDimensionTypeTags.ATMOSPHERE_NOT_VISIBLE_WORLDS) ? NIGHT_ANGLE : f;
     }
 }

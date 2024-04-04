@@ -1,11 +1,14 @@
 {
   "replace": false,
   "values": [
+    "apollo:airlock",
     "apollo:launchpad",
     "apollo:lunar_cobblestone",
     "apollo:lunar_iron_ore",
     "apollo:lunar_stone",
+    "apollo:meteorite",
     "apollo:oil_refinery",
+    "apollo:reinforced_iron_block",
     "apollo:shuttle_workbench"
   ]
 }
