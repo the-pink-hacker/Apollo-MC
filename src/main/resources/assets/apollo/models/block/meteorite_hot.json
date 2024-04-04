@@ -1,0 +1,6 @@
+{
+  "parent": "apollo:block/template_meteorite",
+  "textures": {
+    "all": "apollo:block/meteorite_hot"
+  }
+}
