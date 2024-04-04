@@ -1,6 +1,7 @@
 package com.thepinkhacker.apollo.world.dimension;
 
 import com.thepinkhacker.apollo.Apollo;
+import com.thepinkhacker.apollo.client.world.DimensionEffectsManager;
 import com.thepinkhacker.apollo.registry.tag.ApolloBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.registry.Registerable;
@@ -32,7 +33,6 @@ public class ApolloDimensionTypes {
                 256,
                 256,
                 ApolloBlockTags.INFINIBURN_MOON,
-                MOON_ID,
                 0.0f,
                 createMonsterSetting(
                         false,
@@ -47,9 +47,39 @@ public class ApolloDimensionTypes {
         return RegistryKey.of(RegistryKeys.DIMENSION_TYPE, id);
     }
 
-    // Only to have argument names show up
-    private static DimensionType createType(OptionalLong fixedTime, boolean hasSkylight, boolean hasCeiling, boolean ultrawarm, boolean natural, double coordinateScale, boolean bedWorks, boolean piglinSafe, int minY, int height, int logicalHeight, TagKey<Block> infiniburn, Identifier effects, float ambientLight, DimensionType.MonsterSettings monsterSettings) {
-        return new DimensionType(fixedTime, hasSkylight, hasCeiling, ultrawarm, natural, coordinateScale, bedWorks, piglinSafe, minY, height, logicalHeight, infiniburn, effects, ambientLight, monsterSettings);
+    public static DimensionType createType(
+            OptionalLong fixedTime,
+            boolean hasSkylight,
+            boolean hasCeiling,
+            boolean ultrawarm,
+            boolean natural,
+            double coordinateScale,
+            boolean bedWorks,
+            boolean piglinSafe,
+            int minY,
+            int height,
+            int logicalHeight,
+            TagKey<Block> infiniburn,
+            float ambientLight,
+            DimensionType.MonsterSettings monsterSettings
+    ) {
+        return new DimensionType(
+                fixedTime,
+                hasSkylight,
+                hasCeiling,
+                ultrawarm,
+                natural,
+                coordinateScale,
+                bedWorks,
+                piglinSafe,
+                minY,
+                height,
+                logicalHeight,
+                infiniburn,
+                DimensionEffectsManager.APOLLO,
+                ambientLight,
+                monsterSettings
+        );
     }
 
     // Only to have argument names show up

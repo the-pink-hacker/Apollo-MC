@@ -5,24 +5,29 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
 import net.minecraft.client.render.DimensionEffects;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
 
 @Environment(EnvType.CLIENT)
 public class DimensionEffectsManager {
+    public static final Identifier APOLLO = Apollo.getIdentifier("apollo");
+
     public static void registerClient() {
         Apollo.LOGGER.info("Registering dimension effects");
 
-        registerDimensionEffect("moon", new Moon());
-    }
-
-    public static void registerDimensionEffect(String id, DimensionEffects dimensionEffects) {
-        DimensionRenderingRegistry.registerDimensionEffects(Apollo.getIdentifier(id), dimensionEffects);
+        DimensionRenderingRegistry.registerDimensionEffects(APOLLO, new ApolloDimensionEffects());
     }
 
     @Environment(EnvType.CLIENT)
-    public static class Moon extends DimensionEffects {
-        public Moon() {
-            super(Float.NaN, true, SkyType.NORMAL, false, false);
+    public static class ApolloDimensionEffects extends DimensionEffects {
+        public ApolloDimensionEffects() {
+            super(
+                    Float.NaN,
+                    false,
+                    SkyType.NONE,
+                    false,
+                    false
+            );
         }
 
         @Override
