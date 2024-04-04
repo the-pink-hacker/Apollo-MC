@@ -7,12 +7,20 @@
     {
       "texture": "minecraft:environment/sun.png",
       "fixedOrbit": false,
-      "scale": 30.0
+      "scale": 30.0,
+      "phases": {
+        "x": 1,
+        "y": 1
+      }
     },
     {
       "texture": "apollo:environment/earth.png",
       "fixedOrbit": true,
-      "scale": 60.0
+      "scale": 60.0,
+      "phases": {
+        "x": 4,
+        "y": 2
+      }
     }
   ]
 }

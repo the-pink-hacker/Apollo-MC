@@ -3,6 +3,7 @@ package com.thepinkhacker.apollo.world.dimension;
 import com.google.gson.*;
 import com.thepinkhacker.apollo.resource.GsonHelper;
 import net.minecraft.util.Identifier;
+import org.joml.Vector2i;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -90,9 +91,9 @@ public class SpaceBody {
         }
     }
 
-    public record Satellite(Identifier texture, boolean fixedOrbit, float scale) {
-        public static Satellite fromShortTexture(Identifier texture, boolean fixedOrbit, float scale) {
-            return new Satellite(texture.withPrefixedPath("textures/"), fixedOrbit, scale);
+    public record Satellite(Identifier texture, boolean fixedOrbit, float scale, Vector2i phases) {
+        public static Satellite fromShortTexture(Identifier texture, boolean fixedOrbit, float scale, Vector2i phases) {
+            return new Satellite(texture.withPrefixedPath("textures/"), fixedOrbit, scale, phases);
         }
 
         private static class Deserializer implements JsonDeserializer<Satellite> {
@@ -102,7 +103,12 @@ public class SpaceBody {
                 Identifier texture = context.deserialize(object.get("texture"), GsonHelper.getType(Identifier.class));
                 boolean fixedOrbit = object.get("fixedOrbit").getAsBoolean();
                 float scale = object.get("scale").getAsFloat();
-                return Satellite.fromShortTexture(texture, fixedOrbit, scale);
+                JsonObject phases = object.get("phases").getAsJsonObject();
+                Vector2i parsedPhases = new Vector2i(
+                        phases.get("x").getAsInt(),
+                        phases.get("y").getAsInt()
+                );
+                return Satellite.fromShortTexture(texture, fixedOrbit, scale, parsedPhases);
             }
         }
     }

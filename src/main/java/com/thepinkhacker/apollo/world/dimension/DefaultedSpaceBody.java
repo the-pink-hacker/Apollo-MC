@@ -1,7 +1,5 @@
 package com.thepinkhacker.apollo.world.dimension;
 
-import net.minecraft.util.Identifier;
-
 import java.util.Optional;
 
 /**
