@@ -1,8 +1,8 @@
 package com.ryangar46.apollo;
 
-import com.ryangar46.apollo.block.ApolloBlocks;
 import com.ryangar46.apollo.entity.EntityManager;
-import com.ryangar46.apollo.item.ItemManager;
+import com.ryangar46.apollo.item.ApolloItemGroups;
+import com.ryangar46.apollo.item.ApolloItems;
 import com.ryangar46.apollo.recipe.RecipeManager;
 import com.ryangar46.apollo.stat.StatManager;
 import com.ryangar46.apollo.world.GameRuleManager;
@@ -25,14 +25,11 @@ public class Apollo implements ModInitializer, TerraBlenderApi {
 	public void onInitialize() {
 		GeckoLib.initialize();
 		GameRuleManager.register();
-		ItemManager.register();
-		ApolloBlocks.register();
+		ApolloItemGroups.register();
+		ApolloItems.register();
 		EntityManager.register();
-		//BiomeManager.register();
 		RecipeManager.register();
 		StatManager.register();
-		//DimensionManager.register();
-		//ApolloBuiltinNoiseParameters.registry();
 
 		ServerLifecycleEvents.SERVER_STARTED.register(server -> GenericSpawnerManager.register());
 	}

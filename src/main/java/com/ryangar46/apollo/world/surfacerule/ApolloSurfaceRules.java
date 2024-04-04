@@ -1,9 +1,6 @@
 package com.ryangar46.apollo.world.surfacerule;
 
-import com.ryangar46.apollo.world.biome.BiomeManager;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.surfacebuilder.MaterialRules;
 
 public class ApolloSurfaceRules {
