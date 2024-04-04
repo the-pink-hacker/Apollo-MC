@@ -19,6 +19,7 @@ public class BlockTagProvider extends FabricTagProvider.BlockTagProvider {
         /* === Apollo === */
         this.getOrCreateTagBuilder(ApolloBlockTags.FLUID_PIPE_CONNECTABLE_BLOCKS)
                 .add(ApolloBlocks.FLUID_PIPE)
+                .add(ApolloBlocks.FLUID_VALVE_PIPE)
                 .add(ApolloBlocks.OIL_REFINERY)
                 .add(ApolloBlocks.STORAGE_TANK);
         this.getOrCreateTagBuilder(ApolloBlockTags.LAUNCHPADS)

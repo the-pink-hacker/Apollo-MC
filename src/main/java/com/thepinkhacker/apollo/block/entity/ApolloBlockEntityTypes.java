@@ -3,6 +3,7 @@ package com.thepinkhacker.apollo.block.entity;
 import com.thepinkhacker.apollo.Apollo;
 import com.thepinkhacker.apollo.block.ApolloBlocks;
 import com.thepinkhacker.apollo.block.entity.fluid.FluidPipeBlockEntity;
+import com.thepinkhacker.apollo.block.entity.fluid.FluidValvePipeBlockEntity;
 import com.thepinkhacker.apollo.block.entity.fluid.StorageTankBlockEntity;
 import com.thepinkhacker.apollo.fluid.FluidCarrier;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
@@ -18,7 +19,10 @@ public class ApolloBlockEntityTypes {
             "fluid_pipe",
             FabricBlockEntityTypeBuilder.create(FluidPipeBlockEntity::new, ApolloBlocks.FLUID_PIPE)
     );
-
+    public static final BlockEntityType<FluidValvePipeBlockEntity> FLUID_VALVE_PIPE = of(
+            "fluid_valve_pipe",
+            FabricBlockEntityTypeBuilder.create(FluidValvePipeBlockEntity::new, ApolloBlocks.FLUID_VALVE_PIPE)
+    );
     public static final BlockEntityType<StorageTankBlockEntity> STORAGE_TANK = of(
             "storage_tank",
             FabricBlockEntityTypeBuilder.create(StorageTankBlockEntity::new, ApolloBlocks.STORAGE_TANK)
@@ -26,6 +30,7 @@ public class ApolloBlockEntityTypes {
 
     public static void register() {
         registerFluidCarrier(FLUID_PIPE);
+        registerFluidCarrier(FLUID_VALVE_PIPE);
         registerFluidCarrier(STORAGE_TANK);
     }
 

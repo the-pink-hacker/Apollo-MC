@@ -29,6 +29,7 @@ public class ApolloItems {
     public static final Item AIRLOCK_CONTROLLER = registerItem(ApolloBlocks.AIRLOCK_CONTROLLER);
     public static final Item AIRLOCK_FRAME = registerItem(ApolloBlocks.AIRLOCK_FRAME);
     public static final Item FLUID_PIPE = registerItem(ApolloBlocks.FLUID_PIPE);
+    public static final Item FLUID_VALVE_PIPE = registerItem(ApolloBlocks.FLUID_VALVE_PIPE);
     public static final Item LAUNCHPAD = registerItem(ApolloBlocks.LAUNCHPAD);
     public static final Item LUNAR_DUST = registerItem(ApolloBlocks.LUNAR_DUST);
     public static final Item LUNAR_COBBLESTONE = registerItem(ApolloBlocks.LUNAR_COBBLESTONE);

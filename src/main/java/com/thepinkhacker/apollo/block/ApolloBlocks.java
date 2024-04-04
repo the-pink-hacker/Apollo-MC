@@ -3,6 +3,7 @@ package com.thepinkhacker.apollo.block;
 import com.thepinkhacker.apollo.Apollo;
 import com.thepinkhacker.apollo.block.crop.OxygenPlantBlock;
 import com.thepinkhacker.apollo.block.fluid.FluidPipeBlock;
+import com.thepinkhacker.apollo.block.fluid.FluidValvePipeBlock;
 import com.thepinkhacker.apollo.block.fluid.StorageTankBlock;
 import com.thepinkhacker.apollo.fluid.ApolloFluids;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -17,6 +18,7 @@ public class ApolloBlocks {
     public static final Block AIRLOCK_FRAME = registerBlock("airlock_frame", new Block(FabricBlockSettings.of(Material.METAL).strength(50.0f, 12_000f).requiresTool()));
     public static final Block AIRLOCK = registerBlock("airlock", new AirLockBlock(FabricBlockSettings.of(Material.METAL).strength(-1.0f)));
     public static final Block FLUID_PIPE = registerBlock("fluid_pipe", new FluidPipeBlock(FabricBlockSettings.of(Material.METAL).strength(5.0f, 6.0f)));
+    public static final Block FLUID_VALVE_PIPE = registerBlock("fluid_valve_pipe", new FluidValvePipeBlock(FabricBlockSettings.copyOf(FLUID_PIPE)));
     public static final Block FUEL = registerBlock("fuel", new FluidBlock(ApolloFluids.STILL_FUEL, FabricBlockSettings.of(Material.WATER).noCollision().dropsNothing()));
     public static final Block LAUNCHPAD = registerBlock("launchpad", new LaunchpadBlock(FabricBlockSettings.of(Material.METAL).strength(50.0f, 12_000.0f).requiresTool()));
     public static final Block LUNAR_DUST = registerBlock("lunar_dust", new FallingBlock(FabricBlockSettings.of(Material.SOIL).strength(1.0f)));
