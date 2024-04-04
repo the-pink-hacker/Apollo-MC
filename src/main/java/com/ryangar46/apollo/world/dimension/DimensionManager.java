@@ -12,8 +12,4 @@ public class DimensionManager {
     private static final RegistryKey<DimensionOptions> MOON_OPTIONS = RegistryKey.of(Registry.DIMENSION_KEY, new Identifier(Apollo.MOD_ID, "moon"));
     public static RegistryKey<World> MOON = RegistryKey.of(Registry.WORLD_KEY, MOON_OPTIONS.getValue());
     private static final RegistryKey<DimensionType> MOON_TYPE = RegistryKey.of(Registry.DIMENSION_TYPE_KEY, new Identifier(Apollo.MOD_ID, "moon"));
-
-    public static void register() {
-        Apollo.LOGGER.info("Registering dimensions");
-    }
 }

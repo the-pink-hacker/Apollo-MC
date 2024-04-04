@@ -1,22 +1,26 @@
 package com.ryangar46.apollo.tag;
 
 import com.ryangar46.apollo.Apollo;
-import net.fabricmc.fabric.api.tag.TagFactory;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
-import net.minecraft.tag.Tag;
+import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 public class TagManager {
-    public static final Tag.Identified<Item> AIRTIGHT_BOOTS = TagFactory.ITEM.create(new Identifier(Apollo.MOD_ID, "airtight_boots"));
-    public static final Tag.Identified<Item> AIRTIGHT_CHESTPLATES = TagFactory.ITEM.create(new Identifier(Apollo.MOD_ID, "airtight_chestplates"));
-    public static final Tag.Identified<Item> AIRTIGHT_HELMETS = TagFactory.ITEM.create(new Identifier(Apollo.MOD_ID, "airtight_helmets"));
-    public static final Tag.Identified<Item> AIRTIGHT_LEGGINGS = TagFactory.ITEM.create(new Identifier(Apollo.MOD_ID, "airtight_leggings"));
-    public static final Tag.Identified<Item> NEGATIVE_GRAVITY_EQUIPABLES = TagFactory.ITEM.create(new Identifier(Apollo.MOD_ID, "negative_gravity_equipables"));
-    public static final Tag.Identified<Item> POSITIVE_GRAVITY_EQUIPABLES = TagFactory.ITEM.create(new Identifier(Apollo.MOD_ID, "positive_gravity_equipables"));
-    public static final Tag.Identified<EntityType<?>> VACUUM_IMMUNE_CREATURES = TagFactory.ENTITY_TYPE.create(new Identifier(Apollo.MOD_ID, "vacuum_immune_creatures"));
+    public static final TagKey<Item> AIRTIGHT_BOOTS = registerItem("airtight_boots");
+    public static final TagKey<Item> AIRTIGHT_CHESTPLATES = registerItem("airtight_chestplates");
+    public static final TagKey<Item> AIRTIGHT_HELMETS = registerItem("airtight_helmets");
+    public static final TagKey<Item> AIRTIGHT_LEGGINGS = registerItem("airtight_leggings");
+    public static final TagKey<Item> NEGATIVE_GRAVITY_EQUIPABLES = registerItem("negative_gravity_equipables");
+    public static final TagKey<Item> POSITIVE_GRAVITY_EQUIPABLES = registerItem("positive_gravity_equipables");
+    public static final TagKey<EntityType<?>> VACUUM_IMMUNE_CREATURES = registerEntityType("vacuum_immune_creatures");
 
-    public static void register() {
-        Apollo.LOGGER.info("Registering tags");
+    public static TagKey<Item> registerItem(String id) {
+        return TagKey.of(Registry.ITEM_KEY, new Identifier(Apollo.MOD_ID, id));
+    }
+
+    public static TagKey<EntityType<?>> registerEntityType(String id) {
+        return TagKey.of(Registry.ENTITY_TYPE_KEY, new Identifier(Apollo.MOD_ID, id));
     }
 }

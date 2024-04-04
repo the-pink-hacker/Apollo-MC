@@ -15,8 +15,4 @@ public class ItemGroupManager {
     public static final ItemGroup MOON = FabricItemGroupBuilder.create(new Identifier(Apollo.MOD_ID, "moon"))
             .icon(() -> new ItemStack(BlockManager.LUNAR_SOIL))
             .build();
-
-    public static void register() {
-        Apollo.LOGGER.info("Registering item groups");
-    }
 }
