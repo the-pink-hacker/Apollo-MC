@@ -1,6 +1,5 @@
 package com.ryangar46.apollo.block;
 
-import com.ryangar46.apollo.Apollo;
 import net.minecraft.block.*;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -55,7 +54,9 @@ public class MeteoriteBlock extends Block implements Waterloggable {
 
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        super.randomTick(state, world, pos, random);
+        if (random.nextFloat() < 1.0f / 8.0f) {
+            world.setBlockState(pos, state.with(HEAT, Math.max(0, state.get(HEAT) - 1)));
+        }
     }
 
     @Override
