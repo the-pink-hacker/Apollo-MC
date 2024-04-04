@@ -74,6 +74,7 @@ public class LanguageProvider extends FabricLanguageProvider {
         addGameruleCategory(builder, ApolloGameRules.APOLLO, "Apollo");
 
         /* === Items === */
+        builder.add(ApolloItems.FUEL_BOTTLE, "Fuel Bottle");
         builder.add(ApolloItems.FUEL_BUCKET, "Fuel Bucket");
         builder.add(ApolloItems.METEORITE_SCRAP, "Meteorite Scrap");
         builder.add(ApolloItems.NEGATIVE_GRAVITY_BOOTS, "Negative Gravity Boots");

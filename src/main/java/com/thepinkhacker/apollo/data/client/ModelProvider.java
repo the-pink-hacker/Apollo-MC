@@ -52,6 +52,7 @@ public class ModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator generator) {
+        registerGeneratedItem(generator, ApolloItems.FUEL_BOTTLE);
         registerGeneratedItem(generator, ApolloItems.FUEL_BUCKET);
         registerGeneratedItem(generator, ApolloItems.METEORITE_SCRAP);
         registerGeneratedItem(generator, ApolloItems.OIL_BOTTLE);

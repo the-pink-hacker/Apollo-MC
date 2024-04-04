@@ -1,7 +1,7 @@
-// 1.20.1	2023-06-20T16:44:45.094969633	Apollo/minecraft:block Loot Table
+// 1.20.1	2023-06-21T12:55:56.301104592	Apollo/minecraft:block Loot Table
 1a38d05fe682af415295267245a934e142c6a7e2 data/apollo/loot_tables/blocks/fluid_valve_pipe.json
-900035aa13a7a08ef6a0d01410fad687b74e1fb0 data/apollo/loot_tables/blocks/oil_refinery.json
 9195c939cf542aac1cd47248c364f0c97477ccca data/apollo/loot_tables/blocks/lunar_stone.json
+900035aa13a7a08ef6a0d01410fad687b74e1fb0 data/apollo/loot_tables/blocks/oil_refinery.json
 1fbd7c31b6785a37ed57aaa9ea4cc396631f69d3 data/apollo/loot_tables/blocks/fluid_pipe.json
 607ea7ec95187c5a05e7e7e426923564b8692323 data/apollo/loot_tables/blocks/oiled_sand.json
 5768871ed68cf6c13a7860069eae8995d1f193a4 data/apollo/loot_tables/blocks/lunar_dust.json

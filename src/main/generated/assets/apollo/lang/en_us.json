@@ -30,6 +30,7 @@
   "gamerule.shuttleEscapeHeight.description": "At what y level does a shuttle leave the current world",
   "gamerule.suffocateInVacuum": "Suffocate in vacuum",
   "gamerule.suffocateInVacuum.description": "Whether mobs and players suffocate in a vacuum",
+  "item.apollo.fuel_bottle": "Fuel Bottle",
   "item.apollo.fuel_bucket": "Fuel Bucket",
   "item.apollo.meteorite_scrap": "Meteorite Scrap",
   "item.apollo.negative_gravity_boots": "Negative Gravity Boots",

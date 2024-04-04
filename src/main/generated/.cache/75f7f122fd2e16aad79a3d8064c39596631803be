@@ -1,7 +1,7 @@
-// 1.20.1	2023-06-20T16:44:45.09555068	Apollo/Tags for minecraft:block
+// 1.20.1	2023-06-21T12:55:56.301406131	Apollo/Tags for minecraft:block
 a52b10d60490003f8a4854de5a96146af30d9afe data/minecraft/tags/blocks/mineable/pickaxe.json
-b15dd20dae63988f181d0c54f0763b15dd8fbeda data/minecraft/tags/blocks/needs_iron_tool.json
 b04e732e0e400f1e00df2126ba285b748bf780c1 data/minecraft/tags/blocks/sand.json
+b15dd20dae63988f181d0c54f0763b15dd8fbeda data/minecraft/tags/blocks/needs_iron_tool.json
 cd7f0605c956199c80726f07a853457bc608072c data/apollo/tags/blocks/fluid_pipe_connectable_blocks.json
 67242bff449218546bc061089d1d26272cd6bea2 data/minecraft/tags/blocks/needs_diamond_tool.json
 b195e10d3bb3fbcbb85692e8005f10ae00ee75ea data/apollo/tags/blocks/lunar_ore_replaceables.json

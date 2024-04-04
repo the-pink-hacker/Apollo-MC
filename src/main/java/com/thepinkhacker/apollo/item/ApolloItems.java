@@ -13,6 +13,7 @@ import net.minecraft.util.Identifier;
 
 public class ApolloItems {
     /* === Items === */
+    public static final Item FUEL_BOTTLE = registerItem("fuel_bottle", new Item(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE).maxCount(1)));
     public static final Item FUEL_BUCKET = registerItem("fuel_bucket", new BucketItem(ApolloFluids.STILL_FUEL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
     public static final Item METEORITE_SCRAP = registerItem("meteorite_scrap", new Item(new FabricItemSettings().fireproof()));
     public static final Item OIL_BOTTLE = registerItem("oil_bottle", new OilBottleItem(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE).maxCount(1)));

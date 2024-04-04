@@ -17,6 +17,7 @@ public abstract class ApolloItemGroups {
                     .icon(() -> new ItemStack(ApolloItems.SPACE_SUIT_HELMET))
                     .entries(((context, entries) -> {
                         entries.add(ApolloItems.FUEL_BUCKET);
+                        entries.add(ApolloItems.FUEL_BOTTLE);
                         entries.add(ApolloItems.OIL_BUCKET);
                         entries.add(ApolloItems.OIL_BOTTLE);
                         entries.add(ApolloItems.FLUID_PIPE);
