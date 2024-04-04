@@ -6,7 +6,7 @@ import com.ryangar46.apollo.item.ApolloItems;
 import com.ryangar46.apollo.recipe.RecipeManager;
 import com.ryangar46.apollo.stat.ApolloStats;
 import com.ryangar46.apollo.world.ApolloGameRules;
-import com.ryangar46.apollo.world.biome.ApolloOverworldRegion;
+import com.ryangar46.apollo.world.biome.ApolloBiomeKeys;
 import com.ryangar46.apollo.world.spawner.GenericSpawnerManager;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
@@ -24,6 +24,7 @@ public class Apollo implements ModInitializer, TerraBlenderApi {
 	@Override
 	public void onInitialize() {
 		GeckoLib.initialize();
+		ApolloBiomeKeys.register();
 		ApolloGameRules.register();
 		ApolloItemGroups.register();
 		ApolloItems.register();
@@ -32,12 +33,5 @@ public class Apollo implements ModInitializer, TerraBlenderApi {
 		ApolloStats.register();
 
 		ServerLifecycleEvents.SERVER_STARTED.register(server -> GenericSpawnerManager.register());
-	}
-
-	@Override
-	public void onTerraBlenderInitialized() {
-		Regions.register(new ApolloOverworldRegion(new Identifier(MOD_ID, "overworld"), 2));
-
-		//SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ApolloSurfaceRules.makeRules());
 	}
 }

@@ -1,3 +1,8 @@
-// 1.19.3	2023-03-25T01:36:30.609926784	Apollo/apollo
+// 1.19.3	2023-03-26T17:38:16.119918487	Apollo/apollo
+e89763a07d3da4231f640d8525922d20c135d91a data/apollo/worldgen/biome/lunar_maria.json
+3e4be03026f7285b7537501c85e063f4ed4146ba data/apollo/worldgen/configured_feature/lunar_ore_iron.json
+e89763a07d3da4231f640d8525922d20c135d91a data/apollo/worldgen/biome/lunar_ditches.json
+d8dcf1bdac9bcc9fafcee658a5ef6655f35d2a44 data/apollo/worldgen/placed_feature/lunar_ore_iron.json
 c851c1d5c081ab6f0ab150dbdbc0614b7c1dcfdc data/apollo/dimension_type/moon.json
 4f21d4405a177e291cfc0133a7475d5b8ac6b138 data/apollo/worldgen/noise/maria.json
+e89763a07d3da4231f640d8525922d20c135d91a data/apollo/worldgen/biome/lunar_highlands.json
