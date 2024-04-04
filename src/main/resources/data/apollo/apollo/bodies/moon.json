@@ -5,22 +5,25 @@
   "spawns_meteorites": true,
   "satellites": [
     {
-      "texture": "minecraft:environment/sun.png",
-      "scale": 30.0
-    },
-    {
       "texture": "apollo:environment/earth.png",
       "fixedOrbit": true,
       "orbit": {
-        "fixed": true,
-        "offset": {
-          "x": 30.0
-        }
+        "fixed": true
       },
       "scale": 60.0,
       "phases": {
         "x": 4,
         "y": 2
+      }
+    },
+    {
+      "texture": "minecraft:environment/sun.png",
+      "scale": 30.0,
+      "orbit": {
+        "offset": {
+          "y": 30.0,
+          "z": 30.0
+        }
       }
     }
   ]

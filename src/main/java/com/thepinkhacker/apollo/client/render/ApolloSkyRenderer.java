@@ -9,11 +9,14 @@ import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.RotationAxis;
 import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 import java.util.ArrayList;
 
 public class ApolloSkyRenderer {
     private static final float SATELLITE_Y_OFFSET = 100.0f;
+    private static final float DEFAULT_SATELLITE_ROTATION_DEGREES = -90.0f;
 
     public static void render(
             WorldRenderer renderer,
@@ -22,6 +25,7 @@ public class ApolloSkyRenderer {
             float tickDelta,
             Camera camera
     ) {
+        // Setup
         RenderSystem.enableBlend();
         RenderSystem.depthMask(false);
 
@@ -43,31 +47,14 @@ public class ApolloSkyRenderer {
         setShaderColorWhite();
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
 
-        float skyAngleDegrees = renderer.world.getSkyAngle(tickDelta) * 360.0f;
         SpaceBody spaceBody = SpaceBodyManager.getInstance().getSpaceBodyOrDefault(renderer.world);
-        ArrayList<SpaceBody.Satellite> fixedOrbit = new ArrayList<>();
-        ArrayList<SpaceBody.Satellite> nonFixedOrbit = new ArrayList<>();
+        float skyAngleDegrees = renderer.world.getSkyAngle(tickDelta) * 360.0f;
 
         for (SpaceBody.Satellite satellite : spaceBody.getSatellites()) {
-            if (satellite.orbit().fixed()) {
-                fixedOrbit.add(satellite);
-            } else {
-                nonFixedOrbit.add(satellite);
-            }
+            renderSatellite(satellite, matrices, skyAngleDegrees);
         }
 
-        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90.0F));
-
-        for (SpaceBody.Satellite satellite : fixedOrbit) {
-            renderSatellite(satellite, matrices);
-        }
-
-        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(skyAngleDegrees));
-
-        for (SpaceBody.Satellite satellite : nonFixedOrbit) {
-            renderSatellite(satellite, matrices);
-        }
-
+        // Reset
         RenderSystem.depthMask(true);
         RenderSystem.disableBlend();
         RenderSystem.defaultBlendFunc();
@@ -75,22 +62,45 @@ public class ApolloSkyRenderer {
         matrices.pop();
     }
 
+    // TODO: Have the order of the satellites affect which one is in front of which
     private static void renderSatellite(
             SpaceBody.Satellite satellite,
-            MatrixStack matrices
+            MatrixStack matrices,
+            float skyAngleDegrees
     ) {
         BufferBuilder bufferBuilder = Tessellator.getInstance().getBuffer();
         RenderSystem.setShaderTexture(0, satellite.texture());
         Matrix4f matrix = matrices.peek().getPositionMatrix();
-        float scale = satellite.scale();
+
+        boolean fixedOrbit = satellite.orbit().fixed();
+        // Offset is negative to make it more intuitive
+        // Positive x offset goes in the positive x direction in the world
+        float offsetX = (fixedOrbit ? 0.0f : skyAngleDegrees) - satellite.orbit().offset().x;
+        float offsetY = -satellite.orbit().offset().y + DEFAULT_SATELLITE_ROTATION_DEGREES;
+        float offsetZ = -satellite.orbit().offset().z;
+
+        // X: The direction the sun and more normally rotate in
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(offsetY));
+        matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(offsetZ));
+        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(offsetX));
+
         bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_TEXTURE);
+
+        float scale = satellite.scale();
         int rows = satellite.phases().y;
         int columns = satellite.phases().x;
+
         bufferBuilder.vertex(matrix, -scale, SATELLITE_Y_OFFSET, -scale).texture(0.0f, 0.0f).next();
         bufferBuilder.vertex(matrix, scale, SATELLITE_Y_OFFSET, -scale).texture(1.0f / columns, 0.0f).next();
         bufferBuilder.vertex(matrix, scale, SATELLITE_Y_OFFSET, scale).texture(1.0f / columns, 1.0f / rows).next();
         bufferBuilder.vertex(matrix, -scale, SATELLITE_Y_OFFSET, scale).texture(0.0f, 1.0f / rows).next();
+
         BufferRenderer.drawWithGlobalProgram(bufferBuilder.end());
+
+        // Undo rotation
+        matrices.multiply(RotationAxis.NEGATIVE_X.rotationDegrees(offsetX));
+        matrices.multiply(RotationAxis.NEGATIVE_Z.rotationDegrees(offsetZ));
+        matrices.multiply(RotationAxis.NEGATIVE_Y.rotationDegrees(offsetY));
     }
 
     private static void setShaderColorWhite() {
