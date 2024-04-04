@@ -62,7 +62,8 @@ public class ShuttleWorkbenchShapedRecipe extends ShapedRecipe implements Shuttl
                 ingredient.write(buf);
             }
 
-            buf.writeItemStack(recipe.getOutput());
+            // TODO: Call "getOutput" instead of getting "output"
+            buf.writeItemStack(recipe.output);
         }
     }
 }

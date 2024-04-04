@@ -35,7 +35,7 @@ public class ShuttleWorkbenchScreenHandler extends CraftingScreenHandler {
             if (optional.isPresent()) {
                 ShuttleWorkbenchRecipe craftingRecipe = optional.get();
                 if (resultInventory.shouldCraftRecipe(world, serverPlayerEntity, craftingRecipe)) {
-                    itemStack = craftingRecipe.craft(craftingInventory);
+                    itemStack = craftingRecipe.craft(craftingInventory, world.getRegistryManager());
                 }
             }
 
