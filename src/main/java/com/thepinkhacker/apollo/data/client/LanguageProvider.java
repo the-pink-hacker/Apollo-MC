@@ -43,6 +43,7 @@ public class LanguageProvider extends FabricLanguageProvider {
 
         /* === Containers === */
         addContainer(builder,"shuttle_workbench", "Shuttle Workbench");
+        addContainer(builder,"fluid_pipe", "Fluid Pipe");
 
         /* === Entities === */
         builder.add(ApolloEntityTypes.METEORITE, "Meteorite");

@@ -18,6 +18,7 @@
   "block.apollo.reinforced_iron_block": "Reinforced Iron Block",
   "block.apollo.shuttle_workbench": "Shuttle Workbench",
   "block.apollo.storage_tank": "Storage Tank",
+  "container.apollo.fluid_pipe": "Fluid Pipe",
   "container.apollo.shuttle_workbench": "Shuttle Workbench",
   "entity.apollo.meteorite": "Meteorite",
   "entity.apollo.shuttle": "Shuttle",

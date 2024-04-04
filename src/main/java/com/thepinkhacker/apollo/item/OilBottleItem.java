@@ -3,7 +3,6 @@ package com.thepinkhacker.apollo.item;
 import com.thepinkhacker.apollo.block.ApolloBlocks;
 import com.thepinkhacker.apollo.registry.tag.ApolloBlockTags;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.particle.ParticleTypes;

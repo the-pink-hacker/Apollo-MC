@@ -4,15 +4,21 @@ import com.thepinkhacker.apollo.block.entity.ApolloBlockEntityTypes;
 import com.thepinkhacker.apollo.block.fluid.FluidPipeBlock;
 import com.thepinkhacker.apollo.fluid.FluidCarrier;
 import com.thepinkhacker.apollo.fluid.FluidCarrierStorage;
+import com.thepinkhacker.apollo.screen.ApolloNamedScreenHandlerFactory;
+import com.thepinkhacker.apollo.screen.FluidPipeScreenHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
-public class FluidPipeBlockEntity extends BlockEntity implements FluidCarrier<FluidPipeBlockEntity> {
+public class FluidPipeBlockEntity extends BlockEntity implements FluidCarrier<FluidPipeBlockEntity>, ApolloNamedScreenHandlerFactory {
     public final FluidCarrierStorage<FluidPipeBlockEntity> FLUID_CARRIER_STORAGE = new FluidCarrierStorage<>(this);
 
     public FluidPipeBlockEntity(BlockPos pos, BlockState state) {
@@ -42,5 +48,16 @@ public class FluidPipeBlockEntity extends BlockEntity implements FluidCarrier<Fl
     public boolean checkFluidCarrierDirection(Direction direction) {
         if (world == null) return false;
         return FluidPipeBlock.getConnections(this.world, this.pos, this.world.getBlockState(this.pos)).contains(direction);
+    }
+
+    @Override
+    public String getDisplayNameId() {
+        return "fluid_pipe";
+    }
+
+    @Nullable
+    @Override
+    public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
+        return new FluidPipeScreenHandler(syncId, playerInventory, null);
     }
 }

@@ -2,7 +2,6 @@ package com.thepinkhacker.apollo.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.FallingBlock;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.client.util.ParticleUtil;
 import net.minecraft.entity.ai.pathing.NavigationType;
