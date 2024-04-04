@@ -1,6 +1,5 @@
 package com.thepinkhacker.apollo.mixin.client.gui.hud;
 
-import com.thepinkhacker.apollo.Apollo;
 import com.thepinkhacker.apollo.fluid.FluidCarrier;
 import com.thepinkhacker.apollo.fluid.FluidCarrierStorage;
 import net.minecraft.client.MinecraftClient;

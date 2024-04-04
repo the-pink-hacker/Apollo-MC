@@ -1,22 +1,20 @@
 package com.thepinkhacker.apollo.entity.vehicle;
 
-import com.thepinkhacker.apollo.inventory.ImplementedInventory;
-import com.thepinkhacker.apollo.world.ApolloGameRules;
-import com.thepinkhacker.apollo.world.ApolloWorlds;
 import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.RideableInventory;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.registry.RegistryKey;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
@@ -24,8 +22,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class ShuttleEntity extends MobEntity implements ImplementedInventory {
-    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(5, ItemStack.EMPTY);
+public class ShuttleEntity extends MobEntity implements RideableInventory {
+    private final SimpleInventory items = new SimpleInventory(0);
     private static final double THRUST = 0.1d;
     private static final double MAX_SPEED = 10.0d;
 
@@ -34,31 +32,22 @@ public class ShuttleEntity extends MobEntity implements ImplementedInventory {
     }
 
     @Override
-    public DefaultedList<ItemStack> getItems() {
-        return items;
-    }
-
-    @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        Inventories.readNbt(nbt, items);
+        //Inventories.readNbt(nbt, items);
     }
 
     @Override
     public NbtCompound writeNbt(NbtCompound nbt) {
-        Inventories.writeNbt(nbt, items);
+        //Inventories.writeNbt(nbt, items);
         return super.writeNbt(nbt);
-    }
-
-    @Override
-    public boolean canPlayerUse(PlayerEntity player) {
-        return true;
     }
 
     @Override
     protected ActionResult interactMob(PlayerEntity player, Hand hand) {
         if (player.shouldCancelInteraction()) {
-            return ActionResult.PASS;
+            this.openInventory(player);
+            return ActionResult.success(this.getWorld().isClient);
         }
 
         if (!getWorld().isClient) {
@@ -84,27 +73,27 @@ public class ShuttleEntity extends MobEntity implements ImplementedInventory {
 
     @Override
     public void travel(Vec3d movementInput) {
-        if (this.getControllingPassenger() instanceof PlayerEntity player) {
-            // Player is holding down W
-            if (player.forwardSpeed > 0.0f) {
-                // Add thrust
-                Vec3d currentVelocity = this.getVelocity();
-                this.setVelocity(currentVelocity.x, Math.min(currentVelocity.y + THRUST, MAX_SPEED), currentVelocity.z);
-                this.velocityDirty = true;
-
-                // TODO: Could get teleported above the escape height
-                int escapeHeight = this.getWorld().getGameRules().getInt(ApolloGameRules.SHUTTLE_ESCAPE_HEIGHT);
-
-                if (this.getBlockY() > escapeHeight) {
-                    if (this.getWorld() instanceof ServerWorld serverWorld) {
-                        // If at the moon, go to the overworld
-                        // If no at the moon, go to the moon
-                        RegistryKey<World> destination = this.getWorld().getRegistryKey() == ApolloWorlds.MOON ? World.OVERWORLD : ApolloWorlds.MOON;
-                        this.travelToPlanet(serverWorld.getServer().getWorld(destination), escapeHeight);
-                    }
-                }
-            }
-        }
+//        if (this.getControllingPassenger() instanceof PlayerEntity player) {
+//            // Player is holding down W
+//            if (player.forwardSpeed > 0.0f) {
+//                // Add thrust
+//                Vec3d currentVelocity = this.getVelocity();
+//                this.setVelocity(currentVelocity.x, Math.min(currentVelocity.y + THRUST, MAX_SPEED), currentVelocity.z);
+//                this.velocityDirty = true;
+//
+//                // TODO: Could get teleported above the escape height
+//                int escapeHeight = this.getWorld().getGameRules().getInt(ApolloGameRules.SHUTTLE_ESCAPE_HEIGHT);
+//
+//                if (this.getBlockY() > escapeHeight) {
+//                    if (this.getWorld() instanceof ServerWorld serverWorld) {
+//                        // If at the moon, go to the overworld
+//                        // If no at the moon, go to the moon
+//                        RegistryKey<World> destination = this.getWorld().getRegistryKey() == ApolloWorlds.MOON ? World.OVERWORLD : ApolloWorlds.MOON;
+//                        this.travelToPlanet(serverWorld.getServer().getWorld(destination), escapeHeight);
+//                    }
+//                }
+//            }
+//        }
         super.travel(movementInput);
     }
 
@@ -133,5 +122,28 @@ public class ShuttleEntity extends MobEntity implements ImplementedInventory {
         }
 
         return true;
+    }
+
+    @Override
+    public void openInventory(PlayerEntity player) {
+        if (!this.getWorld().isClient && (!this.hasPassengers() || !this.hasPassenger(player))) {
+            if (player instanceof PlayerShuttleScreenOpener playerInterface) {
+                playerInterface.apollo$openShuttleInventory(this, items);
+            }
+        }
+    }
+
+    public boolean areInventoriesDifferent(Inventory inventory) {
+        return this.items != inventory;
+    }
+
+    protected void dropInventory() {
+        super.dropInventory();
+        for (int i = 0; i < this.items.size(); ++i) {
+            ItemStack itemStack = this.items.getStack(i);
+            if (!itemStack.isEmpty() && !EnchantmentHelper.hasVanishingCurse(itemStack)) {
+                this.dropStack(itemStack);
+            }
+        }
     }
 }

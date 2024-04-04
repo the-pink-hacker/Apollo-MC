@@ -9,6 +9,7 @@
     "entity.ItemEntityMixin",
     "entity.LivingEntityMixin",
     "entity.TntEntityMixin",
+    "entity.player.PlayerEntityMixin",
     "entity.projectile.PersistentProjectileEntityMixin",
     "entity.projectile.thrown.ThrownEntityMixin",
     "entity.vehicle.AbstractMinecartEntityMixin",
