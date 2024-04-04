@@ -103,7 +103,7 @@ public class SpaceBody {
                 JsonObject object = jsonElement.getAsJsonObject();
                 GsonHelper helper = new GsonHelper(object);
                 Identifier texture = context.deserialize(object.get("texture"), GsonHelper.getType(Identifier.class));
-                boolean fixedOrbit = helper.getOptionalBoolean("fixed").orElse(false);
+                boolean fixedOrbit = helper.getOptionalBoolean("fixedOrbit").orElse(false);
                 float scale = helper.getOptionalFloat("scale").orElse(1.0f);
                 Vector2i phases = helper.getOptionalObject("phases").map(phasesObject -> new Vector2i(
                         phasesObject.get("x").getAsInt(),

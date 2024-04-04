@@ -10,6 +10,8 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.RotationAxis;
 import org.joml.Matrix4f;
 
+import java.util.ArrayList;
+
 public class ApolloSkyRenderer {
     private static final float SATELLITE_Y_OFFSET = 100.0f;
 
@@ -41,9 +43,29 @@ public class ApolloSkyRenderer {
         setShaderColorWhite();
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
 
+        float skyAngleDegrees = renderer.world.getSkyAngle(tickDelta) * 360.0f;
         SpaceBody spaceBody = SpaceBodyManager.getInstance().getSpaceBodyOrDefault(renderer.world);
+        ArrayList<SpaceBody.Satellite> fixedOrbit = new ArrayList<>();
+        ArrayList<SpaceBody.Satellite> nonFixedOrbit = new ArrayList<>();
+
         for (SpaceBody.Satellite satellite : spaceBody.getSatellites()) {
-            renderSatellite(satellite, matrices);
+            if (satellite.fixedOrbit()) {
+                fixedOrbit.add(satellite);
+            } else {
+                nonFixedOrbit.add(satellite);
+            }
+        }
+
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90.0F));
+
+        for (SpaceBody.Satellite satellite : fixedOrbit) {
+            renderSatellite(satellite, matrices, skyAngleDegrees);
+        }
+
+        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(skyAngleDegrees));
+
+        for (SpaceBody.Satellite satellite : nonFixedOrbit) {
+            renderSatellite(satellite, matrices, skyAngleDegrees);
         }
 
         RenderSystem.depthMask(true);
@@ -55,13 +77,11 @@ public class ApolloSkyRenderer {
 
     private static void renderSatellite(
             SpaceBody.Satellite satellite,
-            MatrixStack matrices
+            MatrixStack matrices,
+            float skyAngleDegrees
     ) {
         BufferBuilder bufferBuilder = Tessellator.getInstance().getBuffer();
         RenderSystem.setShaderTexture(0, satellite.texture());
-        // TODO: Add custom sky locations
-        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90.0f));
-        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(180.0f));
         Matrix4f matrix = matrices.peek().getPositionMatrix();
         float scale = satellite.scale();
         bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_TEXTURE);
