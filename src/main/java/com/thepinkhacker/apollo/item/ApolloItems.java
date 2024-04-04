@@ -30,6 +30,7 @@ public class ApolloItems {
     /* === Blocks === */
     public static final Item AIRLOCK_CONTROLLER = registerItem(ApolloBlocks.AIRLOCK_CONTROLLER);
     public static final Item AIRLOCK_FRAME = registerItem(ApolloBlocks.AIRLOCK_FRAME);
+    public static final Item FLUID_HOPPER = registerItem(ApolloBlocks.FLUID_HOPPER);
     public static final Item FLUID_PIPE = registerItem(ApolloBlocks.FLUID_PIPE);
     public static final Item FLUID_VALVE_PIPE = registerItem(ApolloBlocks.FLUID_VALVE_PIPE);
     public static final Item LAUNCHPAD = registerItem(ApolloBlocks.LAUNCHPAD);

@@ -2,6 +2,7 @@ package com.thepinkhacker.apollo.block;
 
 import com.thepinkhacker.apollo.Apollo;
 import com.thepinkhacker.apollo.block.crop.OxygenPlantBlock;
+import com.thepinkhacker.apollo.block.fluid.FluidHopperBlock;
 import com.thepinkhacker.apollo.block.fluid.FluidPipeBlock;
 import com.thepinkhacker.apollo.block.fluid.FluidValvePipeBlock;
 import com.thepinkhacker.apollo.block.fluid.StorageTankBlock;
@@ -19,6 +20,7 @@ public class ApolloBlocks {
     public static final Block AIRLOCK_CONTROLLER = registerBlock("airlock_controller", new AirlockControllerBlock(FabricBlockSettings.create().sounds(BlockSoundGroup.METAL).strength(50.0f, 12_000.0f).requiresTool()));
     public static final Block AIRLOCK_FRAME = registerBlock("airlock_frame", new Block(FabricBlockSettings.create().sounds(BlockSoundGroup.METAL).strength(50.0f, 12_000f).requiresTool()));
     public static final Block AIRLOCK = registerBlock("airlock", new AirLockBlock(FabricBlockSettings.create().sounds(BlockSoundGroup.METAL).strength(-1.0f)));
+    public static final Block FLUID_HOPPER = registerBlock("fluid_hopper", new FluidHopperBlock(FabricBlockSettings.copyOf(Blocks.HOPPER)));
     public static final Block FLUID_PIPE = registerBlock("fluid_pipe", new FluidPipeBlock(FabricBlockSettings.create().sounds(BlockSoundGroup.METAL).strength(5.0f, 6.0f).requiresTool()));
     public static final Block FLUID_VALVE_PIPE = registerBlock("fluid_valve_pipe", new FluidValvePipeBlock(FabricBlockSettings.copyOf(FLUID_PIPE)));
     public static final Block FUEL = registerBlock("fuel", new FluidBlock(ApolloFluids.STILL_FUEL, FabricBlockSettings.create().sounds(BlockSoundGroup.METAL).noCollision().dropsNothing()));

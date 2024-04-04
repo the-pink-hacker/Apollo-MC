@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "apollo:fluid_hopper",
     "apollo:fluid_pipe",
     "apollo:fluid_valve_pipe",
     "apollo:oil_refinery",

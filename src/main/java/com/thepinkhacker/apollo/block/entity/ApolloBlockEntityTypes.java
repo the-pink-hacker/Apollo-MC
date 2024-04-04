@@ -2,10 +2,7 @@ package com.thepinkhacker.apollo.block.entity;
 
 import com.thepinkhacker.apollo.Apollo;
 import com.thepinkhacker.apollo.block.ApolloBlocks;
-import com.thepinkhacker.apollo.block.entity.fluid.FluidPipeBlockEntity;
-import com.thepinkhacker.apollo.block.entity.fluid.FluidValvePipeBlockEntity;
-import com.thepinkhacker.apollo.block.entity.fluid.OilRefineryBlockEntity;
-import com.thepinkhacker.apollo.block.entity.fluid.StorageTankBlockEntity;
+import com.thepinkhacker.apollo.block.entity.fluid.*;
 import com.thepinkhacker.apollo.fluid.FluidCarrier;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
@@ -31,8 +28,13 @@ public class ApolloBlockEntityTypes {
             "oil_refinery",
             FabricBlockEntityTypeBuilder.create(OilRefineryBlockEntity::new, ApolloBlocks.OIL_REFINERY)
     );
+    public static final BlockEntityType<FluidHopperBlockEntity> FLUID_HOPPER = of(
+            "fluid_hopper",
+            FabricBlockEntityTypeBuilder.create(FluidHopperBlockEntity::new, ApolloBlocks.FLUID_HOPPER)
+    );
 
     public static void register() {
+        registerFluidCarrier(FLUID_HOPPER);
         registerFluidCarrier(FLUID_PIPE);
         registerFluidCarrier(FLUID_VALVE_PIPE);
         registerFluidCarrier(STORAGE_TANK);

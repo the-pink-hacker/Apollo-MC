@@ -24,6 +24,7 @@ public class LanguageProvider extends FabricLanguageProvider {
         builder.add(ApolloBlocks.AIRLOCK_CONTROLLER, "Airlock Controller");
         builder.add(ApolloBlocks.AIRLOCK_FRAME, "Airlock Frame");
         builder.add(ApolloBlocks.FUEL, "Fuel");
+        builder.add(ApolloBlocks.FLUID_HOPPER, "fluid_hopper");
         builder.add(ApolloBlocks.FLUID_PIPE, "Fluid Pipe");
         builder.add(ApolloBlocks.FLUID_VALVE_PIPE, "Fluid Valve Pipe");
         builder.add(ApolloBlocks.LAUNCHPAD, "Launchpad");
