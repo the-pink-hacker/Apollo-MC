@@ -7,13 +7,16 @@ import com.thepinkhacker.apollo.world.dimension.SpaceBody;
 import net.minecraft.client.gl.VertexBuffer;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.LunarWorldView;
 import org.joml.Matrix4f;
 
 public class ApolloSkyRenderer {
     private static final float SATELLITE_Y_OFFSET = 100.0f;
     private static final float DEFAULT_SATELLITE_ROTATION_DEGREES = -90.0f;
+    private static final int TICKS_PER_DAY = 20 * 60 * 20;
 
     public static void render(
             WorldRenderer renderer,
@@ -47,10 +50,8 @@ public class ApolloSkyRenderer {
         setShaderColorWhite();
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
 
-        float skyAngleDegrees = renderer.world.getSkyAngle(tickDelta) * 360.0f;
-
         for (SpaceBody.Satellite satellite : spaceBody.getAllSatellites()) {
-            renderSatellite(satellite, matrices, skyAngleDegrees);
+            renderSatellite(satellite, renderer, matrices);
         }
 
         // Reset
@@ -64,8 +65,8 @@ public class ApolloSkyRenderer {
     // TODO: Have the order of the satellites affect which one is in front of which
     private static void renderSatellite(
             SpaceBody.Satellite satellite,
-            MatrixStack matrices,
-            float skyAngleDegrees
+            WorldRenderer renderer,
+            MatrixStack matrices
     ) {
         BufferBuilder bufferBuilder = Tessellator.getInstance().getBuffer();
         RenderSystem.setShaderTexture(0, satellite.texture());
@@ -75,7 +76,7 @@ public class ApolloSkyRenderer {
         float speed = satellite.orbit().speed();
         // Offset is negative to make it more intuitive
         // Positive x offset goes in the positive x direction in the world
-        float offsetX = (fixedOrbit ? 0.0f : skyAngleDegrees * speed) - satellite.orbit().offset().x;
+        float offsetX = (fixedOrbit ? 0.0f : getSkyAngleDegrees(renderer.world, speed)) - satellite.orbit().offset().x;
         float offsetY = -satellite.orbit().offset().y + DEFAULT_SATELLITE_ROTATION_DEGREES;
         float offsetZ = -satellite.orbit().offset().z;
 
@@ -88,15 +89,21 @@ public class ApolloSkyRenderer {
 
         bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_TEXTURE);
 
-        // TODO: Have phases change each day
         float scale = satellite.scale();
-        int rows = satellite.phases().y;
-        int columns = satellite.phases().x;
+        int phaseRows = satellite.phases().y;
+        int phaseColumns = satellite.phases().x;
+        int phaseIndex = getPhase(renderer.world, phaseRows * phaseColumns);
+        int row = phaseIndex / phaseColumns;
+        int column = phaseIndex % phaseColumns;
+        float rowLow = (float)row / phaseRows;
+        float rowHigh = (1.0f + row) / phaseRows;
+        float columnLow = (float)column / phaseColumns;
+        float columnHigh = (1.0f + column) / phaseColumns;
 
-        bufferBuilder.vertex(matrix, -scale, SATELLITE_Y_OFFSET, -scale).texture(0.0f, 0.0f).next();
-        bufferBuilder.vertex(matrix, scale, SATELLITE_Y_OFFSET, -scale).texture(1.0f / columns, 0.0f).next();
-        bufferBuilder.vertex(matrix, scale, SATELLITE_Y_OFFSET, scale).texture(1.0f / columns, 1.0f / rows).next();
-        bufferBuilder.vertex(matrix, -scale, SATELLITE_Y_OFFSET, scale).texture(0.0f, 1.0f / rows).next();
+        bufferBuilder.vertex(matrix, -scale, SATELLITE_Y_OFFSET, -scale).texture(columnLow , rowLow).next();
+        bufferBuilder.vertex(matrix, scale, SATELLITE_Y_OFFSET, -scale).texture(columnHigh, rowLow).next();
+        bufferBuilder.vertex(matrix, scale, SATELLITE_Y_OFFSET, scale).texture(columnHigh, rowHigh).next();
+        bufferBuilder.vertex(matrix, -scale, SATELLITE_Y_OFFSET, scale).texture(columnLow, rowHigh).next();
 
         BufferRenderer.drawWithGlobalProgram(bufferBuilder.end());
 
@@ -106,6 +113,16 @@ public class ApolloSkyRenderer {
                         .mul(RotationAxis.NEGATIVE_Z.rotationDegrees(offsetZ))
                         .mul(RotationAxis.NEGATIVE_Y.rotationDegrees(offsetY))
         );
+    }
+
+    private static int getPhase(LunarWorldView world, int numberOfPhases) {
+        return (int)(world.getLunarTime() / TICKS_PER_DAY % numberOfPhases + numberOfPhases) % numberOfPhases;
+    }
+
+    public static float getSkyAngleDegrees(LunarWorldView world, float speed) {
+        double d = MathHelper.fractionalPart((double)world.getLunarTime() * speed / TICKS_PER_DAY - 0.25d);
+        double e = 0.5d - Math.cos(d * Math.PI) / 2.0d;
+        return (float)(d * 2.0d + e) / 3.0f * 360.0f;
     }
 
     private static void setShaderColorOpaque(float red, float green, float blue) {
