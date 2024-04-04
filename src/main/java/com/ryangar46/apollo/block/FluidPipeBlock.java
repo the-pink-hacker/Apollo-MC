@@ -2,6 +2,7 @@ package com.ryangar46.apollo.block;
 
 import com.ryangar46.apollo.block.entity.FluidPipeBlockEntity;
 import com.ryangar46.apollo.entity.EntityManager;
+import com.ryangar46.apollo.fluid.PipeStorableFluid;
 import com.ryangar46.apollo.tag.TagManager;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -12,6 +13,7 @@ import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
@@ -34,7 +36,8 @@ public class FluidPipeBlock extends BlockWithEntity implements PipeConnectable, 
     public static final BooleanProperty UP_STATE = Properties.UP;
     public static final BooleanProperty DOWN_STATE = Properties.DOWN;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
-    public static final IntProperty LEVEL = Properties.LEVEL_8;
+    public static final IntProperty LEVEL_STATE = Properties.LEVEL_8;
+    public static final EnumProperty<PipeStorableFluid> FLUID_SATE = EnumProperty.of("fluid", PipeStorableFluid.class);
     private static final VoxelShape CENTER_SHAPE = Block.createCuboidShape(6.0f, 6.0f, 6.0f, 10.0f, 10.0f, 10.0f);
     private static final VoxelShape NORTH_SHAPE = Block.createCuboidShape(6.0f, 6.0f, 0.0f, 10.0f, 10.0f, 6.0f);
     private static final VoxelShape EAST_SHAPE = Block.createCuboidShape(10.0f, 6.0f, 6.0f, 16.0f, 10.0f, 10.0f);
@@ -53,7 +56,8 @@ public class FluidPipeBlock extends BlockWithEntity implements PipeConnectable, 
                 .with(UP_STATE, false)
                 .with(DOWN_STATE, false)
                 .with(WATERLOGGED, false)
-                .with(LEVEL, 0)
+                .with(LEVEL_STATE, 0)
+                .with(FLUID_SATE, PipeStorableFluid.EMPTY)
         );
     }
 
@@ -105,7 +109,17 @@ public class FluidPipeBlock extends BlockWithEntity implements PipeConnectable, 
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
-        stateManager.add(NORTH_STATE, EAST_STATE, SOUTH_STATE, WEST_STATE, UP_STATE, DOWN_STATE, WATERLOGGED, LEVEL);
+        stateManager.add(
+                NORTH_STATE,
+                EAST_STATE,
+                SOUTH_STATE,
+                WEST_STATE,
+                UP_STATE,
+                DOWN_STATE,
+                WATERLOGGED,
+                LEVEL_STATE,
+                FLUID_SATE
+        );
     }
 
     @Override
@@ -136,23 +150,56 @@ public class FluidPipeBlock extends BlockWithEntity implements PipeConnectable, 
     }
 
     public static int getFluidLevel(BlockState state) {
-        return state.get(LEVEL);
+        return state.get(LEVEL_STATE);
     }
 
     public static BlockState setFluidLevel(BlockState state, int level) {
-        return state.with(LEVEL, level);
+        return state.with(LEVEL_STATE, level);
+    }
+
+    public static PipeStorableFluid getFluidType(BlockState state) {
+        return state.get(FLUID_SATE);
+    }
+
+    public static BlockState setFluidType(BlockState state, PipeStorableFluid fluidType) {
+        return state.with(FLUID_SATE, fluidType);
     }
 
     public static Collection<Direction> getConnections(WorldAccess world, BlockPos pos, BlockState state) {
         Collection<Direction> directions = new ArrayList<>();
 
-        if (state.get(NORTH_STATE)) if (world.getBlockState(pos.north()).getBlock() instanceof FluidPipeBlock) directions.add(Direction.NORTH);
-        if (state.get(EAST_STATE)) if (world.getBlockState(pos.east()).getBlock() instanceof FluidPipeBlock) directions.add(Direction.EAST);
-        if (state.get(SOUTH_STATE)) if (world.getBlockState(pos.south()).getBlock() instanceof FluidPipeBlock) directions.add(Direction.SOUTH);
-        if (state.get(WEST_STATE)) if (world.getBlockState(pos.west()).getBlock() instanceof FluidPipeBlock) directions.add(Direction.WEST);
-        if (state.get(UP_STATE)) if (world.getBlockState(pos.up()).getBlock() instanceof FluidPipeBlock) directions.add(Direction.UP);
-        if (state.get(DOWN_STATE)) if (world.getBlockState(pos.down()).getBlock() instanceof FluidPipeBlock) directions.add(Direction.DOWN);
+        for (Direction direction : Direction.values()) {
+            if (state.get(getDirectionState(direction))) {
+                if (world.getBlockState(pos.offset(direction)).getBlock() instanceof FluidPipeBlock) {
+                    directions.add(direction);
+                }
+            }
+        }
 
         return directions;
+    }
+
+    private static BooleanProperty getDirectionState(Direction direction) {
+        switch (direction)  {
+            case UP -> {
+                return UP_STATE;
+            }
+            case DOWN -> {
+                return DOWN_STATE;
+            }
+            case NORTH -> {
+                return NORTH_STATE;
+            }
+            case EAST -> {
+                return EAST_STATE;
+            }
+            case SOUTH -> {
+                return SOUTH_STATE;
+            }
+            case WEST -> {
+                return WEST_STATE;
+            }
+        }
+        return null;
     }
 }

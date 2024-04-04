@@ -12,10 +12,10 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class FluidManager {
-    public static FlowableFluid STILL_FUEL = Registry.register(Registry.FLUID, new Identifier(Apollo.MOD_ID, "fuel"), new FuelFluid.Still());
-    public static FlowableFluid FLOWING_FUEL = Registry.register(Registry.FLUID, new Identifier(Apollo.MOD_ID, "flowing_fuel"), new FuelFluid.Flowing());
-    public static FlowableFluid STILL_OIL = Registry.register(Registry.FLUID, new Identifier(Apollo.MOD_ID, "oil"), new OilFluid.Still());
-    public static FlowableFluid FLOWING_OIL = Registry.register(Registry.FLUID, new Identifier(Apollo.MOD_ID, "flowing_oil"), new OilFluid.Flowing());
+    public static final FlowableFluid STILL_FUEL = Registry.register(Registry.FLUID, new Identifier(Apollo.MOD_ID, "fuel"), new FuelFluid.Still());
+    public static final FlowableFluid FLOWING_FUEL = Registry.register(Registry.FLUID, new Identifier(Apollo.MOD_ID, "flowing_fuel"), new FuelFluid.Flowing());
+    public static final FlowableFluid STILL_OIL = Registry.register(Registry.FLUID, new Identifier(Apollo.MOD_ID, "oil"), new OilFluid.Still());
+    public static final FlowableFluid FLOWING_OIL = Registry.register(Registry.FLUID, new Identifier(Apollo.MOD_ID, "flowing_oil"), new OilFluid.Flowing());
 
     public static void register() {
         Apollo.LOGGER.info("Registering fluids");
