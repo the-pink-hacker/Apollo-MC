@@ -1,12 +1,10 @@
 package com.ryangar46.apollo.entity;
 
 import com.ryangar46.apollo.Apollo;
-import com.ryangar46.apollo.client.renderer.entity.ShuttleRenderer;
-import com.ryangar46.apollo.client.renderer.entity.model.ShuttleModel;
+import com.ryangar46.apollo.client.render.ShuttleEntityRenderer;
 import com.ryangar46.apollo.entity.vehicle.ShuttleEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
@@ -16,13 +14,13 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import software.bernie.example.registry.EntityRegistry;
 
 public class EntityManager {
-    public static final EntityModelLayer SHUTTLE_LAYER = new EntityModelLayer(new Identifier(Apollo.MOD_ID, "shuttle"), "main");
     public static final EntityType<ShuttleEntity> SHUTTLE = Registry.register(
             Registry.ENTITY_TYPE,
             new Identifier(Apollo.MOD_ID, "shuttle"),
-            FabricEntityTypeBuilder.create(SpawnGroup.MISC, ShuttleEntity::new).dimensions(EntityDimensions.fixed(1.75f, 2.5f)).build()
+            FabricEntityTypeBuilder.create(SpawnGroup.MISC, ShuttleEntity::new).dimensions(EntityDimensions.fixed(1.25f, 3.5f)).build()
     );
 
     public static void register() {
@@ -31,7 +29,6 @@ public class EntityManager {
 
     @Environment(EnvType.CLIENT)
     public static void registerClient() {
-        EntityRendererRegistry.register(SHUTTLE, ShuttleRenderer::new);
-        EntityModelLayerRegistry.registerModelLayer(SHUTTLE_LAYER, ShuttleModel::getTexturedModelData);
+        EntityRendererRegistry.register(SHUTTLE, ShuttleEntityRenderer::new);
     }
 }

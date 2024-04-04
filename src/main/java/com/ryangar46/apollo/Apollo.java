@@ -11,6 +11,7 @@ import com.ryangar46.apollo.world.dimension.DimensionManager;
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import software.bernie.geckolib3.GeckoLib;
 
 public class Apollo implements ModInitializer {
 	public static final String MOD_ID = "apollo";
@@ -18,6 +19,7 @@ public class Apollo implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		GeckoLib.initialize();
 		TagManager.register();
 		ItemGroupManager.register();
 		ItemManager.register();

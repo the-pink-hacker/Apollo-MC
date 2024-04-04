@@ -10,7 +10,7 @@ import net.minecraft.util.math.Vec3d;
 
 @Environment(EnvType.CLIENT)
 public class DimensionEffectsManager {
-    public static void register() {
+    public static void registerClient() {
         Apollo.LOGGER.info("Registering dimension effects");
 
         registerDimensionEffect("moon", new Moon());

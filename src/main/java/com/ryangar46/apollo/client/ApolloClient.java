@@ -11,6 +11,6 @@ public class ApolloClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         EntityManager.registerClient();
-        DimensionEffectsManager.register();
+        DimensionEffectsManager.registerClient();
     }
 }
