@@ -10,7 +10,6 @@ import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 

@@ -19,7 +19,6 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.constant.DefaultAnimations;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -88,15 +87,9 @@ public class ShuttleEntity extends MobEntity implements ImplementedInventory, Ge
         return 0.75d;
     }
 
-    @Nullable
-    @Override
-    public Entity getPrimaryPassenger() {
-        return getFirstPassenger();
-    }
-
     @Override
     public void travel(Vec3d movementInput) {
-        if (this.getPrimaryPassenger() instanceof PlayerEntity player) {
+        if (this.getControllingPassenger() instanceof PlayerEntity player) {
             // Player is holding down W
             if (player.forwardSpeed > 0.0f) {
                 // Add thrust
