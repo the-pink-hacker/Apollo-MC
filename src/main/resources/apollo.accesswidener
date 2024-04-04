@@ -10,7 +10,7 @@ accessible field net/minecraft/recipe/ShapelessRecipe output Lnet/minecraft/item
 
 accessible method net/minecraft/recipe/ShapelessRecipe$Serializer getIngredients (Lcom/google/gson/JsonArray;)Lnet/minecraft/util/collection/DefaultedList;
 
-accessible field net/minecraft/screen/CraftingScreenHandler input Lnet/minecraft/inventory/CraftingInventory;
+accessible field net/minecraft/screen/CraftingScreenHandler input Lnet/minecraft/inventory/RecipeInputInventory;
 accessible field net/minecraft/screen/CraftingScreenHandler result Lnet/minecraft/inventory/CraftingResultInventory;
 accessible field net/minecraft/screen/CraftingScreenHandler context Lnet/minecraft/screen/ScreenHandlerContext;
 accessible field net/minecraft/screen/CraftingScreenHandler player Lnet/minecraft/entity/player/PlayerEntity;
