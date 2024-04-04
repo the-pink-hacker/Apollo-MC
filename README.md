@@ -8,4 +8,4 @@ A modern space mod in development for Minecraft.
 
 Unless otherwise stated below, this project is licensed under the LGPL-3.
 
-All files in the "src/*/resources/assets/*/textures" directory or any subdirectories, are licensed under "All Rights Reserved"
+All files in the "src/\*/resources/assets/\*/textures" directory or any subdirectories, are licensed under "All Rights Reserved"
