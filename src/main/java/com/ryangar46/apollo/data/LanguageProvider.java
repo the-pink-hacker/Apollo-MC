@@ -10,6 +10,7 @@ import com.ryangar46.apollo.world.ApolloGameRules;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.gamerule.v1.CustomGameRuleCategory;
+import net.minecraft.text.TranslatableTextContent;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.GameRules;
 
@@ -96,15 +97,15 @@ public class LanguageProvider extends FabricLanguageProvider {
 
     private static void addGamerule(TranslationBuilder builder, GameRules.Key<?> gamerule, String title, String description) {
         addGamerule(builder, gamerule, title);
-        builder.add("gamerule." + gamerule + ".description", description);
+        builder.add(gamerule.getTranslationKey() + ".description", description);
     }
 
     private static void addGamerule(TranslationBuilder builder, GameRules.Key<?> gamerule, String title) {
-        builder.add("gamerule." + gamerule, title);
+        builder.add(gamerule.getTranslationKey(), title);
     }
 
     private static void addGameruleCategory(TranslationBuilder builder, CustomGameRuleCategory gameruleCategory, String value) {
-        builder.add("gamerule.category." + gameruleCategory.getId().getPath(), value);
+        builder.add(gameruleCategory.getName().getString(), value);
     }
 
     private static void addStatistic(TranslationBuilder builder, Identifier statistic, String value) {
