@@ -14,6 +14,8 @@ public class GameRuleManager {
     public static final GameRules.Key<GameRules.BooleanRule> DO_METEORITE_EXPLOSIONS = GameRuleRegistry.register("doMeteoriteExplosions", APOLLO, GameRuleFactory.createBooleanRule(true));
     public static final GameRules.Key<GameRules.BooleanRule> SUFFOCATE_IN_VACUUM = GameRuleRegistry.register("suffocateInVacuum", APOLLO, GameRuleFactory.createBooleanRule(true));
 
+    // Java is weird and won't init the variables unless this runs
+    // Otherwise it would try to init after the registry is frozen
     public static void register() {}
 
     public static CustomGameRuleCategory registerCategory(String id) {
