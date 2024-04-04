@@ -77,9 +77,11 @@ public class ApolloSkyRenderer {
         float offsetZ = -satellite.orbit().offset().z;
 
         // X: The direction the sun and more normally rotate in
-        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(offsetY));
-        matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(offsetZ));
-        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(offsetX));
+        matrices.multiply(
+                RotationAxis.POSITIVE_Y.rotationDegrees(offsetY)
+                        .mul(RotationAxis.POSITIVE_Z.rotationDegrees(offsetZ))
+                        .mul(RotationAxis.POSITIVE_X.rotationDegrees(offsetX))
+        );
 
         bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_TEXTURE);
 
@@ -95,9 +97,11 @@ public class ApolloSkyRenderer {
         BufferRenderer.drawWithGlobalProgram(bufferBuilder.end());
 
         // Undo rotation
-        matrices.multiply(RotationAxis.NEGATIVE_X.rotationDegrees(offsetX));
-        matrices.multiply(RotationAxis.NEGATIVE_Z.rotationDegrees(offsetZ));
-        matrices.multiply(RotationAxis.NEGATIVE_Y.rotationDegrees(offsetY));
+        matrices.multiply(
+                RotationAxis.NEGATIVE_X.rotationDegrees(offsetX)
+                        .mul(RotationAxis.NEGATIVE_Z.rotationDegrees(offsetZ))
+                        .mul(RotationAxis.NEGATIVE_Y.rotationDegrees(offsetY))
+        );
     }
 
     private static void setShaderColorWhite() {
