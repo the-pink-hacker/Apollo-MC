@@ -2,9 +2,8 @@ package com.thepinkhacker.apollo.block.entity.fluid;
 
 import com.thepinkhacker.apollo.block.entity.ApolloBlockEntityTypes;
 import com.thepinkhacker.apollo.block.fluid.FluidPipeBlock;
-import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
-import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
-import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
+import com.thepinkhacker.apollo.fluid.FluidCarrier;
+import com.thepinkhacker.apollo.fluid.FluidCarrierStorage;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -14,31 +13,8 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
 @SuppressWarnings("UnstableApiUsage")
-public class FluidPipeBlockEntity extends BlockEntity implements FluidCarrier {
-    private static final long CAPACITY = FluidConstants.BUCKET;
-    public final SingleVariantStorage<FluidVariant> fluidStorage = new SingleVariantStorage<>() {
-        @Override
-        protected FluidVariant getBlankVariant() {
-            return FluidVariant.blank();
-        }
-
-        @Override
-        protected long getCapacity(FluidVariant variant) {
-            return CAPACITY;
-        }
-
-        @Override
-        protected void onFinalCommit() {
-            markDirty();
-            if (!(world instanceof ServerWorld)) return;
-
-            // TODO: Figure out what this does
-//            var buffer = PacketByteBufs.create();
-//            PlayerLookup.tracking(StorageTankBlockEntity.this).forEach(player -> {
-//                ServerPlayNetworking.send(player, IDENTIFIER, buffer);
-//            });
-        }
-    };
+public class FluidPipeBlockEntity extends BlockEntity implements FluidCarrier<FluidPipeBlockEntity> {
+    public final FluidCarrierStorage<FluidPipeBlockEntity> FLUID_CARRIER_STORAGE = new FluidCarrierStorage<>(this);
 
     public FluidPipeBlockEntity(BlockPos pos, BlockState state) {
         super(ApolloBlockEntityTypes.FLUID_PIPE, pos, state);
@@ -61,8 +37,8 @@ public class FluidPipeBlockEntity extends BlockEntity implements FluidCarrier {
     }
 
     @Override
-    public SingleVariantStorage<FluidVariant> getFluidCarrierStorage() {
-        return fluidStorage;
+    public FluidCarrierStorage<FluidPipeBlockEntity> getFluidCarrierStorage() {
+        return FLUID_CARRIER_STORAGE;
     }
 
     @Override

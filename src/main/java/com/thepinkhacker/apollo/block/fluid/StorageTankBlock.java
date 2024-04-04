@@ -2,6 +2,7 @@ package com.thepinkhacker.apollo.block.fluid;
 
 import com.thepinkhacker.apollo.block.entity.ApolloBlockEntityTypes;
 import com.thepinkhacker.apollo.block.entity.fluid.StorageTankBlockEntity;
+import com.thepinkhacker.apollo.fluid.PipeConnectable;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;

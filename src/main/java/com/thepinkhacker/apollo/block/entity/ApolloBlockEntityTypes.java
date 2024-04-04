@@ -2,9 +2,9 @@ package com.thepinkhacker.apollo.block.entity;
 
 import com.thepinkhacker.apollo.Apollo;
 import com.thepinkhacker.apollo.block.ApolloBlocks;
-import com.thepinkhacker.apollo.block.entity.fluid.FluidCarrier;
 import com.thepinkhacker.apollo.block.entity.fluid.FluidPipeBlockEntity;
 import com.thepinkhacker.apollo.block.entity.fluid.StorageTankBlockEntity;
+import com.thepinkhacker.apollo.fluid.FluidCarrier;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.minecraft.block.entity.BlockEntity;
@@ -37,7 +37,7 @@ public class ApolloBlockEntityTypes {
         );
     }
 
-    private static <T extends BlockEntity & FluidCarrier> void registerFluidCarrier(BlockEntityType<T> blockEntityType) {
+    private static <T extends BlockEntity & FluidCarrier<?>> void registerFluidCarrier(BlockEntityType<T> blockEntityType) {
         FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> {
             return blockEntity.checkFluidCarrierDirection(direction) ? blockEntity.getFluidCarrierStorage() : null;
         }, blockEntityType);
