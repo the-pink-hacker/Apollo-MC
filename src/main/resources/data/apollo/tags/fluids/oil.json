@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "apollo:oil",
+    "apollo:flowing_oil"
+  ]
+}
