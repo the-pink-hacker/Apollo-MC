@@ -44,7 +44,7 @@ public class Config {
                         addProperty(group, property, value);
                     }
                 }
-            } catch (Exception e) {
+            } catch (IOException e) {
                 Apollo.LOGGER.error("Failed to load config");
                 e.printStackTrace();
             }
@@ -58,6 +58,9 @@ public class Config {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         JsonObject root = new JsonObject();
+
+        // Make directory
+        file.getParent().toFile().mkdirs();
 
         // Groups
         for (Group group : groups) {
