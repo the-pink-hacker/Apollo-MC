@@ -6,13 +6,12 @@ import com.thepinkhacker.apollo.item.ApolloItemGroups;
 import com.thepinkhacker.apollo.item.ApolloItems;
 import com.thepinkhacker.apollo.recipe.ApolloRecipeTypes;
 import com.thepinkhacker.apollo.resource.ApolloResources;
+import com.thepinkhacker.apollo.server.ApolloServerEvents;
 import com.thepinkhacker.apollo.sound.ApolloSoundEvents;
 import com.thepinkhacker.apollo.stat.ApolloStats;
 import com.thepinkhacker.apollo.world.ApolloGameRules;
 import com.thepinkhacker.apollo.world.biome.ApolloBiomeKeys;
-import com.thepinkhacker.apollo.world.spawner.GenericSpawnerManager;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -33,8 +32,7 @@ public class Apollo implements ModInitializer {
 		ApolloBlockEntityTypes.register();
 		ApolloResources.register();
 		ApolloSoundEvents.register();
-
-		ServerLifecycleEvents.SERVER_STARTED.register(server -> GenericSpawnerManager.register());
+		ApolloServerEvents.register();
 	}
 
 	public static Identifier getIdentifier(String path) {

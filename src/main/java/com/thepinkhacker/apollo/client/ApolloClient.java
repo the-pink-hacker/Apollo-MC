@@ -4,6 +4,7 @@ import com.thepinkhacker.apollo.client.render.ApolloRenderLayers;
 import com.thepinkhacker.apollo.client.world.DimensionEffectsManager;
 import com.thepinkhacker.apollo.entity.ApolloEntityTypes;
 import com.thepinkhacker.apollo.fluid.ApolloFluids;
+import com.thepinkhacker.apollo.network.ApolloPackets;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -16,5 +17,6 @@ public class ApolloClient implements ClientModInitializer {
         DimensionEffectsManager.registerClient();
         ApolloFluids.registerClient();
         ApolloRenderLayers.register();
+        ApolloPackets.registerClient();
     }
 }
