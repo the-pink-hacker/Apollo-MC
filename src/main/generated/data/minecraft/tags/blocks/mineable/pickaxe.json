@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "apollo:fluid_pipe",
+    "apollo:fluid_valve_pipe",
     "apollo:airlock_controller",
     "apollo:airlock_frame",
     "apollo:launchpad",
