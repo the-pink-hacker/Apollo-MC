@@ -14,5 +14,6 @@
   ],
   "result": {
     "item": "apollo:reinforced_iron_block"
-  }
+  },
+  "show_notification": true
 }

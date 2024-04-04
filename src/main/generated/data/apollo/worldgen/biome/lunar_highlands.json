@@ -24,7 +24,7 @@
       "apollo:lunar_ore_iron"
     ]
   ],
-  "precipitation": "none",
+  "has_precipitation": false,
   "spawn_costs": {},
   "spawners": {
     "ambient": [],
