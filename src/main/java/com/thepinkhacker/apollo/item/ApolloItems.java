@@ -46,7 +46,7 @@ public class ApolloItems {
     public static final Item REINFORCED_IRON_BLOCK = registerItem(new BlockItem(ApolloBlocks.REINFORCED_IRON_BLOCK, new FabricItemSettings().fireproof()));
     public static final Item SHUTTLE_WORKBENCH = registerItem(ApolloBlocks.SHUTTLE_WORKBENCH);
     public static final Item STORAGE_TANK = registerItem(ApolloBlocks.STORAGE_TANK);
-
+    public static final Item CHEESE_ORE = registerItem(ApolloBlocks.CHEESE_ORE);
     public static void register() {
         Apollo.LOGGER.info("Registering items");
 

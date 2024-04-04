@@ -41,6 +41,7 @@ public class LanguageProvider extends FabricLanguageProvider {
         builder.add(ApolloBlocks.REINFORCED_IRON_BLOCK, "Reinforced Iron Block");
         builder.add(ApolloBlocks.SHUTTLE_WORKBENCH, "Shuttle Workbench");
         builder.add(ApolloBlocks.STORAGE_TANK, "Storage Tank");
+        builder.add(ApolloBlocks.CHEESE_ORE, "Cheese Ore");
 
         /* === Containers === */
         addContainer(builder,"shuttle_workbench", "Shuttle Workbench");

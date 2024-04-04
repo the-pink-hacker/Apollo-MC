@@ -8,10 +8,8 @@ import com.thepinkhacker.apollo.block.fluid.FluidValvePipeBlock;
 import com.thepinkhacker.apollo.block.fluid.StorageTankBlock;
 import com.thepinkhacker.apollo.fluid.ApolloFluids;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FallingBlock;
-import net.minecraft.block.FluidBlock;
+import net.minecraft.block.*;
+import net.minecraft.block.enums.Instrument;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
@@ -38,7 +36,7 @@ public class ApolloBlocks {
     public static final Block REINFORCED_IRON_BLOCK = registerBlock("reinforced_iron_block", new Block(FabricBlockSettings.copyOf(Blocks.NETHERITE_BLOCK)));
     public static final Block SHUTTLE_WORKBENCH = registerBlock("shuttle_workbench", new ShuttleWorkbenchBlock(FabricBlockSettings.create().sounds(BlockSoundGroup.METAL).strength(5.0f, 6.0f).requiresTool()));
     public static final Block STORAGE_TANK = registerBlock("storage_tank", new StorageTankBlock(FabricBlockSettings.create().sounds(BlockSoundGroup.METAL).strength(5.0f, 6.0f).requiresTool()));
-
+    public static final Block CHEESE_ORE = registerBlock("cheese_ore", new ExperienceDroppingBlock(FabricBlockSettings.create().mapColor(MapColor.STONE_GRAY).instrument(Instrument.BASEDRUM).requiresTool().strength(3.0F, 3.0F)));
     private static Block registerBlock(String id, Block block) {
         return Registry.register(Registries.BLOCK, Apollo.getIdentifier(id), block);
     }

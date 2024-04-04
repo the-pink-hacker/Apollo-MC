@@ -30,6 +30,7 @@ public class ModelProvider extends FabricModelProvider {
         generator.registerRotatable(ApolloBlocks.LUNAR_STONE);
         generator.registerSimpleCubeAll(ApolloBlocks.REINFORCED_IRON_BLOCK);
         generator.registerRotatable(ApolloBlocks.OILED_SAND);
+        generator.registerSimpleCubeAll(ApolloBlocks.CHEESE_ORE);
 
         /* === Items === */
         registerSimpleBlockItem(generator, ApolloBlocks.AIRLOCK_CONTROLLER);
@@ -50,6 +51,7 @@ public class ModelProvider extends FabricModelProvider {
         registerSimpleBlockItem(generator, ApolloBlocks.REINFORCED_IRON_BLOCK);
         registerSimpleBlockItem(generator, ApolloBlocks.SHUTTLE_WORKBENCH);
         registerSimpleBlockItem(generator, ApolloBlocks.STORAGE_TANK);
+        registerSimpleBlockItem(generator, ApolloBlocks.CHEESE_ORE);
     }
 
     @Override

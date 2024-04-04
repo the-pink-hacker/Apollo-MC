@@ -1,12 +1,12 @@
-// 1.20.1	2023-06-24T10:16:35.130068799	Apollo/Tags for minecraft:block
-a52b10d60490003f8a4854de5a96146af30d9afe data/minecraft/tags/blocks/mineable/pickaxe.json
-b15dd20dae63988f181d0c54f0763b15dd8fbeda data/minecraft/tags/blocks/needs_iron_tool.json
-b04e732e0e400f1e00df2126ba285b748bf780c1 data/minecraft/tags/blocks/sand.json
-622cd30e2af6e12a1bc65f25544271d785fcb290 data/apollo/tags/blocks/fluid_pipe_connectable_blocks.json
-67242bff449218546bc061089d1d26272cd6bea2 data/minecraft/tags/blocks/needs_diamond_tool.json
-b195e10d3bb3fbcbb85692e8005f10ae00ee75ea data/apollo/tags/blocks/lunar_ore_replaceables.json
-f793f5c44cbbe22304c2c4faa2a50791bae27f9d data/apollo/tags/blocks/convertable_to_oiled_sand.json
-ad51cfba39bc985e46e57a7d784e870bb33eb5f5 data/apollo/tags/blocks/infiniburn_moon.json
-4fdb0d8ee88a53f21bf5468e5ef1499e31783cb4 data/apollo/tags/blocks/launchpads.json
-b04e732e0e400f1e00df2126ba285b748bf780c1 data/apollo/tags/blocks/oil_bottleable.json
-f0b7927b64eee27ae24fa5067e1f994719ba1899 data/minecraft/tags/blocks/mineable/shovel.json
+// 1.20.1	2023-08-25T17:14:21.9397853	Apollo/Tags for minecraft:block
+a52b10d60490003f8a4854de5a96146af30d9afe data\minecraft\tags\blocks\mineable\pickaxe.json
+b195e10d3bb3fbcbb85692e8005f10ae00ee75ea data\apollo\tags\blocks\lunar_ore_replaceables.json
+b04e732e0e400f1e00df2126ba285b748bf780c1 data\minecraft\tags\blocks\sand.json
+67242bff449218546bc061089d1d26272cd6bea2 data\minecraft\tags\blocks\needs_diamond_tool.json
+4fdb0d8ee88a53f21bf5468e5ef1499e31783cb4 data\apollo\tags\blocks\launchpads.json
+f0b7927b64eee27ae24fa5067e1f994719ba1899 data\minecraft\tags\blocks\mineable\shovel.json
+622cd30e2af6e12a1bc65f25544271d785fcb290 data\apollo\tags\blocks\fluid_pipe_connectable_blocks.json
+f793f5c44cbbe22304c2c4faa2a50791bae27f9d data\apollo\tags\blocks\convertable_to_oiled_sand.json
+b04e732e0e400f1e00df2126ba285b748bf780c1 data\apollo\tags\blocks\oil_bottleable.json
+ad51cfba39bc985e46e57a7d784e870bb33eb5f5 data\apollo\tags\blocks\infiniburn_moon.json
+b15dd20dae63988f181d0c54f0763b15dd8fbeda data\minecraft\tags\blocks\needs_iron_tool.json
