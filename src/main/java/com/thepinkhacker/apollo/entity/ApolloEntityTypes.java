@@ -1,8 +1,6 @@
 package com.thepinkhacker.apollo.entity;
 
 import com.thepinkhacker.apollo.Apollo;
-import com.thepinkhacker.apollo.client.render.MeteoriteEntityRenderer;
-import com.thepinkhacker.apollo.client.render.ShuttleEntityRenderer;
 import com.thepinkhacker.apollo.entity.projectile.MeteoriteEntity;
 import com.thepinkhacker.apollo.entity.vehicle.ShuttleEntity;
 import net.fabricmc.api.EnvType;
@@ -36,10 +34,7 @@ public class ApolloEntityTypes {
     }
 
     @Environment(EnvType.CLIENT)
-    public static void registerClient() {
-        EntityRendererRegistry.register(METEORITE, MeteoriteEntityRenderer::new);
-        EntityRendererRegistry.register(SHUTTLE, ShuttleEntityRenderer::new);
-    }
+    public static void registerClient() {}
 
     private static <T extends Entity> EntityType<T> of(String id, FabricEntityTypeBuilder<T> builder) {
         return Registry.register(
