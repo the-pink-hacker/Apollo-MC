@@ -11,10 +11,7 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
-	maven {
-		name = "CottonMC"
-		url = "https://server.bbkr.space/artifactory/libs-release"
-	}
+
 }
 
 dependencies {
@@ -25,9 +22,6 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-
-	// LibGUI
-	modImplementation include("io.github.cottonmc:LibGui:5.3.0+1.18")
 }
 
 processResources {

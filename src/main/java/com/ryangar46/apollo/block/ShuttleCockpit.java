@@ -1,11 +1,9 @@
 package com.ryangar46.apollo.block;
 
-import com.ryangar46.apollo.Apollo;
 import com.ryangar46.apollo.world.dimension.DimensionManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;

@@ -1,8 +1,8 @@
 package com.ryangar46.apollo.entity;
 
 import com.ryangar46.apollo.Apollo;
-import com.ryangar46.apollo.client.renderer.entity.model.ShuttleModel;
 import com.ryangar46.apollo.client.renderer.entity.ShuttleRenderer;
+import com.ryangar46.apollo.client.renderer.entity.model.ShuttleModel;
 import com.ryangar46.apollo.entity.vehicle.ShuttleEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
