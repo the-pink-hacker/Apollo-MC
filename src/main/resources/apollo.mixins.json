@@ -4,6 +4,8 @@
   "package": "com.ryangar46.apollo.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "AbstractMinecartEntityMixin",
+    "BoatEntityMixin",
     "EntityMixin",
     "ExperienceOrbEntityMixin",
     "FallingBlockEntityMixin",

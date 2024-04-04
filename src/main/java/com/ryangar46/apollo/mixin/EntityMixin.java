@@ -41,7 +41,10 @@ public abstract class EntityMixin {
         return null;
     }
 
-    @Inject(method = "tick()V", at = @At("HEAD"))
+    @Inject(
+            method = "tick()V",
+            at = @At("HEAD")
+    )
     private void checkPressure(CallbackInfo info) {
         if (!world.isClient && world.getRegistryKey() == DimensionManager.MOON) {
             if (!isVacuumImmune()) {
