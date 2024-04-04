@@ -20,7 +20,7 @@ public class ShuttleWorkbenchShapelessRecipe extends ShapelessRecipe implements 
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return RecipeManager.SHUTTLE_WORKBENCH_SHAPELESS_SERIALIZER;
+        return ApolloRecipeTypes.SHUTTLE_WORKBENCH_SHAPELESS_SERIALIZER;
     }
 
     public static class Serializer implements RecipeSerializer<ShuttleWorkbenchShapelessRecipe> {

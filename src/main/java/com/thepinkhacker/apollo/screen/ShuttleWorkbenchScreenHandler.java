@@ -1,7 +1,7 @@
 package com.thepinkhacker.apollo.screen;
 
 import com.thepinkhacker.apollo.block.ApolloBlocks;
-import com.thepinkhacker.apollo.recipe.RecipeManager;
+import com.thepinkhacker.apollo.recipe.ApolloRecipeTypes;
 import com.thepinkhacker.apollo.recipe.ShuttleWorkbenchRecipe;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -32,7 +32,7 @@ public class ShuttleWorkbenchScreenHandler extends CraftingScreenHandler {
         if (world instanceof ServerWorld serverWorld) {
             ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)player;
             ItemStack itemStack = ItemStack.EMPTY;
-            Optional<ShuttleWorkbenchRecipe> optional = serverWorld.getServer().getRecipeManager().getFirstMatch(RecipeManager.SHUTTLE_WORKBENCH_RECIPE_TYPE, craftingInventory, world);
+            Optional<ShuttleWorkbenchRecipe> optional = serverWorld.getServer().getRecipeManager().getFirstMatch(ApolloRecipeTypes.SHUTTLE_WORKBENCH_RECIPE_TYPE, craftingInventory, world);
             if (optional.isPresent()) {
                 ShuttleWorkbenchRecipe craftingRecipe = optional.get();
                 if (resultInventory.shouldCraftRecipe(world, serverPlayerEntity, craftingRecipe)) {

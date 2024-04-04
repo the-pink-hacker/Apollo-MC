@@ -20,7 +20,7 @@ public class ShuttleWorkbenchShapedRecipe extends ShapedRecipe implements Shuttl
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return RecipeManager.SHUTTLE_WORKBENCH_SHAPED_SERIALIZER;
+        return ApolloRecipeTypes.SHUTTLE_WORKBENCH_SHAPED_SERIALIZER;
     }
 
     public static class Serializer implements RecipeSerializer<ShuttleWorkbenchShapedRecipe> {

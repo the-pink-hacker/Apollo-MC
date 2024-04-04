@@ -4,7 +4,7 @@ import com.thepinkhacker.apollo.block.entity.ApolloBlockEntityTypes;
 import com.thepinkhacker.apollo.entity.ApolloEntityTypes;
 import com.thepinkhacker.apollo.item.ApolloItemGroups;
 import com.thepinkhacker.apollo.item.ApolloItems;
-import com.thepinkhacker.apollo.recipe.RecipeManager;
+import com.thepinkhacker.apollo.recipe.ApolloRecipeTypes;
 import com.thepinkhacker.apollo.resource.ApolloResources;
 import com.thepinkhacker.apollo.stat.ApolloStats;
 import com.thepinkhacker.apollo.world.ApolloGameRules;
@@ -30,7 +30,7 @@ public class Apollo implements ModInitializer, TerraBlenderApi {
 		ApolloItemGroups.register();
 		ApolloItems.register();
 		ApolloEntityTypes.register();
-		RecipeManager.register();
+		ApolloRecipeTypes.register();
 		ApolloStats.register();
 		ApolloBlockEntityTypes.register();
 		ApolloResources.register();
