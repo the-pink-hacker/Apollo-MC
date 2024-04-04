@@ -1,7 +1,7 @@
 package com.thepinkhacker.apollo.world.biome;
 
 import com.thepinkhacker.apollo.sound.ApolloSoundEvents;
-import com.thepinkhacker.apollo.world.feature.ApolloOrePlacedFeatures;
+import com.thepinkhacker.apollo.world.gen.feature.ApolloOrePlacedFeatures;
 import net.minecraft.client.sound.MusicType;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.sound.BiomeMoodSound;

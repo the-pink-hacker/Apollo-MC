@@ -1,6 +1,6 @@
 package com.thepinkhacker.apollo.world.biome;
 
-import com.thepinkhacker.apollo.world.feature.ApolloMiscPlacedFeatures;
+import com.thepinkhacker.apollo.world.gen.feature.ApolloMiscPlacedFeatures;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.gen.GenerationStep;
 

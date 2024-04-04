@@ -1,4 +1,4 @@
-package com.thepinkhacker.apollo.world.region;
+package com.thepinkhacker.apollo.world.gen.region;
 
 import com.mojang.datafixers.util.Pair;
 import com.thepinkhacker.apollo.Apollo;

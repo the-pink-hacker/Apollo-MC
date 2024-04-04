@@ -1,4 +1,4 @@
-package com.thepinkhacker.apollo.world.feature;
+package com.thepinkhacker.apollo.world.gen.feature;
 
 import com.thepinkhacker.apollo.block.ApolloBlocks;
 import com.thepinkhacker.apollo.fluid.ApolloFluids;

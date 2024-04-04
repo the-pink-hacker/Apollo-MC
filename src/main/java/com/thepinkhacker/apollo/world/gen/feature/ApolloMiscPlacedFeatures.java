@@ -1,4 +1,4 @@
-package com.thepinkhacker.apollo.world.feature;
+package com.thepinkhacker.apollo.world.gen.feature;
 
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
