@@ -1,6 +1,7 @@
 {
   "block.apollo.airlock_controller": "Airlock Controller",
   "block.apollo.airlock_frame": "Airlock Frame",
+  "block.apollo.fluid_hopper": "fluid_hopper",
   "block.apollo.fluid_pipe": "Fluid Pipe",
   "block.apollo.fluid_valve_pipe": "Fluid Valve Pipe",
   "block.apollo.fuel": "Fuel",

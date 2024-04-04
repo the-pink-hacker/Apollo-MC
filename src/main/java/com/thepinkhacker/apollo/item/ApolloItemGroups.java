@@ -20,6 +20,7 @@ public abstract class ApolloItemGroups {
                         entries.add(ApolloItems.FUEL_BOTTLE);
                         entries.add(ApolloItems.OIL_BUCKET);
                         entries.add(ApolloItems.OIL_BOTTLE);
+                        entries.add(ApolloItems.FLUID_HOPPER);
                         entries.add(ApolloItems.FLUID_PIPE);
                         entries.add(ApolloItems.FLUID_VALVE_PIPE);
                         entries.add(ApolloItems.OIL_REFINERY);

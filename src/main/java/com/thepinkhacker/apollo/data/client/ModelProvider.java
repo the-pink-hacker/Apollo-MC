@@ -22,6 +22,7 @@ public class ModelProvider extends FabricModelProvider {
         /* === Cube All === */
         generator.registerSimpleCubeAll(ApolloBlocks.AIRLOCK_CONTROLLER);
         generator.registerSimpleCubeAll(ApolloBlocks.AIRLOCK_FRAME);
+        generator.registerSimpleCubeAll(ApolloBlocks.FLUID_HOPPER);
         generator.registerRotatable(ApolloBlocks.LUNAR_COBBLESTONE);
         generator.registerRotatable(ApolloBlocks.LUNAR_DUST);
         generator.registerSimpleCubeAll(ApolloBlocks.LUNAR_IRON_ORE);
@@ -33,6 +34,7 @@ public class ModelProvider extends FabricModelProvider {
         /* === Items === */
         registerSimpleBlockItem(generator, ApolloBlocks.AIRLOCK_CONTROLLER);
         registerSimpleBlockItem(generator, ApolloBlocks.AIRLOCK_FRAME);
+        registerSimpleBlockItem(generator, ApolloBlocks.FLUID_HOPPER);
         registerSimpleBlockItem(generator, ApolloBlocks.FLUID_PIPE, "fluid_pipe_inv");
         registerSimpleBlockItem(generator, ApolloBlocks.FLUID_VALVE_PIPE, "fluid_valve_pipe");
         registerSimpleBlockItem(generator, ApolloBlocks.LAUNCHPAD, "launchpad_inv");
