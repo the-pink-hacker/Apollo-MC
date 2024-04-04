@@ -5,9 +5,5 @@
     "apollo:lunar_cobblestone",
     "apollo:lunar_iron_ore",
     "apollo:lunar_stone",
-    "apollo:shuttle_cockpit",
-    "apollo:shuttle_engine",
-    "apollo:shuttle_fuel_storage",
-    "apollo:shuttle_nose"
   ]
 }
