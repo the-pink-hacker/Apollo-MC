@@ -1,5 +1,6 @@
 package com.ryangar46.apollo.world.biome;
 
+import com.ryangar46.apollo.world.feature.ApolloDefaultBiomeFeatures;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.sound.MusicSound;
 import net.minecraft.util.math.MathHelper;
@@ -73,6 +74,8 @@ public class ApolloOverworldBiomeCreator {
         DefaultBiomeFeatures.addDefaultMushrooms(biomeBuilder);
         DefaultBiomeFeatures.addDesertVegetation(biomeBuilder);
         DefaultBiomeFeatures.addDesertFeatures(biomeBuilder);
+        ApolloDefaultBiomeFeatures.addOilLakes(biomeBuilder);
+        ApolloDefaultBiomeFeatures.addOilSprings(biomeBuilder);
         return createBiome(Biome.Precipitation.NONE, 2.0f, 0.0f, spawnBuilder, biomeBuilder, DEFAULT_MUSIC);
     }
 }
