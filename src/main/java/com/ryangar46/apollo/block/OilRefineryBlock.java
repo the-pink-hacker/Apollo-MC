@@ -31,7 +31,7 @@ public class OilRefineryBlock extends HorizontalFacingBlock implements PipeConne
     }
 
     @Override
-    public boolean canPipeConnect(Direction direction) {
+    public boolean canPipeConnect(Direction direction, BlockState state) {
         return direction == Direction.DOWN || direction == Direction.UP;
     }
 }
