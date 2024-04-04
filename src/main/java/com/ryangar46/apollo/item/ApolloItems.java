@@ -33,7 +33,7 @@ public class ApolloItems {
     /* === Blocks === */
     public static final Item FLUID_PIPE = registerItem(ApolloBlocks.FLUID_PIPE);
     public static final Item FUEL = registerItem(ApolloBlocks.FUEL);
-    public static final Item LAUNCH_PAD = registerItem(ApolloBlocks.LAUNCH_PAD);
+    public static final Item LAUNCHPAD = registerItem(ApolloBlocks.LAUNCHPAD);
     public static final Item LUNAR_DUST = registerItem(ApolloBlocks.LUNAR_DUST);
     public static final Item LUNAR_COBBLESTONE = registerItem(ApolloBlocks.LUNAR_COBBLESTONE);
     public static final Item LUNAR_IRON_ORE = registerItem(ApolloBlocks.LUNAR_IRON_ORE);
