@@ -154,7 +154,7 @@ public class ApolloSkyRenderer {
         // Render satellites
         matrices.push();
 
-        DayCycleManager.WorldTime worldTime = DayCycleManager.getLightProviderTime(this.world);
+        DayCycleManager.WorldTime worldTime = DayCycleManager.getLightProviderTime(world.getLunarTime(), this.world);
 
         for (SpaceBody.Satellite satellite : spaceBody.getAllSatellites()) {
             renderSatellite(satellite, matrices, worldTime);
