@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "apollo:block/shuttle_workbench_side",
+    "north": "apollo:block/shuttle_workbench_side",
+    "south": "apollo:block/shuttle_workbench_side_alt",
+    "east": "apollo:block/shuttle_workbench_side_alt",
+    "west": "apollo:block/shuttle_workbench_side",
+    "up": "apollo:block/shuttle_workbench_top",
+    "down": "apollo:block/shuttle_workbench_bottom"
+  }
+}
