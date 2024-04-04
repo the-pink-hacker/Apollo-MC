@@ -11,8 +11,8 @@ import com.thepinkhacker.apollo.data.server.tag.FluidTagProvider;
 import com.thepinkhacker.apollo.data.server.tag.ItemTagProvider;
 import com.thepinkhacker.apollo.world.biome.ApolloBuiltinBiomes;
 import com.thepinkhacker.apollo.world.dimension.ApolloDimensionTypes;
-import com.thepinkhacker.apollo.world.feature.ApolloOreConfiguredFeatures;
-import com.thepinkhacker.apollo.world.feature.ApolloOrePlacedFeatures;
+import com.thepinkhacker.apollo.world.feature.ApolloConfiguredFeatures;
+import com.thepinkhacker.apollo.world.feature.ApolloPlacedFeatures;
 import com.thepinkhacker.apollo.world.gen.noise.ApolloBuiltinNoiseParameters;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -37,8 +37,8 @@ public class DataGenerators implements DataGeneratorEntrypoint {
     @Override
     public void buildRegistry(RegistryBuilder registryBuilder) {
         registryBuilder.addRegistry(RegistryKeys.BIOME, ApolloBuiltinBiomes::bootstrap);
-        registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, ApolloOreConfiguredFeatures::bootstrap);
-        registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, ApolloOrePlacedFeatures::bootstrap);
+        registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, ApolloConfiguredFeatures::bootstrap);
+        registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, ApolloPlacedFeatures::bootstrap);
         registryBuilder.addRegistry(RegistryKeys.DIMENSION_TYPE, ApolloDimensionTypes::bootstrap);
         registryBuilder.addRegistry(RegistryKeys.NOISE_PARAMETERS, ApolloBuiltinNoiseParameters::bootstrap);
     }

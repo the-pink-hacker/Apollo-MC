@@ -1,7 +1,10 @@
-// 1.20 Pre-release 6	2023-05-26T19:23:32.250875239	Apollo/apollo
+// 1.20.1	2023-06-19T04:25:10.674748711	Apollo/apollo
+abda429d599f548c22fc2db2daf81ec0e41471e4 data/apollo/worldgen/placed_feature/springs_oil.json
 93f684ae4c6afe069dc10006b427ecc14ebdfc19 data/apollo/worldgen/biome/lunar_maria.json
 3e4be03026f7285b7537501c85e063f4ed4146ba data/apollo/worldgen/configured_feature/lunar_ore_iron.json
+ee42b2980807027880013763f97c047b90a23544 data/apollo/worldgen/configured_feature/springs_oil.json
 93f684ae4c6afe069dc10006b427ecc14ebdfc19 data/apollo/worldgen/biome/lunar_ditches.json
+c20290427a887b54b4c8cae31c3b96a2137c16e1 data/apollo/worldgen/biome/oil_desert.json
 d8dcf1bdac9bcc9fafcee658a5ef6655f35d2a44 data/apollo/worldgen/placed_feature/lunar_ore_iron.json
 621c70bb4ecbe6df57e89f6a03dfb0b3bb6748bf data/apollo/dimension_type/moon.json
 4f21d4405a177e291cfc0133a7475d5b8ac6b138 data/apollo/worldgen/noise/maria.json

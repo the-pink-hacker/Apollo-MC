@@ -3,6 +3,8 @@ package com.thepinkhacker.apollo.data.server;
 import com.thepinkhacker.apollo.Apollo;
 import com.thepinkhacker.apollo.world.biome.ApolloBiomeKeys;
 import com.thepinkhacker.apollo.world.dimension.ApolloDimensionTypes;
+import com.thepinkhacker.apollo.world.feature.ApolloMiscConfiguredFeatures;
+import com.thepinkhacker.apollo.world.feature.ApolloMiscPlacedFeatures;
 import com.thepinkhacker.apollo.world.feature.ApolloOreConfiguredFeatures;
 import com.thepinkhacker.apollo.world.feature.ApolloOrePlacedFeatures;
 import com.thepinkhacker.apollo.world.gen.noise.ApolloNoiseParametersKeys;
@@ -32,6 +34,8 @@ public class WorldgenProvider extends FabricDynamicRegistryProvider {
         addBiome(registries, entries, ApolloBiomeKeys.LUNAR_HIGHLANDS);
         addBiome(registries, entries, ApolloBiomeKeys.LUNAR_MARIA);
 
+        addBiome(registries, entries, ApolloBiomeKeys.OIL_DESERT);
+
         /* === Dimension Types === */
         addDimensionType(registries, entries, ApolloDimensionTypes.MOON);
 
@@ -40,6 +44,7 @@ public class WorldgenProvider extends FabricDynamicRegistryProvider {
 
         /* === Features === */
         addFeature(registries, entries, ApolloOreConfiguredFeatures.LUNAR_ORE_IRON, ApolloOrePlacedFeatures.LUNAR_ORE_IRON);
+        addFeature(registries, entries, ApolloMiscConfiguredFeatures.SPRINGS_OIL, ApolloMiscPlacedFeatures.SPRINGS_OIL);
     }
 
     private static void addBiome(RegistryWrapper.WrapperLookup registries, Entries entries, RegistryKey<Biome> biome) {

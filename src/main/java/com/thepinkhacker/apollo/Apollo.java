@@ -16,9 +16,8 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import terrablender.api.TerraBlenderApi;
 
-public class Apollo implements ModInitializer, TerraBlenderApi {
+public class Apollo implements ModInitializer {
 	public static final String MOD_ID = "apollo";
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
@@ -41,8 +40,4 @@ public class Apollo implements ModInitializer, TerraBlenderApi {
 	public static Identifier getIdentifier(String path) {
 		return new Identifier(MOD_ID, path);
 	}
-
-	// TODO: Recreate oil deserts
-	@Override
-	public void onTerraBlenderInitialized() {}
 }

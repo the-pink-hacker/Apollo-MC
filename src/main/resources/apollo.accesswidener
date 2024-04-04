@@ -21,3 +21,6 @@ accessible field net/minecraft/client/render/WorldRenderer world Lnet/minecraft/
 accessible method net/minecraft/client/render/WorldRenderer renderStars (Lnet/minecraft/client/render/BufferBuilder;)Lnet/minecraft/client/render/BufferBuilder$BuiltBuffer;
 
 extendable class net/minecraft/world/dimension/DimensionType
+
+accessible method net/minecraft/world/biome/OverworldBiomeCreator addBasicFeatures (Lnet/minecraft/world/biome/GenerationSettings$LookupBackedBuilder;)V
+accessible method net/minecraft/world/biome/OverworldBiomeCreator createBiome (ZFFLnet/minecraft/world/biome/SpawnSettings$Builder;Lnet/minecraft/world/biome/GenerationSettings$LookupBackedBuilder;Lnet/minecraft/sound/MusicSound;)Lnet/minecraft/world/biome/Biome;

@@ -1,4 +1,4 @@
-// 1.20 Pre-release 6	2023-05-26T19:23:32.251481676	Apollo/minecraft:block Loot Table
+// 1.20.1	2023-06-19T04:25:10.675811319	Apollo/minecraft:block Loot Table
 1a38d05fe682af415295267245a934e142c6a7e2 data/apollo/loot_tables/blocks/fluid_valve_pipe.json
 900035aa13a7a08ef6a0d01410fad687b74e1fb0 data/apollo/loot_tables/blocks/oil_refinery.json
 9195c939cf542aac1cd47248c364f0c97477ccca data/apollo/loot_tables/blocks/lunar_stone.json
@@ -7,7 +7,7 @@
 84dcff8337b548156895e96f3010389322b9ee9f data/apollo/loot_tables/blocks/lunar_soil.json
 ba1185a53f37ceac7c4119cc0b2d07504e620200 data/apollo/loot_tables/blocks/lunar_cobblestone.json
 b58ccd3b26ab9a241f84c54ae26fdfc1449fe334 data/apollo/loot_tables/blocks/launchpad.json
-415922b05318ae3928a21865d614dfcf51ddd12c data/apollo/loot_tables/blocks/meteorite.json
 5810c9dcf4a3124f7b22052d8a39a1fef2a729a7 data/apollo/loot_tables/blocks/shuttle_workbench.json
+415922b05318ae3928a21865d614dfcf51ddd12c data/apollo/loot_tables/blocks/meteorite.json
 7312a6d9c00356cd7241788154a9d135a3e8196c data/apollo/loot_tables/blocks/reinforced_iron_block.json
 9044e1ae221f3cd07dbbbe80227159d453122c66 data/apollo/loot_tables/blocks/lunar_iron_ore.json

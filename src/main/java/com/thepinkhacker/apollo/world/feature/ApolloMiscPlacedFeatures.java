@@ -8,21 +8,21 @@ import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;
 import net.minecraft.world.gen.placementmodifier.HeightRangePlacementModifier;
 
-public class ApolloOrePlacedFeatures {
-    public static final RegistryKey<PlacedFeature> LUNAR_ORE_IRON = ApolloPlacedFeatures.of("lunar_ore_iron");
+public class ApolloMiscPlacedFeatures {
+    public static final RegistryKey<PlacedFeature> SPRINGS_OIL = ApolloPlacedFeatures.of("springs_oil");
 
     public static void bootstrap(Registerable<PlacedFeature> registerable) {
         PlacedFeatures.register(
                 registerable,
-                LUNAR_ORE_IRON,
+                SPRINGS_OIL,
                 registerable
                         .getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE)
-                        .getOrThrow(ApolloOreConfiguredFeatures.LUNAR_ORE_IRON),
+                        .getOrThrow(ApolloMiscConfiguredFeatures.SPRINGS_OIL),
                 ApolloPlacedFeatures.modifiersWithCount(
-                        15,
+                        25,
                         HeightRangePlacementModifier.uniform(
-                                YOffset.fixed(0),
-                                YOffset.fixed(100)
+                                YOffset.getBottom(),
+                                YOffset.fixed(192)
                         )
                 )
         );

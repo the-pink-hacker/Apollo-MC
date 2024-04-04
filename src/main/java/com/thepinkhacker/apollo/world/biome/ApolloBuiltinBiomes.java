@@ -11,8 +11,11 @@ public class ApolloBuiltinBiomes {
     public static void bootstrap(Registerable<Biome> registerable) {
         RegistryEntryLookup<PlacedFeature> placedFeatureLookup = registerable.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
         RegistryEntryLookup<ConfiguredCarver<?>> configuredCarverLookup = registerable.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER);
+
         registerable.register(ApolloBiomeKeys.LUNAR_DITCHES, MoonBiomeCreator.createLunarBiome(placedFeatureLookup, configuredCarverLookup));
         registerable.register(ApolloBiomeKeys.LUNAR_HIGHLANDS, MoonBiomeCreator.createLunarBiome(placedFeatureLookup, configuredCarverLookup));
         registerable.register(ApolloBiomeKeys.LUNAR_MARIA, MoonBiomeCreator.createLunarBiome(placedFeatureLookup, configuredCarverLookup));
+
+        registerable.register(ApolloBiomeKeys.OIL_DESERT, ApolloOverworldBiomeCreator.createOilDesert(placedFeatureLookup, configuredCarverLookup));
     }
 }
