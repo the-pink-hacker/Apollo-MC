@@ -8,6 +8,8 @@ import net.minecraft.world.World;
 import java.util.HashMap;
 import java.util.Optional;
 
+// TODO: Sync space bodies to client
+// Only an issue when the client isn't running the server
 public class SpaceBodyManager {
     private static final SpaceBodyManager INSTANCE = new SpaceBodyManager();
     private final HashMap<Identifier, SpaceBody> spaceBodies = new HashMap<>();
