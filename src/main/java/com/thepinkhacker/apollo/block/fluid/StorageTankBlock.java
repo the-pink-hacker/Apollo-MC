@@ -1,5 +1,6 @@
 package com.thepinkhacker.apollo.block.fluid;
 
+import com.thepinkhacker.apollo.block.BlockWithEntityModeled;
 import com.thepinkhacker.apollo.block.entity.ApolloBlockEntityTypes;
 import com.thepinkhacker.apollo.block.entity.fluid.StorageTankBlockEntity;
 import com.thepinkhacker.apollo.fluid.PipeConnectable;
@@ -14,14 +15,9 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class StorageTankBlock extends BlockWithEntity implements PipeConnectable {
+public class StorageTankBlock extends BlockWithEntityModeled implements PipeConnectable {
     public StorageTankBlock(Settings settings) {
         super(settings);
-    }
-
-    @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
     }
 
     @Nullable

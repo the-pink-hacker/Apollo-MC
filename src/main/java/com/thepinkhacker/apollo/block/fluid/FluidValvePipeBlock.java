@@ -1,5 +1,6 @@
 package com.thepinkhacker.apollo.block.fluid;
 
+import com.thepinkhacker.apollo.block.BlockWithEntityModeled;
 import com.thepinkhacker.apollo.block.entity.ApolloBlockEntityTypes;
 import com.thepinkhacker.apollo.block.entity.fluid.FluidValvePipeBlockEntity;
 import com.thepinkhacker.apollo.fluid.PipeConnectable;
@@ -28,7 +29,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
-public class FluidValvePipeBlock extends BlockWithEntity implements PipeConnectable, Waterloggable {
+// TODO: Fix lighting issue when standing next to pipe
+public class FluidValvePipeBlock extends BlockWithEntityModeled implements PipeConnectable, Waterloggable {
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final BooleanProperty OPEN = Properties.OPEN;
     public static final EnumProperty<Direction.Axis> AXIS_STATE = Properties.AXIS;
@@ -86,11 +88,6 @@ public class FluidValvePipeBlock extends BlockWithEntity implements PipeConnecta
             case Y -> Y_SHAPE;
             case Z -> Z_SHAPE;
         };
-    }
-
-    @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
     }
 
     @Nullable

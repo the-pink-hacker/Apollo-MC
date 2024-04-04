@@ -1,5 +1,6 @@
 package com.thepinkhacker.apollo.block.fluid;
 
+import com.thepinkhacker.apollo.block.BlockWithEntityModeled;
 import com.thepinkhacker.apollo.block.entity.ApolloBlockEntityTypes;
 import com.thepinkhacker.apollo.block.entity.fluid.FluidPipeBlockEntity;
 import com.thepinkhacker.apollo.fluid.PipeConnectable;
@@ -26,7 +27,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class FluidPipeBlock extends BlockWithEntity implements PipeConnectable, Waterloggable {
+public class FluidPipeBlock extends BlockWithEntityModeled implements PipeConnectable, Waterloggable {
     public static final BooleanProperty NORTH_STATE = Properties.NORTH;
     public static final BooleanProperty EAST_STATE = Properties.EAST;
     public static final BooleanProperty SOUTH_STATE = Properties.SOUTH;
@@ -128,11 +129,6 @@ public class FluidPipeBlock extends BlockWithEntity implements PipeConnectable, 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new FluidPipeBlockEntity(pos, state);
-    }
-
-    @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
     }
 
     @Nullable
