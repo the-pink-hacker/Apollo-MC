@@ -1,6 +1,8 @@
 package com.ryangar46.apollo.fluid;
 
 import com.ryangar46.apollo.Apollo;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
@@ -17,13 +19,15 @@ public class FluidManager {
     public static final FlowableFluid STILL_OIL = Registry.register(Registry.FLUID, new Identifier(Apollo.MOD_ID, "oil"), new OilFluid.Still());
     public static final FlowableFluid FLOWING_OIL = Registry.register(Registry.FLUID, new Identifier(Apollo.MOD_ID, "flowing_oil"), new OilFluid.Flowing());
 
-    public static void register() {
+    @Environment(EnvType.CLIENT)
+    public static void registerClient() {
         Apollo.LOGGER.info("Registering fluids");
         registerFluid(STILL_FUEL, FLOWING_FUEL, "block/fuel_still", "block/fuel_flow", false);
         registerFluid(STILL_OIL, FLOWING_OIL, "block/oil_still", "block/oil_flow", true);
     }
 
-    public static void registerFluid(FlowableFluid still, FlowableFluid flowable, String still_id, String flowable_id, boolean solid) {
+    @Environment(EnvType.CLIENT)
+    private static void registerFluid(FlowableFluid still, FlowableFluid flowable, String still_id, String flowable_id, boolean solid) {
         FluidRenderHandlerRegistry.INSTANCE.register(still, flowable, new SimpleFluidRenderHandler(
                 new Identifier(Apollo.MOD_ID, still_id),
                 new Identifier(Apollo.MOD_ID, flowable_id)
