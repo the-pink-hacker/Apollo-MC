@@ -9,6 +9,8 @@
   "block.apollo.oil_refinery": "Oil Refinery",
   "block.apollo.reinforced_iron_block": "Reinforced Iron Block",
   "gamerule.category.apollo": "Apollo",
+  "gamerule.doMeteoriteExplosions": "Do Meteorite Explosions",
+  "gamerule.doMeteoriteExplosions.description": "Whether meteorites create an explosion on impact",
   "gamerule.suffocateInVacuum": "Suffocate in vacuum",
   "gamerule.suffocateInVacuum.description": "Whether mobs and players suffocate in a vacuum",
   "item.apollo.fuel_bucket": "Fuel Bucket",
