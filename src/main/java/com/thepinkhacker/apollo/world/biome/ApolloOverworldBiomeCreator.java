@@ -37,6 +37,7 @@ public class ApolloOverworldBiomeCreator {
         DefaultBiomeFeatures.addDesertFeatures(lookupBackedBuilder);
 
         ApolloDefaultBiomeFeatures.addOilSprings(lookupBackedBuilder);
+        ApolloDefaultBiomeFeatures.addOilLakes(lookupBackedBuilder);
 
         return OverworldBiomeCreator.createBiome(
                 false,

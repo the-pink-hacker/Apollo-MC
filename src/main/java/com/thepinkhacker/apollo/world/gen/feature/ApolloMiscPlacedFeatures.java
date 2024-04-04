@@ -39,7 +39,7 @@ public class ApolloMiscPlacedFeatures {
                         .getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE)
                         .getOrThrow(ApolloMiscConfiguredFeatures.LAKE_OIL),
                 ApolloPlacedFeatures.modifiersWithRarity(
-                        200,
+                        20,
                         PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP
                 )
         );

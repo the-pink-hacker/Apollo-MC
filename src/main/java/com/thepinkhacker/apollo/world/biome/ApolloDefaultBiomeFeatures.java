@@ -8,4 +8,9 @@ public class ApolloDefaultBiomeFeatures {
     public static void addOilSprings(GenerationSettings.LookupBackedBuilder builder) {
         builder.feature(GenerationStep.Feature.FLUID_SPRINGS, ApolloMiscPlacedFeatures.SPRINGS_OIL);
     }
+
+    public static void addOilLakes(GenerationSettings.LookupBackedBuilder builder) {
+        builder.feature(GenerationStep.Feature.LAKES, ApolloMiscPlacedFeatures.LAKE_OIL_SURFACE);
+        builder.feature(GenerationStep.Feature.LAKES, ApolloMiscPlacedFeatures.LAKE_OIL_UNDERGROUND);
+    }
 }

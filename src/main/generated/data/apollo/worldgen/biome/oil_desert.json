@@ -29,7 +29,9 @@
     [],
     [
       "minecraft:lake_lava_underground",
-      "minecraft:lake_lava_surface"
+      "minecraft:lake_lava_surface",
+      "apollo:lake_oil_surface",
+      "apollo:lake_oil_underground"
     ],
     [
       "minecraft:amethyst_geode"
