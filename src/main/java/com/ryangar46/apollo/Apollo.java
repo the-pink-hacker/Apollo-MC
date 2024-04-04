@@ -1,10 +1,10 @@
 package com.ryangar46.apollo;
 
-import com.ryangar46.apollo.entity.EntityManager;
+import com.ryangar46.apollo.entity.ApolloEntityTypes;
 import com.ryangar46.apollo.item.ApolloItemGroups;
 import com.ryangar46.apollo.item.ApolloItems;
 import com.ryangar46.apollo.recipe.RecipeManager;
-import com.ryangar46.apollo.stat.StatManager;
+import com.ryangar46.apollo.stat.ApolloStats;
 import com.ryangar46.apollo.world.ApolloGameRules;
 import com.ryangar46.apollo.world.biome.ApolloOverworldRegion;
 import com.ryangar46.apollo.world.spawner.GenericSpawnerManager;
@@ -27,9 +27,9 @@ public class Apollo implements ModInitializer, TerraBlenderApi {
 		ApolloGameRules.register();
 		ApolloItemGroups.register();
 		ApolloItems.register();
-		EntityManager.register();
+		ApolloEntityTypes.register();
 		RecipeManager.register();
-		StatManager.register();
+		ApolloStats.register();
 
 		ServerLifecycleEvents.SERVER_STARTED.register(server -> GenericSpawnerManager.register());
 	}

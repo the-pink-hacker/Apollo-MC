@@ -1,7 +1,7 @@
 package com.ryangar46.apollo.block.entity;
 
 import com.ryangar46.apollo.block.FluidPipeBlock;
-import com.ryangar46.apollo.entity.EntityManager;
+import com.ryangar46.apollo.entity.ApolloEntityTypes;
 import com.ryangar46.apollo.fluid.PipeStorableFluid;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 public class FluidPipeBlockEntity extends BlockEntity {
     public FluidPipeBlockEntity(BlockPos pos, BlockState state) {
-        super(EntityManager.FLUID_PIPE_BLOCK_ENTITY, pos, state);
+        super(ApolloEntityTypes.FLUID_PIPE_BLOCK_ENTITY, pos, state);
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, FluidPipeBlockEntity blockEntity) {

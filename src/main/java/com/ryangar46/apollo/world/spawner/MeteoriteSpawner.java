@@ -1,6 +1,6 @@
 package com.ryangar46.apollo.world.spawner;
 
-import com.ryangar46.apollo.entity.EntityManager;
+import com.ryangar46.apollo.entity.ApolloEntityTypes;
 import com.ryangar46.apollo.entity.projectile.MeteoriteEntity;
 import com.ryangar46.apollo.tag.TagManager;
 import com.ryangar46.apollo.world.ApolloGameRules;
@@ -33,8 +33,8 @@ public class MeteoriteSpawner implements GenericSpawner {
                     BlockPos blockPos = player.getBlockPos();
                     BlockPos offsetPos =  new BlockPos(blockPos.getX() + random.nextBetween(-10, 10), world.getHeight() + 16, blockPos.getZ() + random.nextBetween(-10, 10));
 
-                    if (SpawnHelper.isClearForSpawn(world, offsetPos, world.getBlockState(offsetPos), world.getFluidState(offsetPos), EntityManager.METEORITE)) {
-                        MeteoriteEntity entity = EntityManager.METEORITE.create(world);
+                    if (SpawnHelper.isClearForSpawn(world, offsetPos, world.getBlockState(offsetPos), world.getFluidState(offsetPos), ApolloEntityTypes.METEORITE)) {
+                        MeteoriteEntity entity = ApolloEntityTypes.METEORITE.create(world);
 
                         if (entity != null) {
                             entity.refreshPositionAndAngles(offsetPos, 0.0f, 0.0f);

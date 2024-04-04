@@ -1,7 +1,7 @@
 package com.ryangar46.apollo.block;
 
 import com.ryangar46.apollo.block.entity.FluidPipeBlockEntity;
-import com.ryangar46.apollo.entity.EntityManager;
+import com.ryangar46.apollo.entity.ApolloEntityTypes;
 import com.ryangar46.apollo.fluid.PipeStorableFluid;
 import com.ryangar46.apollo.tag.TagManager;
 import net.minecraft.block.*;
@@ -146,7 +146,7 @@ public class FluidPipeBlock extends BlockWithEntity implements PipeConnectable, 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, EntityManager.FLUID_PIPE_BLOCK_ENTITY, FluidPipeBlockEntity::tick);
+        return checkType(type, ApolloEntityTypes.FLUID_PIPE_BLOCK_ENTITY, FluidPipeBlockEntity::tick);
     }
 
     public static int getFluidLevel(BlockState state) {
