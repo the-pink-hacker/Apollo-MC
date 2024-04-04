@@ -16,6 +16,6 @@ public abstract class ThrownEntityMixin {
             cancellable = true
     )
     private void getGravity(CallbackInfoReturnable<Float> cir) {
-        cir.setReturnValue(cir.getReturnValue() * (float)GravityManager.getGravityMultiplier(((ThrownEntity)(Object)this).world));
+        cir.setReturnValue(cir.getReturnValue() * (float)GravityManager.getGravityMultiplier(((ThrownEntity)(Object)this).getWorld()));
     }
 }

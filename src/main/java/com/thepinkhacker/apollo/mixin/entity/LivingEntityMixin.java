@@ -23,10 +23,10 @@ public abstract class LivingEntityMixin {
             )
     )
     private void vacuumTick(CallbackInfo info) {
-        if (!VacuumChecker.checkForVacuum(((LivingEntity)(Object)this).world, (LivingEntity)(Object)this)) return;
+        if (!VacuumChecker.checkForVacuum(((LivingEntity)(Object)this).getWorld(), (LivingEntity)(Object)this)) return;
         if (VacuumChecker.isArmorCollectionAirtight(((LivingEntity)(Object)this).getArmorItems())) return;
 
-        apolloVacuumDamage(((LivingEntity)(Object)this).world);
+        apolloVacuumDamage(((LivingEntity)(Object)this).getWorld());
     }
 
     protected void apolloVacuumDamage(World world) {
@@ -42,7 +42,7 @@ public abstract class LivingEntityMixin {
             ordinal = 0
     )
     private double gravityFall(double g) {
-        return g * GravityManager.getGravityMultiplier(((LivingEntity)(Object)this).world, ((LivingEntity)(Object)this).getArmorItems());
+        return g * GravityManager.getGravityMultiplier(((LivingEntity)(Object)this).getWorld(), ((LivingEntity)(Object)this).getArmorItems());
     }
 
     @ModifyVariable(
@@ -52,6 +52,6 @@ public abstract class LivingEntityMixin {
             argsOnly = true
     )
     private float gravityDamage(float fallDistance) {
-        return fallDistance * (float)GravityManager.getGravityMultiplier(((LivingEntity)(Object)this).world, ((LivingEntity)(Object)this).getArmorItems());
+        return fallDistance * (float)GravityManager.getGravityMultiplier(((LivingEntity)(Object)this).getWorld(), ((LivingEntity)(Object)this).getArmorItems());
     }
 }

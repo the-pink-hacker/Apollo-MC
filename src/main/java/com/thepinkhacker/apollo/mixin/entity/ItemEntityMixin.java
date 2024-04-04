@@ -19,6 +19,6 @@ public abstract class ItemEntityMixin {
             index = 1
     )
     private double gravityFall(double y) {
-        return y * GravityManager.getGravityMultiplier(((ItemEntity)(Object)this).world);
+        return y * GravityManager.getGravityMultiplier(((ItemEntity)(Object)this).getWorld());
     }
 }

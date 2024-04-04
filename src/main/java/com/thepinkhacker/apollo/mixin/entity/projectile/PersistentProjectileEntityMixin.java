@@ -19,6 +19,6 @@ public abstract class PersistentProjectileEntityMixin {
             index = 1
     )
     private double gravityFall(double y) {
-        return y + 0.05d - (0.05d * GravityManager.getGravityMultiplier(((PersistentProjectileEntity)(Object)this).world));
+        return y + 0.05d - (0.05d * GravityManager.getGravityMultiplier(((PersistentProjectileEntity)(Object)this).getWorld()));
     }
 }

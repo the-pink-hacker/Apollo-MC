@@ -20,7 +20,7 @@ public abstract class FallingBlockEntityMixin {
             index = 1
     )
     private double gravityFall(double y) {
-        return y * GravityManager.getGravityMultiplier(((FallingBlockEntity)(Object)this).world);
+        return y * GravityManager.getGravityMultiplier(((FallingBlockEntity)(Object)this).getWorld());
     }
 
     // Changes damage calculation
@@ -30,6 +30,6 @@ public abstract class FallingBlockEntityMixin {
             ordinal = 0
     )
     private float gravityDamage(float fallDistance) {
-        return fallDistance * (float)GravityManager.getGravityMultiplier(((FallingBlockEntity)(Object)this).world);
+        return fallDistance * (float)GravityManager.getGravityMultiplier(((FallingBlockEntity)(Object)this).getWorld());
     }
 }
