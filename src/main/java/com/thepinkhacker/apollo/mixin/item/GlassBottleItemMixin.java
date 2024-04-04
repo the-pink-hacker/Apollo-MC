@@ -30,7 +30,6 @@ public abstract class GlassBottleItemMixin extends Item {
         BlockState state = world.getBlockState(pos);
         ItemStack itemStack = context.getStack();
 
-
         if (context.getSide() == Direction.DOWN || !state.isIn(ApolloBlockTags.OIL_BOTTLEABLE)) {
             return ActionResult.PASS;
         }

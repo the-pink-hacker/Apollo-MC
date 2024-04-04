@@ -23,10 +23,10 @@ public class ApolloBlocks {
     public static final Block FLUID_VALVE_PIPE = registerBlock("fluid_valve_pipe", new FluidValvePipeBlock(FabricBlockSettings.copyOf(FLUID_PIPE)));
     public static final Block FUEL = registerBlock("fuel", new FluidBlock(ApolloFluids.STILL_FUEL, FabricBlockSettings.create().sounds(BlockSoundGroup.METAL).noCollision().dropsNothing()));
     public static final Block LAUNCHPAD = registerBlock("launchpad", new LaunchpadBlock(FabricBlockSettings.create().sounds(BlockSoundGroup.METAL).strength(50.0f, 12_000.0f).requiresTool()));
-    public static final Block LUNAR_DUST = registerBlock("lunar_dust", new FallingBlock(FabricBlockSettings.create().sounds(BlockSoundGroup.METAL).strength(1.0f)));
+    public static final Block LUNAR_DUST = registerBlock("lunar_dust", new FallingBlock(FabricBlockSettings.create().sounds(BlockSoundGroup.GRAVEL).strength(1.0f)));
     public static final Block LUNAR_COBBLESTONE = registerBlock("lunar_cobblestone", new Block(FabricBlockSettings.create().sounds(BlockSoundGroup.STONE).strength(1.75f, 1.5f).requiresTool()));
     public static final Block LUNAR_IRON_ORE = registerBlock("lunar_iron_ore", new Block(FabricBlockSettings.create().sounds(BlockSoundGroup.STONE).strength(3.5f, 2.5f).requiresTool()));
-    public static final Block LUNAR_SOIL = registerBlock("lunar_soil", new Block(FabricBlockSettings.create().sounds(BlockSoundGroup.METAL).strength(1.0f)));
+    public static final Block LUNAR_SOIL = registerBlock("lunar_soil", new Block(FabricBlockSettings.create().sounds(BlockSoundGroup.GRAVEL).strength(1.0f)));
     public static final Block LUNAR_STONE = registerBlock("lunar_stone", new Block(FabricBlockSettings.create().sounds(BlockSoundGroup.STONE).strength(1.5f).requiresTool()));
     public static final Block METEORITE = registerBlock("meteorite", new MeteoriteBlock(FabricBlockSettings.create().sounds(BlockSoundGroup.STONE).strength(30.0f, 1_200.0f).ticksRandomly().requiresTool()));
     public static final Block OIL = registerBlock("oil", new FluidBlock(ApolloFluids.STILL_OIL, FabricBlockSettings.create().sounds(BlockSoundGroup.METAL).noCollision().dropsNothing()));
