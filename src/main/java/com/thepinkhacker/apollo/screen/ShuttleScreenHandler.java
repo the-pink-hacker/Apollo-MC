@@ -5,9 +5,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.screen.ScreenHandler;
 
-public class ShuttleScreenHandler extends ScreenHandler {
+public class ShuttleScreenHandler extends ApolloScreenHandler {
     private final Inventory inventory;
     private final ShuttleEntity entity;
 
@@ -18,13 +17,14 @@ public class ShuttleScreenHandler extends ScreenHandler {
         this.inventory = inventory;
         this.entity = entity;
 
+        this.addPlayerInventorySlots(playerInventory);
+
         inventory.onOpen(playerInventory.player);
     }
 
-    // TODO: Implement quick move
     @Override
     public ItemStack quickMove(PlayerEntity player, int slot) {
-        return null;
+        return ItemStack.EMPTY;
     }
 
     @Override

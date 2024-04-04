@@ -15,6 +15,7 @@
     "entity.vehicle.AbstractMinecartEntityMixin",
     "entity.vehicle.BoatEntityMixin",
     "item.GlassBottleItemMixin",
+    "net.fabricmc.fabric.api.entity.FakePlayerMixin",
     "server.network.ServerPlayerEntityMixin",
     "server.world.ServerChunkManagerMixin",
     "world.WorldMixin"

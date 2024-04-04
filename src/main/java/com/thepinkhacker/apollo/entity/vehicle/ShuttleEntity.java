@@ -126,7 +126,7 @@ public class ShuttleEntity extends MobEntity implements RideableInventory {
 
     @Override
     public void openInventory(PlayerEntity player) {
-        if (!this.getWorld().isClient && (!this.hasPassengers() || !this.hasPassenger(player))) {
+        if (!this.getWorld().isClient && (!this.hasPassengers() || this.hasPassenger(player))) {
             if (player instanceof PlayerShuttleScreenOpener playerInterface) {
                 playerInterface.apollo$openShuttleInventory(this, items);
             }
