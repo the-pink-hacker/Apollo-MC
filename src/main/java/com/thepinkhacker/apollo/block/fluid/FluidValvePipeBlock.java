@@ -4,11 +4,13 @@ import com.thepinkhacker.apollo.block.BlockWithEntityModeled;
 import com.thepinkhacker.apollo.block.entity.ApolloBlockEntityTypes;
 import com.thepinkhacker.apollo.block.entity.fluid.FluidValvePipeBlockEntity;
 import com.thepinkhacker.apollo.fluid.PipeConnectable;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
+import net.minecraft.block.Waterloggable;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -59,7 +61,7 @@ public class FluidValvePipeBlock extends BlockWithEntityModeled implements PipeC
         super(settings);
         setDefaultState(this.getStateManager().getDefaultState()
                 .with(AXIS_STATE, Direction.Axis.X)
-                .with(OPEN, true)
+                .with(OPEN, false)
                 .with(WATERLOGGED, false)
         );
     }
@@ -107,7 +109,7 @@ public class FluidValvePipeBlock extends BlockWithEntityModeled implements PipeC
         return new FluidValvePipeBlockEntity(pos, state);
     }
 
-    public boolean isOpen(BlockState state) {
+    public static boolean isOpen(BlockState state) {
         return state.get(OPEN);
     }
 
@@ -115,7 +117,7 @@ public class FluidValvePipeBlock extends BlockWithEntityModeled implements PipeC
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         state = state.cycle(OPEN);
         world.setBlockState(pos, state, Block.NOTIFY_LISTENERS | Block.REDRAW_ON_MAIN_THREAD);
-        world.emitGameEvent(player, this.isOpen(state) ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
+        world.emitGameEvent(player, isOpen(state) ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
         return ActionResult.success(world.isClient);
     }
 }
