@@ -13,5 +13,9 @@
   "spawners": {},
   "spawn_costs": {},
   "carvers": {},
-  "features": []
+  "features": [
+    [
+      "apollo:lunar_ore_iron"
+    ]
+  ]
 }
