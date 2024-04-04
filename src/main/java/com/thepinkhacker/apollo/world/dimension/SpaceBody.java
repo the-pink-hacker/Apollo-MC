@@ -88,12 +88,12 @@ public class SpaceBody {
     }
 
     public static void registerGsonType(GsonBuilder gsonBuilder) {
-        gsonBuilder.registerTypeAdapter(SpaceBody.class, new Deserializer());
-        gsonBuilder.registerTypeAdapter(Satellite.class, new Satellite.Deserializer());
+        gsonBuilder.registerTypeAdapter(SpaceBody.class, new Serializer());
+        gsonBuilder.registerTypeAdapter(Satellite.class, new Satellite.Serializer());
         gsonBuilder.registerTypeAdapter(Identifier.class, new Identifier.Serializer());
     }
 
-    private static class Deserializer implements JsonDeserializer<SpaceBody>, JsonSerializer<SpaceBody> {
+    private static class Serializer implements JsonDeserializer<SpaceBody>, JsonSerializer<SpaceBody> {
         @Override
         public SpaceBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
             JsonObject object = jsonElement.getAsJsonObject();
@@ -127,29 +127,55 @@ public class SpaceBody {
         }
 
         @Override
-        public JsonElement serialize(SpaceBody spaceBody, Type type, JsonSerializationContext jsonSerializationContext) {
+        public JsonElement serialize(SpaceBody spaceBody, Type type, JsonSerializationContext context) {
             JsonObject object = new JsonObject();
+
             object.addProperty("gravity", spaceBody.gravity);
+            object.addProperty("is_atmosphere_visible", spaceBody.isAtmosphereVisible);
+            object.addProperty("has_oxygen", spaceBody.hasOxygen);
+            object.addProperty("spawns_meteorites", spaceBody.spawnsMeteorites);
+            object.add("light_provider", context.serialize(spaceBody.lightProvider));
+            object.add("satellites", context.serialize(spaceBody.satellites));
+
             return object;
         }
     }
 
-    public record Satellite(Identifier texture, float scale, Vector2i phases, Orbit orbit) {
-        public static Satellite fromShortTexture(
-                Identifier texture,
-                float scale,
-                Vector2i phases,
-                Orbit orbit
-        ) {
-            return new Satellite(
-                    texture.withPrefixedPath("textures/"),
-                    scale,
-                    phases,
-                    orbit
-            );
+    public static class Satellite {
+        private final Identifier texture;
+        private final Identifier prefixedTexture;
+        private final float scale;
+        private final Vector2i phases;
+        private final Orbit orbit;
+
+        public Satellite(Identifier texture, float scale, Vector2i phases, Orbit orbit) {
+            this.texture = texture;
+            this.prefixedTexture = texture.withPrefixedPath("textures/");
+            this.scale = scale;
+            this.phases = phases;
+            this.orbit = orbit;
         }
 
-        private static class Deserializer implements JsonDeserializer<Satellite> {
+        public Identifier getPrefixedTexture() {
+            return prefixedTexture;
+        }
+
+        public Identifier getTexture() {
+            return texture;
+        }
+
+        public float getScale() {
+            return scale;
+        }
+         public Vector2i getPhases() {
+            return phases;
+         }
+
+         public Orbit getOrbit() {
+            return orbit;
+         }
+
+        private static class Serializer implements JsonDeserializer<Satellite>, JsonSerializer<Satellite> {
             @Override
             public Satellite deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
                 JsonObject object = jsonElement.getAsJsonObject();
@@ -164,7 +190,19 @@ public class SpaceBody {
                         orbitHelper.getDefaultVector3F("offset", 0.0f, 0.0f, 0.0f)
                 )).orElse(new Orbit(false, 1.0f, new Vector3f(0.0f, 0.0f, 0.0f)));
 
-                return Satellite.fromShortTexture(texture, scale, phases, orbit);
+                return new Satellite(texture, scale, phases, orbit);
+            }
+
+            @Override
+            public JsonElement serialize(Satellite satellite, Type type, JsonSerializationContext context) {
+                JsonObject object = new JsonObject();
+
+                object.addProperty("texture", satellite.texture.toString());
+                object.addProperty("scale", satellite.scale);
+                object.add("phases", context.serialize(satellite.phases));
+                object.add("orbit", context.serialize(satellite.orbit));
+
+                return object;
             }
         }
     }

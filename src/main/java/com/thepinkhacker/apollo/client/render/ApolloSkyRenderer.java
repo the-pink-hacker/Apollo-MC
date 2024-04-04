@@ -75,16 +75,16 @@ public class ApolloSkyRenderer {
             MatrixStack matrices
     ) {
         BufferBuilder bufferBuilder = Tessellator.getInstance().getBuffer();
-        RenderSystem.setShaderTexture(0, satellite.texture());
+        RenderSystem.setShaderTexture(0, satellite.getPrefixedTexture());
         Matrix4f matrix = matrices.peek().getPositionMatrix();
 
-        boolean fixedOrbit = satellite.orbit().fixed();
-        float speed = satellite.orbit().speed();
+        boolean fixedOrbit = satellite.getOrbit().fixed();
+        float speed = satellite.getOrbit().speed();
         // Offset is negative to make it more intuitive
         // Positive x offset goes in the positive x direction in the world
-        float offsetX = (fixedOrbit ? 0.0f : getSkyAngleDegrees(renderer.world, speed)) - satellite.orbit().offset().x;
-        float offsetY = -satellite.orbit().offset().y + DEFAULT_SATELLITE_ROTATION_DEGREES;
-        float offsetZ = -satellite.orbit().offset().z;
+        float offsetX = (fixedOrbit ? 0.0f : getSkyAngleDegrees(renderer.world, speed)) - satellite.getOrbit().offset().x;
+        float offsetY = -satellite.getOrbit().offset().y + DEFAULT_SATELLITE_ROTATION_DEGREES;
+        float offsetZ = -satellite.getOrbit().offset().z;
 
         // X: The direction the sun and more normally rotate in
         matrices.multiply(
@@ -95,9 +95,9 @@ public class ApolloSkyRenderer {
 
         bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_TEXTURE);
 
-        float scale = satellite.scale();
-        int phaseRows = satellite.phases().y;
-        int phaseColumns = satellite.phases().x;
+        float scale = satellite.getScale();
+        int phaseRows = satellite.getPhases().y;
+        int phaseColumns = satellite.getPhases().x;
         int phaseIndex = getPhase(renderer.world, phaseRows * phaseColumns);
         int row = phaseIndex / phaseColumns;
         int column = phaseIndex % phaseColumns;
