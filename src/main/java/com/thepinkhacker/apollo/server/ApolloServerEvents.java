@@ -1,6 +1,5 @@
 package com.thepinkhacker.apollo.server;
 
-import com.thepinkhacker.apollo.client.render.ApolloSkyRenderer;
 import com.thepinkhacker.apollo.network.packet.SyncSpaceBodiesPacket;
 import com.thepinkhacker.apollo.resource.SpaceBodyManager;
 import com.thepinkhacker.apollo.world.spawner.GenericSpawnerManager;
