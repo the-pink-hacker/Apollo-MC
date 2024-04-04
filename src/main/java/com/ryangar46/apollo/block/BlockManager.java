@@ -24,6 +24,7 @@ public class BlockManager {
 
     public static void register() {
         Apollo.LOGGER.info("Registering blocks");
+        registerBlock(FUEL, "fuel");
         registerBlock(LAUNCH_PAD, "launchpad", ItemGroupManager.APOLLO);
         registerBlock(LUNAR_COBBLESTONE, "lunar_cobblestone", ItemGroupManager.MOON);
         registerBlock(LUNAR_IRON_ORE, "lunar_iron_ore", ItemGroupManager.MOON);
@@ -33,7 +34,7 @@ public class BlockManager {
     }
 
     private static void registerBlock(Block block, String id, ItemGroup itemGroup) {
-        Registry.register(Registry.BLOCK, new Identifier(Apollo.MOD_ID, id), block);
+        registerBlock(block, id);
         Registry.register(Registry.ITEM, new Identifier(Apollo.MOD_ID, id), new BlockItem(block, new FabricItemSettings().group(itemGroup)));
     }
     private static void registerBlock(Block block, String id) {
