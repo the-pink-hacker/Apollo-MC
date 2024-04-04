@@ -9,6 +9,12 @@
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000
     },
+    "music": {
+      "max_delay": 24000,
+      "min_delay": 12000,
+      "replace_current_music": false,
+      "sound": "apollo:music.moon"
+    },
     "sky_color": 0,
     "water_color": 4159204,
     "water_fog_color": 329011

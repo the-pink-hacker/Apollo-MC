@@ -6,6 +6,7 @@ import com.thepinkhacker.apollo.item.ApolloItemGroups;
 import com.thepinkhacker.apollo.item.ApolloItems;
 import com.thepinkhacker.apollo.recipe.ApolloRecipeTypes;
 import com.thepinkhacker.apollo.resource.ApolloResources;
+import com.thepinkhacker.apollo.sound.ApolloSoundEvents;
 import com.thepinkhacker.apollo.stat.ApolloStats;
 import com.thepinkhacker.apollo.world.ApolloGameRules;
 import com.thepinkhacker.apollo.world.biome.ApolloBiomeKeys;
@@ -34,6 +35,7 @@ public class Apollo implements ModInitializer, TerraBlenderApi {
 		ApolloStats.register();
 		ApolloBlockEntityTypes.register();
 		ApolloResources.register();
+		ApolloSoundEvents.register();
 
 		ServerLifecycleEvents.SERVER_STARTED.register(server -> GenericSpawnerManager.register());
 	}
