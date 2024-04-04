@@ -41,5 +41,9 @@
   "item.apollo.space_suit_leggings": "Space Suit Leggings",
   "itemGroup.apollo.apollo": "Apollo",
   "itemGroup.apollo.moon": "Moon",
+  "link.apollo.blog": "Blog (Tumblr)",
+  "link.apollo.curseforge": "CurseForge",
+  "link.apollo.modrinth": "Modrinth",
+  "link.apollo.website": "Website",
   "stat.apollo.interact_with_shuttle_workbench": "Interactions with Shuttle Workbench"
 }
