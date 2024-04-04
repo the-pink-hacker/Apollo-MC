@@ -15,7 +15,7 @@ public abstract class LivingEntityMixin {
             ordinal = 0
     )
     private double gravityFall(double g) {
-        return g * GravityManager.getGravityMultiplier(((LivingEntity)(Object)this).world);
+        return g * GravityManager.getGravityMultiplier(((LivingEntity)(Object)this).world, ((LivingEntity)(Object)this).getArmorItems());
     }
 
     // Changes damage calculation
@@ -25,6 +25,6 @@ public abstract class LivingEntityMixin {
             ordinal = 0
     )
     private float gravityDamage(float fallDistance) {
-        return fallDistance * (float)GravityManager.getGravityMultiplier(((LivingEntity)(Object)this).world);
+        return fallDistance * (float)GravityManager.getGravityMultiplier(((LivingEntity)(Object)this).world, ((LivingEntity)(Object)this).getArmorItems());
     }
 }

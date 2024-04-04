@@ -18,39 +18,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin {
-    @Shadow
-    public World world;
-
     public int vacuumTicks = 0;
-
-    @Shadow
-    public void kill() {}
-
-    @Shadow
-    public boolean isPlayer() {
-        return false;
-    }
-
-    @Shadow
-    public EntityType<?> getType() {
-        return null;
-    }
-
-    @Shadow
-    public Iterable<ItemStack> getArmorItems() {
-        return null;
-    }
 
     @Inject(
             method = "tick()V",
             at = @At("HEAD")
     )
     private void checkPressure(CallbackInfo info) {
-        if (!world.isClient && world.getRegistryKey() == DimensionManager.MOON) {
+        if (!((Entity)(Object)this).world.isClient && ((Entity)(Object)this).world.getRegistryKey() == DimensionManager.MOON) {
             if (!isVacuumImmune()) {
-                if ((Entity)(Object)this instanceof LivingEntity) {
+                if (((Entity)(Object)this) instanceof LivingEntity) {
                     LivingEntity entity = (LivingEntity)(Object)this;
-                    Iterable<ItemStack> items = getArmorItems();
+                    Iterable<ItemStack> items = ((Entity)(Object)this).getArmorItems();
                     boolean airtight = true;
                     for (ItemStack item : items) {
                         if (!isAirtightArmor(item)) {
@@ -60,9 +39,9 @@ public abstract class EntityMixin {
                     }
 
                     if (!airtight) {
-                        if ((Entity)(Object)this instanceof ServerPlayerEntity) {
+                        if (((Entity)(Object)this) instanceof ServerPlayerEntity) {
                             ServerPlayerEntity player = (ServerPlayerEntity)entity;
-                            if (this.world.getRegistryKey() == DimensionManager.MOON) {
+                            if (((Entity)(Object)this).world.getRegistryKey() == DimensionManager.MOON) {
                                 GameMode gameMode = player.interactionManager.getGameMode();
                                 if (gameMode == GameMode.SURVIVAL || gameMode == GameMode.ADVENTURE) {
                                     vacuumDamage(entity);
@@ -78,7 +57,7 @@ public abstract class EntityMixin {
     }
 
     private boolean isVacuumImmune() {
-        return TagManager.VACUUM_IMMUNE_CREATURES.contains(this.getType());
+        return TagManager.VACUUM_IMMUNE_CREATURES.contains(((Entity)(Object)this).getType());
     }
 
     private boolean isAirtightArmor(ItemStack item) {
