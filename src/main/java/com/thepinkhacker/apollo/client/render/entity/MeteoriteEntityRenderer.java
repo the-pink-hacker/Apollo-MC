@@ -16,6 +16,7 @@ import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
 public class MeteoriteEntityRenderer extends EntityRenderer<MeteoriteEntity> {
+    private static final Identifier TEXTURE = Apollo.getIdentifier("textures/entity/shuttle.png");
     private final MeteoriteEntityModel model;
 
     public MeteoriteEntityRenderer(EntityRendererFactory.Context ctx) {
@@ -52,6 +53,6 @@ public class MeteoriteEntityRenderer extends EntityRenderer<MeteoriteEntity> {
 
     @Override
     public Identifier getTexture(MeteoriteEntity entity) {
-        return Apollo.getIdentifier("textures/entity/meteorite.png");
+        return TEXTURE;
     }
 }
