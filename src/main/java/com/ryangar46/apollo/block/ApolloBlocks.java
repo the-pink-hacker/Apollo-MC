@@ -2,18 +2,16 @@ package com.ryangar46.apollo.block;
 
 import com.ryangar46.apollo.Apollo;
 import com.ryangar46.apollo.fluid.FluidManager;
-import com.ryangar46.apollo.item.ItemGroupManager;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public class BlockManager {
+public class ApolloBlocks {
     public static final Block FLUID_PIPE = new FluidPipeBlock(FabricBlockSettings.of(Material.METAL).strength(5.0f, 6.0f));
     public static final Block FUEL = new FluidBlock(FluidManager.STILL_FUEL, FabricBlockSettings.of(Material.WATER).noCollision().dropsNothing());
     public static final Block LAUNCH_PAD = new LaunchpadBlock(FabricBlockSettings.of(Material.METAL).strength(50.0f, 12000.0f).requiresTool());

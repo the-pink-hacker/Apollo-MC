@@ -1,6 +1,6 @@
 package com.ryangar46.apollo;
 
-import com.ryangar46.apollo.block.BlockManager;
+import com.ryangar46.apollo.block.ApolloBlocks;
 import com.ryangar46.apollo.entity.EntityManager;
 import com.ryangar46.apollo.item.ItemManager;
 import com.ryangar46.apollo.recipe.RecipeManager;
@@ -26,7 +26,7 @@ public class Apollo implements ModInitializer, TerraBlenderApi {
 		GeckoLib.initialize();
 		GameRuleManager.register();
 		ItemManager.register();
-		BlockManager.register();
+		ApolloBlocks.register();
 		EntityManager.register();
 		//BiomeManager.register();
 		RecipeManager.register();

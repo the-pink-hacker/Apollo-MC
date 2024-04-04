@@ -1,6 +1,6 @@
 package com.ryangar46.apollo.screen;
 
-import com.ryangar46.apollo.block.BlockManager;
+import com.ryangar46.apollo.block.ApolloBlocks;
 import com.ryangar46.apollo.recipe.RecipeManager;
 import com.ryangar46.apollo.recipe.ShuttleWorkbenchRecipe;
 import net.minecraft.entity.player.PlayerEntity;
@@ -52,7 +52,7 @@ public class ShuttleWorkbenchScreenHandler extends CraftingScreenHandler {
 
     @Override
     public boolean canUse(PlayerEntity player) {
-        return canUse(this.context, player, BlockManager.SHUTTLE_WORKBENCH);
+        return canUse(this.context, player, ApolloBlocks.SHUTTLE_WORKBENCH);
     }
 
 }

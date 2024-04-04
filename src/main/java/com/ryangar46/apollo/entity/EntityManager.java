@@ -1,7 +1,7 @@
 package com.ryangar46.apollo.entity;
 
 import com.ryangar46.apollo.Apollo;
-import com.ryangar46.apollo.block.BlockManager;
+import com.ryangar46.apollo.block.ApolloBlocks;
 import com.ryangar46.apollo.block.entity.FluidPipeBlockEntity;
 import com.ryangar46.apollo.client.render.MeteoriteEntityRenderer;
 import com.ryangar46.apollo.client.render.ShuttleEntityRenderer;
@@ -40,7 +40,7 @@ public class EntityManager {
     public static final BlockEntityType<FluidPipeBlockEntity> FLUID_PIPE_BLOCK_ENTITY = Registry.register(
             Registries.BLOCK_ENTITY_TYPE,
             new Identifier(Apollo.MOD_ID, "shuttle"),
-            FabricBlockEntityTypeBuilder.create(FluidPipeBlockEntity::new, BlockManager.FLUID_PIPE)
+            FabricBlockEntityTypeBuilder.create(FluidPipeBlockEntity::new, ApolloBlocks.FLUID_PIPE)
                     .build()
     );
 

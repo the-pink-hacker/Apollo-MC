@@ -1,6 +1,6 @@
 package com.ryangar46.apollo.fluid;
 
-import com.ryangar46.apollo.block.BlockManager;
+import com.ryangar46.apollo.block.ApolloBlocks;
 import com.ryangar46.apollo.item.ItemManager;
 import net.minecraft.block.BlockState;
 import net.minecraft.fluid.Fluid;
@@ -28,7 +28,7 @@ public abstract class FuelFluid extends AbstractFluid {
 
     @Override
     protected BlockState toBlockState(FluidState fluidState) {
-        return BlockManager.FUEL.getDefaultState().with(Properties.LEVEL_15, getBlockStateLevel(fluidState));
+        return ApolloBlocks.FUEL.getDefaultState().with(Properties.LEVEL_15, getBlockStateLevel(fluidState));
     }
 
     @Override

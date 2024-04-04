@@ -1,8 +1,7 @@
 package com.ryangar46.apollo.entity.projectile;
 
-import com.ryangar46.apollo.block.BlockManager;
+import com.ryangar46.apollo.block.ApolloBlocks;
 import com.ryangar46.apollo.block.MeteoriteBlock;
-import com.ryangar46.apollo.world.GameRuleManager;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.damage.DamageSource;
@@ -49,7 +48,7 @@ public class MeteoriteEntity extends ExplosiveProjectileEntity implements GeoEnt
 
             BlockPos meteoritePos = new BlockPos(hitResult.getPos());
             if (this.world.canSetBlock(meteoritePos)) {
-                this.world.setBlockState(meteoritePos, ((MeteoriteBlock)BlockManager.METEORITE).getHotState());
+                this.world.setBlockState(meteoritePos, ((MeteoriteBlock) ApolloBlocks.METEORITE).getHotState());
             }
 
 
