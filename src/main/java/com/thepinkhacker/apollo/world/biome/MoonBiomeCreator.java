@@ -38,6 +38,7 @@ public class MoonBiomeCreator {
 
     private static void addDefaultOres(GenerationSettings.LookupBackedBuilder builder) {
         builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, ApolloOrePlacedFeatures.LUNAR_ORE_IRON);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, ApolloOrePlacedFeatures.ORE_CHEESE);
     }
 
     private static Biome createBiome(boolean hasPrecipitation, float temperature, Biome.TemperatureModifier temperatureModifier, float downfall, SpawnSettings.Builder spawnSettings, GenerationSettings.LookupBackedBuilder generationSettings, @Nullable MusicSound music) {

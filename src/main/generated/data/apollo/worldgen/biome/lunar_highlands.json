@@ -27,7 +27,8 @@
     [],
     [],
     [
-      "apollo:lunar_ore_iron"
+      "apollo:lunar_ore_iron",
+      "apollo:ore_cheese"
     ]
   ],
   "has_precipitation": false,

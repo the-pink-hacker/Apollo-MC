@@ -13,9 +13,22 @@ import net.minecraft.world.gen.feature.OreFeatureConfig;
 
 public class ApolloOreConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> LUNAR_ORE_IRON = ApolloConfiguredFeatures.of("lunar_ore_iron");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> ORE_CHEESE = ApolloConfiguredFeatures.of("ore_cheese");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> registerable) {
         RuleTest lunar_ore_rule = new TagMatchRuleTest(ApolloBlockTags.LUNAR_ORE_REPLACEABLES);
+
+        ConfiguredFeatures.register(
+                registerable,
+                ORE_CHEESE,
+                Feature.ORE,
+                new OreFeatureConfig(
+                        lunar_ore_rule,
+                        ApolloBlocks.CHEESE_ORE.getDefaultState(),
+                        17
+                )
+        );
+
         ConfiguredFeatures.register(
                 registerable,
                 LUNAR_ORE_IRON,

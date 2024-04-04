@@ -44,6 +44,7 @@ public class WorldgenProvider extends FabricDynamicRegistryProvider {
 
         /* === Features === */
         addFeature(registries, entries, ApolloOreConfiguredFeatures.LUNAR_ORE_IRON, ApolloOrePlacedFeatures.LUNAR_ORE_IRON);
+        addFeature(registries, entries, ApolloOreConfiguredFeatures.ORE_CHEESE, ApolloOrePlacedFeatures.ORE_CHEESE);
         addConfiguredFeature(registries, entries, ApolloMiscConfiguredFeatures.LAKE_OIL);
         addPlacedFeature(registries, entries, ApolloMiscPlacedFeatures.LAKE_OIL_SURFACE);
         addPlacedFeature(registries, entries, ApolloMiscPlacedFeatures.LAKE_OIL_UNDERGROUND);
