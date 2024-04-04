@@ -6,9 +6,9 @@
   "description": "A space mod for Minecraft.",
   "authors": [
     {
-      "name": "Ryan Garrett",
+      "name": "Ryan",
       "contact": {
-        "email": "ryangar46@gmail.com",
+        "email": "ryan@thepinkhacker.com",
         "homepage": "https://thepinkhacker.com"
       }
     }
@@ -17,10 +17,10 @@
     "Keaggyfans (Music)"
   ],
   "contact": {
-    "email": "apollomcmod@gmail.com",
+    "email": "apollo@thepinkhacker.com",
     "homepage": "https://modrinth.com/mod/apollo",
-    "sources": "https://github.com/RyanGar46/Apollo-MC.git",
-    "issues": "https://github.com/RyanGar46/Apollo-MC/issues"
+    "sources": "https://github.com/RyanThePinkHacker/Apollo-MC.git",
+    "issues": "https://github.com/RyanThePinkHacker/Apollo-MC/issues"
   },
   "license": [
     "LGPL-3.0-only",
