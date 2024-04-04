@@ -2,7 +2,7 @@ package com.ryangar46.apollo.item;
 
 import com.ryangar46.apollo.Apollo;
 import com.ryangar46.apollo.block.ApolloBlocks;
-import com.ryangar46.apollo.fluid.FluidManager;
+import com.ryangar46.apollo.fluid.ApolloFluids;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
@@ -19,9 +19,9 @@ public class ApolloItems {
     public static final ArmorMaterial SPACE_SUIT_ARMOR_MATERIAL = new SpaceSuitArmor();
 
     /* === Items === */
-    public static final Item FUEL_BUCKET = registerItem("fuel_bucket", new BucketItem(FluidManager.STILL_FUEL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
+    public static final Item FUEL_BUCKET = registerItem("fuel_bucket", new BucketItem(ApolloFluids.STILL_FUEL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
     public static final Item METEORITE_SCRAP = registerItem("meteorite_scrap", new Item(new FabricItemSettings().fireproof()));
-    public static final Item OIL_BUCKET = registerItem("oil_bucket", new BucketItem(FluidManager.STILL_OIL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
+    public static final Item OIL_BUCKET = registerItem("oil_bucket", new BucketItem(ApolloFluids.STILL_OIL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
     public static final Item NEGATIVE_GRAVITY_BOOTS = registerItem("negative_gravity_boots", new ArmorItem(NEGATIVE_GRAVITY_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings()));
     public static final Item POSITIVE_GRAVITY_BOOTS = registerItem("positive_gravity_boots", new ArmorItem(POSITIVE_GRAVITY_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings()));
     public static final Item REINFORCED_IRON_INGOT = registerItem("reinforced_iron_ingot", new Item(new FabricItemSettings().fireproof()));
@@ -32,7 +32,6 @@ public class ApolloItems {
 
     /* === Blocks === */
     public static final Item FLUID_PIPE = registerItem(ApolloBlocks.FLUID_PIPE);
-    public static final Item FUEL = registerItem(ApolloBlocks.FUEL);
     public static final Item LAUNCHPAD = registerItem(ApolloBlocks.LAUNCHPAD);
     public static final Item LUNAR_DUST = registerItem(ApolloBlocks.LUNAR_DUST);
     public static final Item LUNAR_COBBLESTONE = registerItem(ApolloBlocks.LUNAR_COBBLESTONE);
@@ -40,7 +39,6 @@ public class ApolloItems {
     public static final Item LUNAR_SOIL = registerItem(ApolloBlocks.LUNAR_SOIL);
     public static final Item LUNAR_STONE = registerItem(ApolloBlocks.LUNAR_STONE);
     public static final Item METEORITE = registerItem(new BlockItem(ApolloBlocks.METEORITE, new FabricItemSettings().fireproof()));
-    public static final Item OIL = registerItem(ApolloBlocks.OIL);
     public static final Item OIL_REFINERY = registerItem(ApolloBlocks.OIL_REFINERY);
     public static final Item REINFORCED_IRON_BLOCK = registerItem(new BlockItem(ApolloBlocks.REINFORCED_IRON_BLOCK, new FabricItemSettings().fireproof()));
     public static final Item SHUTTLE_WORKBENCH = registerItem(ApolloBlocks.SHUTTLE_WORKBENCH);
