@@ -1,7 +1,6 @@
 package com.ryangar46.apollo.entity.vehicle;
 
 import com.ryangar46.apollo.inventory.ImplementedInventory;
-import com.ryangar46.apollo.world.dimension.DimensionManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.MobEntity;
