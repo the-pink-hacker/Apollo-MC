@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "apollo:block/airlock_controller"
+    }
+  }
+}

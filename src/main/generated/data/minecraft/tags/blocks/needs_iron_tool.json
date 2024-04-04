@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "apollo:airlock_controller",
     "apollo:airlock_frame",
     "apollo:launchpad",
     "apollo:lunar_cobblestone",

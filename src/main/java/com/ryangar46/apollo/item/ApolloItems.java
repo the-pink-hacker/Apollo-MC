@@ -26,6 +26,7 @@ public class ApolloItems {
     public static final Item SPACE_SUIT_BOOTS = registerItem("space_suit_boots", new ArmorItem(ApolloArmorMaterials.SPACE_SUIT_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings()));
 
     /* === Blocks === */
+    public static final Item AIRLOCK_CONTROLLER = registerItem(ApolloBlocks.AIRLOCK_CONTROLLER);
     public static final Item AIRLOCK_FRAME = registerItem(ApolloBlocks.AIRLOCK_FRAME);
     public static final Item FLUID_PIPE = registerItem(ApolloBlocks.FLUID_PIPE);
     public static final Item LAUNCHPAD = registerItem(ApolloBlocks.LAUNCHPAD);

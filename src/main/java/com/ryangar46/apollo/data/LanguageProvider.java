@@ -21,6 +21,7 @@ public class LanguageProvider extends FabricLanguageProvider {
     @Override
     public void generateTranslations(TranslationBuilder builder) {
         /* === Blocks === */
+        builder.add(ApolloBlocks.AIRLOCK_CONTROLLER, "Airlock Controller");
         builder.add(ApolloBlocks.AIRLOCK_FRAME, "Airlock Frame");
         builder.add(ApolloBlocks.FUEL, "Fuel");
         builder.add(ApolloBlocks.FLUID_PIPE, "Fluid Pipe");
