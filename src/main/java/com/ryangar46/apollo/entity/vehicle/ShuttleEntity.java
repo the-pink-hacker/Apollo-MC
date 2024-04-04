@@ -1,6 +1,7 @@
 package com.ryangar46.apollo.entity.vehicle;
 
 import com.ryangar46.apollo.inventory.ImplementedInventory;
+import com.ryangar46.apollo.world.ApolloGameRules;
 import com.ryangar46.apollo.world.ApolloWorlds;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -32,7 +33,6 @@ public class ShuttleEntity extends MobEntity implements ImplementedInventory, Ge
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(5, ItemStack.EMPTY);
     private final AnimatableInstanceCache CACHE = GeckoLibUtil.createInstanceCache(this);
     private static final double FLY_SPEED = 0.2d;
-    private static final int EXIT_PLANET_Y = 128;
 
     public ShuttleEntity(EntityType<? extends ShuttleEntity> type, World world) {
         super(type, world);
@@ -103,7 +103,7 @@ public class ShuttleEntity extends MobEntity implements ImplementedInventory, Ge
                 // TODO: Add acceleration to shuttle
                 this.setVelocity(0.0d, FLY_SPEED, 0.0d);
 
-                if (this.getBlockY() > EXIT_PLANET_Y) {
+                if (this.getBlockY() > this.world.getGameRules().getInt(ApolloGameRules.SHUTTLE_ESCAPE_HEIGHT)) {
                     MinecraftServer server = this.getServer();
                     if (server != null) {
                         // If at the moon, go to the overworld

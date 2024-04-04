@@ -5,7 +5,7 @@ import com.ryangar46.apollo.item.ApolloItemGroups;
 import com.ryangar46.apollo.item.ApolloItems;
 import com.ryangar46.apollo.recipe.RecipeManager;
 import com.ryangar46.apollo.stat.StatManager;
-import com.ryangar46.apollo.world.GameRuleManager;
+import com.ryangar46.apollo.world.ApolloGameRules;
 import com.ryangar46.apollo.world.biome.ApolloOverworldRegion;
 import com.ryangar46.apollo.world.spawner.GenericSpawnerManager;
 import net.fabricmc.api.ModInitializer;
@@ -24,7 +24,7 @@ public class Apollo implements ModInitializer, TerraBlenderApi {
 	@Override
 	public void onInitialize() {
 		GeckoLib.initialize();
-		GameRuleManager.register();
+		ApolloGameRules.register();
 		ApolloItemGroups.register();
 		ApolloItems.register();
 		EntityManager.register();
