@@ -1,8 +1,7 @@
-package com.thepinkhacker.apollo.block;
+package com.thepinkhacker.apollo.block.fluid;
 
 import com.thepinkhacker.apollo.block.entity.ApolloBlockEntityTypes;
-import com.thepinkhacker.apollo.block.entity.FluidPipeBlockEntity;
-import com.thepinkhacker.apollo.fluid.PipeStorableFluid;
+import com.thepinkhacker.apollo.block.entity.fluid.FluidPipeBlockEntity;
 import com.thepinkhacker.apollo.registry.tag.ApolloBlockTags;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -13,8 +12,6 @@ import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.EnumProperty;
-import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -36,8 +33,6 @@ public class FluidPipeBlock extends BlockWithEntity implements PipeConnectable, 
     public static final BooleanProperty UP_STATE = Properties.UP;
     public static final BooleanProperty DOWN_STATE = Properties.DOWN;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
-    public static final IntProperty LEVEL_STATE = Properties.LEVEL_8;
-    public static final EnumProperty<PipeStorableFluid> FLUID_SATE = EnumProperty.of("fluid", PipeStorableFluid.class);
     private static final VoxelShape CENTER_SHAPE = Block.createCuboidShape(6.0f, 6.0f, 6.0f, 10.0f, 10.0f, 10.0f);
     private static final VoxelShape NORTH_SHAPE = Block.createCuboidShape(6.0f, 6.0f, 0.0f, 10.0f, 10.0f, 6.0f);
     private static final VoxelShape EAST_SHAPE = Block.createCuboidShape(10.0f, 6.0f, 6.0f, 16.0f, 10.0f, 10.0f);
@@ -56,8 +51,6 @@ public class FluidPipeBlock extends BlockWithEntity implements PipeConnectable, 
                 .with(UP_STATE, false)
                 .with(DOWN_STATE, false)
                 .with(WATERLOGGED, false)
-                .with(LEVEL_STATE, 0)
-                .with(FLUID_SATE, PipeStorableFluid.EMPTY)
         );
     }
 
@@ -116,9 +109,7 @@ public class FluidPipeBlock extends BlockWithEntity implements PipeConnectable, 
                 WEST_STATE,
                 UP_STATE,
                 DOWN_STATE,
-                WATERLOGGED,
-                LEVEL_STATE,
-                FLUID_SATE
+                WATERLOGGED
         );
     }
 
@@ -146,31 +137,15 @@ public class FluidPipeBlock extends BlockWithEntity implements PipeConnectable, 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ApolloBlockEntityTypes.FLUID_PIPE_BLOCK_ENTITY, FluidPipeBlockEntity::tick);
-    }
-
-    public static int getFluidLevel(BlockState state) {
-        return state.get(LEVEL_STATE);
-    }
-
-    public static BlockState setFluidLevel(BlockState state, int level) {
-        return state.with(LEVEL_STATE, level);
-    }
-
-    public static PipeStorableFluid getFluidType(BlockState state) {
-        return state.get(FLUID_SATE);
-    }
-
-    public static BlockState setFluidType(BlockState state, PipeStorableFluid fluidType) {
-        return state.with(FLUID_SATE, fluidType);
+        return checkType(type, ApolloBlockEntityTypes.FLUID_PIPE, FluidPipeBlockEntity::tick);
     }
 
     public static Collection<Direction> getConnections(WorldAccess world, BlockPos pos, BlockState state) {
-        Collection<Direction> directions = new ArrayList<>();
+        ArrayList<Direction> directions = new ArrayList<>();
 
         for (Direction direction : Direction.values()) {
             if (state.get(getDirectionState(direction))) {
-                if (world.getBlockState(pos.offset(direction)).getBlock() instanceof FluidPipeBlock) {
+                if (world.getBlockState(pos.offset(direction)).getBlock() instanceof PipeConnectable) {
                     directions.add(direction);
                 }
             }
@@ -180,26 +155,13 @@ public class FluidPipeBlock extends BlockWithEntity implements PipeConnectable, 
     }
 
     private static BooleanProperty getDirectionState(Direction direction) {
-        switch (direction)  {
-            case UP -> {
-                return UP_STATE;
-            }
-            case DOWN -> {
-                return DOWN_STATE;
-            }
-            case NORTH -> {
-                return NORTH_STATE;
-            }
-            case EAST -> {
-                return EAST_STATE;
-            }
-            case SOUTH -> {
-                return SOUTH_STATE;
-            }
-            case WEST -> {
-                return WEST_STATE;
-            }
-        }
-        return null;
+        return switch (direction)  {
+            case UP -> UP_STATE;
+            case DOWN -> DOWN_STATE;
+            case NORTH -> NORTH_STATE;
+            case EAST -> EAST_STATE;
+            case SOUTH -> SOUTH_STATE;
+            case WEST -> WEST_STATE;
+        };
     }
 }

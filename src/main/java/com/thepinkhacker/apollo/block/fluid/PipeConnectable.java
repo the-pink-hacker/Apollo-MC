@@ -1,4 +1,4 @@
-package com.thepinkhacker.apollo.block;
+package com.thepinkhacker.apollo.block.fluid;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.Direction;

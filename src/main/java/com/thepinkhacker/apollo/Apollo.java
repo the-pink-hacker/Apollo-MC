@@ -1,5 +1,6 @@
 package com.thepinkhacker.apollo;
 
+import com.thepinkhacker.apollo.block.entity.ApolloBlockEntityTypes;
 import com.thepinkhacker.apollo.entity.ApolloEntityTypes;
 import com.thepinkhacker.apollo.item.ApolloItemGroups;
 import com.thepinkhacker.apollo.item.ApolloItems;
@@ -29,6 +30,7 @@ public class Apollo implements ModInitializer, TerraBlenderApi {
 		ApolloEntityTypes.register();
 		RecipeManager.register();
 		ApolloStats.register();
+		ApolloBlockEntityTypes.register();
 
 		ServerLifecycleEvents.SERVER_STARTED.register(server -> GenericSpawnerManager.register());
 	}
