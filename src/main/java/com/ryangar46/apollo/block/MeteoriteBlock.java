@@ -30,7 +30,7 @@ import net.minecraft.world.WorldView;
 
 import java.util.Random;
 
-public class MeteoriteBlock extends Block implements Waterloggable {
+public class MeteoriteBlock extends FallingBlock implements Waterloggable {
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final IntProperty HEAT = IntProperty.of("heat", 0, 2);
     public static final VoxelShape NORTH_SOUTH_SHAPE = Block.createCuboidShape(4.0f, 1.0f, 3.0f, 12.0f, 9.0f, 13.0f);
@@ -48,6 +48,7 @@ public class MeteoriteBlock extends Block implements Waterloggable {
         if (state.get(WATERLOGGED) && state.get(HEAT) > 0) {
             cool(pos, world);
         }
+        super.scheduledTick(state, world, pos, random);
     }
 
     @Override
@@ -121,5 +122,9 @@ public class MeteoriteBlock extends Block implements Waterloggable {
         world.setBlockState(pos, getStateManager().getDefaultState(), 0);
         world.syncWorldEvent(2009, pos, 0);
         world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1.0F, (1.0F + world.getRandom().nextFloat() * 0.2F) * 0.7F);
+    }
+
+    public BlockState getHotState() {
+        return this.getDefaultState().with(HEAT, 2);
     }
 }
