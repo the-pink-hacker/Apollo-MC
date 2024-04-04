@@ -1,6 +1,12 @@
 plugins {
-	id 'fabric-loom' version '1.2-SNAPSHOT'
-	id 'maven-publish'
+	id "fabric-loom" version "1.2-SNAPSHOT"
+	id "maven-publish"
+}
+
+repositories {
+	maven {
+		url "https://maven.minecraftforge.net/"
+	}
 }
 
 sourceCompatibility = JavaVersion.VERSION_17
@@ -20,8 +26,11 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-	// Fabric API. This is technically optional, but you probably want it anyway.
+	// Fabric API. This is technically optional, but you probably want it anyway.e
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+	// TerraBlender
+	modImplementation "com.github.glitchfiend:TerraBlender-fabric:${project.terra_blender_version}"
 }
 
 processResources {
@@ -89,7 +98,7 @@ sourceSets {
 	main {
 		resources {
 			srcDirs += [
-					'src/main/generated'
+					"src/main/generated"
 			]
 		}
 	}
