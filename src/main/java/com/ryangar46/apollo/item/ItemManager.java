@@ -38,7 +38,7 @@ public class ItemManager {
         registerItem("space_suit_boots", SPACE_SUIT_BOOTS);
 
         // Add fuels
-        FuelRegistry.INSTANCE.add(FUEL_BUCKET, 2000);
+        FuelRegistry.INSTANCE.add(FUEL_BUCKET, 20000);
     }
 
     private static void registerItem(String id, Item item) {
