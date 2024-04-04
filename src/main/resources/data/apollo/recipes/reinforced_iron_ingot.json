@@ -3,7 +3,7 @@
   "group": "reinforced_iron_ingot",
   "ingredients": [
     {
-      "item": "minecraft:meteorite_scrap"
+      "item": "apollo:meteorite_scrap"
     },
     {
       "item": "minecraft:iron_ingot"
