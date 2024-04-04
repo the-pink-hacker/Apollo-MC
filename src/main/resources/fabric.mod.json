@@ -5,11 +5,12 @@
   "name": "Apollo",
   "description": "A space mod for Minecraft.",
   "authors": [
-    "RyanGar46"
+    "Ryan Garrett (RyanGar46)"
   ],
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/apollo",
-    "sources": "https://github.com/RyanGar46/Apollo-MC"
+    "homepage": "https://modrinth.com/mod/apollo",
+    "sources": "https://github.com/RyanGar46/Apollo-MC",
+    "issues": "https://github.com/RyanGar46/Apollo-MC/issues"
   },
   "license": "Apache-2.0 License except for assets",
   "icon": "assets/apollo/textures/misc/icon.png",
@@ -29,9 +30,17 @@
     "fabricloader": ">=0.13.3",
     "fabric": "*",
     "minecraft": "1.18.x",
-    "java": ">=17"
-  },
-  "suggests": {
+    "java": ">=17",
     "geckolib3": "*"
+  },
+  "suggests": {},
+  "custom": {
+    "modmenu": {
+      "links": {
+        "links.apollo.twitter": "https://twitter.com/home",
+        "links.apollo.modrinth": "https://modrinth.com/mod/apollo",
+        "links.apollo.curseforge": "https://www.curseforge.com/minecraft/mc-mods/apollo"
+      }
+    }
   }
 }
