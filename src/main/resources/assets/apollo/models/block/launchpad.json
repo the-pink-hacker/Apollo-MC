@@ -1,10 +1,11 @@
 {
-	"ambientocclusion": false,
 	"parent": "minecraft:block/cube",
+	"ambientocclusion": false,
 	"textures": {
 		"particle": "apollo:block/launchpad_top",
 		"top": "apollo:block/launchpad_top",
-		"bottom": "apollo:block/launchpad_bottom"
+		"bottom": "apollo:block/launchpad_bottom",
+		"side": "apollo:block/launchpad_side"
 	},
 	"elements": [
 		{
@@ -13,7 +14,11 @@
 			"to": [16, 15, 16],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
 			"faces": {
-				"up": {"uv": [0, 0, 16, 16], "texture": "#top", "cullface": "up"},
+				"north": {"uv": [0, 1, 16, 16], "texture": "#side", "cullface": "north"},
+				"east": {"uv": [0, 1, 16, 16], "texture": "#side", "cullface": "east"},
+				"south": {"uv": [0, 1, 16, 16], "texture": "#side", "cullface": "south"},
+				"west": {"uv": [0, 1, 16, 16], "texture": "#side", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#top"},
 				"down": {"uv": [0, 0, 16, 16], "texture": "#bottom", "cullface": "down"}
 			}
 		}
