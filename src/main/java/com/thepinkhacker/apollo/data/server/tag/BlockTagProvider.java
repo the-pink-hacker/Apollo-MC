@@ -4,6 +4,7 @@ import com.thepinkhacker.apollo.block.ApolloBlocks;
 import com.thepinkhacker.apollo.registry.tag.ApolloBlockTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 
@@ -35,6 +36,12 @@ public class BlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         this.getOrCreateTagBuilder(ApolloBlockTags.INFINIBURN_MOON)
                 .forceAddTag(BlockTags.INFINIBURN_OVERWORLD);
+
+        this.getOrCreateTagBuilder(ApolloBlockTags.CONVERTABLE_TO_OILED_SAND)
+                .add(Blocks.SAND);
+
+        this.getOrCreateTagBuilder(ApolloBlockTags.OIL_BOTTLEABLE)
+                .add(ApolloBlocks.OILED_SAND);
     }
 
     private void configureMinecraft(RegistryWrapper.WrapperLookup lookup) {
