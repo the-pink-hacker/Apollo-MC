@@ -11,6 +11,12 @@
     {
       "texture": "apollo:environment/earth.png",
       "fixedOrbit": true,
+      "orbit": {
+        "fixed": true,
+        "offset": {
+          "x": 30.0
+        }
+      },
       "scale": 60.0,
       "phases": {
         "x": 4,

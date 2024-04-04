@@ -3,10 +3,12 @@ package com.thepinkhacker.apollo.world.dimension;
 import com.google.gson.*;
 import com.thepinkhacker.apollo.resource.GsonHelper;
 import net.minecraft.util.Identifier;
+import org.joml.Vector2f;
 import org.joml.Vector2i;
 
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Optional;
 
 public class SpaceBody {
     private static final float NIGHT_ANGLE = 0.5f;
@@ -92,9 +94,19 @@ public class SpaceBody {
         }
     }
 
-    public record Satellite(Identifier texture, boolean fixedOrbit, float scale, Vector2i phases) {
-        public static Satellite fromShortTexture(Identifier texture, boolean fixedOrbit, float scale, Vector2i phases) {
-            return new Satellite(texture.withPrefixedPath("textures/"), fixedOrbit, scale, phases);
+    public record Satellite(Identifier texture, float scale, Vector2i phases, Orbit orbit) {
+        public static Satellite fromShortTexture(
+                Identifier texture,
+                float scale,
+                Vector2i phases,
+                Orbit orbit
+        ) {
+            return new Satellite(
+                    texture.withPrefixedPath("textures/"),
+                    scale,
+                    phases,
+                    orbit
+            );
         }
 
         private static class Deserializer implements JsonDeserializer<Satellite> {
@@ -105,12 +117,17 @@ public class SpaceBody {
                 Identifier texture = context.deserialize(object.get("texture"), GsonHelper.getType(Identifier.class));
                 boolean fixedOrbit = helper.getOptionalBoolean("fixedOrbit").orElse(false);
                 float scale = helper.getOptionalFloat("scale").orElse(1.0f);
-                Vector2i phases = helper.getOptionalObject("phases").map(phasesObject -> new Vector2i(
-                        phasesObject.get("x").getAsInt(),
-                        phasesObject.get("y").getAsInt()
-                )).orElse(new Vector2i(1, 1));
-                return Satellite.fromShortTexture(texture, fixedOrbit, scale, phases);
+                Vector2i phases = helper.getDefaultVector2I("phases", 1, 1);
+
+                Orbit orbit = helper.getOptionalHelper("orbit").map(orbitHelper -> new Orbit(
+                        orbitHelper.getOptionalBoolean("fixed").orElse(false),
+                        orbitHelper.getDefaultVector2F("offset", 0.0f, 0.0f)
+                )).orElse(new Orbit(false, new Vector2f(0.0f, 0.0f)));
+
+                return Satellite.fromShortTexture(texture, scale, phases, orbit);
             }
         }
     }
+
+    public record Orbit(boolean fixed, Vector2f offset) {}
 }
