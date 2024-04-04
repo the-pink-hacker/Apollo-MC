@@ -59,10 +59,11 @@ public class ApolloSkyRenderer {
     ) {
         BufferBuilder bufferBuilder = Tessellator.getInstance().getBuffer();
         RenderSystem.setShaderTexture(0, satellite.texture());
+        // TODO: Add custom sky locations
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90.0f));
         matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(180.0f));
         Matrix4f matrix = matrices.peek().getPositionMatrix();
-        float scale = 30.0f;
+        float scale = satellite.scale();
         bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_TEXTURE);
         bufferBuilder.vertex(matrix, -scale, SATELLITE_Y_OFFSET, -scale).texture(0.0f, 0.0f).next();
         bufferBuilder.vertex(matrix, scale, SATELLITE_Y_OFFSET, -scale).texture(1.0f, 0.0f).next();
