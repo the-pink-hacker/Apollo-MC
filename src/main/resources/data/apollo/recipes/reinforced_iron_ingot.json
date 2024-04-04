@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "reinforced_iron_ingot",
+  "ingredients": [
+    {
+      "item": "minecraft:meteorite_scrap"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    }
+  ],
+  "result": {
+    "item": "apollo:reinforced_iron_ingot",
+    "count": 1
+  }
+}

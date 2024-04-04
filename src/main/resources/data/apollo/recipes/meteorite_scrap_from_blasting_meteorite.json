@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "group": "meteorite_scrap",
+  "ingredient": {
+    "item": "apollo:meteorite"
+  },
+  "result": "apollo:meteorite_scrap",
+  "experience": 0.7,
+  "cookingtime": 100
+}
