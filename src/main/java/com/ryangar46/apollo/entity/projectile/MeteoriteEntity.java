@@ -44,7 +44,7 @@ public class MeteoriteEntity extends ExplosiveProjectileEntity implements IAnima
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
         if (!this.world.isClient) {
-            Explosion.DestructionType destructionType = this.world.getGameRules().getBoolean(GameRuleManager.DO_METEORITE_EXPLOSIONS) ? Explosion.DestructionType.DESTROY : Explosion.DestructionType.NONE;
+            Explosion.DestructionType destructionType = this.world.getGameRules().getBoolean(GameRuleManager.DO_METEORITE_IMPACTS) ? Explosion.DestructionType.DESTROY : Explosion.DestructionType.NONE;
             this.world.createExplosion(this, this.getX(), this.getY(), this.getZ(), Math.max(4.0f, (float)Math.random() * 8.0f), false, destructionType);
 
             BlockPos meteoritePos = new BlockPos(hitResult.getPos());
