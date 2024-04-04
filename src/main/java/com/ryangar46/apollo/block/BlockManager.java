@@ -24,6 +24,7 @@ public class BlockManager {
     public static final Block LUNAR_STONE = new Block(FabricBlockSettings.of(Material.STONE).strength(1.5f).requiresTool());
     public static final Block METEORITE = new MeteoriteBlock(FabricBlockSettings.of(Material.STONE).strength(30.0f, 1200.0f).ticksRandomly().requiresTool());
     public static final Block OIL = new FluidBlock(FluidManager.STILL_OIL, FabricBlockSettings.of(Material.LAVA).noCollision().dropsNothing());
+    public static final Block OIL_REFINERY = new OilRefineryBlock(FabricBlockSettings.of(Material.METAL).strength(5, 6).requiresTool());
     public static final Block REINFORCED_IRON_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.NETHERITE_BLOCK));
 
     public static void register() {
@@ -36,6 +37,7 @@ public class BlockManager {
         registerBlock(LUNAR_STONE, "lunar_stone", ItemGroupManager.MOON);
         registerBlock(METEORITE, "meteorite", new FabricItemSettings().fireproof().group(ItemGroupManager.APOLLO));
         registerBlock(OIL, "oil");
+        registerBlock(OIL_REFINERY, "oil_refinery", ItemGroupManager.APOLLO);
         registerBlock(REINFORCED_IRON_BLOCK, "reinforced_iron_block", new FabricItemSettings().fireproof().group(ItemGroupManager.APOLLO));
     }
 

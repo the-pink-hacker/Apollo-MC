@@ -4,6 +4,7 @@
     "apollo:launchpad",
     "apollo:lunar_cobblestone",
     "apollo:lunar_iron_ore",
-    "apollo:lunar_stone"
+    "apollo:lunar_stone",
+    "apollo:oil_refinery"
   ]
 }
