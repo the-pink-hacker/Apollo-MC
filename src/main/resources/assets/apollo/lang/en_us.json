@@ -2,5 +2,9 @@
   "block.apollo.lunar_cobblestone": "Lunar Cobblestone",
   "block.apollo.lunar_iron_ore": "Lunar Iron Ore",
   "block.apollo.lunar_soil": "Lunar Soil",
-  "block.apollo.lunar_stone": "Lunar Stone"
+  "block.apollo.lunar_stone": "Lunar Stone",
+  "item.apollo.space_suit_boots": "Space Suit Boots",
+  "item.apollo.space_suit_chestplate": "Space Suit Chestplate",
+  "item.apollo.space_suit_helmet": "Space Suit Helmet",
+  "item.apollo.space_suit_leggings": "Space Suit Leggings"
 }
