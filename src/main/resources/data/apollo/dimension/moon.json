@@ -46,12 +46,12 @@
               {
                 "location": 0.1,
                 "derivative": -0.1,
-                "value": 0.1
+                "value": 0.01
               },
               {
                 "location": -0.1,
                 "derivative": 0.1,
-                "value": 0.1
+                "value": 0.05
               }
             ]
           },
@@ -59,18 +59,28 @@
             "coordinate": "continents",
             "points": [
               {
-                "location": -0.2,
+                "location": -0.5,
+                "derivative": -0.1,
+                "value": 4
+              },
+              {
+                "location": -0.1,
                 "derivative": 1,
                 "value": 5
               },
               {
-                "location": 0.2,
+                "location": 0.1,
                 "derivative": 1,
-                "value": 10
+                "value": 6
+              },
+              {
+                "location": 0.5,
+                "derivative": 2,
+                "value": 7
               }
             ]
           },
-          "jaggedness": 0
+          "jaggedness": 0.01
         }
       },
       "surface_rule": {
@@ -92,6 +102,40 @@
               "type": "minecraft:block",
               "result_state": {
                 "Name": "minecraft:bedrock"
+              }
+            }
+          },
+          {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:biome",
+              "biome_is": [
+                "apollo:lunar_maria"
+              ]
+            },
+            "then_run": {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:noise_threshold",
+                "noise": "apollo:maria",
+                "min_threshold": 0.1,
+                "max_threshold": 1
+              },
+              "then_run": {
+                "type": "minecraft:condition",
+                "if_true": {
+                  "type": "minecraft:stone_depth",
+                  "offset": 5,
+                  "surface_type": "floor",
+                  "add_surface_depth": false,
+                  "add_surface_secondary_depth": false
+                },
+                "then_run": {
+                  "type": "minecraft:block",
+                  "result_state": {
+                    "Name": "apollo:lunar_stone"
+                  }
+                }
               }
             }
           },
@@ -134,7 +178,7 @@
             "continentalness": 0.1,
             "erosion": 0.2,
             "weirdness": 0,
-            "depth": 0,
+            "depth": 1,
             "offset": 0
           }
         },
@@ -146,7 +190,7 @@
             "continentalness": 0.2,
             "erosion": 0,
             "weirdness": 0.05,
-            "depth": 0,
+            "depth": -1,
             "offset": 0
           }
         },
@@ -158,7 +202,7 @@
             "continentalness": 1,
             "erosion": 0.1,
             "weirdness": 0.5,
-            "depth": 0,
+            "depth": -0.5,
             "offset": 0
           }
         }
