@@ -15,7 +15,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 
-public class FluidPipeBlock extends Block {
+public class FluidPipeBlock extends Block implements PipeConnectable {
     public static final BooleanProperty NORTH_STATE = Properties.NORTH;
     public static final BooleanProperty EAST_STATE = Properties.EAST;
     public static final BooleanProperty SOUTH_STATE = Properties.SOUTH;
@@ -69,20 +69,42 @@ public class FluidPipeBlock extends Block {
     }
 
     private static BlockState getState(BlockState state, WorldAccess world, BlockPos pos) {
-        return state.with(NORTH_STATE, canConnect(world.getBlockState(pos.north()).getBlock()))
-                .with(EAST_STATE, canConnect(world.getBlockState(pos.east()).getBlock()))
-                .with(SOUTH_STATE, canConnect(world.getBlockState(pos.south()).getBlock()))
-                .with(WEST_STATE, canConnect(world.getBlockState(pos.west()).getBlock()))
-                .with(UP_STATE, canConnect(world.getBlockState(pos.up()).getBlock()))
-                .with(DOWN_STATE, canConnect(world.getBlockState(pos.down()).getBlock()));
+        return state.with(NORTH_STATE, canConnect(Direction.NORTH, world, pos))
+                .with(EAST_STATE, canConnect(Direction.EAST, world, pos))
+                .with(SOUTH_STATE, canConnect(Direction.SOUTH, world, pos))
+                .with(WEST_STATE, canConnect(Direction.WEST, world, pos))
+                .with(UP_STATE, canConnect(Direction.UP, world, pos))
+                .with(DOWN_STATE, canConnect(Direction.DOWN, world, pos));
     }
 
-    private static boolean canConnect(Block block) {
+    private static boolean canConnect(Direction direction, WorldAccess world, BlockPos pos) {
+        BlockPos otherPos = pos;
+
+        switch (direction) {
+            case NORTH -> otherPos = pos.north();
+            case EAST -> otherPos = pos.east();
+            case SOUTH -> otherPos = pos.south();
+            case WEST -> otherPos = pos.west();
+            case UP -> otherPos = pos.up();
+            case DOWN -> otherPos = pos.down();
+        }
+
+        Block block = world.getBlockState(otherPos).getBlock();
+
+        if (block instanceof PipeConnectable pipeConnectable) {
+            return pipeConnectable.canPipeConnect(direction.getOpposite()) && block.getRegistryEntry().isIn(TagManager.FLUID_PIPE_CONNECTABLE_BLOCKS);
+        }
+
         return block.getRegistryEntry().isIn(TagManager.FLUID_PIPE_CONNECTABLE_BLOCKS);
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
         stateManager.add(NORTH_STATE, EAST_STATE, SOUTH_STATE, WEST_STATE, UP_STATE, DOWN_STATE);
+    }
+
+    @Override
+    public boolean canPipeConnect(Direction direction) {
+        return true;
     }
 }

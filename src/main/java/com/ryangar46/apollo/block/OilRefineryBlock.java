@@ -10,7 +10,7 @@ import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.Direction;
 
-public class OilRefineryBlock extends HorizontalFacingBlock {
+public class OilRefineryBlock extends HorizontalFacingBlock implements PipeConnectable {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty ON = BooleanProperty.of("on");
     public OilRefineryBlock(Settings settings) {
@@ -28,5 +28,10 @@ public class OilRefineryBlock extends HorizontalFacingBlock {
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return this.getDefaultState().with(Properties.HORIZONTAL_FACING, ctx.getPlayerFacing().getOpposite());
+    }
+
+    @Override
+    public boolean canPipeConnect(Direction direction) {
+        return direction == Direction.DOWN || direction == Direction.UP;
     }
 }
