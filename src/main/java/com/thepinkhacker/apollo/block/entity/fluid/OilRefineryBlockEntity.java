@@ -2,17 +2,12 @@ package com.thepinkhacker.apollo.block.entity.fluid;
 
 import com.thepinkhacker.apollo.block.entity.ApolloBlockEntityTypes;
 import com.thepinkhacker.apollo.fluid.ApolloFluidConstants;
-import com.thepinkhacker.apollo.fluid.FluidCarrier;
 import com.thepinkhacker.apollo.fluid.FluidCarrierStorage;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import org.jetbrains.annotations.Nullable;
 
 public class OilRefineryBlockEntity extends InputOutputFluidCarrier<OilRefineryBlockEntity> {
     private static final String STORAGE_VARIANT_NBT_TAG = "storage_fluid_variant";

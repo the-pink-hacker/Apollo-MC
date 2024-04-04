@@ -14,3 +14,5 @@ accessible field net/minecraft/screen/CraftingScreenHandler input Lnet/minecraft
 accessible field net/minecraft/screen/CraftingScreenHandler result Lnet/minecraft/inventory/CraftingResultInventory;
 accessible field net/minecraft/screen/CraftingScreenHandler context Lnet/minecraft/screen/ScreenHandlerContext;
 accessible field net/minecraft/screen/CraftingScreenHandler player Lnet/minecraft/entity/player/PlayerEntity;
+
+extendable class net/minecraft/world/dimension/DimensionType
