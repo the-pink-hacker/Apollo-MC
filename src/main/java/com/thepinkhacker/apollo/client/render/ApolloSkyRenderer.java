@@ -1,14 +1,18 @@
 package com.thepinkhacker.apollo.client.render;
 
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.thepinkhacker.apollo.resource.SpaceBodyManager;
+import com.thepinkhacker.apollo.world.dimension.SpaceBody;
 import net.minecraft.client.gl.VertexBuffer;
-import net.minecraft.client.render.BackgroundRenderer;
-import net.minecraft.client.render.Camera;
-import net.minecraft.client.render.WorldRenderer;
+import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.math.RotationAxis;
 import org.joml.Matrix4f;
 
 public class ApolloSkyRenderer {
+    private static final float SATELLITE_Y_OFFSET = 100.0f;
+
     public static void render(
             WorldRenderer renderer,
             MatrixStack matrices,
@@ -18,14 +22,62 @@ public class ApolloSkyRenderer {
     ) {
         RenderSystem.enableBlend();
         RenderSystem.depthMask(false);
+
         resetSky(
                 renderer,
                 matrices,
                 projectionMatrix,
                 camera
         );
+
+        // Render satellites
+        RenderSystem.blendFuncSeparate(
+                GlStateManager.SrcFactor.SRC_ALPHA,
+                GlStateManager.DstFactor.ONE,
+                GlStateManager.SrcFactor.ONE,
+                GlStateManager.DstFactor.ZERO
+        );
+        matrices.push();
+        setShaderColorWhite();
+        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
+
+        SpaceBody spaceBody = SpaceBodyManager.getInstance().getSpaceBodyOrDefault(renderer.world);
+        for (SpaceBody.Satellite satellite : spaceBody.getSatellites()) {
+            renderSatellite(satellite, matrices);
+        }
+
         RenderSystem.depthMask(true);
         RenderSystem.disableBlend();
+        RenderSystem.defaultBlendFunc();
+        setShaderColorWhite();
+        matrices.pop();
+    }
+
+    private static void renderSatellite(
+            SpaceBody.Satellite satellite,
+            MatrixStack matrices
+    ) {
+        BufferBuilder bufferBuilder = Tessellator.getInstance().getBuffer();
+        RenderSystem.setShaderTexture(0, satellite.texture());
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90.0f));
+        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(180.0f));
+        Matrix4f matrix = matrices.peek().getPositionMatrix();
+        float scale = 30.0f;
+        bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_TEXTURE);
+        bufferBuilder.vertex(matrix, -scale, SATELLITE_Y_OFFSET, -scale).texture(0.0f, 0.0f).next();
+        bufferBuilder.vertex(matrix, scale, SATELLITE_Y_OFFSET, -scale).texture(1.0f, 0.0f).next();
+        bufferBuilder.vertex(matrix, scale, SATELLITE_Y_OFFSET, scale).texture(1.0f, 1.0f).next();
+        bufferBuilder.vertex(matrix, -scale, SATELLITE_Y_OFFSET, scale).texture(0.0f, 1.0f).next();
+        BufferRenderer.drawWithGlobalProgram(bufferBuilder.end());
+    }
+
+    private static void setShaderColorWhite() {
+        RenderSystem.setShaderColor(
+                1.0f,
+                1.0f,
+                1.0f,
+                1.0f
+        );
     }
 
     /**
