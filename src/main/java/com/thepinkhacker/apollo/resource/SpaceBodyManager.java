@@ -10,7 +10,6 @@ import java.util.Optional;
 
 public class SpaceBodyManager {
     private static final SpaceBodyManager INSTANCE = new SpaceBodyManager();
-    private static final SpaceBody DEFAULT = SpaceBody.defaultSpaceBody();
     private final HashMap<Identifier, SpaceBody> spaceBodies = new HashMap<>();
 
     public void addSpaceBody(Identifier identifier,SpaceBody body) {

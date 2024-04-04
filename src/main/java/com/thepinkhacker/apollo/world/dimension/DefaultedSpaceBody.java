@@ -1,5 +1,7 @@
 package com.thepinkhacker.apollo.world.dimension;
 
+import net.minecraft.util.Identifier;
+
 import java.util.Optional;
 
 /**
@@ -12,7 +14,8 @@ public class DefaultedSpaceBody extends SpaceBody {
         super(
                 GravityManager.DEFAULT,
                 true,
-                true
+                true,
+                new String[] {}
         );
     }
 
@@ -24,5 +27,13 @@ public class DefaultedSpaceBody extends SpaceBody {
         return DEFAULT;
     }
 
+    @Override
+    public float skyAngle(float angle) {
+        return angle;
+    }
 
+    @Override
+    public Identifier getSecondaryOrbitingBody(Identifier texture) {
+        return texture;
+    }
 }

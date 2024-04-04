@@ -7,8 +7,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.dimension.DimensionType;
 
 public class ApolloDimensionTypeTags {
-    public static final TagKey<DimensionType> ATMOSPHERE_NOT_VISIBLE_WORLDS = register("atmosphere_not_visible_worlds");
-    public static final TagKey<DimensionType> EARTH_VISIBLE_WORLDS = register("earth_visible_worlds");
     public static final TagKey<DimensionType> METEORITE_SPAWNING_WORLDS = register("meteorite_spawning_worlds");
 
     private static TagKey<DimensionType> register(String id) {
