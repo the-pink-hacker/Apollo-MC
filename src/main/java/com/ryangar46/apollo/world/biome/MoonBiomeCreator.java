@@ -23,7 +23,7 @@ public class MoonBiomeCreator {
         GenerationSettings.LookupBackedBuilder lookupBackedBuilder = new GenerationSettings.LookupBackedBuilder(placedFeatureLookup, configuredCarverLookup);
         addDefaultOres(lookupBackedBuilder);
         return createBiome(
-                Biome.Precipitation.NONE,
+                false,
                 0.0f,
                 Biome.TemperatureModifier.FROZEN,
                 0.0f,
@@ -38,13 +38,13 @@ public class MoonBiomeCreator {
         builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, ApolloOrePlacedFeatures.LUNAR_ORE_IRON);
     }
 
-    private static Biome createBiome(Biome.Precipitation precipitation, float temperature, Biome.TemperatureModifier temperatureModifier, float downfall, SpawnSettings.Builder spawnSettings, GenerationSettings.LookupBackedBuilder generationSettings, @Nullable MusicSound music) {
-        return createBiome(precipitation, temperature, temperatureModifier, downfall, DEFAULT_WATER_COLOR, DEFAULT_WATER_FOG_COLOR, spawnSettings, generationSettings, music);
+    private static Biome createBiome(boolean hasPrecipitation, float temperature, Biome.TemperatureModifier temperatureModifier, float downfall, SpawnSettings.Builder spawnSettings, GenerationSettings.LookupBackedBuilder generationSettings, @Nullable MusicSound music) {
+        return createBiome(hasPrecipitation, temperature, temperatureModifier, downfall, DEFAULT_WATER_COLOR, DEFAULT_WATER_FOG_COLOR, spawnSettings, generationSettings, music);
     }
 
-    private static Biome createBiome(Biome.Precipitation precipitation, float temperature, Biome.TemperatureModifier temperatureModifier, float downfall, int waterColor, int waterFogColor, SpawnSettings.Builder spawnSettings, GenerationSettings.LookupBackedBuilder generationSettings, @Nullable MusicSound music) {
+    private static Biome createBiome(boolean hasPrecipitation, float temperature, Biome.TemperatureModifier temperatureModifier, float downfall, int waterColor, int waterFogColor, SpawnSettings.Builder spawnSettings, GenerationSettings.LookupBackedBuilder generationSettings, @Nullable MusicSound music) {
         return new Biome.Builder()
-                .precipitation(precipitation)
+                .precipitation(hasPrecipitation)
                 .temperature(temperature)
                 .temperatureModifier(temperatureModifier)
                 .downfall(downfall)
