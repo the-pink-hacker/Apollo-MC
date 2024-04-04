@@ -91,7 +91,6 @@ public class StorageTankBlockEntity extends BlockEntity implements FluidCarrier<
 
     @Override
     public void writeNbt(NbtCompound nbt) {
-        super.writeNbt(nbt);
         writeFluidCarrier(nbt);
         nbt.put(TANK_STORAGE_VARIANT_NBT_TAG, TANK_STORAGE.variant.toNbt());
         nbt.putLong(TANK_STORAGE_AMOUNT_NBT_TAG, TANK_STORAGE.amount);
@@ -107,7 +106,6 @@ public class StorageTankBlockEntity extends BlockEntity implements FluidCarrier<
 
     @Override
     public void readNbt(NbtCompound nbt) {
-        super.readNbt(nbt);
         readFluidCarrier(nbt);
         TANK_STORAGE.variant = FluidVariant.fromNbt(nbt.getCompound(TANK_STORAGE_VARIANT_NBT_TAG));
         TANK_STORAGE.amount = nbt.getLong(TANK_STORAGE_AMOUNT_NBT_TAG);
