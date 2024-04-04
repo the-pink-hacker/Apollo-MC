@@ -5,7 +5,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
 import net.minecraft.client.render.DimensionEffects;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
 
 @Environment(EnvType.CLIENT)

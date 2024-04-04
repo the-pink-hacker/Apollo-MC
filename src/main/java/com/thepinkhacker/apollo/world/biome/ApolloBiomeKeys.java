@@ -3,7 +3,6 @@ package com.thepinkhacker.apollo.world.biome;
 import com.thepinkhacker.apollo.Apollo;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 
 public class ApolloBiomeKeys {
