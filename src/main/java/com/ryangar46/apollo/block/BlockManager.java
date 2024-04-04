@@ -12,10 +12,12 @@ import net.minecraft.util.registry.Registry;
 
 public class BlockManager {
     public static final Block LUNAR_SOIL = new Block(FabricBlockSettings.of(Material.SOIL).strength(1.0f));
+    public static final Block LUNAR_STONE = new Block(FabricBlockSettings.of(Material.STONE).strength(1.5f, 2.0f));
 
     public static void register() {
         Apollo.LOGGER.info("Registering blocks");
         registerBlock(LUNAR_SOIL, "lunar_soil", ItemGroup.BUILDING_BLOCKS);
+        registerBlock(LUNAR_STONE, "lunar_stone", ItemGroup.BUILDING_BLOCKS);
     }
 
     private static void registerBlock(Block block, String id, ItemGroup itemGroup) {

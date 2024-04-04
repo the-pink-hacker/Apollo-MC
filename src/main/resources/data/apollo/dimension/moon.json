@@ -12,7 +12,7 @@
       "ore_veins_enabled": false,
       "legacy_random_source": true,
       "default_block": {
-        "Name": "apollo:lunar_soil"
+        "Name": "apollo:lunar_stone"
       },
       "default_fluid": {
         "Name": "minecraft:air"
@@ -96,9 +96,25 @@
             }
           },
           {
-            "type": "minecraft:block",
-            "result_state": {
-              "Name": "apollo:lunar_soil"
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:above_preliminary_surface"
+            },
+            "then_run": {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:stone_depth",
+                "offset": 0,
+                "surface_type": "floor",
+                "add_surface_depth": false,
+                "add_surface_secondary_depth": false
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "apollo:lunar_stone"
+                }
+              }
             }
           }
         ]
