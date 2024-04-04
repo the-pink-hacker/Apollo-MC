@@ -46,9 +46,7 @@ public class MeteoriteBlock extends Block implements Waterloggable {
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (state.get(WATERLOGGED) && state.get(HEAT) > 0) {
-            world.setBlockState(pos, getStateManager().getDefaultState(), 0);
-            world.syncWorldEvent(2009, pos, 0);
-            world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1.0F, (1.0F + world.getRandom().nextFloat() * 0.2F) * 0.7F);
+            cool(pos, world);
         }
     }
 
@@ -106,6 +104,10 @@ public class MeteoriteBlock extends Block implements Waterloggable {
             world.createAndScheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
 
+        if (state.get(HEAT) > 0 && world.getBlockState(pos.up()).getBlock() == Blocks.WATER) {
+            cool(pos, world);
+        }
+
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
@@ -113,5 +115,11 @@ public class MeteoriteBlock extends Block implements Waterloggable {
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         world.createAndScheduleBlockTick(pos, asBlock(), 1);
         return super.onUse(state, world, pos, player, hand, hit);
+    }
+
+    public void cool(BlockPos pos, WorldAccess world) {
+        world.setBlockState(pos, getStateManager().getDefaultState(), 0);
+        world.syncWorldEvent(2009, pos, 0);
+        world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1.0F, (1.0F + world.getRandom().nextFloat() * 0.2F) * 0.7F);
     }
 }
