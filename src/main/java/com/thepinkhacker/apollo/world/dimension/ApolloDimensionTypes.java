@@ -1,7 +1,6 @@
 package com.thepinkhacker.apollo.world.dimension;
 
 import com.thepinkhacker.apollo.Apollo;
-import com.thepinkhacker.apollo.client.world.DimensionEffectsManager;
 import com.thepinkhacker.apollo.registry.tag.ApolloBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.registry.Registerable;
@@ -76,7 +75,7 @@ public class ApolloDimensionTypes {
                 height,
                 logicalHeight,
                 infiniburn,
-                DimensionEffectsManager.APOLLO,
+                ApolloDimensionEffects.APOLLO,
                 ambientLight,
                 monsterSettings
         );

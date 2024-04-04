@@ -1,26 +1,21 @@
 package com.thepinkhacker.apollo.client.world;
 
 import com.thepinkhacker.apollo.Apollo;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
+import com.thepinkhacker.apollo.world.dimension.ApolloDimensionEffects;
 import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
 import net.minecraft.client.render.DimensionEffects;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
 
-@Environment(EnvType.CLIENT)
 public class DimensionEffectsManager {
-    public static final Identifier APOLLO = Apollo.getIdentifier(Apollo.MOD_ID);
 
-    public static void registerClient() {
+    public static void register() {
         Apollo.LOGGER.info("Registering dimension effects");
 
-        DimensionRenderingRegistry.registerDimensionEffects(APOLLO, new ApolloDimensionEffects());
+        DimensionRenderingRegistry.registerDimensionEffects(ApolloDimensionEffects.APOLLO, new ApolloCustomDimensionEffects());
     }
 
-    @Environment(EnvType.CLIENT)
-    public static class ApolloDimensionEffects extends DimensionEffects {
-        public ApolloDimensionEffects() {
+    public static class ApolloCustomDimensionEffects extends DimensionEffects {
+        public ApolloCustomDimensionEffects() {
             super(
                     Float.NaN,
                     false,
