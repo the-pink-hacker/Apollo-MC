@@ -44,6 +44,9 @@ public class WorldgenProvider extends FabricDynamicRegistryProvider {
 
         /* === Features === */
         addFeature(registries, entries, ApolloOreConfiguredFeatures.LUNAR_ORE_IRON, ApolloOrePlacedFeatures.LUNAR_ORE_IRON);
+        addConfiguredFeature(registries, entries, ApolloMiscConfiguredFeatures.LAKE_OIL);
+        addPlacedFeature(registries, entries, ApolloMiscPlacedFeatures.LAKE_OIL_SURFACE);
+        addPlacedFeature(registries, entries, ApolloMiscPlacedFeatures.LAKE_OIL_UNDERGROUND);
         addFeature(registries, entries, ApolloMiscConfiguredFeatures.SPRINGS_OIL, ApolloMiscPlacedFeatures.SPRINGS_OIL);
     }
 
@@ -59,9 +62,17 @@ public class WorldgenProvider extends FabricDynamicRegistryProvider {
         addEntry(registries, entries, noiseParameter, RegistryKeys.NOISE_PARAMETERS);
     }
 
-    private static void addFeature(RegistryWrapper.WrapperLookup registries, Entries entries, RegistryKey<ConfiguredFeature<?, ?>> configured, RegistryKey<PlacedFeature> placed) {
+    private static void addConfiguredFeature(RegistryWrapper.WrapperLookup registries, Entries entries, RegistryKey<ConfiguredFeature<?, ?>> configured) {
         addEntry(registries, entries, configured, RegistryKeys.CONFIGURED_FEATURE);
+    }
+
+    private static void addPlacedFeature(RegistryWrapper.WrapperLookup registries, Entries entries, RegistryKey<PlacedFeature> placed) {
         addEntry(registries, entries, placed, RegistryKeys.PLACED_FEATURE);
+    }
+
+    private static void addFeature(RegistryWrapper.WrapperLookup registries, Entries entries, RegistryKey<ConfiguredFeature<?, ?>> configured, RegistryKey<PlacedFeature> placed) {
+        addConfiguredFeature(registries, entries, configured);
+        addPlacedFeature(registries, entries, placed);
     }
 
     private static <T> void addEntry(RegistryWrapper.WrapperLookup registries, Entries entries, RegistryKey<T> key, RegistryKey<Registry<T>> type) {
