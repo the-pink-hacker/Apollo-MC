@@ -7,5 +7,5 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 public class ApolloWorlds {
-    public static RegistryKey<World> MOON_WORLD_KEY = RegistryKey.of(RegistryKeys.WORLD, new Identifier(Apollo.MOD_ID, "moon"));
+    public static RegistryKey<World> MOON = RegistryKey.of(RegistryKeys.WORLD, new Identifier(Apollo.MOD_ID, "moon"));
 }

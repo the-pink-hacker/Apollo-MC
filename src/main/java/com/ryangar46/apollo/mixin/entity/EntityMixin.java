@@ -24,7 +24,7 @@ public abstract class EntityMixin {
             at = @At("HEAD")
     )
     private void checkPressure(CallbackInfo info) {
-        if (!((Entity)(Object)this).world.isClient && ((Entity)(Object)this).world.getRegistryKey() == ApolloWorlds.MOON_WORLD_KEY) {
+        if (!((Entity)(Object)this).world.isClient && ((Entity)(Object)this).world.getRegistryKey() == ApolloWorlds.MOON) {
             if (((Entity)(Object)this).world.getGameRules().getBoolean(GameRuleManager.SUFFOCATE_IN_VACUUM) && !isVacuumImmune()) {
                 if (((Entity)(Object)this) instanceof LivingEntity entity) {
                     Iterable<ItemStack> items = ((Entity)(Object)this).getArmorItems();
@@ -38,7 +38,7 @@ public abstract class EntityMixin {
 
                     if (!airtight) {
                         if (((Entity)(Object)this) instanceof ServerPlayerEntity player) {
-                            if (((Entity)(Object)this).world.getRegistryKey() == ApolloWorlds.MOON_WORLD_KEY) {
+                            if (((Entity)(Object)this).world.getRegistryKey() == ApolloWorlds.MOON) {
                                 GameMode gameMode = player.interactionManager.getGameMode();
                                 if (gameMode == GameMode.SURVIVAL || gameMode == GameMode.ADVENTURE) {
                                     vacuumDamage(entity);
