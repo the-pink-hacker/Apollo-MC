@@ -1,5 +1,6 @@
 package com.thepinkhacker.apollo.server;
 
+import com.thepinkhacker.apollo.client.render.ApolloSkyRenderer;
 import com.thepinkhacker.apollo.network.packet.SyncSpaceBodiesPacket;
 import com.thepinkhacker.apollo.resource.SpaceBodyManager;
 import com.thepinkhacker.apollo.world.spawner.GenericSpawnerManager;
@@ -11,14 +12,13 @@ import net.minecraft.server.network.ServerPlayerEntity;
 public abstract class ApolloServerEvents {
     public static void register() {
         ServerLifecycleEvents.SERVER_STARTED.register(server -> GenericSpawnerManager.register());
-        ServerLifecycleEvents.SYNC_DATA_PACK_CONTENTS.register((player, joined) -> {
-            if (isHost(player)) return;
-
-            ServerPlayNetworking.send(
-                    player,
-                    new SyncSpaceBodiesPacket(SpaceBodyManager.getInstance().getSpaceBodies())
-            );
-        });
+        ServerLifecycleEvents.SYNC_DATA_PACK_CONTENTS.register((player, joined) -> ServerPlayNetworking.send(
+                player,
+                new SyncSpaceBodiesPacket(
+                        SpaceBodyManager.getInstance().getSpaceBodies(),
+                        !isHost(player)
+                )
+        ));
     }
 
     private static boolean isHost(ServerPlayerEntity player) {

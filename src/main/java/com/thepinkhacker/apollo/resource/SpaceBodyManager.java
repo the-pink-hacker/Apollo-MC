@@ -23,14 +23,15 @@ public class SpaceBodyManager {
     }
 
     public SpaceBody getSpaceBodyOrDefault(World world) {
-        return DefaultedSpaceBody.elseDefault(getSpaceBody(world));
+        return getSpaceBody(world).orElse(DefaultedSpaceBody.getInstance());
     }
 
     public SpaceBody getSpaceBodyOrDefault(Identifier id) {
-        return DefaultedSpaceBody.elseDefault(getSpaceBody(id));
+        return getSpaceBody(id).orElse(DefaultedSpaceBody.getInstance());
     }
 
     public Optional<SpaceBody> getSpaceBody(World world) {
+        if (world == null) return Optional.empty();
         return getSpaceBody(world.getDimensionKey().getValue());
     }
 
