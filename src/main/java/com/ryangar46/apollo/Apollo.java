@@ -4,6 +4,7 @@ import com.ryangar46.apollo.block.BlockManager;
 import com.ryangar46.apollo.entity.EntityManager;
 import com.ryangar46.apollo.fluid.FluidManager;
 import com.ryangar46.apollo.item.ItemManager;
+import com.ryangar46.apollo.util.config.Config;
 import com.ryangar46.apollo.world.GameRuleManager;
 import com.ryangar46.apollo.world.biome.ApolloOverworldRegion;
 import com.ryangar46.apollo.world.biome.BiomeManager;
@@ -20,9 +21,17 @@ import terrablender.api.TerraBlenderApi;
 public class Apollo implements ModInitializer, TerraBlenderApi {
 	public static final String MOD_ID = "apollo";
 	public static final Logger LOGGER = LogManager.getLogger("apollo");
+	public static final Config CONFIG = new Config(MOD_ID)
+			.addGroup(new Config.Group("group1")
+					.addProperty("property1", true)
+					.addProperty("property2", 1234.5)
+					.addProperty("property3", "text"))
+			.addGroup(new Config.Group("group2"))
+			.load();
 
 	@Override
 	public void onInitialize() {
+		CONFIG.save();
 		GeckoLib.initialize();
 		GameRuleManager.register();
 		ItemManager.register();
