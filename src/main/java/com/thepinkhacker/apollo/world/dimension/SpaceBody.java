@@ -172,7 +172,7 @@ public class SpaceBody {
          }
 
          public Orbit getOrbit() {
-            return orbit;
+             return orbit;
          }
 
         private static class Serializer implements JsonDeserializer<Satellite>, JsonSerializer<Satellite> {
@@ -211,5 +211,9 @@ public class SpaceBody {
     // Speed affects:
     // [x] Satellite position
     // [ ] Time of day
-    public record Orbit(boolean fixed, float speed, Vector3f offset) {}
+    public record Orbit(boolean fixed, double speed, Vector3f offset) {
+        public double getTimeMultiplier() {
+            return fixed ? 0.0 : speed;
+        }
+    }
 }

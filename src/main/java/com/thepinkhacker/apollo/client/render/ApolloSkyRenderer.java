@@ -79,10 +79,9 @@ public class ApolloSkyRenderer {
         Matrix4f matrix = matrices.peek().getPositionMatrix();
 
         boolean fixedOrbit = satellite.getOrbit().fixed();
-        float speed = satellite.getOrbit().speed();
         // Offset is negative to make it more intuitive
         // Positive x offset goes in the positive x direction in the world
-        float offsetX = (fixedOrbit ? 0.0f : getSkyAngleDegrees(renderer.world, speed)) - satellite.getOrbit().offset().x;
+        float offsetX = (float)((fixedOrbit ? 0.0f : getSkyAngleDegrees(renderer.world, (float)satellite.getOrbit().speed())) - satellite.getOrbit().offset().x);
         float offsetY = -satellite.getOrbit().offset().y + DEFAULT_SATELLITE_ROTATION_DEGREES;
         float offsetZ = -satellite.getOrbit().offset().z;
 
@@ -125,10 +124,10 @@ public class ApolloSkyRenderer {
         return (int)(world.getLunarTime() / TICKS_PER_DAY % numberOfPhases + numberOfPhases) % numberOfPhases;
     }
 
-    public static float getSkyAngleDegrees(LunarWorldView world, float speed) {
+    public static double getSkyAngleDegrees(LunarWorldView world, double speed) {
         double d = MathHelper.fractionalPart((double)world.getLunarTime() * speed / TICKS_PER_DAY - 0.25d);
         double e = 0.5d - Math.cos(d * Math.PI) / 2.0d;
-        return (float)(d * 2.0d + e) / 3.0f * 360.0f;
+        return (d * 2.0d + e) / 3.0d * 360.0d;
     }
 
     private static void setShaderColorOpaque(float red, float green, float blue) {
