@@ -5,7 +5,6 @@ import com.thepinkhacker.apollo.entity.projectile.MeteoriteEntity;
 import com.thepinkhacker.apollo.entity.vehicle.ShuttleEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.Entity;

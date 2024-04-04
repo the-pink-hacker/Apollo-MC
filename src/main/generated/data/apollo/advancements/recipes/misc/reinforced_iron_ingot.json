@@ -43,5 +43,6 @@
     "recipes": [
       "apollo:reinforced_iron_ingot"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }
