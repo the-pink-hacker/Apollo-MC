@@ -7,9 +7,8 @@ import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionOptions;
 import net.minecraft.world.dimension.DimensionType;
-import net.minecraft.world.gen.chunk.NoiseChunkGenerator;
 
-public class DimensionRegisterer {
+public class DimensionManager {
     private static final RegistryKey<DimensionOptions> DIMENSION_KEY = RegistryKey.of(Registry.DIMENSION_KEY,
             new Identifier(Apollo.MOD_ID, "moon"));
     public static RegistryKey<World> APOLLO_DIMENSION_KEY = RegistryKey.of(Registry.WORLD_KEY, DIMENSION_KEY.getValue());
