@@ -13,6 +13,7 @@
     "entity.projectile.thrown.ThrownEntityMixin",
     "entity.vehicle.AbstractMinecartEntityMixin",
     "entity.vehicle.BoatEntityMixin",
+    "item.ItemMixin",
     "server.network.ServerPlayerEntityMixin",
     "server.world.ServerChunkManagerMixin",
     "world.WorldMixin"
