@@ -17,17 +17,13 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class StorageTankBlockEntity extends BlockEntity implements FluidCarrier<StorageTankBlockEntity> {
+public class StorageTankBlockEntity extends InputOutputFluidCarrier<StorageTankBlockEntity> {
+    private static final String STORAGE_VARIANT_NBT_TAG = "storage_fluid_variant";
+    private static final String STORAGE_AMOUNT_NBT_TAG = "storage_fluid_amount";
     public final FluidCarrierStorage<StorageTankBlockEntity> FLUID_CARRIER_STORAGE_INPUT = new FluidCarrierStorage<>(this);
     public final FluidCarrierStorage<StorageTankBlockEntity> FLUID_CARRIER_STORAGE_OUTPUT = new FluidCarrierStorage<>(this);
     private static final long TANK_CAPACITY = 8 * ApolloFluidConstants.BLOCK_CAPACITY;
-    private static final String TANK_STORAGE_VARIANT_NBT_TAG = "tank_fluid_variant";
-    private static final String TANK_STORAGE_AMOUNT_NBT_TAG = "tank_fluid_amount";
-    private static final String INPUT_STORAGE_VARIANT_NBT_TAG = VARIANT_NBT_TAG + "_input";
-    private static final String INPUT_STORAGE_AMOUNT_NBT_TAG = AMOUNT_NBT_TAG + "_input";
-    private static final String OUTPUT_STORAGE_VARIANT_NBT_TAG = VARIANT_NBT_TAG + "_output";
-    private static final String OUTPUT_STORAGE_AMOUNT_NBT_TAG = AMOUNT_NBT_TAG + "_output";
-    public final SingleVariantStorage<FluidVariant> TANK_STORAGE = new SingleVariantStorage<>() {
+    public final SingleVariantStorage<FluidVariant> STORAGE = new SingleVariantStorage<>() {
         @Override
         protected FluidVariant getBlankVariant() {
             return FluidVariant.blank();
@@ -51,69 +47,40 @@ public class StorageTankBlockEntity extends BlockEntity implements FluidCarrier<
     public static void tick(World world, BlockPos pos, BlockState state, StorageTankBlockEntity blockEntity) {
         if (world instanceof ServerWorld serverWorld) {
             blockEntity.tickCarrier(serverWorld, pos);
-            blockEntity.tickTank();
-        }
-    }
-
-    private void tickTank() {
-        storeIntoTank();
-        removeFromTank();
-    }
-
-    private void removeFromTank() {
-        try (Transaction transaction = Transaction.openOuter()) {
-            StorageUtil.move(
-                    TANK_STORAGE,
-                    FLUID_CARRIER_STORAGE_OUTPUT,
-                    (variant) -> true,
-                    ApolloFluidConstants.TRANSFER,
-                    transaction
-            );
-            transaction.commit();
-        }
-    }
-
-    private void storeIntoTank() {
-        try (Transaction transaction = Transaction.openOuter()) {
-            StorageUtil.move(
-                    FLUID_CARRIER_STORAGE_INPUT,
-                    TANK_STORAGE,
-                    (variant) -> true,
-                    ApolloFluidConstants.TRANSFER,
-                    transaction
-            );
-            transaction.commit();
+            blockEntity.tickInputOutput();
         }
     }
 
     @Override
-    public void writeNbt(NbtCompound nbt) {
-        writeFluidCarrier(nbt);
-        nbt.put(TANK_STORAGE_VARIANT_NBT_TAG, TANK_STORAGE.variant.toNbt());
-        nbt.putLong(TANK_STORAGE_AMOUNT_NBT_TAG, TANK_STORAGE.amount);
+    public FluidCarrierStorage<StorageTankBlockEntity> getInputCarrier() {
+        return FLUID_CARRIER_STORAGE_INPUT;
     }
 
     @Override
-    public void writeFluidCarrier(NbtCompound nbt) {
-        nbt.put(INPUT_STORAGE_VARIANT_NBT_TAG, FLUID_CARRIER_STORAGE_INPUT.variant.toNbt());
-        nbt.putLong(INPUT_STORAGE_AMOUNT_NBT_TAG, FLUID_CARRIER_STORAGE_INPUT.amount);
-        nbt.put(OUTPUT_STORAGE_VARIANT_NBT_TAG, FLUID_CARRIER_STORAGE_OUTPUT.variant.toNbt());
-        nbt.putLong(OUTPUT_STORAGE_AMOUNT_NBT_TAG, FLUID_CARRIER_STORAGE_OUTPUT.amount);
+    public FluidCarrierStorage<StorageTankBlockEntity> getOutputCarrier() {
+        return FLUID_CARRIER_STORAGE_OUTPUT;
     }
 
     @Override
-    public void readNbt(NbtCompound nbt) {
-        readFluidCarrier(nbt);
-        TANK_STORAGE.variant = FluidVariant.fromNbt(nbt.getCompound(TANK_STORAGE_VARIANT_NBT_TAG));
-        TANK_STORAGE.amount = nbt.getLong(TANK_STORAGE_AMOUNT_NBT_TAG);
+    public SingleVariantStorage<FluidVariant> getInputStorage() {
+        return STORAGE;
     }
 
     @Override
-    public void readFluidCarrier(NbtCompound nbt) {
-        FLUID_CARRIER_STORAGE_INPUT.variant = FluidVariant.fromNbt(nbt.getCompound(INPUT_STORAGE_VARIANT_NBT_TAG));
-        FLUID_CARRIER_STORAGE_INPUT.amount = nbt.getLong(INPUT_STORAGE_AMOUNT_NBT_TAG);
-        FLUID_CARRIER_STORAGE_OUTPUT.variant = FluidVariant.fromNbt(nbt.getCompound(OUTPUT_STORAGE_VARIANT_NBT_TAG));
-        FLUID_CARRIER_STORAGE_OUTPUT.amount = nbt.getLong(OUTPUT_STORAGE_AMOUNT_NBT_TAG);
+    public SingleVariantStorage<FluidVariant> getOutputStorage() {
+        return STORAGE;
+    }
+
+    @Override
+    protected void writeStorage(NbtCompound nbt) {
+        nbt.put(STORAGE_VARIANT_NBT_TAG, STORAGE.variant.toNbt());
+        nbt.putLong(STORAGE_AMOUNT_NBT_TAG, STORAGE.amount);
+    }
+
+    @Override
+    protected void readStorage(NbtCompound nbt) {
+        STORAGE.variant = FluidVariant.fromNbt(nbt.getCompound(STORAGE_VARIANT_NBT_TAG));
+        STORAGE.amount = nbt.getLong(STORAGE_AMOUNT_NBT_TAG);
     }
 
     @Nullable
@@ -124,11 +91,6 @@ public class StorageTankBlockEntity extends BlockEntity implements FluidCarrier<
             case DOWN -> FLUID_CARRIER_STORAGE_OUTPUT;
             default -> null;
         };
-    }
-
-    @Override
-    public FluidCarrierStorage<StorageTankBlockEntity> getMainCarrierStorage() {
-        return FLUID_CARRIER_STORAGE_INPUT;
     }
 
     @Override
