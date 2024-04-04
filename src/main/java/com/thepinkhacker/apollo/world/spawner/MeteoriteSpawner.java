@@ -15,38 +15,33 @@ public class MeteoriteSpawner implements GenericSpawner {
 
     @Override
     public int spawn(ServerWorld world, boolean spawnMonsters, boolean spawnAnimals) {
-        if (world.getGameRules().getBoolean(ApolloGameRules.DO_METEORITE_LANDINGS))  {
-            if (world.getDimensionEntry().isIn(ApolloDimensionTypeTags.METEORITE_SPAWNING_WORLDS)) {
-                cooldown--;
+        if (!world.getGameRules().getBoolean(ApolloGameRules.DO_METEORITE_LANDINGS)) return 0;
+        if (!world.getDimensionEntry().isIn(ApolloDimensionTypeTags.METEORITE_SPAWNING_WORLDS)) return 0;
 
-                if (this.cooldown > 0) {
-                    return 0;
-                }
+        cooldown--;
 
-                Random random = world.random;
+        if (this.cooldown > 0) return 0;
 
-                this.cooldown = random.nextBetween(24_000, 36_000);
+        Random random = world.random;
 
-                ServerPlayerEntity player = world.getRandomAlivePlayer();
+        this.cooldown = random.nextBetween(24_000, 36_000);
 
-                if (player != null) {
-                    BlockPos blockPos = player.getBlockPos();
-                    BlockPos offsetPos =  new BlockPos(blockPos.getX() + random.nextBetween(-10, 10), world.getHeight() + 16, blockPos.getZ() + random.nextBetween(-10, 10));
+        ServerPlayerEntity player = world.getRandomAlivePlayer();
 
-                    if (SpawnHelper.isClearForSpawn(world, offsetPos, world.getBlockState(offsetPos), world.getFluidState(offsetPos), ApolloEntityTypes.METEORITE)) {
-                        MeteoriteEntity entity = ApolloEntityTypes.METEORITE.create(world);
+        if (player == null) return 0;
 
-                        if (entity != null) {
-                            entity.refreshPositionAndAngles(offsetPos, 0.0f, 0.0f);
-                            entity.setVelocity(0.0f, -1.0f, 0.0f, 30.0f, 30.0f);
-                            world.spawnEntityAndPassengers(entity);
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        BlockPos blockPos = player.getBlockPos();
+        BlockPos offsetPos =  new BlockPos(blockPos.getX() + random.nextBetween(-10, 10), world.getHeight() + 16, blockPos.getZ() + random.nextBetween(-10, 10));
 
-        return 0;
+        if (!SpawnHelper.isClearForSpawn(world, offsetPos, world.getBlockState(offsetPos), world.getFluidState(offsetPos), ApolloEntityTypes.METEORITE)) return 0;
+
+        MeteoriteEntity entity = ApolloEntityTypes.METEORITE.create(world);
+
+        if (entity == null) return 0;
+
+        entity.refreshPositionAndAngles(offsetPos, 0.0f, 0.0f);
+        entity.setVelocity(0.0f, -1.0f, 0.0f, 30.0f, 30.0f);
+        world.spawnEntityAndPassengers(entity);
+        return 1;
     }
 }
