@@ -1,6 +1,7 @@
 package com.thepinkhacker.apollo.resource;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.thepinkhacker.apollo.Apollo;
 import com.thepinkhacker.apollo.world.dimension.SpaceBody;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -26,7 +27,9 @@ public abstract class ApolloResources {
                 try (InputStream stream = resource.getInputStream()) {
                     String[] path = id.getPath().split("/");
                     Identifier dimensionId = new Identifier(id.getNamespace(), path[path.length - 1].split("\\.")[0]);
-                    SpaceBody spaceBody = new Gson().fromJson(new InputStreamReader(stream, StandardCharsets.UTF_8), SpaceBody.class);
+                    GsonBuilder gsonBuilder = new GsonBuilder();
+                    SpaceBody.registerGsonType(gsonBuilder);
+                    SpaceBody spaceBody = gsonBuilder.create().fromJson(new InputStreamReader(stream, StandardCharsets.UTF_8), SpaceBody.class);
                     spaceBodyManager.addSpaceBody(dimensionId, spaceBody);
                 } catch (Exception e) {
                     Apollo.LOGGER.error("Error occurred while loading resource json " + id.toString(), e);
