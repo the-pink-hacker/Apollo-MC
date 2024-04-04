@@ -9,7 +9,11 @@
     "EntityMixin",
     "ExperienceOrbEntityMixin",
     "FallingBlockEntityMixin",
-    "LivingEntityMixin"
+    "ItemEntityMixin",
+    "LivingEntityMixin",
+    "PersistentProjectileEntityMixin",
+    "ThrownEntityMixin",
+    "TntEntityMixin"
   ],
   "client": [],
   "server": [],
