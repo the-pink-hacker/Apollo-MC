@@ -10,8 +10,8 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 public abstract class LivingEntityMixin {
     // Changes falling speed
     @ModifyVariable(method = "travel(Lnet/minecraft/util/math/Vec3d;)V", at = @At("STORE"), ordinal = 0)
-    private double gravityFall(double d) {
-        return d * GravityManager.getGravityMutiplier(((LivingEntity)(Object)this).world);
+    private double gravityFall(double g) {
+        return g * GravityManager.getGravityMutiplier(((LivingEntity)(Object)this).world);
     }
 
     // Changes damage calculation
