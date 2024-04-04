@@ -72,7 +72,8 @@ public class SpaceBody {
         @Override
         public SpaceBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
             JsonObject object = jsonElement.getAsJsonObject();
-            double gravity = object.get("gravity").getAsDouble();
+            GsonHelper helper = new GsonHelper(object);
+            double gravity = helper.getOptionalDouble("gravity").orElse(GravityManager.DEFAULT);
             boolean isAtmosphereVisible = object.get("is_atmosphere_visible").getAsBoolean();
             boolean hasOxygen = object.get("has_oxygen").getAsBoolean();
             boolean spawnsMeteorites = object.get("spawns_meteorites").getAsBoolean();
@@ -100,9 +101,10 @@ public class SpaceBody {
             @Override
             public Satellite deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
                 JsonObject object = jsonElement.getAsJsonObject();
+                GsonHelper helper = new GsonHelper(object);
                 Identifier texture = context.deserialize(object.get("texture"), GsonHelper.getType(Identifier.class));
-                boolean fixedOrbit = object.get("fixedOrbit").getAsBoolean();
-                float scale = object.get("scale").getAsFloat();
+                boolean fixedOrbit = helper.getOptionalBoolean("fixed").orElse(false);
+                float scale = helper.getOptionalFloat("scale").orElse(1.0f);
                 JsonObject phases = object.get("phases").getAsJsonObject();
                 Vector2i parsedPhases = new Vector2i(
                         phases.get("x").getAsInt(),
