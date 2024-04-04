@@ -82,15 +82,6 @@ public class FluidPipeBlock extends Block implements PipeConnectable, Waterlogga
 
     private static boolean canConnect(Direction direction, WorldAccess world, BlockPos pos) {
         BlockPos otherPos = pos.offset(direction);
-
-        /*switch (direction) {
-            case NORTH -> otherPos = pos.north();
-            case EAST -> otherPos = pos.east();
-            case SOUTH -> otherPos = pos.south();
-            case WEST -> otherPos = pos.west();
-            case UP -> otherPos = pos.up();
-            case DOWN -> otherPos = pos.down();
-        }*/
         BlockState otherState = world.getBlockState(otherPos);
         Block otherBlock = otherState.getBlock();
 

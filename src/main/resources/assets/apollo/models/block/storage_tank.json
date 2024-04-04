@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "apollo:block/storage_tank_side",
+    "end": "apollo:block/storage_tank_end"
+  }
+}

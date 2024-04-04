@@ -1,8 +1,12 @@
 {
-  "parent": "minecraft:block/orientable",
+  "parent": "minecraft:block/cube",
   "textures": {
-    "top": "apollo:block/oil_refinery_top",
-    "front": "apollo:block/oil_refinery_front",
-    "side": "apollo:block/oil_refinery_side"
+    "up": "apollo:block/oil_refinery_top",
+    "down": "apollo:block/oil_refinery_bottom",
+    "north": "apollo:block/oil_refinery_front",
+    "east": "apollo:block/oil_refinery_side",
+    "south": "apollo:block/oil_refinery_back",
+    "west": "apollo:block/oil_refinery_side",
+    "particle": "apollo:block/oil_refinery_front"
   }
 }
