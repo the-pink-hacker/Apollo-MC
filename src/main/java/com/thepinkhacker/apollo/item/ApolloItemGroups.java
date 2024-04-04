@@ -22,6 +22,7 @@ public abstract class ApolloItemGroups {
                         entries.add(ApolloItems.FLUID_VALVE_PIPE);
                         entries.add(ApolloItems.OIL_REFINERY);
                         entries.add(ApolloItems.STORAGE_TANK);
+                        entries.add(ApolloItems.OILED_SAND);
                         entries.add(ApolloItems.METEORITE);
                         entries.add(ApolloItems.METEORITE_SCRAP);
                         entries.add(ApolloItems.REINFORCED_IRON_BLOCK);

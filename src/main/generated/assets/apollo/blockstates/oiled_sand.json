@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "apollo:block/oiled_sand"
+      },
+      {
+        "model": "apollo:block/oiled_sand",
+        "y": 90
+      },
+      {
+        "model": "apollo:block/oiled_sand",
+        "y": 180
+      },
+      {
+        "model": "apollo:block/oiled_sand",
+        "y": 270
+      }
+    ]
+  }
+}

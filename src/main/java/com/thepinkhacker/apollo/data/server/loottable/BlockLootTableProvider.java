@@ -42,6 +42,7 @@ public class BlockLootTableProvider extends SimpleFabricLootTableProvider implem
         addBasicBlock(biConsumer, ApolloItems.LUNAR_SOIL);
         addBasicBlock(biConsumer, ApolloItems.METEORITE);
         addBasicBlock(biConsumer, ApolloItems.OIL_REFINERY);
+        addBasicBlock(biConsumer, ApolloItems.OILED_SAND);
         addBasicBlock(biConsumer, ApolloItems.REINFORCED_IRON_BLOCK);
         addBasicBlock(biConsumer, ApolloItems.SHUTTLE_WORKBENCH);
 

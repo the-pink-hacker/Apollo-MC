@@ -28,6 +28,7 @@ public class ModelProvider extends FabricModelProvider {
         generator.registerRotatable(ApolloBlocks.LUNAR_SOIL);
         generator.registerRotatable(ApolloBlocks.LUNAR_STONE);
         generator.registerSimpleCubeAll(ApolloBlocks.REINFORCED_IRON_BLOCK);
+        generator.registerRotatable(ApolloBlocks.OILED_SAND);
 
         /* === Items === */
         registerSimpleBlockItem(generator, ApolloBlocks.AIRLOCK_CONTROLLER);
@@ -42,6 +43,7 @@ public class ModelProvider extends FabricModelProvider {
         registerSimpleBlockItem(generator, ApolloBlocks.LUNAR_STONE);
         registerSimpleBlockItem(generator, ApolloBlocks.METEORITE, "meteorite_cool");
         registerSimpleBlockItem(generator, ApolloBlocks.OIL_REFINERY);
+        registerSimpleBlockItem(generator, ApolloBlocks.OILED_SAND);
         registerSimpleBlockItem(generator, ApolloBlocks.OXYGEN_PLANT, "oxygen_plant_stage3");
         registerSimpleBlockItem(generator, ApolloBlocks.REINFORCED_IRON_BLOCK);
         registerSimpleBlockItem(generator, ApolloBlocks.SHUTTLE_WORKBENCH);

@@ -13,4 +13,9 @@ public class ApolloDefaultBiomeFeatures {
         builder.feature(GenerationStep.Feature.LAKES, ApolloMiscPlacedFeatures.LAKE_OIL_SURFACE);
         builder.feature(GenerationStep.Feature.LAKES, ApolloMiscPlacedFeatures.LAKE_OIL_UNDERGROUND);
     }
+
+    public static void addOil(GenerationSettings.LookupBackedBuilder builder) {
+        addOilSprings(builder);
+        addOilLakes(builder);
+    }
 }

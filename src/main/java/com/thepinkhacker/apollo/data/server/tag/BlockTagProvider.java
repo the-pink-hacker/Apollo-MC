@@ -54,7 +54,8 @@ public class BlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         this.getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
                 .add(ApolloBlocks.LUNAR_DUST)
-                .add(ApolloBlocks.LUNAR_SOIL);
+                .add(ApolloBlocks.LUNAR_SOIL)
+                .add(ApolloBlocks.OILED_SAND);
 
         this.getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ApolloBlocks.METEORITE)
@@ -71,5 +72,8 @@ public class BlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ApolloBlocks.LUNAR_STONE)
                 .add(ApolloBlocks.OIL_REFINERY)
                 .add(ApolloBlocks.SHUTTLE_WORKBENCH);
+
+        this.getOrCreateTagBuilder(BlockTags.SAND)
+                .add(ApolloBlocks.OILED_SAND);
     }
 }

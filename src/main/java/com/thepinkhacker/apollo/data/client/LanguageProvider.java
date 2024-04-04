@@ -35,6 +35,7 @@ public class LanguageProvider extends FabricLanguageProvider {
         builder.add(ApolloBlocks.METEORITE, "Meteorite");
         builder.add(ApolloBlocks.OIL, "Oil");
         builder.add(ApolloBlocks.OIL_REFINERY, "Oil Refinery");
+        builder.add(ApolloBlocks.OILED_SAND, "Oiled Sand");
         builder.add(ApolloBlocks.OXYGEN_PLANT, "Oxygen Plant");
         builder.add(ApolloBlocks.REINFORCED_IRON_BLOCK, "Reinforced Iron Block");
         builder.add(ApolloBlocks.SHUTTLE_WORKBENCH, "Shuttle Workbench");

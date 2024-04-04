@@ -38,6 +38,7 @@ public class ApolloItems {
     public static final Item LUNAR_STONE = registerItem(ApolloBlocks.LUNAR_STONE);
     public static final Item METEORITE = registerItem(new BlockItem(ApolloBlocks.METEORITE, new FabricItemSettings().fireproof()));
     public static final Item OIL_REFINERY = registerItem(ApolloBlocks.OIL_REFINERY);
+    public static final Item OILED_SAND = registerItem(ApolloBlocks.OILED_SAND);
     public static final Item OXYGEN_PLANT = registerItem(ApolloBlocks.OXYGEN_PLANT);
     public static final Item REINFORCED_IRON_BLOCK = registerItem(new BlockItem(ApolloBlocks.REINFORCED_IRON_BLOCK, new FabricItemSettings().fireproof()));
     public static final Item SHUTTLE_WORKBENCH = registerItem(ApolloBlocks.SHUTTLE_WORKBENCH);

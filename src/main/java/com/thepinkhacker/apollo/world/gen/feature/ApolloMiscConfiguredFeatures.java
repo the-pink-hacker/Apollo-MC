@@ -21,7 +21,7 @@ public class ApolloMiscConfiguredFeatures {
                 Feature.LAKE,
                 new LakeFeature.Config(
                         BlockStateProvider.of(ApolloBlocks.OIL),
-                        BlockStateProvider.of(Blocks.STONE)
+                        BlockStateProvider.of(ApolloBlocks.OILED_SAND)
                 )
         );
 

@@ -31,6 +31,7 @@ public class ApolloBlocks {
     public static final Block METEORITE = registerBlock("meteorite", new MeteoriteBlock(FabricBlockSettings.create().sounds(BlockSoundGroup.STONE).strength(30.0f, 1_200.0f).ticksRandomly().requiresTool()));
     public static final Block OIL = registerBlock("oil", new FluidBlock(ApolloFluids.STILL_OIL, FabricBlockSettings.create().sounds(BlockSoundGroup.METAL).noCollision().dropsNothing()));
     public static final Block OIL_REFINERY = registerBlock("oil_refinery", new OilRefineryBlock(FabricBlockSettings.create().sounds(BlockSoundGroup.METAL).strength(5.0f, 6.0f).requiresTool()));
+    public static final Block OILED_SAND = registerBlock("oiled_sand", new Block(FabricBlockSettings.copyOf(Blocks.SAND).strength(0.75f)));
     public static final Block OXYGEN_PLANT = registerBlock("oxygen_plant", new OxygenPlantBlock(FabricBlockSettings.create().sounds(BlockSoundGroup.CROP).noCollision().breakInstantly().sounds(BlockSoundGroup.CROP)));
     public static final Block REINFORCED_IRON_BLOCK = registerBlock("reinforced_iron_block", new Block(FabricBlockSettings.copyOf(Blocks.NETHERITE_BLOCK)));
     public static final Block SHUTTLE_WORKBENCH = registerBlock("shuttle_workbench", new ShuttleWorkbenchBlock(FabricBlockSettings.create().sounds(BlockSoundGroup.METAL).strength(5.0f, 6.0f).requiresTool()));
