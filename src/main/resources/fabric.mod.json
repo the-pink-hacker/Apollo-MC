@@ -19,7 +19,9 @@
       "com.ryangar46.apollo.Apollo"
     ]
   },
-  "mixins": [],
+  "mixins": [
+    "apollo.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",
