@@ -13,14 +13,14 @@
     "entity.FallingBlockEntityMixin",
     "entity.ItemEntityMixin",
     "entity.LivingEntityMixin",
-    "entity.TntEntityMixin"
+    "entity.TntEntityMixin",
+    "server.world.ServerChunkManagerMixin"
   ],
   "client": [
     "client.particle.ParticleMixin",
     "client.render.WorldRendererMixin",
     "client.world.ClientWorldMixin"
   ],
-  "server": [],
   "injectors": {
     "defaultRequire": 1
   }
