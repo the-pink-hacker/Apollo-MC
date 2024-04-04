@@ -5,10 +5,12 @@
   "spawns_meteorites": true,
   "satellites": [
     {
-      "texture": "minecraft:environment/sun.png"
+      "texture": "minecraft:environment/sun.png",
+      "fixedOrbit": false
     },
     {
-      "texture": "apollo:environment/earth.png"
+      "texture": "apollo:environment/earth.png",
+      "fixedOrbit": true
     }
   ]
 }
