@@ -18,10 +18,6 @@
     "server.world.ServerChunkManagerMixin",
     "world.WorldMixin"
   ],
-  "client": [
-    "client.particle.ParticleMixin",
-    "client.render.WorldRendererMixin"
-  ],
   "injectors": {
     "defaultRequire": 1
   }

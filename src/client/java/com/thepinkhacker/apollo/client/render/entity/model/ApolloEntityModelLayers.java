@@ -6,7 +6,6 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 
-@Environment(EnvType.CLIENT)
 public abstract class ApolloEntityModelLayers {
     public static final EntityModelLayer METEORITE = createMain("meteorite");
     public static final EntityModelLayer SHUTTLE = createMain("shuttle");

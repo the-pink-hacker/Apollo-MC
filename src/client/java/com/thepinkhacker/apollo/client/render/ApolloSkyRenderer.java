@@ -20,7 +20,6 @@ import org.joml.Matrix4f;
 import java.util.ArrayList;
 import java.util.List;
 
-@Environment(EnvType.CLIENT)
 public class ApolloSkyRenderer {
     private static final float SATELLITE_Y_OFFSET = 100.0f;
     private static final float DEFAULT_SATELLITE_ROTATION_DEGREES = -90.0f;

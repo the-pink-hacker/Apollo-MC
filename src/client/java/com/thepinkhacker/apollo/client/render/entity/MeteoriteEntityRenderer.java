@@ -14,7 +14,6 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
-@Environment(EnvType.CLIENT)
 public class MeteoriteEntityRenderer extends EntityRenderer<MeteoriteEntity> {
     private static final Identifier TEXTURE = Apollo.getIdentifier("textures/entity/shuttle.png");
     private final MeteoriteEntityModel model;
