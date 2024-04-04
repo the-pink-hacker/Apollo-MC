@@ -15,6 +15,7 @@ public class SpaceBody {
     private final boolean isAtmosphereVisible;
     private final boolean hasOxygen;
     private final boolean spawnsMeteorites;
+    private final Satellite lightProvider;
     private final Satellite[] satellites;
 
     public SpaceBody(
@@ -22,12 +23,14 @@ public class SpaceBody {
             boolean isAtmosphereVisible,
             boolean hasOxygen,
             boolean spawnsMeteorites,
+            Satellite lightProvider,
             Satellite[] satellites
     ) {
         this.gravity = gravity;
         this.isAtmosphereVisible = isAtmosphereVisible;
         this.hasOxygen = hasOxygen;
         this.spawnsMeteorites = spawnsMeteorites;
+        this.lightProvider = lightProvider;
         this.satellites = satellites;
     }
 
@@ -59,6 +62,24 @@ public class SpaceBody {
         return satellites;
     }
 
+    /**
+     * @return All satellites (including light provider)
+     */
+    public Satellite[] getAllSatellites() {
+        Satellite[] all = new Satellite[satellites.length + 1];
+        all[0] = lightProvider;
+
+        for (int i = 0; i < satellites.length; i++) {
+            all[i + 1] = satellites[i];
+        }
+
+        return all;
+    }
+
+    public Satellite getLightProvider() {
+        return lightProvider;
+    }
+
     public boolean isDefault() {
         return true;
     }
@@ -78,16 +99,19 @@ public class SpaceBody {
             boolean isAtmosphereVisible = object.get("is_atmosphere_visible").getAsBoolean();
             boolean hasOxygen = object.get("has_oxygen").getAsBoolean();
             boolean spawnsMeteorites = object.get("spawns_meteorites").getAsBoolean();
+            Type satelliteType = GsonHelper.getType(Satellite.class);
+            Satellite lightProvider = context.deserialize(object.get("light_provider"), satelliteType);
             List<JsonElement> satellites = object.getAsJsonArray("satellites").asList();
             Satellite[] parsedSatellites = new Satellite[satellites.size()];
             for (int i = 0; i < satellites.size(); i++) {
-                parsedSatellites[i] = context.deserialize(satellites.get(i), GsonHelper.getType(Satellite.class));
+                parsedSatellites[i] = context.deserialize(satellites.get(i), satelliteType);
             }
             return new SpaceBody(
                     gravity,
                     isAtmosphereVisible,
                     hasOxygen,
                     spawnsMeteorites,
+                    lightProvider,
                     parsedSatellites
             );
         }
