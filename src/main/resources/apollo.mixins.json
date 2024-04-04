@@ -4,16 +4,16 @@
   "package": "com.ryangar46.apollo.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "entity.projectile.thrown.ThrownEntityMixin",
-    "entity.projectile.PersistentProjectileEntityMixin",
-    "entity.vehicle.AbstractMinecartEntityMixin",
-    "entity.vehicle.BoatEntityMixin",
     "entity.EntityMixin",
     "entity.ExperienceOrbEntityMixin",
     "entity.FallingBlockEntityMixin",
     "entity.ItemEntityMixin",
     "entity.LivingEntityMixin",
     "entity.TntEntityMixin",
+    "entity.projectile.PersistentProjectileEntityMixin",
+    "entity.projectile.thrown.ThrownEntityMixin",
+    "entity.vehicle.AbstractMinecartEntityMixin",
+    "entity.vehicle.BoatEntityMixin",
     "server.world.ServerChunkManagerMixin"
   ],
   "client": [

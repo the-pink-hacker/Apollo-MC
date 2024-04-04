@@ -17,7 +17,6 @@ import net.minecraft.loot.entry.AlternativeEntry;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.ExplosionDecayLootFunction;
-import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.predicate.NumberRange;
 import net.minecraft.predicate.item.EnchantmentPredicate;
 import net.minecraft.predicate.item.ItemPredicate;
@@ -46,6 +45,9 @@ public class BlockLootTableProvider extends SimpleFabricLootTableProvider implem
 
         /* === Ores === */
         addOreBlock(biConsumer, ApolloItems.LUNAR_IRON_ORE, Items.RAW_IRON);
+
+        /* === Silk Touch === */
+        addSilkTouch(biConsumer, ApolloItems.LUNAR_STONE, ApolloItems.LUNAR_COBBLESTONE);
     }
 
     private void addBasicBlock(BiConsumer<Identifier, LootTable.Builder> biConsumer, Item item) {
@@ -54,7 +56,7 @@ public class BlockLootTableProvider extends SimpleFabricLootTableProvider implem
                 item,
                 LootTable.builder().pool(
                         LootPool.builder()
-                                .rolls(ConstantLootNumberProvider.create(1.0f))
+                                .rolls(ONE)
                                 .with(ItemEntry.builder(item))
                                 .conditionally(SurvivesExplosionLootCondition.builder())
                 )
@@ -67,7 +69,7 @@ public class BlockLootTableProvider extends SimpleFabricLootTableProvider implem
                 block,
                 LootTable.builder().pool(
                         LootPool.builder()
-                                .rolls(ConstantLootNumberProvider.create(1.0f))
+                                .rolls(ONE)
                                 .with(ItemEntry.builder(drop))
                                 .conditionally(SurvivesExplosionLootCondition.builder())
                 )
@@ -80,14 +82,31 @@ public class BlockLootTableProvider extends SimpleFabricLootTableProvider implem
                 ore,
                 LootTable.builder().pool(
                         LootPool.builder()
-                                .rolls(ConstantLootNumberProvider.create(1.0f))
+                                .rolls(ONE)
+                                .with(AlternativeEntry.builder()
+                                        .alternatively(ItemEntry.builder(ore).conditionally(WITH_SILK_TOUCH))
+                                        .alternatively(ItemEntry.builder(rawOre)
+                                                .apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE))
+                                                .apply(ExplosionDecayLootFunction.builder())
+                                        )
+                                )
+                )
+        );
+    }
+
+    private void addSilkTouch(BiConsumer<Identifier, LootTable.Builder> biConsumer, Item silkItem, Item item) {
+        addLoot(
+                biConsumer,
+                silkItem,
+                LootTable.builder().pool(
+                        LootPool.builder()
+                                .rolls(ONE)
                                 .with(AlternativeEntry.builder()
                                         .conditionally(WITH_SILK_TOUCH)
-                                        .alternatively(ItemEntry.builder(ore))
+                                        .alternatively(ItemEntry.builder(silkItem))
                                 )
-                                .with(ItemEntry.builder(rawOre)
-                                        .apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE))
-                                        .apply(ExplosionDecayLootFunction.builder())
+                                .with(ItemEntry.builder(item)
+                                        .conditionally(SurvivesExplosionLootCondition.builder())
                                 )
                 )
         );
