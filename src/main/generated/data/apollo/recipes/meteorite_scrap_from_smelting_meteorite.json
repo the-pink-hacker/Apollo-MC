@@ -1,10 +1,11 @@
 {
   "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
   "group": "meteorite_scrap",
   "ingredient": {
     "item": "apollo:meteorite"
   },
-  "result": "apollo:meteorite_scrap",
-  "experience": 0.7,
-  "cookingtime": 200
+  "result": "apollo:meteorite_scrap"
 }

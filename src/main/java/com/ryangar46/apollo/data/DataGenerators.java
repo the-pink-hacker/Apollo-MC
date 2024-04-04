@@ -2,7 +2,8 @@ package com.ryangar46.apollo.data;
 
 import com.ryangar46.apollo.data.client.LanguageProvider;
 import com.ryangar46.apollo.data.client.ModelProvider;
-import com.ryangar46.apollo.data.server.BlockTagProvider;
+import com.ryangar46.apollo.data.server.ApolloRecipeProvider;
+import com.ryangar46.apollo.data.server.tag.BlockTagProvider;
 import com.ryangar46.apollo.data.server.WorldgenProvider;
 import com.ryangar46.apollo.data.server.loottable.BlockLootTableProvider;
 import com.ryangar46.apollo.data.server.tag.DimensionTypeTagProvider;
@@ -28,6 +29,7 @@ public class DataGenerators implements DataGeneratorEntrypoint {
         pack.addProvider(ItemTagProvider::new);
         pack.addProvider(LanguageProvider::new);
         pack.addProvider(ModelProvider::new);
+        pack.addProvider(ApolloRecipeProvider::new);
         pack.addProvider(WorldgenProvider::new);
     }
 
