@@ -1,5 +1,6 @@
 package com.thepinkhacker.apollo.client;
 
+import com.thepinkhacker.apollo.client.fluid.ApolloFluidClientRegistry;
 import com.thepinkhacker.apollo.client.render.ApolloRenderLayers;
 import com.thepinkhacker.apollo.client.render.entity.ApolloEntityRenderers;
 import com.thepinkhacker.apollo.client.render.entity.model.ApolloEntityModelLayers;
@@ -17,7 +18,7 @@ public class ApolloClient implements ClientModInitializer {
     public void onInitializeClient() {
         ApolloEntityTypes.registerClient();
         DimensionEffectsManager.registerClient();
-        ApolloFluids.registerClient();
+        ApolloFluidClientRegistry.register();
         ApolloRenderLayers.register();
         ApolloEntityModelLayers.register();
         ApolloPackets.registerClient();
