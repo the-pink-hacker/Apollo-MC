@@ -1,6 +1,5 @@
 package com.thepinkhacker.apollo.mixin.server.network;
 
-import com.thepinkhacker.apollo.Apollo;
 import com.thepinkhacker.apollo.mixin.entity.LivingEntityMixin;
 import com.thepinkhacker.apollo.world.pressure.VacuumChecker;
 import net.minecraft.server.network.ServerPlayerEntity;
