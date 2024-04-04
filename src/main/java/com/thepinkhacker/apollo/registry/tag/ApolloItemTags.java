@@ -12,6 +12,6 @@ public class ApolloItemTags {
     public static final TagKey<Item> MOON_ARMOR = register("moon_armor");
 
     private static TagKey<Item> register(String id) {
-        return TagKey.of(RegistryKeys.ITEM, new Identifier(Apollo.MOD_ID, id));
+        return TagKey.of(RegistryKeys.ITEM, Apollo.getIdentifier(id));
     }
 }

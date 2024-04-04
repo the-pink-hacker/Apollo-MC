@@ -17,6 +17,6 @@ public class ApolloBiomeKeys {
     }
 
     public static RegistryKey<Biome> registerBiome(String id) {
-        return RegistryKey.of(RegistryKeys.BIOME, new Identifier(Apollo.MOD_ID, id));
+        return RegistryKey.of(RegistryKeys.BIOME, Apollo.getIdentifier(id));
     }
 }

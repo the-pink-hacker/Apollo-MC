@@ -8,16 +8,16 @@ import software.bernie.geckolib.model.GeoModel;
 public class ShuttleEntityModel extends GeoModel<ShuttleEntity> {
     @Override
     public Identifier getModelResource(ShuttleEntity object) {
-        return new Identifier(Apollo.MOD_ID, "geo/entity/shuttle.geo.json");
+        return Apollo.getIdentifier("geo/entity/shuttle.geo.json");
     }
 
     @Override
     public Identifier getTextureResource(ShuttleEntity object) {
-        return new Identifier(Apollo.MOD_ID, "textures/entity/shuttle.png");
+        return Apollo.getIdentifier("textures/entity/shuttle.png");
     }
 
     @Override
     public Identifier getAnimationResource(ShuttleEntity animatable) {
-        return new Identifier(Apollo.MOD_ID, "animations/entity/shuttle.animation.json");
+        return Apollo.getIdentifier("animations/entity/shuttle.animation.json");
     }
 }

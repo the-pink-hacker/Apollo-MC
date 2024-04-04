@@ -42,7 +42,7 @@ public class ApolloBlockEntityTypes {
     private static <T extends BlockEntity> BlockEntityType<T> of(String id, FabricBlockEntityTypeBuilder<T> builder) {
         return Registry.register(
                 Registries.BLOCK_ENTITY_TYPE,
-                new Identifier(Apollo.MOD_ID, id),
+                Apollo.getIdentifier(id),
                 builder.build()
         );
     }

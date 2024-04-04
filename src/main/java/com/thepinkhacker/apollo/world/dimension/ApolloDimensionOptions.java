@@ -7,5 +7,9 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.dimension.DimensionOptions;
 
 public class ApolloDimensionOptions {
-    public static final RegistryKey<DimensionOptions> MOON = RegistryKey.of(RegistryKeys.DIMENSION, new Identifier(Apollo.MOD_ID, "moon"));
+    public static final RegistryKey<DimensionOptions> MOON = of(ApolloDimensionTypes.MOON_ID);
+
+    private static RegistryKey<DimensionOptions> of(Identifier id) {
+        return RegistryKey.of(RegistryKeys.DIMENSION, id);
+    }
 }

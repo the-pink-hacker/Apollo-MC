@@ -69,7 +69,7 @@ public class ModelProvider extends FabricModelProvider {
     }
 
     private static void registerSimpleBlockItem(BlockStateModelGenerator generator, Block block, String blockModel) {
-        generator.registerParentedItemModel(block, new Identifier(Apollo.MOD_ID, "block/" + blockModel));
+        generator.registerParentedItemModel(block, Apollo.getIdentifier("block/" + blockModel));
     }
 
     private static void registerCubeAll(BlockStateModelGenerator generator, Block block) {

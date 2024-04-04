@@ -16,7 +16,7 @@ public class ApolloStats {
     public static void register() {}
 
     private static Identifier registerStat(String id, StatFormatter formatter) {
-        Identifier identifier = new Identifier(Apollo.MOD_ID, id);
+        Identifier identifier = Apollo.getIdentifier(id);
         Registry.register(Registries.CUSTOM_STAT, id, identifier);
         CUSTOM.getOrCreateStat(identifier, formatter);
 

@@ -17,7 +17,7 @@ public class DimensionEffectsManager {
     }
 
     public static void registerDimensionEffect(String id, DimensionEffects dimensionEffects) {
-        DimensionRenderingRegistry.registerDimensionEffects(new Identifier(Apollo.MOD_ID, id), dimensionEffects);
+        DimensionRenderingRegistry.registerDimensionEffects(Apollo.getIdentifier(id), dimensionEffects);
     }
 
     @Environment(EnvType.CLIENT)

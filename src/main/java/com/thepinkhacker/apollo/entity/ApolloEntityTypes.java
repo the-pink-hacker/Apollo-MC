@@ -45,7 +45,7 @@ public class ApolloEntityTypes {
     private static <T extends Entity> EntityType<T> of(String id, FabricEntityTypeBuilder<T> builder) {
         return Registry.register(
                 Registries.ENTITY_TYPE,
-                new Identifier(Apollo.MOD_ID, id),
+                Apollo.getIdentifier(id),
                 builder.build()
         );
     }

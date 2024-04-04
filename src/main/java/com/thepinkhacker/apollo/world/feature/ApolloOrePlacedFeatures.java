@@ -34,7 +34,7 @@ public class ApolloOrePlacedFeatures {
     }
 
     private static RegistryKey<PlacedFeature> of(String id) {
-        return RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(Apollo.MOD_ID, id));
+        return RegistryKey.of(RegistryKeys.PLACED_FEATURE, Apollo.getIdentifier(id));
     }
 
     private static List<PlacementModifier> modifiers(PlacementModifier countModifier, PlacementModifier heightModifier) {

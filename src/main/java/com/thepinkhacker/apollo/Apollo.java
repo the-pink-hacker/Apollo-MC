@@ -12,6 +12,7 @@ import com.thepinkhacker.apollo.world.biome.ApolloBiomeKeys;
 import com.thepinkhacker.apollo.world.spawner.GenericSpawnerManager;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib.GeckoLib;
@@ -35,5 +36,9 @@ public class Apollo implements ModInitializer, TerraBlenderApi {
 		ApolloResources.register();
 
 		ServerLifecycleEvents.SERVER_STARTED.register(server -> GenericSpawnerManager.register());
+	}
+
+	public static Identifier getIdentifier(String path) {
+		return new Identifier(MOD_ID, path);
 	}
 }

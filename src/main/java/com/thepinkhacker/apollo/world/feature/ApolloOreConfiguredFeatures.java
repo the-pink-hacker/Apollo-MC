@@ -32,6 +32,6 @@ public class ApolloOreConfiguredFeatures {
     }
 
     private static RegistryKey<ConfiguredFeature<?, ?>> of(String id) {
-        return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(Apollo.MOD_ID, id));
+        return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Apollo.getIdentifier(id));
     }
 }

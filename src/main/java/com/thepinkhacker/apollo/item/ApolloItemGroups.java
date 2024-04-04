@@ -50,6 +50,6 @@ public class ApolloItemGroups {
     public static void register() {}
 
     public static ItemGroup.Builder createBuilder(String id) {
-        return FabricItemGroup.builder(new Identifier(Apollo.MOD_ID, id)).displayName(Text.translatable("itemGroup." + Apollo.MOD_ID + "." + id));
+        return FabricItemGroup.builder(Apollo.getIdentifier(id)).displayName(Text.translatable("itemGroup." + Apollo.MOD_ID + "." + id));
     }
 }
